@@ -40,7 +40,7 @@ const userSchema = new Schema({
       ({ length }) => length >= 8 && length <= 36,
       "Room name should be greater than 8 or less than 36 characters.",
     ],
-    required: "Please enter a name for the room",
+    // required: "Please enter a name for the room",
     unique: true
   },
   tagLine: {

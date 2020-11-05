@@ -6,7 +6,7 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/only-dungeons-practice"
+  "mongodb://localhost/only-dungeons-db"
 )
 
 const userSeed = [
@@ -164,7 +164,7 @@ const userSeed = [
         password: "sylofaded24",
         email: "sylofaddm@gmail.com",
         isDm: true,
-        roomName: "The Blade Garden"
+        roomName: "The Blade Garden",
         tagLine: "Better than Craigslist",
         categoryType: {
             byTheBook: true, 
@@ -391,7 +391,7 @@ const userSeed = [
 ];
 
 db.User
-  .remove({})
+  .deleteMany({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
