@@ -1,8 +1,12 @@
 import React from "react";
+import Navbar from "../../components/Navbar/Navbar"
 
 function SigninPage() {
   return (
-    <div className="container section">
+    <>
+    <Navbar/>
+
+    <div class="container section">
       <div className="row section"></div>
       <div className="row section"></div>
       <div className="row section"></div>
@@ -54,6 +58,7 @@ function SigninPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
