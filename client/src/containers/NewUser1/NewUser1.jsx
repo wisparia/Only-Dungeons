@@ -3,7 +3,6 @@ import React from "react";
 function NewUser1() {
   return (
     <>
-      
       <div className="container"></div>
       <div className="row section"></div>
       <form className="row section content-border">
@@ -72,10 +71,10 @@ function NewUser1() {
             <div className="row vertical-spacer-md">
                 <div className="col s4 "></div>
                 <button className="vertical-spacer-md waves-effect waves-light btn col s3">
-                  New Account</button>
+                  Cancel</button>
                   <div className="col s1 "></div>
                 <button className="vertical-spacer-md waves-effect waves-light btn col s3">
-                Login
+                Create Account
               </button>
               <div className="col s1 "></div>
 

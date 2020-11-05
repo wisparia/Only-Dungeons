@@ -21,3 +21,8 @@ p{
   border-width: 8px;
   padding: 5px 5px 5px 5px;
 }
+
+.image-true{
+  max-width: 300px;
+  height: auto
+}
