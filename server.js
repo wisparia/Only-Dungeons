@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("client/build"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/my-mern", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/only-dungeons-db", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
