@@ -406,7 +406,7 @@ const userSeed = [
         password: "inShaDow31",
         email: "shadowfiend@gmail.com",
         isDm: true,
-        roomName: "The Underdark"
+        roomName: "The Underdark",
         tagLine: "Slip into my DMs!",
         categoryType: {
             byTheBook: true,
