@@ -3,6 +3,9 @@ import Navbar from "../../components/Navbar/Navbar"
 
 function SigninPage() {
   return (
+    <>
+    <Navbar/>
+
     <div class="container section">
       <div className="row section"></div>
       <div className="row section"></div>
@@ -55,6 +58,7 @@ function SigninPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
