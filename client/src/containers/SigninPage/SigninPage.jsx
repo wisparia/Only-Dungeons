@@ -1,12 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar"
+import { Link } from "react-router-dom"
 
 function SigninPage() {
   return (
     <>
-    <Navbar/>
-
-    <div class="container section">
+    <div className="container section">
       <div className="row section"></div>
       <div className="row section"></div>
       <div className="row section"></div>
@@ -34,17 +32,17 @@ function SigninPage() {
               </div>
               <div className="row">
                 <div className="col s2"></div>
-                <button className="vertical-spacer-sm waves-effect waves-light btn col s8">
+                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s8" to = "/NewUser">
                   New Account
-                </button>
+                </Link>
                 <div className="col s2"></div>
               </div>
 
               <div className="row">
                 <div className="col s2"></div>
-              <button className="vertical-spacer-sm waves-effect waves-light btn col s8">
+              <Link button className="vertical-spacer-sm waves-effect waves-light btn col s8" to = "/Login">
                 Login
-              </button>
+              </Link>
               <div className="col s2"></div>
               </div>
             </form>
