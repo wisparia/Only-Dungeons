@@ -3,7 +3,6 @@ import React from "react";
 function NewUser1() {
   return (
     <>
-      
       <div className="container"></div>
       <div className="row section"></div>
       <form className="row section content-border">
