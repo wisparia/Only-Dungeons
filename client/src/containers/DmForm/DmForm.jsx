@@ -10,14 +10,15 @@ function DmForm() {
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
             <div className="col s6">
-              <label for="username">
-                <p className="form-text">roomName</p>
-              </label>
-              <input id="username" type="text" className="validate" />
-              <label for="email">
-                <p className="form-text">tagLine</p>
-              </label>
-              <input id="email" type="email" className="validate" />
+            <p>Room Name: </p>
+              <div className="content-border">
+                <input id="roomName" type="text" className="validate" />
+              </div>
+
+            <p>Tagline: </p>
+              <div className="content-border">
+                <input id="Tagline" type="text" className="validate" />
+              </div>
             </div>
 
             <div className="col s6">
@@ -29,17 +30,20 @@ function DmForm() {
                 />
               </div>
 
-              <select className="browser-default">
-                <option value="" disabled selected>
-                  Select Your Avatar
-                </option>
-                <option value="1">Bard</option>
-                <option value="2">Cleric</option>
-                <option value="3">Fighter</option>
-                <option value="4">Paladin</option>
-                <option value="5">Thief</option>
-                <option value="6">Wizard</option>
-              </select>
+              <p>Preferred Role: </p>
+              <div className="content-border">
+                <select className="browser-default">
+                  <option value="" disabled selected>
+                    Select
+                  </option>
+                  <option value="1">Bard</option>
+                  <option value="2">Cleric</option>
+                  <option value="3">Fighter</option>
+                  <option value="4">Paladin</option>
+                  <option value="5">Thief</option>
+                  <option value="6">Wizard</option>
+                </select>
+              </div>
             </div>
           </div>
 
