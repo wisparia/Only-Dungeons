@@ -7,8 +7,8 @@ function NewUser1() {
       <Navbar />
       <div class="container"></div>
       <div className="row section"></div>
-      <form className="row section">
-        <div className="col s6 content-border">
+      <form className="row section content-border">
+        <div className="col s6">
           <div className="row">
             <div className="col s12">
               <label for="username">
@@ -44,10 +44,11 @@ function NewUser1() {
           </div>
         </div>
 
-        <div className="col s6 content-border">
+        <div className="col s6 vertical-spacer-md">
           <p>Do you tell the stories or do you live them?</p>
           <div className="row">
-            <div className="col s6">
+            <div className="col s1"></div>
+            <div className="col s5">
               <p className="vertical-spacer-sm">
                 <label>
                   <input name="userType" type="radio" />
@@ -58,7 +59,7 @@ function NewUser1() {
               </p>
             </div>
 
-            <div className="col s6">
+            <div className="col s5">
               <p className="vertical-spacer-sm">
                 <label>
                   <input name="userType" type="radio" checked/>
@@ -68,24 +69,21 @@ function NewUser1() {
                 </label>
               </p>
             </div>
+
+            <div className="row vertical-spacer-md">
+                <div className="col s4 "></div>
+                <button className="vertical-spacer-md waves-effect waves-light btn col s3">
+                  New Account</button>
+                  <div className="col s1 "></div>
+                <button className="vertical-spacer-md waves-effect waves-light btn col s3">
+                Login
+              </button>
+              <div className="col s1 "></div>
+
+            </div>
           </div>
         </div>
       </form>
-      {/* <div className="row">
-            <div className="col s2"></div>
-            <button className="vertical-spacer-sm waves-effect waves-light btn col s8">
-              New Account
-            </button>
-            <div className="col s2"></div>
-          </div>
-
-          <div className="row">
-            <div className="col s2"></div>
-            <button className="vertical-spacer-sm waves-effect waves-light btn col s8">
-              Login
-            </button>
-            <div className="col s2"></div>
-          </div> */}
     </>
   );
 }
