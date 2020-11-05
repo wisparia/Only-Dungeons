@@ -2,16 +2,16 @@ import React from "react";
 
 function SigninPage() {
   return (
-    <div class="container section">
+    <div className="container section">
       <div className="row section"></div>
       <div className="row section"></div>
       <div className="row section"></div>
       <div className="row section">
         <div className="col s6 content-border">
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="col s12">
+          <div className="row">
+            <form className="col s12">
+              <div className="row">
+                <div className="col s12">
                 <label for="username">
                     <p className="form-text">Username</p>
                   </label>
@@ -20,12 +20,12 @@ function SigninPage() {
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col s12">
+              <div className="row">
+                <div className="col s12">
                 <label for="password">
                     <p className="form-text">Password</p>
                   </label>
-                  <input id="password" type="password" class="validate" />
+                  <input id="password" type="password" className="validate" />
                 </div>
               </div>
               <div className="row">
