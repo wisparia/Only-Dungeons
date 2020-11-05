@@ -9,7 +9,6 @@ function SigninPage() {
     <div class="container section">
       <div className="row section"></div>
       <div className="row section"></div>
-      <div className="row section"></div>
       <div className="row section">
         <div className="col s6 content-border">
           <div className="row">
@@ -20,10 +19,8 @@ function SigninPage() {
                     <p className="form-text">Username</p>
                   </label>
                   <input id="username" type="text" class="validate" />
-
                 </div>
               </div>
-
               <div className="row">
                 <div className="col s12">
                 <label for="password">
@@ -32,6 +29,7 @@ function SigninPage() {
                   <input id="password" type="password" className="validate" />
                 </div>
               </div>
+              
               <div className="row">
                 <div className="col s2"></div>
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s8">
