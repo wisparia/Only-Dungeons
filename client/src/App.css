@@ -8,6 +8,10 @@ p{
   margin-top: 10px
 }
 
+.vertical-spacer-md{
+  margin-top: 50px;
+}
+
 .form-text{
   font-weight: bold;
 }
