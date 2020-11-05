@@ -54,6 +54,7 @@ const userSchema = new Schema({
   categoryType: 
     {
       byTheBook: { type: Boolean, default: false},
+      campaigns: { type: Boolean, default: false},
       norestriction: { type: Boolean, default: false},
       homebrew: { type: Boolean, default: false},
       lvl1only: { type: Boolean, default: false},

@@ -21,6 +21,7 @@ const userSeed = [
         tagLine: "Snitches get stitches",
         categoryType: {
             byTheBook: true, 
+            campaigns: true,
             norestriction: false,
             homebrew: false,
             lvl1only: false,
@@ -51,6 +52,7 @@ const userSeed = [
         tagLine: "Frosty Games Only",
         categoryType: {
             byTheBook: true, 
+            campaigns: true,
             norestriction: true,
             homebrew: true,
             lvl1only: true,
@@ -80,7 +82,8 @@ const userSeed = [
         roomName: "The Astral Sea",
         tagLine: "Make a Constitution Saving Throw",
         categoryType: {
-            byTheBook: false, 
+            byTheBook: false,
+            campaigns: false, 
             norestriction: true,
             homebrew: true,
             lvl1only: false,
@@ -109,7 +112,8 @@ const userSeed = [
         isDm: false,
         tagLine: "Kill it with Fire!",
         categoryType: {
-            byTheBook: false, 
+            byTheBook: false,
+            campaigns: true, 
             norestriction: true,
             homebrew: true,
             lvl1only: false,
@@ -138,7 +142,8 @@ const userSeed = [
         roomName: "The Fey Wild",
         tagLine: "I make it weird!",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns: false, 
             norestriction: true,
             homebrew: false,
             lvl1only: false,
@@ -167,7 +172,8 @@ const userSeed = [
         roomName: "The Blade Garden",
         tagLine: "Better than Craigslist",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns:true, 
             norestriction: true,
             homebrew: true,
             lvl1only: true,
@@ -196,7 +202,8 @@ const userSeed = [
         roomName: "Tonks Terrifically Terrifying Terrace",
         tagLine: "Terrifically Terrifying",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns:true, 
             norestriction: false,
             homebrew: true,
             lvl1only: true,
@@ -225,7 +232,8 @@ const userSeed = [
         roomName: "The Glade",
         tagLine: "Expect the unexpected...",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns:true, 
             norestriction: true,
             homebrew: true,
             lvl1only: true,
@@ -251,10 +259,11 @@ const userSeed = [
         password: "dndGameGrunt243!",
         email: "gamegrunt22@gmail.com",
         isDm: true,
-        roomName: "The Tavern",
+        roomName: "The Laboratory",
         tagLine: "Role initiative!",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns:true, 
             norestriction: false,
             homebrew: false,
             lvl1only: false,
@@ -282,7 +291,8 @@ const userSeed = [
         isDm: false,
         tagLine: "For Glory!",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns:true,
             norestriction: false,
             homebrew: false,
             lvl1only: true,
@@ -310,7 +320,8 @@ const userSeed = [
         isDm: false,
         tagLine: "Slow and Steady",
         categoryType: {
-            byTheBook: true, 
+            byTheBook: true,
+            campaigns: false, 
             norestriction: false,
             homebrew: false,
             lvl1only: true,
@@ -338,7 +349,8 @@ const userSeed = [
         isDm: false,
         tagLine: "Eldritch Blast",
         categoryType: {
-            byTheBook: false, 
+            byTheBook: false,
+            campaigns: true, 
             norestriction: true,
             homebrew: true,
             lvl1only: false,
@@ -367,7 +379,8 @@ const userSeed = [
         roomName: "The Rabbit Hole",
         tagLine: "Change Places!",
         categoryType: {
-            byTheBook: false, 
+            byTheBook: false,
+            campaigns: true, 
             norestriction: true,
             homebrew: true,
             lvl1only: true,
@@ -386,6 +399,36 @@ const userSeed = [
             sunday: true
         }, 
         preferredRole: "druid"
+    },
+    {
+        // _id: uuid(),
+        userName: "Shadowfiend",
+        password: "inShaDow31",
+        email: "shadowfiend@gmail.com",
+        isDm: true,
+        roomName: "The Underdark"
+        tagLine: "Slip into my DMs!",
+        categoryType: {
+            byTheBook: true,
+            campaigns: true, 
+            norestriction: false,
+            homebrew: false,
+            lvl1only: true,
+            rpersonly: false,
+            oneshots: false,
+            displaydice: true,
+            voyuerallowed: true
+        },
+        availablity:{
+            monday: false,
+            tuesday: false,
+            wednesday: true,
+            thursday: true,
+            friday: true, 
+            saturday: false,
+            sunday: true
+        }, 
+        preferredRole: "ranger"
     }
 
 ];
