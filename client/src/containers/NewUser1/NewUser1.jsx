@@ -1,11 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
 
 function NewUser1() {
   return (
     <>
-      <Navbar />
-      <div class="container"></div>
+      
+      <div className="container"></div>
       <div className="row section"></div>
       <form className="row section content-border">
         <div className="col s6">
@@ -14,7 +13,7 @@ function NewUser1() {
               <label for="username">
                 <p className="form-text">Username</p>
               </label>
-              <input id="username" type="text" class="validate" />
+              <input id="username" type="text" className="validate" />
             </div>
           </div>
           <div className="row">
@@ -22,7 +21,7 @@ function NewUser1() {
               <label for="email">
                 <p className="form-text">Email</p>
               </label>
-              <input id="email" type="email" class="validate" />
+              <input id="email" type="email" className="validate" />
             </div>
           </div>
           <div className="row">
