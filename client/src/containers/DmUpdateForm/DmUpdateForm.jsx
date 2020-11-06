@@ -1,7 +1,7 @@
 import React from "react";
 import placeholderImg from "./placeholder200x200.jpg";
 
-function DmForm() {
+function DmUpdateForm() {
   return (
     <>
       <div className="container">
@@ -26,7 +26,7 @@ function DmForm() {
                 <p>Avatar:</p>
                 <img
                   className="content-border col s12 image-true"
-                  src={placeholderImg} alt = "placeHolder"
+                  src={placeholderImg}
                 />
               </div>
 
@@ -245,9 +245,13 @@ function DmForm() {
             </div>
           </div>
         </form>
+
+
+      <h5>Delete Your Account?</h5>
+
       </div>
     </>
   );
 }
 
-export default DmForm;
+export default DmUpdateForm;

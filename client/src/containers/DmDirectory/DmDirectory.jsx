@@ -1,8 +1,22 @@
-import { dirname } from "path";
-import React from "react";
-import Dmaster from "../../components/Dmaster/Dmaster"
+// import { load } from "npm";
+import React, { useEffect, useState } from "react";
+import Dmaster from "../../components/Dmaster/Dmaster";
+import API from "../../utils/API";
 
 function DmDirectory() {
+  const [allDms, setDms] = useState([
+  ]);
+
+  useEffect(() => {
+    loadDMs();
+  }, []);
+
+  function loadDMs() {
+    API.getDms()
+      .then((res) => setDms(res.data))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <>
       <div className="container">
@@ -111,7 +125,7 @@ function DmDirectory() {
                 </p>
               </div>
               <div className="col s12">
-              <h5>Availability:</h5>
+                <h5>Availability:</h5>
               </div>
               <div className="col s12">
                 <p>
@@ -183,26 +197,19 @@ function DmDirectory() {
                   </label>
                 </p>
               </div>
-
             </div>
           </div>
         </div>
 
         <div className="col s9 content-border">
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-                    <Dmaster />
-    
-    
-            </div>
+          {allDms.map((dm) => (
+            <Dmaster
+              key={dm.userName}
+              userName={dm.userName}
+              tagLine={dm.tagLine}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
