@@ -38,7 +38,7 @@ function SigninPage() {
 
               <div className="row">
                 <div className="col s2"></div>
-              <Link button className="vertical-spacer-sm waves-effect waves-light btn col s8" to = "/Login">
+              <Link button className="vertical-spacer-sm waves-effect waves-light btn col s8" to = "/DmDirectory">
                 Login
               </Link>
               <div className="col s2"></div>
