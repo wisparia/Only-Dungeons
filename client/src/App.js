@@ -8,6 +8,8 @@ import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
 import DmUpdateForm from "./containers/DmUpdateForm/DmUpdateForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "materialize-css";
+// import { Button, Card, Row, Col } from "react-materialize";
 
 function App() {
   return (
