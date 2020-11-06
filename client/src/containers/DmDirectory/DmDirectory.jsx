@@ -12,7 +12,7 @@ function DmDirectory() {
   }, []);
 
   function loadDMs() {
-    API.getUsers()
+    API.getDms()
       .then((res) => setDms(res.data))
       .catch((err) => console.log(err));
   }
