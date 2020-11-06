@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom"
+
 
 function NewUser1() {
   return (
@@ -70,12 +72,12 @@ function NewUser1() {
 
             <div className="row vertical-spacer-md">
                 <div className="col s4 "></div>
-                <button className="vertical-spacer-md waves-effect waves-light btn col s3">
-                  Cancel</button>
+                <Link button className="vertical-spacer-md waves-effect waves-light btn col s3" to = "/">
+                  Cancel</Link>
                   <div className="col s1 "></div>
-                <button className="vertical-spacer-md waves-effect waves-light btn col s3">
+                <Link button className="vertical-spacer-md waves-effect waves-light btn col s3" to = "/PcForm">
                 Create Account
-              </button>
+              </Link>
               <div className="col s1 "></div>
 
             </div>
@@ -85,4 +87,5 @@ function NewUser1() {
     </>
   );
 }
+// test build
 export default NewUser1;
