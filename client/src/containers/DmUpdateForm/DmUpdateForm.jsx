@@ -12,6 +12,7 @@ function DmUpdateForm() {
   useEffect(()=>{
     API.getUser(name)
     .then((res)=> setDm(res.data))
+    console.log(dm)
   },[])
 
   return (
