@@ -178,7 +178,7 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                    {dm.availability.monday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Monday</p>
                       </span>
@@ -188,7 +188,7 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                      {dm.availability.tuesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Tuesday</p>
                       </span>
@@ -198,7 +198,7 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                    {dm.availability.wednesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Wednesday</p>
                       </span>
