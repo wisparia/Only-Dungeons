@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState, } from "react";
+import { useParams } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
+import API from "../../utils/API"
 
 function DmUpdateForm() {
+  
+  const {name} = useParams()
+
+  const [dm, setDm] = useState({});
+
+  useEffect(()=>{
+    API.getUser(name)
+    .then((res)=> setDm(res.data))
+  },[])
+
   return (
     <>
       <div className="container">
