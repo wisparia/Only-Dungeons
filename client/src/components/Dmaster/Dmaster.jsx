@@ -1,7 +1,7 @@
 import React from "react";
 import PlaceHolderImg from "./placeholder200x200.jpg";
 
-const Dmaster = () => {
+function Dmaster() {
   return (
     <>
       <div className="card row">
