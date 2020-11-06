@@ -1,5 +1,6 @@
 import React from "react";
 import placeholderImg from "./placeholder200x200.jpg";
+import { Link } from "react-router-dom"
 
 function PcForm() {
   return (
@@ -36,7 +37,7 @@ function PcForm() {
                 <p>Avatar:</p>
                 <img
                   className="content-border col s12 image-true"
-                  src={placeholderImg}
+                  src={placeholderImg} alt = "placeholder"
                 />
               </div>
             </div>
@@ -228,13 +229,13 @@ function PcForm() {
               </div>
               <div className="row vertical-spacer-sm">
                 <div className="col s4 "></div>
-                <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s3" to = "/NewUser">
                   Cancel
-                </button>
+                </Link>
                 <div className="col s1 "></div>
-                <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s3" to = "/DmDirectory">
                   Create Account
-                </button>
+                </Link>
                 <div className="col s1 "></div>
               </div>
             </div>
