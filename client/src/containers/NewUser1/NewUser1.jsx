@@ -8,7 +8,7 @@ function NewUser1() {
     email: "",
     password: "",
     confirmPassword: "",
-    isDm: Boolean,
+    isDm: null,
   });
 
   function handleInputChange(event) {
@@ -30,7 +30,7 @@ function NewUser1() {
             userName: "",
             email: "",
             password: "",
-            isDm: Boolean,
+            isDm: null,
           })
         )
         .catch((err) => {
@@ -47,21 +47,21 @@ function NewUser1() {
         <div className="col s6">
           <div className="row">
             <div className="col s12">
-              <label for="username">
+              <label htmlFor="username">
                 <p className="form-text">Username</p>
               </label>
-              <input id="username" type="text" className="validate" />
+              <input id="userName" type="text" className="validate" name="userName" onChange={handleInputChange}/>
             </div>
           </div>
           <div className="row">
             <div className="col s12">
-              <label for="email">
+              <label htmlFor="email">
                 <p className="form-text">Email</p>
               </label>
               <input
                 onChange={handleInputChange}
-                name="userName"
-                value={newUserObj.userName}
+                name="email"
+                value={newUserObj.email}
                 id="email"
                 type="email"
                 className="validate"
@@ -70,7 +70,7 @@ function NewUser1() {
           </div>
           <div className="row">
             <div className="col s12">
-              <label for="password">
+              <label htmlFor="password">
                 <p className="form-text">Password</p>
               </label>
               <input
@@ -86,7 +86,7 @@ function NewUser1() {
 
           <div className="row">
             <div className="col s12">
-              <label for="password">
+              <label htmlFor="password">
                 <p className="form-text">Confirm Password</p>
               </label>
               <input 
@@ -103,43 +103,42 @@ function NewUser1() {
           <div className="row">
             <div className="col s1"></div>
             <div className="col s5">
-              <p className="vertical-spacer-sm">
+              <div className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" value="1" type="radio" />
+                  <input name="userType" value={newUserObj.isDm} type="radio" />
                   <span>
-                    <p> Dungeon Master </p>
+                   <p> Dungeon Master</p>
                   </span>
                 </label>
-              </p>
+              </div>
             </div>
             <div className="col s5">
-              <p className="vertical-spacer-sm">
+              <div className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio"  value="0" checked />
+                  <input name="userType" type="radio"  value={newUserObj.isDm = 0} required={true} />
                   <span>
                     <p> Player Character </p>
                   </span>
                 </label>
-              </p>
+              </div>
             </div>
 
             <div className="row vertical-spacer-md">
               <div className="col s4 "></div>
-              <Link
-                button
+              <div
                 className="vertical-spacer-md waves-effect waves-light btn col s3"
                 to="/"
               >
                 Cancel
-              </Link>
+              </div>
               <div className="col s1 "></div>
-              <Link
-                button
+              <div                
                 className="vertical-spacer-md waves-effect waves-light btn col s3"
-                to="/PcForm"
+                disabled={!(newUserObj.password && newUserObj.email)}
+                onClick={handleFormSubmit}
               >
                 Create Account
-              </Link>
+              </div>
               <div className="col s1 "></div>
             </div>
           </div>
