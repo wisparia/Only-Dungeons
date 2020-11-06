@@ -245,6 +245,10 @@ function DmUpdateForm() {
             </div>
           </div>
         </form>
+
+
+      <h5>Delete Your Account?</h5>
+
       </div>
     </>
   );
