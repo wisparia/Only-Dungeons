@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import { load } from "npm";
+import React, { useEffect, useState } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
+import API from "../../utils/API";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([
@@ -409,6 +411,17 @@ function DmDirectory() {
       preferredRole: "ranger",
     },
   ]);
+
+  useEffect(() => {
+    loadDMs();
+  }, []);
+
+
+  function loadDMs() {
+    API.getUsers()
+    .then (res=> 
+      setDms
+  }
 
   return (
     <>
