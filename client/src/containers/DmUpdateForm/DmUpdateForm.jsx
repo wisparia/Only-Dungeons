@@ -12,7 +12,6 @@ function DmUpdateForm() {
   useEffect(()=>{
     API.getUser(name)
     .then((res)=> setDm(res.data))
-    console.log(dm)
   },[])
 
   return (
@@ -25,12 +24,12 @@ function DmUpdateForm() {
             <div className="col s6">
             <p>Room Name: </p>
               <div className="content-border">
-                <input id="roomName" type="text" className="validate" />
+                <input id="roomName" className="validate" type="text" value={dm.roomName} placeholder={dm.roomName} onChange={{}}  />
               </div>
 
             <p>Tagline: </p>
               <div className="content-border">
-                <input id="Tagline" type="text" className="validate" />
+                <input id="Tagline" type="text" className="validate" value={dm.tagLine} placeholder={dm.tagLine} />
               </div>
             </div>
 
@@ -49,12 +48,18 @@ function DmUpdateForm() {
                   <option value="" disabled selected>
                     Select
                   </option>
-                  <option value="1">Bard</option>
-                  <option value="2">Cleric</option>
-                  <option value="3">Fighter</option>
-                  <option value="4">Paladin</option>
-                  <option value="5">Thief</option>
-                  <option value="6">Wizard</option>
+                  {dm.prefferedRole === "Barbarian" ? <option selected value="Barbarian">Barbarian</option> : <option value="Barbarian">Barbarian</option>}
+                  {dm.prefferedRole === "Bard" ? <option selected value="Bard">Bard</option> : <option value="Bard">Bard</option>}
+                  {dm.prefferedRole === "Cleric" ? <option selected value="Cleric">Cleric</option> : <option value="Cleric">Cleric</option>}
+                  {dm.prefferedRole === "Druid" ? <option selected value="Druid">Druid</option> : <option value="Druid">Druid</option>}
+                  {dm.prefferedRole === "Fighter" ? <option selected value="Fighter">Fighter</option> : <option value="Fighter">Fighter</option>}
+                  {dm.prefferedRole === "Monk" ? <option selected value="Monk">Monk</option> : <option value="Monk">Monk</option>}
+                  {dm.prefferedRole === "Paladin" ? <option selected value="Paladin">Paladin</option> : <option value="Paladin">Paladin</option>}
+                  {dm.prefferedRole === "Ranger" ? <option selected value="Ranger">Ranger</option> : <option value="Ranger">Ranger</option>}
+                  {dm.prefferedRole === "rogue" ? <option selected value="Rogue">Rogue</option> : <option value="Rogue">Rogue</option>}
+                  {dm.prefferedRole === "Sorcerer" ? <option selected value="Sorcerer">Sorcerer</option> : <option value="Sorcerer">Sorcerer</option>}
+                  {dm.prefferedRole === "Warlock" ? <option selected value="Warlock">Warlock</option> : <option value="Warlock">Warlock</option>}
+                  {dm.prefferedRole === "Wizard" ? <option selected value="Wizard">Wizard</option> : <option value="Wizard">Wizard</option>}
                 </select>
               </div>
             </div>
@@ -69,7 +74,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                    {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>campaigns</p>
                     </span>
@@ -79,7 +84,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                    {dm.categoryType.oneshots ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>oneshots</p>
                     </span>
@@ -89,7 +94,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.homebrew ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>homebrew</p>
                     </span>
@@ -102,7 +107,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>byTheBook</p>
                     </span>
@@ -112,7 +117,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>rpersonly</p>
                     </span>
@@ -122,7 +127,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>norestriction</p>
                     </span>
@@ -135,7 +140,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>displaydice</p>
                     </span>
@@ -145,7 +150,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>lvl1only</p>
                     </span>
@@ -155,7 +160,7 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
                       <p>voyuerallowed</p>
                     </span>

@@ -75,7 +75,7 @@ const userSchema = new Schema({
       sunday: { type: Boolean, default: false},
     },
   // we hard-code the values in a drop-down on the front end. Then we can access asset files
-  preferredRoles:{
+  preferredRole:{
     type: String,
     trim: true,
     // required: true,
