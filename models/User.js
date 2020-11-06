@@ -26,11 +26,12 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     trim: true,
+    required:true,
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
   isDm: {
     type: Boolean,
-    required: "Please select a role",
+    // required: "Please select a role",
     default: false,
   },
   roomName: {
