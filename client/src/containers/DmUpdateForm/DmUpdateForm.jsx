@@ -12,6 +12,8 @@ function DmUpdateForm() {
   useEffect(()=>{
     API.getUser(name)
     .then((res)=> setDm(res.data))
+    .catch((err)=> console.log(err, "Could not reach page"))
+    console.log(dm);
   },[])
 
   return (
@@ -208,7 +210,7 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                    {dm.availability.thursday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Thursday</p>
                       </span>
@@ -221,7 +223,7 @@ function DmUpdateForm() {
                 <div className="col s4">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                    {dm.availability.friday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Friday</p>
                       </span>
@@ -231,7 +233,7 @@ function DmUpdateForm() {
                 <div className="col s4">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                    {dm.availability.saturday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Saturday</p>
                       </span>
@@ -241,7 +243,7 @@ function DmUpdateForm() {
                 <div className="col s4">
                   <p>
                     <label>
-                      <input type="checkbox" />
+                    {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                       <span>
                         <p>Sunday</p>
                       </span>
