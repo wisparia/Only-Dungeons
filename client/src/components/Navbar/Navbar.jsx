@@ -1,18 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import 'materialize-css';
+import Logo from "./ODlogo2.png";
+import "./navbar.css";
+// import { Button, Card, Row, Col } from 'react-materialize';
 function Navbar() {
     return (
-        <nav>
-        <div class="nav-wrapper">
-          <Link to="/" class="brand-logo">Logo</Link>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><Link to="sass.html">Sass</Link></li>
-            <li><Link to="badges.html">Components</Link></li>
-            <li><Link to="collapsible.html">JavaScript</Link></li>
-          </ul>
-        </div>
-      </nav>
+      <nav class="nav-extended">
+      <div class="nav-wrapper center">
+      <img className="logo responsive-img brand-logo center" src={Logo}/>
+      </div>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="#test1">Home</a></li>
+          <li class="tab"><a href="#test2">Games</a></li>
+          <li class="tab"><a href="#test3">Profile</a></li>
+          <li class="tab"><a href="#test4">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
     );
 };
 
