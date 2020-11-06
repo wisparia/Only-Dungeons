@@ -1,0 +1,46 @@
+.nav-wrapper {
+  height: 125px !important;
+  border-style: inset !important;
+  border: 15px solid;
+  border-color: rgb(211, 161, 54);
+  margin-bottom: 2px;
+  background: url("./tilebg.png");
+}
+
+nav {
+  background-color: rgb(190, 141, 35);
+  font-family: "Press Start 2P", cursive;
+}
+
+.logo {
+  margin-top: 10px;
+  height: 80px !important;
+  width: auto;
+}
+
+ul.tabs {
+  display: flex;
+}
+
+li.tab {
+  flex-basis: 33.33%;
+}
+
+a {
+  border-style: outset !important;
+  border: 8px solid;
+  border-color: rgb(190, 141, 35);
+  height: 70px !important;
+  background: url("./tilebg.png");
+  color: rgb(206, 168, 87) !important;
+}
+
+.tabs {
+  height: 70px !important;
+  background-color: rgb(31, 0, 66);
+  color: rgb(190, 141, 35) !important;
+}
+
+a:active {
+  border-style: inset !important;
+}
