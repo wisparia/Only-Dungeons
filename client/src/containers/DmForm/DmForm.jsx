@@ -26,7 +26,7 @@ function DmForm() {
                 <p>Avatar:</p>
                 <img
                   className="content-border col s12 image-true"
-                  src={placeholderImg}
+                  src={placeholderImg} alt = "placeHolder"
                 />
               </div>
 
