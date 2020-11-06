@@ -3,6 +3,10 @@ p{
   margin-top: 0px;
   margin-bottom: 0px;
 }
+h5{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .vertical-spacer-sm{
   margin-top: 10px
@@ -18,8 +22,8 @@ p{
 
 .content-border{
   border-style: solid;
-  border-width: 8px;
-  padding: 5px 5px 5px 5px;
+  border-width: 4px;
+  padding: 2px 2px 2px 2px;
 }
 
 .image-true{
