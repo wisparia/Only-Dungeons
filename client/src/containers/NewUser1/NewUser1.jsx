@@ -7,6 +7,7 @@ function NewUser1() {
     userName: "",
     email: "",
     password: "",
+    confirmPassword: "",
     isDm: Boolean,
   });
 
@@ -57,7 +58,14 @@ function NewUser1() {
               <label for="email">
                 <p className="form-text">Email</p>
               </label>
-              <input id="email" type="email" className="validate" />
+              <input
+                onChange={handleInputChange}
+                name="userName"
+                value={newUserObj.userName}
+                id="email"
+                type="email"
+                className="validate"
+              />
             </div>
           </div>
           <div className="row">
@@ -65,7 +73,14 @@ function NewUser1() {
               <label for="password">
                 <p className="form-text">Password</p>
               </label>
-              <input id="password" type="password" className="validate" />
+              <input
+                onChange={handleInputChange}
+                name="password"
+                value={newUserObj.password}
+                id="password"
+                type="password"
+                className="validate"
+              />
             </div>
           </div>
 
@@ -74,7 +89,11 @@ function NewUser1() {
               <label for="password">
                 <p className="form-text">Confirm Password</p>
               </label>
-              <input id="password" type="password" className="validate" />
+              <input 
+              onChange={handleInputChange}
+              name="confirmPassword"
+              value={newUserObj.confirmPassword}
+              id="confirmPassword" type="password" className="validate" />
             </div>
           </div>
         </div>
@@ -86,18 +105,17 @@ function NewUser1() {
             <div className="col s5">
               <p className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio" />
+                  <input name="userType" value="1" type="radio" />
                   <span>
                     <p> Dungeon Master </p>
                   </span>
                 </label>
               </p>
             </div>
-
             <div className="col s5">
               <p className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio" checked />
+                  <input name="userType" type="radio"  value="0" checked />
                   <span>
                     <p> Player Character </p>
                   </span>

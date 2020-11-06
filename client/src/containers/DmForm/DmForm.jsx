@@ -56,7 +56,8 @@ function DmForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    <input type="checkbox" />
+                  {/* checked={isDm ? "checked" : ""} */}
+                    <input type="checkbox"  />
                     <span>
                       <p>campaigns</p>
                     </span>
