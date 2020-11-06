@@ -12,7 +12,6 @@ mongoose.connect(
 const userSeed = [
 
     {
-        // _id: uuid(),
         userName: "MoonRider34",
         password: "dNDrocks213",
         email: "moon_rider23@gmail.com",
@@ -43,7 +42,6 @@ const userSeed = [
     },
 
     {
-        // _id: uuid(),
         userName: "SunRider43",
         password: "dndIsTheBEST22",
         email: "sunRider43@gmail.com",
@@ -74,7 +72,6 @@ const userSeed = [
     },
 
     {
-        // _id: uuid(),
         userName: "dnDreamer",
         password: "sweetDreams234",
         email: "dnDreamer@gmail.com",
@@ -105,7 +102,6 @@ const userSeed = [
     },
 
     {
-        // _id: uuid(),
         userName: "MrMurderHobo",
         password: "killITWITHfire22",
         email: "MrMurderHobo@gmail.com",
@@ -134,7 +130,6 @@ const userSeed = [
         preferredRole: "barbarian"
     }, 
     {
-        // _id: uuid(),
         userName: "Feisty_Ferret",
         password: "festy_ferret122",
         email: "rustyWalker@gmail.com",
@@ -164,7 +159,6 @@ const userSeed = [
         preferredRole: "druid"
     },
     {
-        // _id: uuid(),
         userName: "sylofade",
         password: "sylofaded24",
         email: "sylofaddm@gmail.com",
@@ -194,7 +188,6 @@ const userSeed = [
         preferredRole: "wizard"
     },
     {
-        // _id: uuid(),
         userName: "titacularTonks",
         password: "titacular34DND",
         email: "titacularTonks@gmail.com",
@@ -224,7 +217,6 @@ const userSeed = [
         preferredRole: "rogue"
     },
     {
-        // _id: uuid(),
         userName: "Wisparia",
         password: "wisparia44#2",
         email: "wisparia@gmail.com",
@@ -254,7 +246,6 @@ const userSeed = [
         preferredRole: "druid"
     },
     {
-        // _id: uuid(),
         userName: "Game_Grunt",
         password: "dndGameGrunt243!",
         email: "gamegrunt22@gmail.com",
@@ -284,7 +275,6 @@ const userSeed = [
         preferredRole: "cleric"
     },
     {
-        // _id: uuid(),
         userName: "KitFisto",
         password: "password132",
         email: "kItFisTo28",
@@ -313,7 +303,6 @@ const userSeed = [
         preferredRole: "paladin"
     },
     {
-        // _id: uuid(),
         userName: "Ol' Tut",
         password: "tortleTime!",
         email: "tortletime@gmail.com",
@@ -342,7 +331,6 @@ const userSeed = [
         preferredRole: "cleric"
     },
     {
-        // _id: uuid(),
         userName: "Claudia_Minx",
         password: "yeehaw070916",
         email: "yeehaw@gmail.com",
@@ -371,7 +359,6 @@ const userSeed = [
         preferredRole: "warlock"
     },
     {
-        // _id: uuid(),
         userName: "Frost_Fey",
         password: "feyReign234@1",
         email: "feyfrost@gmail.com",
@@ -401,7 +388,6 @@ const userSeed = [
         preferredRole: "druid"
     },
     {
-        // _id: uuid(),
         userName: "Shadowfiend",
         password: "inShaDow31",
         email: "shadowfiend@gmail.com",
