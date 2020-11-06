@@ -1,8 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom"
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
 function NewUser1() {
+  const [newUserObj, setNewUserObject] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    isDm: Boolean,
+  });
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setNewUserObject({ ...newUserObj, [name]: value });
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (newUserObj.userName && newUserObj.password) {
+      API.saveUser({
+        userName: newUserObj.userName,
+        email: newUserObj.email,
+        password: newUserObj.password,
+        isDm: newUserObj.isDm,
+      })
+        .then(() =>
+          setNewUserObject({
+            userName: "",
+            email: "",
+            password: "",
+            isDm: Boolean,
+          })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
   return (
     <>
       <div className="container"></div>
@@ -62,7 +97,7 @@ function NewUser1() {
             <div className="col s5">
               <p className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio" checked/>
+                  <input name="userType" type="radio" checked />
                   <span>
                     <p> Player Character </p>
                   </span>
@@ -71,15 +106,23 @@ function NewUser1() {
             </div>
 
             <div className="row vertical-spacer-md">
-                <div className="col s4 "></div>
-                <Link button className="vertical-spacer-md waves-effect waves-light btn col s3" to = "/">
-                  Cancel</Link>
-                  <div className="col s1 "></div>
-                <Link button className="vertical-spacer-md waves-effect waves-light btn col s3" to = "/PcForm">
+              <div className="col s4 "></div>
+              <Link
+                button
+                className="vertical-spacer-md waves-effect waves-light btn col s3"
+                to="/"
+              >
+                Cancel
+              </Link>
+              <div className="col s1 "></div>
+              <Link
+                button
+                className="vertical-spacer-md waves-effect waves-light btn col s3"
+                to="/PcForm"
+              >
                 Create Account
               </Link>
               <div className="col s1 "></div>
-
             </div>
           </div>
         </div>
