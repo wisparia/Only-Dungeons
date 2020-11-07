@@ -16,6 +16,13 @@ function NewUser1() {
     setNewUserObject({ ...newUserObj, [name]: value });
   }
 
+  function handleRadioChange(event) {
+    const {name, value} = event.target;
+    setNewUserObject({...newUserObj, 
+      [name]: value ? true : false});
+  }
+
+
   function handleFormSubmit(event) {
     event.preventDefault();
     if (newUserObj.userName && newUserObj.password) {
@@ -105,7 +112,7 @@ function NewUser1() {
             <div className="col s5">
               <div className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" value={newUserObj.isDm} type="radio" />
+                  <input name="isDm" type="radio" value={1} checked onChange={handleRadioChange} />
                   <span>
                    <p> Dungeon Master</p>
                   </span>
@@ -115,7 +122,7 @@ function NewUser1() {
             <div className="col s5">
               <div className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio"  value={newUserObj.isDm = 0} required={true} />
+                  <input name="isDm" type="radio" onChange={handleRadioChange}  value={0} />
                   <span>
                     <p> Player Character </p>
                   </span>
