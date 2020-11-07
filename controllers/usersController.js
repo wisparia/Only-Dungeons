@@ -17,6 +17,7 @@ module.exports = {
   },
 
   findById: function(req,res) {
+    console.log(req.params.id)
     db.User
     .findById({_id: req.params.id})
     .then(user=> res.json(user))

@@ -8,24 +8,53 @@ function DmUpdateForm() {
   
   const {name} = useParams()
 
-  const [dm, setDm] = useState({});
+  const [dm, setDm] = useState({
+    userName: "",
+    password: "",
+    email: "",
+    isDm: false,
+    roomName: "",
+    tagLine: "",
+    categoryType:{
+      byTheBook: false,
+      campaigns: false,
+      norestriction: false,
+      homebrew: false,
+      lvl1only: false,
+      rpersonly: false,
+      oneshots: false,
+      displaydice: false,
+      voyuerallowed: false
+    },
+    availability:{
+      monday: false,
+      tuesday: false, 
+      wednesday: false,
+      thursday: false,
+      friday: false,
+      saturday: false,
+      sunday: false
+    },
 
-  useEffect(()=>{
-    API.getUser(name)
-    .then((res)=> {
-      console.log(res.data.categoryType.campaigns)
-      setDm(res.data)})
-    .catch((err)=> console.log(err, "Could not reach page"))
+    preferredRole: ""
+
+  });
+ 
+
+  useEffect(async()=>{
+    const response = await API.getUser(name)
+    console.log(response.data)
+    setDm(response.data)
+    // .then((res)=> {
+    //   console.log(res.data.categoryType.campaigns)
+    //   setDm(res.data)})
+    // .catch((err)=> console.log(err, "Could not reach page"))
   },[])
 
   return (
     <>
-      <div>
-      <h1>{dm.tagLine}</h1>
-      {/* {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-      </div>
 
-      {/* <div className="container">
+      <div className="container">
         <div className="row section"></div>
 
         <form className="row section content-border">
@@ -65,7 +94,7 @@ function DmUpdateForm() {
                   {dm.prefferedRole === "Monk" ? <option selected value="Monk">Monk</option> : <option value="Monk">Monk</option>}
                   {dm.prefferedRole === "Paladin" ? <option selected value="Paladin">Paladin</option> : <option value="Paladin">Paladin</option>}
                   {dm.prefferedRole === "Ranger" ? <option selected value="Ranger">Ranger</option> : <option value="Ranger">Ranger</option>}
-                  {dm.prefferedRole === "rogue" ? <option selected value="Rogue">Rogue</option> : <option value="Rogue">Rogue</option>}
+                  {dm.prefferedRole === "Rogue" ? <option selected value="Rogue">Rogue</option> : <option value="Rogue">Rogue</option>}
                   {dm.prefferedRole === "Sorcerer" ? <option selected value="Sorcerer">Sorcerer</option> : <option value="Sorcerer">Sorcerer</option>}
                   {dm.prefferedRole === "Warlock" ? <option selected value="Warlock">Warlock</option> : <option value="Warlock">Warlock</option>}
                   {dm.prefferedRole === "Wizard" ? <option selected value="Wizard">Wizard</option> : <option value="Wizard">Wizard</option>}
@@ -275,7 +304,7 @@ function DmUpdateForm() {
 
       <h5>Delete Your Account?</h5>
 
-      </div> */}
+      </div>
     </>
   );
 }
