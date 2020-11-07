@@ -29,7 +29,7 @@ const userSeed = [
             displaydice: false,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: false,
             wednesday: true,
@@ -59,7 +59,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: false,
@@ -89,7 +89,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: false
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: true,
@@ -118,7 +118,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: true,
@@ -147,7 +147,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: true,
@@ -176,7 +176,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: false,
             wednesday: false,
@@ -205,7 +205,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: false
         },
-        availablity:{
+        availability:{
             monday: false,
             tuesday: true,
             wednesday: false,
@@ -234,7 +234,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: false,
             tuesday: false,
             wednesday: false,
@@ -263,7 +263,7 @@ const userSeed = [
             displaydice: false,
             voyuerallowed: false
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: true,
@@ -291,7 +291,7 @@ const userSeed = [
             displaydice: false,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: true,
@@ -319,7 +319,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: false,
             wednesday: true,
@@ -347,7 +347,7 @@ const userSeed = [
             displaydice: false,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: false,
             tuesday: false,
             wednesday: true,
@@ -376,7 +376,7 @@ const userSeed = [
             displaydice: false,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: true,
             tuesday: true,
             wednesday: true,
@@ -405,7 +405,7 @@ const userSeed = [
             displaydice: true,
             voyuerallowed: true
         },
-        availablity:{
+        availability:{
             monday: false,
             tuesday: false,
             wednesday: true,

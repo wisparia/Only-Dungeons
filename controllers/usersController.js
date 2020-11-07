@@ -17,8 +17,9 @@ module.exports = {
   },
 
   findById: function(req,res) {
+    console.log(req.params.id)
     db.User
-    .findById(req.params.id)
+    .findById({_id: req.params.id})
     .then(user=> res.json(user))
     .catch(err=> res.json(err))
   },

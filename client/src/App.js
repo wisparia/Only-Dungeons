@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/DmForm" component={DmForm} />
           <Route exact path="/DmDirectory" component={DmDirectory} />
           <Route exact path="/DmOne" component={DmOne} />
-          <Route exact path="/DmUpdateForm" component={DmUpdateForm} />
+          <Route exact path="/DmUpdateForm/:name" component={DmUpdateForm} />
         </Switch>
       </Router>
     </div>
