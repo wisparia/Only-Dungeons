@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PlaceholderImg from "./placeholder200x200.jpg";
+import API from "../../utils/API";
+
+
+// 5fa5f19368d9ef88e44c7a10
 
 function DmOne() {
+  const [dmObj, setDmObject] = useState({
+    userName: "",
+    email: "",
+    roomName: "",
+    tagLine: ""
+  })
+
+  useEffect(() =>  {
+    loadDm()
+  }, [])
+ 
+  function loadDm() {
+    API.getUser()
+    .then(res => setDmObject(res.data))
+    .catch(err => console.log(err))
+  }
+
+
+
   return (
     <>
       <div className="content-border container">
         <h5>Tagline</h5>
       </div>
       <div>
-        <div className="container row">
+        <div className="container content-border row">
           <div className="col s4">
             <img src={PlaceholderImg} alt="" />
             <h5>username</h5>

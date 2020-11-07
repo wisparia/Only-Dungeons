@@ -19,10 +19,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={SigninPage} />
           <Route exact path="/NewUser" component={NewUser1} />
-          <Route exact path="/PcForm" component={PcForm} />
-          <Route exact path="/DmForm" component={DmForm} />
+          <Route exact path="/PcForm/:id" component={PcForm} />
+          <Route exact path="/DmForm/:id" component={DmForm} />
           <Route exact path="/DmDirectory" component={DmDirectory} />
-          <Route exact path="/DmOne" component={DmOne} />
+          <Route exact path="/DmOne/:id" component={DmOne} />
           <Route exact path="/DmUpdateForm" component={DmUpdateForm} />
         </Switch>
       </Router>
