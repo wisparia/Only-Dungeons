@@ -3,8 +3,6 @@ import PlaceholderImg from "./placeholder200x200.jpg";
 import { useParams } from "react-router-dom";
 import API from "../../utils/API";
 
-// 5fa58b4eff83408b78ddf9dd
-
 function DmOne() {
   const [dm, setDm] = useState({
     userName: "",
@@ -42,12 +40,6 @@ function DmOne() {
     setDm(response.data);
   }, []);
 
-  // function loadDm() {
-  //   API.getUser(userId)
-  //   .then(res => setDmObject(res.data))
-  //   .catch(err => console.log(err))
-  // }
-
   return (
     <>
       <div className="content-border container">
@@ -59,7 +51,9 @@ function DmOne() {
             <img src={PlaceholderImg} alt="" />
             <h5>{dm.userName}</h5>
             <div className="row">
-              <a className="col s8 m8 l8" href={`mailto:${dm.email}`}>Email</a>
+              <a className="col s8 m8 l8" href={`mailto:${dm.email}`}>
+                Email
+              </a>
               <div className="btn col s8">Back</div>
             </div>
           </div>
@@ -75,7 +69,7 @@ function DmOne() {
                       {dm.categoryType.campaigns ? (
                         <input checked="checked" type="checkbox" />
                       ) : (
-                        <input type="checkbox" disabled/>
+                        <input type="checkbox" disabled />
                       )}
                       <span>
                         <p>Campaigns</p>
@@ -84,7 +78,11 @@ function DmOne() {
                   </div>
                   <div className="col s12">
                     <label>
-                    {dm.categoryType.oneshots ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                      {dm.categoryType.oneshots ? (
+                        <input checked="checked" type="checkbox" />
+                      ) : (
+                        <input type="checkbox" disabled />
+                      )}
                       <span>
                         <p>One Shots</p>
                       </span>
@@ -92,7 +90,11 @@ function DmOne() {
                   </div>
                   <div className="col s12">
                     <label>
-                    {dm.categoryType.homebrew ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                      {dm.categoryType.homebrew ? (
+                        <input checked="checked" type="checkbox" />
+                      ) : (
+                        <input type="checkbox" disabled />
+                      )}
                       <span>
                         <p>HomeBrew</p>
                       </span>
@@ -100,7 +102,11 @@ function DmOne() {
                   </div>
                   <div className="col s12">
                     <label>
-                    {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled /> }
+                      {dm.categoryType.byTheBook ? (
+                        <input checked="checked" type="checkbox" />
+                      ) : (
+                        <input type="checkbox" disabled />
+                      )}
                       <span>
                         <p>By The Book</p>
                       </span>
@@ -108,7 +114,11 @@ function DmOne() {
                   </div>
                   <div className="col s12">
                     <label>
-                    {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox"  disabled/> }
+                      {dm.categoryType.rpersonly ? (
+                        <input checked="checked" type="checkbox" />
+                      ) : (
+                        <input type="checkbox" disabled />
+                      )}
                       <span>
                         <p>Role Play Only</p>
                       </span>
@@ -116,7 +126,11 @@ function DmOne() {
                   </div>
                   <div className="col s12">
                     <label>
-                    {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                      {dm.categoryType.norestriction ? (
+                        <input checked="checked" type="checkbox" />
+                      ) : (
+                        <input type="checkbox" disabled />
+                      )}
                       <span>
                         <p>No Restriction</p>
                       </span>
@@ -124,7 +138,11 @@ function DmOne() {
                   </div>
                   <div className="col s12">
                     <label>
-                    {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                      {dm.categoryType.displaydice ? (
+                        <input checked="checked" type="checkbox" />
+                      ) : (
+                        <input type="checkbox" disabled />
+                      )}
                       <span>
                         <p>Display Dice</p>
                       </span>
@@ -133,7 +151,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                        {dm.categoryType.lvl1only ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Lvl One Only</p>
                         </span>
@@ -143,7 +165,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox"  disabled/> }
+                        {dm.categoryType.voyuerallowed ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Watchers Allowed</p>
                         </span>
@@ -161,7 +187,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.monday ? <input checked="checked" type="checkbox" /> : <input type="checkbox"  disabled/> }
+                        {dm.availability.monday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Monday</p>
                         </span>
@@ -171,7 +201,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.tuesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                        {dm.availability.tuesday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Tuesday</p>
                         </span>
@@ -181,7 +215,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.wednesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled /> }
+                        {dm.availability.wednesday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Wednesday</p>
                         </span>
@@ -191,7 +229,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.thursday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                        {dm.availability.thursday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Thursday</p>
                         </span>
@@ -201,7 +243,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.friday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                        {dm.availability.friday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Friday</p>
                         </span>
@@ -211,7 +257,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.saturday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                        {dm.availability.saturday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Saturday</p>
                         </span>
@@ -221,7 +271,11 @@ function DmOne() {
                   <div className="col s12">
                     <p>
                       <label>
-                      {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" disabled/> }
+                        {dm.availability.sunday ? (
+                          <input checked="checked" type="checkbox" />
+                        ) : (
+                          <input type="checkbox" disabled />
+                        )}
                         <span>
                           <p>Sunday</p>
                         </span>
