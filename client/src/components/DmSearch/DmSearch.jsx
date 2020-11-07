@@ -1,12 +1,14 @@
 import React from 'react';
 
-const DmSearch = () => {
+const DmSearch = ({handleSearch}) => {
+
+  
     return (
         <div className="container">
         <div className="row"></div>
         <div className="col s12">
           Search
-          {/* <input onChange={(event) => this.props.handleSearch(event)} /> */}
+          <input onChange={(event) => handleSearch(event)} />
         </div>
       </div>
     );

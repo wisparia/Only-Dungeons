@@ -9,7 +9,7 @@ function DmDirectory() {
   const [searchedDms, setSearchedDms] = useState([]);
 
   useEffect(() => {
-    loadDMs();
+    const loaded = loadDMs();
   }, []);
 
   function loadDMs() {
@@ -26,23 +26,22 @@ function DmDirectory() {
   }
 
 
-  handleSearch = (event) => {
-    const searchedEmployee = event.target.value;
-    if (searchedEmployee == 0) {
-     this.setOriginalEmployees();
+function handleSearch(event) {
+    let searchedDm =  event.target.value;
+    if (searchedDm === "") {
+      console.log("nothing to see here")
+      setOriginalDms()
     } else {
-    const filteredEmployees = this.state.filteredEmployees.filter((employee) => {
-      return employee.email.indexOf(filteredEmployee) !== -1;
-    });
-    // setState REQUIRES a key and a value, so it is important to differentiate between them.
-    this.setState({filteredEmployees: filteredEmployees});
-  };
+      setSearchedDms(searchedDms.filter((dm) => {
+        return dm.userName.indexOf(searchedDm) !== -1
+      }))
+      console.log(searchedDms)
+    }
 }
-
 
   return (
     <>
-      <DmSearch />
+      <DmSearch handleSearch={handleSearch} />
 
       <div className="row">
         <div className="col s3 content-border">
