@@ -1,8 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom"
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
 function NewUser1() {
+  const [newUserObj, setNewUserObject] = useState({
+    userName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    isDm: false,
+  });
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setNewUserObject({ ...newUserObj, [name]: value });
+  }
+
+  function handleRadioChange(event) {
+    const { value} = event.target;
+    setNewUserObject({...newUserObj, 
+      isDm: value === "1" ? true : false  });
+  }
+  
+
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+      API.saveUser({
+        userName: newUserObj.userName,
+        email: newUserObj.email,
+        password: newUserObj.password,
+        isDm: newUserObj.isDm,
+      })
+        .then(() =>
+          setNewUserObject({
+            userName: "",
+            email: "",
+            password: "",
+            isDm: false,
+          })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+
   return (
     <>
       <div className="container"></div>
@@ -11,35 +54,53 @@ function NewUser1() {
         <div className="col s6">
           <div className="row">
             <div className="col s12">
-              <label for="username">
+              <label htmlFor="username">
                 <p className="form-text">Username</p>
               </label>
-              <input id="username" type="text" className="validate" />
+              <input id="userName" type="text" className="validate" name="userName" onChange={handleInputChange}/>
             </div>
           </div>
           <div className="row">
             <div className="col s12">
-              <label for="email">
+              <label htmlFor="email">
                 <p className="form-text">Email</p>
               </label>
-              <input id="email" type="email" className="validate" />
+              <input
+                onChange={handleInputChange}
+                name="email"
+                value={newUserObj.email}
+                id="email"
+                type="email"
+                className="validate"
+              />
             </div>
           </div>
           <div className="row">
             <div className="col s12">
-              <label for="password">
+              <label htmlFor="password">
                 <p className="form-text">Password</p>
               </label>
-              <input id="password" type="password" className="validate" />
+              <input
+                onChange={handleInputChange}
+                name="password"
+                value={newUserObj.password}
+                id="password"
+                type="password"
+                className="validate"
+              />
             </div>
           </div>
 
           <div className="row">
             <div className="col s12">
-              <label for="password">
+              <label htmlFor="password">
                 <p className="form-text">Confirm Password</p>
               </label>
-              <input id="password" type="password" className="validate" />
+              <input 
+              onChange={handleInputChange}
+              name="confirmPassword"
+              value={newUserObj.confirmPassword}
+              id="confirmPassword" type="password" className="validate" />
             </div>
           </div>
         </div>
@@ -49,37 +110,43 @@ function NewUser1() {
           <div className="row">
             <div className="col s1"></div>
             <div className="col s5">
-              <p className="vertical-spacer-sm">
+              <div className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio" />
+                  <input name="isDm" type="radio" value="1" onClick={handleRadioChange} />
                   <span>
-                    <p> Dungeon Master </p>
+                   <p> Dungeon Master</p>
                   </span>
                 </label>
-              </p>
+              </div>
             </div>
-
             <div className="col s5">
-              <p className="vertical-spacer-sm">
+              <div className="vertical-spacer-sm">
                 <label>
-                  <input name="userType" type="radio" checked/>
+                  <input name="isDm" type="radio" onClick={handleRadioChange}  value="0" />
                   <span>
                     <p> Player Character </p>
                   </span>
                 </label>
-              </p>
+              </div>
             </div>
 
             <div className="row vertical-spacer-md">
-                <div className="col s4 "></div>
-                <Link button className="vertical-spacer-md waves-effect waves-light btn col s3" to = "/">
-                  Cancel</Link>
-                  <div className="col s1 "></div>
-                <Link button className="vertical-spacer-md waves-effect waves-light btn col s3" to = "/PcForm">
-                Create Account
-              </Link>
+              <div className="col s4 "></div>
+              <div
+                className="vertical-spacer-md waves-effect waves-light btn col s3"
+                to="/"
+              >
+                Cancel
+              </div>
               <div className="col s1 "></div>
-
+              <div                
+                className="vertical-spacer-md waves-effect waves-light btn col s3"
+                disabled={!(newUserObj.password && newUserObj.email)}
+                onClick={handleFormSubmit}
+              >
+                Create Account
+              </div>
+              <div className="col s1 "></div>
             </div>
           </div>
         </div>
