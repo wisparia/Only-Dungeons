@@ -3,11 +3,8 @@ import { useParams } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
-
 function DmUpdateForm() {
-  
   const {id} = useParams()
-
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -35,7 +32,6 @@ function DmUpdateForm() {
       saturday: false,
       sunday: false
     },
-
     preferredRole: ""
 
   });
@@ -113,7 +109,7 @@ function DmUpdateForm() {
                   <label>
                     {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>campaigns</p>
+                    <p>Campaigns</p>
                     </span>
                   </label>
                 </p>
@@ -123,7 +119,7 @@ function DmUpdateForm() {
                   <label>
                     {dm.categoryType.oneshots ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>oneshots</p>
+                    <p>One Shots</p>
                     </span>
                   </label>
                 </p>
@@ -133,7 +129,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.homebrew ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>homebrew</p>
+                    <p>HomeBrew</p>
                     </span>
                   </label>
                 </p>
@@ -146,7 +142,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>byTheBook</p>
+                    <p>By The Book</p>
                     </span>
                   </label>
                 </p>
@@ -156,7 +152,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>rpersonly</p>
+                    <p>Role Play Only</p>
                     </span>
                   </label>
                 </p>
@@ -166,7 +162,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>norestriction</p>
+                    <p>No Restriction</p>
                     </span>
                   </label>
                 </p>
@@ -179,7 +175,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>displaydice</p>
+                    <p>Display Dice</p>
                     </span>
                   </label>
                 </p>
@@ -189,7 +185,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>lvl1only</p>
+                    <p>Lvl One Only</p>
                     </span>
                   </label>
                 </p>
@@ -199,7 +195,7 @@ function DmUpdateForm() {
                   <label>
                   {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <span>
-                      <p>voyuerallowed</p>
+                    <p>Watchers Allowed</p>
                     </span>
                   </label>
                 </p>
