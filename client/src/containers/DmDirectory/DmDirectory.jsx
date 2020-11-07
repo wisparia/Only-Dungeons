@@ -1,11 +1,12 @@
 // import { load } from "npm";
 import React, { useEffect, useState } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
+import DmSearch from "../../components/DmSearch/DmSearch";
 import API from "../../utils/API";
 
 function DmDirectory() {
-  const [allDms, setDms] = useState([
-  ]);
+  const [allDms, setDms] = useState([]);
+  const [searchedDms, setSearchedDms] = useState([]);
 
   useEffect(() => {
     loadDMs();
@@ -13,21 +14,35 @@ function DmDirectory() {
 
   function loadDMs() {
     API.getDms()
-      .then((res) => setDms(res.data))
+      .then((res) => {
+        setDms(res.data)
+        setSearchedDms(res.data)
+      })
       .catch((err) => console.log(err));
   }
+  
+ function setOriginalDms() {
+    setSearchedDms(allDms)
+  }
+
+
+  handleSearch = (event) => {
+    const searchedEmployee = event.target.value;
+    if (searchedEmployee == 0) {
+     this.setOriginalEmployees();
+    } else {
+    const filteredEmployees = this.state.filteredEmployees.filter((employee) => {
+      return employee.email.indexOf(filteredEmployee) !== -1;
+    });
+    // setState REQUIRES a key and a value, so it is important to differentiate between them.
+    this.setState({filteredEmployees: filteredEmployees});
+  };
+}
+
 
   return (
     <>
-      <div className="container">
-        <form className="content-border">
-          <input type="text" />
-          <input
-            className="vertical-spacer-sm waves-effect waves-light btn"
-            type="submit"
-          />
-        </form>
-      </div>
+      <DmSearch />
 
       <div className="row">
         <div className="col s3 content-border">
