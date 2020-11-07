@@ -216,7 +216,7 @@ function handleSearch(event) {
         </div>
 
         <div className="col s9 content-border">
-          {allDms.map((dm) => (
+          {searchedDms.map((dm) => (
             <Dmaster
               key={dm.userName}
               userName={dm.userName}
