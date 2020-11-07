@@ -6,7 +6,7 @@ import API from "../../utils/API"
 
 function DmUpdateForm() {
   
-  const {name} = useParams()
+  const {id} = useParams()
 
   const [dm, setDm] = useState({
     userName: "",
@@ -42,7 +42,7 @@ function DmUpdateForm() {
  
 
   useEffect(async()=>{
-    const response = await API.getUser(name)
+    const response = await API.getUser(id)
     console.log(response.data)
     setDm(response.data)
     // .then((res)=> {
