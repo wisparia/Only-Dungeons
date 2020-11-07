@@ -20,7 +20,7 @@ function DmDirectory() {
     API.getDms()
       .then((res) => {
 
-        
+
         setDms(res.data);
         setSearchedDms(res.data);
       })
@@ -46,7 +46,18 @@ function DmDirectory() {
   }
 
   const showFilteredResults = (filters) => {
-    loadDms()
+    console.log(searchedDms)
+    
+    if (filters > 0)  {
+      console.log("I am greater than ZERO!")
+    }
+    // setSearchedDms(
+    //   searchedDms.filter((dm) => {
+    //     return dm.categoryType.byTheBook
+    //   })
+    // )
+    // searchedDms.filter((dm) => {
+    //   return dm.categoryType.campaign })
   }
 
   const handleFilters = (filters, category) => {

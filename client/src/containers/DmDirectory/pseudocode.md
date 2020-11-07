@@ -26,5 +26,12 @@ RETURN TO THIS AS ISSUES ARISE OR ARE COMPLETED
 
 1. Don't break anything
 2. Change that array from an array of numbers to an array of string values
+
 3. Set up a function that will filter the "searchedDms" state based on checked categories.
+    *   console.log(searchedDms)
+    *   hardcode how we can filter those searchedDms
+    *  showFilteredResults function works for limiting the display of Dms based on a hardcoded click event.
+    *   Make that single on click event dynamic, so that when clicked the event limits the outcome
+    *   It is an array so creating a for loop if conditional makes the most sense to check if the index is > 0, and if so then to create a filter for each category type that comes in.
+     
 4. Celebrate
