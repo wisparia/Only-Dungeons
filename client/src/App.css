@@ -45,3 +45,8 @@ h5 {
   border: 8px solid;
   border-color: rgb(190, 141, 35);
 }
+
+input {
+  color: rgb(190, 141, 35) !important;
+  font-family: "Press Start 2P", cursive;
+}
