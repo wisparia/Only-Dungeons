@@ -2,42 +2,83 @@
 import React, { useEffect, useState } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
 import DmSearch from "../../components/DmSearch/DmSearch";
+import DmCheckbox from "../../components/DmCheckbox/DmCheckbox";
 import API from "../../utils/API";
 
+const categoryCheckboxes = [
+  {
+    _id: 1,
+    name: "campaigns",
+  },
+  {
+    _id: 2,
+    name: "oneshots",
+  },
+  {
+    _id: 3,
+    name: "homebrew",
+  },
+  {
+    _id: 4,
+    name: "byTheBook",
+  },
+  {
+    _id: 5,
+    name: "lvl1only",
+  },
+  {
+    _id: 6,
+    name: "rpersonly",
+  },
+  {
+    _id: 7,
+    name: "displaydice",
+  },
+  {
+    _id: 8,
+    name: "voyuerallowed",
+  },
+  {
+    _id: 9,
+    name: "norestriction",
+  },
+];
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
+  const [checkboxItems, setCheckboxes] = useState([]);
 
   useEffect(() => {
-    const loaded = loadDMs();
+    loadDMs();
+    setCheckboxes(categoryCheckboxes);
   }, []);
 
   function loadDMs() {
     API.getDms()
       .then((res) => {
-        setDms(res.data)
-        setSearchedDms(res.data)
+        setDms(res.data);
+        setSearchedDms(res.data);
       })
       .catch((err) => console.log(err));
   }
-  
- function setOriginalDms() {
-    setSearchedDms(allDms)
+
+  function setOriginalDms() {
+    setSearchedDms(allDms);
   }
 
-
-function handleSearch(event) {
-    let searchedDm =  event.target.value;
+  function handleSearch(event) {
+    let searchedDm = event.target.value;
     if (searchedDm === "") {
-      console.log("nothing to see here")
-      setOriginalDms()
+      setOriginalDms();
     } else {
-      setSearchedDms(searchedDms.filter((dm) => {
-        return dm.userName.indexOf(searchedDm) !== -1
-      }))
-      console.log(searchedDms)
+      setSearchedDms(
+        searchedDms.filter((dm) => {
+          return dm.userName.indexOf(searchedDm) !== -1;
+        })
+      );
+      console.log(searchedDms);
     }
-}
+  }
 
   return (
     <>
@@ -48,96 +89,10 @@ function handleSearch(event) {
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>campaigns</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>oneshots</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>homebrew</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>byTheBook</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>rpersonly</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>norestriction</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>displaydice</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>lvl1only</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>voyuerallowed</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
+              {checkboxItems.map((checkbox) => (
+                <DmCheckbox key={checkbox._id} checkbox={checkbox} />
+              ))}
+              
               <div className="col s12">
                 <h5>Availability:</h5>
               </div>
@@ -217,11 +172,7 @@ function handleSearch(event) {
 
         <div className="col s9 content-border">
           {searchedDms.map((dm) => (
-            <Dmaster
-              key={dm.userName}
-              userName={dm.userName}
-              tagLine={dm.tagLine}
-            />
+            <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} />
           ))}
         </div>
       </div>
