@@ -76,9 +76,9 @@ const DmCheckbox = (props) => {
               key={checkboxItem._id}
               type="checkbox"
               name={checkboxItem.name}
-              value={checkboxItem._id}
-              onChange={() => handleToggle(checkboxItem._id)}
-              checked={Checked.indexOf(checkboxItem._id) === -1 ? false : true}
+              value={checkboxItem.name}
+              onChange={() => handleToggle(checkboxItem.name)}
+              checked={Checked.indexOf(checkboxItem.name) === -1 ? false : true}
             />
             <span>
               <p>{checkboxItem.name}</p>
