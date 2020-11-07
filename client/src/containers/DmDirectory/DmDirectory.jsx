@@ -8,15 +8,19 @@ import API from "../../utils/API";
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
-
+  const [categoryFilters, setFilters] = useState({
+    categories: [],
+  })
 
   useEffect(() => {
-    loadDMs();
+    loadDms();
   }, []);
 
-  function loadDMs() {
+  function loadDms() {
     API.getDms()
       .then((res) => {
+
+        
         setDms(res.data);
         setSearchedDms(res.data);
       })
@@ -41,7 +45,19 @@ function DmDirectory() {
     }
   }
 
+  const showFilteredResults = (filters) => {
+    loadDms()
+  }
 
+  const handleFilters = (filters, category) => {
+    console.log(filters)
+    const newFilters = {...categoryFilters}
+
+    newFilters[category] = filters
+
+    showFilteredResults(newFilters)
+    setFilters(newFilters)
+  }
 
   return (
     <>
@@ -52,7 +68,7 @@ function DmDirectory() {
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              <DmCheckbox />
+              <DmCheckbox handleFilters={filters => handleFilters(filters, "categories")} />
               
               <div className="col s12">
                 <h5>Availability:</h5>

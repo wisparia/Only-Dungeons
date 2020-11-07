@@ -39,7 +39,7 @@ const categoryCheckboxes = [
   },
 ];
 
-const DmCheckbox = () => {
+const DmCheckbox = (props) => {
   const [checkboxItems, setCheckboxes] = useState([]);
   const [Checked, setChecked] = useState([]);
 
@@ -59,6 +59,8 @@ const DmCheckbox = () => {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
+    // giving our newChecked items to the handleFilters()
+    props.handleFilters(newChecked)
   }
 
   const checkChecked = () => {
@@ -76,6 +78,7 @@ const DmCheckbox = () => {
               name={checkboxItem.name}
               value={checkboxItem._id}
               onChange={() => handleToggle(checkboxItem._id)}
+              checked={Checked.indexOf(checkboxItem._id) === -1 ? false : true}
             />
             <span>
               <p>{checkboxItem.name}</p>
@@ -83,7 +86,7 @@ const DmCheckbox = () => {
           </label>
         </div>
       ))}
-      {/* <h1 onClick={checkChecked}> Hello </h1> */}
+      <h4 onClick={checkChecked}> CHECKED </h4>
     </>
   );
 };
