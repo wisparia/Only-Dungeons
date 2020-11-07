@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
+
 function DmUpdateForm() {
   
   const {name} = useParams()
@@ -11,14 +12,20 @@ function DmUpdateForm() {
 
   useEffect(()=>{
     API.getUser(name)
-    .then((res)=> setDm(res.data))
+    .then((res)=> {
+      console.log(res.data.categoryType.campaigns)
+      setDm(res.data)})
     .catch((err)=> console.log(err, "Could not reach page"))
-    console.log(dm);
   },[])
 
   return (
     <>
-      <div className="container">
+      <div>
+      <h1>{dm.tagLine}</h1>
+      {/* {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+      </div>
+
+      {/* <div className="container">
         <div className="row section"></div>
 
         <form className="row section content-border">
@@ -170,7 +177,6 @@ function DmUpdateForm() {
                 </p>
               </div>
             </div>
-            {/* this is the end of the checkboxes */}
           </div>
 
           <div className="row">
@@ -269,7 +275,7 @@ function DmUpdateForm() {
 
       <h5>Delete Your Account?</h5>
 
-      </div>
+      </div> */}
     </>
   );
 }
