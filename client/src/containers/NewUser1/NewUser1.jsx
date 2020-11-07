@@ -105,10 +105,9 @@ function NewUser1() {
           </div>
         </div>
 
-        <div className="col s6 vertical-spacer-md">
+        <div className="col s6 vertical-spacer-md center">
           <p>Do you tell the stories or do you live them?</p>
           <div className="row">
-            <div className="col s1"></div>
             <div className="col s5">
               <div className="vertical-spacer-sm">
                 <label>
@@ -120,7 +119,7 @@ function NewUser1() {
               </div>
             </div>
             <div className="col s5">
-              <div className="vertical-spacer-sm">
+              <div className="vertical-spacer-sm center">
                 <label>
                   <input name="isDm" type="radio" onClick={handleRadioChange}  value="0" />
                   <span>
@@ -129,16 +128,13 @@ function NewUser1() {
                 </label>
               </div>
             </div>
-
-            <div className="row vertical-spacer-md">
-              <div className="col s4 "></div>
+            <div className="row vertical-spacer-md center">
               <div
                 className="vertical-spacer-md waves-effect waves-light btn col s3"
                 to="/"
               >
                 Cancel
               </div>
-              <div className="col s1 "></div>
               <div                
                 className="vertical-spacer-md waves-effect waves-light btn col s3"
                 disabled={!(newUserObj.password && newUserObj.email)}
@@ -146,7 +142,6 @@ function NewUser1() {
               >
                 Create Account
               </div>
-              <div className="col s1 "></div>
             </div>
           </div>
         </div>
