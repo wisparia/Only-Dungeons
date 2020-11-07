@@ -53,7 +53,6 @@ function DmUpdateForm() {
 
   return (
     <>
-
       <div className="container">
         <div className="row section"></div>
 
@@ -62,7 +61,7 @@ function DmUpdateForm() {
             <div className="col s6">
             <p>Room Name: </p>
               <div className="content-border">
-                <input id="roomName" className="validate" type="text" value={dm.roomName} placeholder={dm.roomName} onChange={{}}  />
+                <input id="roomName" className="validate" type="text" value={dm.roomName} placeholder={dm.roomName}/>
               </div>
 
             <p>Tagline: </p>
