@@ -5,52 +5,13 @@ import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCheckbox from "../../components/DmCheckbox/DmCheckbox";
 import API from "../../utils/API";
 
-const categoryCheckboxes = [
-  {
-    _id: 1,
-    name: "campaigns",
-  },
-  {
-    _id: 2,
-    name: "oneshots",
-  },
-  {
-    _id: 3,
-    name: "homebrew",
-  },
-  {
-    _id: 4,
-    name: "byTheBook",
-  },
-  {
-    _id: 5,
-    name: "lvl1only",
-  },
-  {
-    _id: 6,
-    name: "rpersonly",
-  },
-  {
-    _id: 7,
-    name: "displaydice",
-  },
-  {
-    _id: 8,
-    name: "voyuerallowed",
-  },
-  {
-    _id: 9,
-    name: "norestriction",
-  },
-];
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
-  const [checkboxItems, setCheckboxes] = useState([]);
+
 
   useEffect(() => {
     loadDMs();
-    setCheckboxes(categoryCheckboxes);
   }, []);
 
   function loadDMs() {
@@ -80,6 +41,8 @@ function DmDirectory() {
     }
   }
 
+
+
   return (
     <>
       <DmSearch handleSearch={handleSearch} />
@@ -89,9 +52,7 @@ function DmDirectory() {
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              {checkboxItems.map((checkbox) => (
-                <DmCheckbox key={checkbox._id} checkbox={checkbox} />
-              ))}
+              <DmCheckbox />
               
               <div className="col s12">
                 <h5>Availability:</h5>
