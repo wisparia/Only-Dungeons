@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PlaceholderImg from "./placeholder200x200.jpg";
-import API from "../../utils/API";
-
+import {useParams} from "react-router-dom";
+import axios from "axios";
 
 // 5fa5f19368d9ef88e44c7a10
 
@@ -13,15 +13,26 @@ function DmOne() {
     tagLine: ""
   })
 
-  useEffect(() =>  {
-    loadDm()
-  }, [])
+  const {userId} = useParams()
+
+  // useEffect(() =>  {
+  //   axios
+  //   .get(`api/users/${userId}`)
+  //   .then((response) => {
+  //     console.log(response.data)
+  //   })
+  //   .catch((err) => {
+  //   console.log(err)
+  //   })
+  //   }, [])
+
+
  
-  function loadDm() {
-    API.getUser()
-    .then(res => setDmObject(res.data))
-    .catch(err => console.log(err))
-  }
+  // function loadDm() {
+  //   API.getUser(userId)
+  //   .then(res => setDmObject(res.data))
+  //   .catch(err => console.log(err))
+  // }
 
 
 
@@ -49,74 +60,73 @@ function DmOne() {
           
               <h5>Category:</h5>
               <div className="col s12">
-                <p>
+            
                   <label>
                     <input type="checkbox" />
                     <span>
                       <p>campaigns</p>
                     </span>
                   </label>
-                </p>
+             
               </div>
               <div className="col s12">
-                <p>
+
                   <label>
                     <input type="checkbox" />
                     <span>
                       <p>oneshots</p>
                     </span>
                   </label>
-                </p>
+     
               </div>
               <div className="col s12">
-                <p>
+      
                   <label>
                     <input type="checkbox" />
                     <span>
                       <p>homebrew</p>
                     </span>
                   </label>
-                </p>
+          
               </div>
               <div className="col s12">
-                <p>
+     
                   <label>
                     <input type="checkbox" />
                     <span>
                       <p>byTheBook</p>
                     </span>
                   </label>
-                </p>
+            
               </div>
               <div className="col s12">
-                <p>
+        
                   <label>
                     <input type="checkbox" />
                     <span>
                       <p>rpersonly</p>
                     </span>
                   </label>
-                </p>
+     
               </div>
               <div className="col s12">
-                <p>
+     
                   <label>
                     <input type="checkbox" />
                     <span>
                       <p>norestriction</p>
                     </span>
                   </label>
-                </p>
+
               </div>
               <div className="col s12">
-                <p>
-                  <label>
+                          <label>
                     <input type="checkbox" />
                     <span>
                       <p>displaydice</p>
                     </span>
                   </label>
-                </p>
+      
               </div>
               <div className="col s12">
                 <p>
