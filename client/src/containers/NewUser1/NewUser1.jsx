@@ -8,7 +8,7 @@ function NewUser1() {
     email: "",
     password: "",
     confirmPassword: "",
-    isDm: null,
+    isDm: false,
   });
 
   function handleInputChange(event) {
@@ -17,15 +17,15 @@ function NewUser1() {
   }
 
   function handleRadioChange(event) {
-    const {name, value} = event.target;
+    const { value} = event.target;
     setNewUserObject({...newUserObj, 
-      [name]: value ? true : false});
+      isDm: value === "1" ? true : false  });
   }
+  
 
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (newUserObj.userName && newUserObj.password) {
       API.saveUser({
         userName: newUserObj.userName,
         email: newUserObj.email,
@@ -37,14 +37,14 @@ function NewUser1() {
             userName: "",
             email: "",
             password: "",
-            isDm: null,
+            isDm: false,
           })
         )
         .catch((err) => {
           console.log(err);
         });
     }
-  }
+
 
   return (
     <>
@@ -112,7 +112,7 @@ function NewUser1() {
             <div className="col s5">
               <div className="vertical-spacer-sm">
                 <label>
-                  <input name="isDm" type="radio" value={1} checked onChange={handleRadioChange} />
+                  <input name="isDm" type="radio" value="1" onClick={handleRadioChange} />
                   <span>
                    <p> Dungeon Master</p>
                   </span>
@@ -122,7 +122,7 @@ function NewUser1() {
             <div className="col s5">
               <div className="vertical-spacer-sm">
                 <label>
-                  <input name="isDm" type="radio" onChange={handleRadioChange}  value={0} />
+                  <input name="isDm" type="radio" onClick={handleRadioChange}  value="0" />
                   <span>
                     <p> Player Character </p>
                   </span>
