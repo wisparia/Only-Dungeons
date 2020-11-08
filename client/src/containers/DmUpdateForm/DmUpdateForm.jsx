@@ -77,6 +77,12 @@ function DmUpdateForm() {
     setFormObject({...formObject, [name]: value})
   };
 
+  function handleDropDownChange(e){
+    console.log(e.target.value)
+    let selectedRole = e.target.value
+    setFormObject({...formObject, preferredRole: selectedRole})
+  }
+
   function handleFormSubmit(event) {
     event.preventDefault();
       API.updateUser(id, {
@@ -134,7 +140,8 @@ function DmUpdateForm() {
         friday: response.data.availability.friday,
         saturday: response.data.availability.saturday,
         sunday: response.data.availability.sunday
-      }
+      },
+      preferredRole: response.data.preferredRole
     })
     // .then((res)=> {
     //   console.log(res.data.categoryType.campaigns)
@@ -391,22 +398,22 @@ function sundayOnChange(event){
 
             {dm.isDm ? <> <p>Preferred Role: </p>
             <div className="content-border">
-              <select className="browser-default">
-                <option value="" disabled selected>
+              <select className="browser-default" onChange={handleDropDownChange}>
+                <option value="" disabled selected> 
                   Select
                 </option>
-                {dm.preferredRole === "Barbarian" ? <option selected value="Barbarian">Barbarian</option> : <option value="Barbarian">Barbarian</option>}
-                {dm.preferredRole === "Bard" ? <option selected value="Bard">Bard</option> : <option value="Bard">Bard</option>}
-                {dm.preferredRole === "Cleric" ? <option selected value="Cleric">Cleric</option> : <option value="Cleric">Cleric</option>}
-                {dm.preferredRole === "Druid" ? <option selected value="Druid">Druid</option> : <option value="Druid">Druid</option>}
-                {dm.preferredRole === "Fighter" ? <option selected value="Fighter">Fighter</option> : <option value="Fighter">Fighter</option>}
-                {dm.preferredRole === "Monk" ? <option selected value="Monk">Monk</option> : <option value="Monk">Monk</option>}
-                {dm.preferredRole === "Paladin" ? <option selected value="Paladin">Paladin</option> : <option value="Paladin">Paladin</option>}
-                {dm.preferredRole === "Ranger" ? <option selected value="Ranger">Ranger</option> : <option value="Ranger">Ranger</option>}
-                {dm.preferredRole === "rogue" ? <option selected value="Rogue">Rogue</option> : <option value="Rogue">Rogue</option>}
-                {dm.preferredRole === "Sorcerer" ? <option selected value="Sorcerer">Sorcerer</option> : <option value="Sorcerer">Sorcerer</option>}
-                {dm.preferredRole === "Warlock" ? <option selected value="Warlock">Warlock</option> : <option value="Warlock">Warlock</option>}
-                {dm.preferredRole === "Wizard" ? <option selected value="Wizard">Wizard</option> : <option value="Wizard">Wizard</option>}
+                {dm.preferredRole === "Barbarian" ? <option selected name="preferredRole" value="Barbarian">Barbarian</option> : <option name="preferredRole" value="Barbarian">Barbarian</option>}
+                {dm.preferredRole === "Bard" ? <option selected name="preferredRole" value="Bard">Bard</option> : <option name="preferredRole" value="Bard">Bard</option>}
+                {dm.preferredRole === "Cleric" ? <option selected name="preferredRole" value="Cleric">Cleric</option> : <option name="preferredRole" value="Cleric">Cleric</option>}
+                {dm.preferredRole === "Druid" ? <option selected name="preferredRole" value="Druid">Druid</option> : <option name="preferredRole" value="Druid">Druid</option>}
+                {dm.preferredRole === "Fighter" ? <option selected name="preferredRole" value="Fighter">Fighter</option> : <option name="preferredRole" value="Fighter">Fighter</option>}
+                {dm.preferredRole === "Monk" ? <option selected name="preferredRole" value="Monk">Monk</option> : <option onChange={handleDropDownChange} name="preferredRole" value="Monk">Monk</option>}
+                {dm.preferredRole === "Paladin" ? <option selected name="preferredRole" value="Paladin">Paladin</option> : <option name="preferredRole" value="Paladin">Paladin</option>}
+                {dm.preferredRole === "Ranger" ? <option selected name="preferredRole" value="Ranger">Ranger</option> : <option name="preferredRole" value="Ranger">Ranger</option>}
+                {dm.preferredRole === "rogue" ? <option selected name="preferredRole" value="Rogue">Rogue</option> : <option name="preferredRole" value="Rogue">Rogue</option>}
+                {dm.preferredRole === "Sorcerer" ? <option selected name="preferredRole" value="Sorcerer">Sorcerer</option> : <option name="preferredRole" value="Sorcerer">Sorcerer</option>}
+                {dm.preferredRole === "Warlock" ? <option selected name="preferredRole" value="Warlock">Warlock</option> : <option name="preferredRole" value="Warlock">Warlock</option>}
+                {dm.preferredRole === "Wizard" ? <option selected name="preferredRole" value="Wizard">Wizard</option> : <option name="preferredRole" value="Wizard">Wizard</option>}
               </select>
             </div> </> : null}
             </div>
