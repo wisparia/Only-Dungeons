@@ -4,6 +4,7 @@ import Dmaster from "../../components/Dmaster/Dmaster";
 import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCheckbox from "../../components/DmCheckbox/DmCheckbox";
 import API from "../../utils/API";
+import { resolve } from "path";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
@@ -11,7 +12,7 @@ function DmDirectory() {
   const [categoryFilters, setFilters] = useState({
     categories: [],
   });
-  const searchedArrayDm = [];
+  const filteredArrayDm = [];
 
   useEffect(() => {
     loadDms();
@@ -25,10 +26,6 @@ function DmDirectory() {
       })
       .catch((err) => console.log(err));
   }
-
-  // function loadSearchDms() {
-  //   setSearchedDms
-  // }
 
   function setOriginalDms() {
     setSearchedDms(allDms);
@@ -47,43 +44,23 @@ function DmDirectory() {
     }
   }
 
-  const showFilteredResults = (filters) => {
-    // console.log(searchedDms);
-    // console.log(categoryFilters.categories);
-    if (categoryFilters.categories.length > 0) {
-      for (var i = 0; i < categoryFilters.categories.length; i++) {
-        let filterCategory = categoryFilters.categories[i];
-
-        for (var j = 0; j < searchedDms.length; j++) {
-          console.log("====================");
-          for (const [key, value] of Object.entries(
-            searchedDms[j].categoryType
-          )) {
-            if (key === filterCategory && value === true) {
-              if (searchedArrayDm.includes(filterCategory).pop())
-              searchedArrayDm.push(searchedDms[j])
-              
-              console.log(searchedArrayDm);
-              console.log(filterCategory);
-              // searchedDms.filter((dm) => {
-              // searchedArrayDm.push(dm)
-              // })
-            } 
-          }
-        }
-      }
-    }
-  }
-
-  const handleFilters = (filters, category) => {
-    // console.log(filters)
-    const newFilters = { ...categoryFilters };
-
+  // handle filters is updating the state of our search
+  const handleFilters = async (filters, category) => {
+    console.log(filters)
+    const newFilters = await { ...categoryFilters };
     newFilters[category] = filters;
-
-    showFilteredResults(newFilters);
-    setFilters(newFilters);
+    const filterResult = await setFilters(newFilters);
+    const displayFilter = await showFilteredResults(filterResult);    
   };
+  
+  const showFilteredResults = (filters) => {
+    console.log(searchedDms)
+    let filter = categoryFilters.categories[0]
+    searchedDms.filter((dm) => {
+      return (console.log(dm.categoryType.campaigns === true))
+    })
+    console.log(categoryFilters.categories);
+  }
 
   return (
     <>
