@@ -107,6 +107,8 @@ function DmUpdateForm() {
     // .catch((err)=> console.log(err, "Could not reach page"))
   },[])
 
+
+  // TODO: FIND A WAY TO INJECT EVENT.NAME INSTEAD OF REPEAT THIS NIGHTMARE
   function campaignOnChange(event){
     event.stopPropagation()
     let current = formObject.categoryType.campaigns
@@ -119,6 +121,111 @@ function DmUpdateForm() {
   }))
   }
 
+  function oneshotsOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.oneshots
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, oneshots:!current
+      }
+  }))
+  }
+
+  // homebrew
+
+  function homebrewOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.homebrew
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, homebrew:!current
+      }
+  }))
+  }
+
+  // byTheBook
+  function byTheBookOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.byTheBook
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, byTheBook:!current
+      }
+  }))
+  }
+
+  // rpersonly
+  function rpersonlyOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.rpersonly
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, rpersonly:!current
+      }
+  }))
+  }
+
+  // norestriction
+  function norestrictionOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.norestriction
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, norestriction:!current
+      }
+  }))
+  }
+  
+  // displaydice
+  function displaydiceOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.displaydice
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, displaydice:!current
+      }
+  }))
+  }
+
+
+  // lvl1only
+  function lvl1onlyOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.lvl1only
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, lvl1only:!current
+      }
+  }))
+  }
+  // voyuerallowed
+  function voyuerallowedOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.voyuerallowed
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, voyuerallowed:!current
+      }
+  }))
+  }
+
+  
   return (
     <>
       <div className="container">
@@ -191,7 +298,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                     {/* {dm.categoryType.oneshots ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.categoryType.oneshots}/>
+                    <input type="checkbox" checked={formObject.categoryType.oneshots} name="oneshots" value={formObject.categoryType.oneshots} onChange={oneshotsOnChange}/>
                     <span>
                     <p>One Shots</p>
                     </span>
@@ -202,7 +309,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.homebrew ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.homebrew}/>
+                  <input type="checkbox" checked={formObject.categoryType.homebrew} name="homebrew" value={formObject.categoryType.homebrew} onChange={homebrewOnChange}/>
                     <span>
                     <p>HomeBrew</p>
                     </span>
@@ -216,7 +323,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.byTheBook}/>
+                  <input type="checkbox" checked={formObject.categoryType.byTheBook} name="byTheBook" value={formObject.categoryType.byTheBook} onChange={byTheBookOnChange}/>
                     <span>
                     <p>By The Book</p>
                     </span>
@@ -227,7 +334,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.rpersonly}/>
+                  <input type="checkbox" checked={formObject.categoryType.rpersonly} name="rpersonly" value={formObject.categoryType.rpersonly} onChange={rpersonlyOnChange}/>
                     <span>
                     <p>Role Play Only</p>
                     </span>
@@ -238,7 +345,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.norestriction}/>
+                  <input type="checkbox" checked={formObject.categoryType.norestriction} name="norestriction" value={formObject.categoryType.norestriction} onChange={norestrictionOnChange}/>
                     <span>
                     <p>No Restriction</p>
                     </span>
@@ -252,7 +359,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.displaydice}/>
+                  <input type="checkbox" checked={formObject.categoryType.displaydice} name="displaydice" value={formObject.categoryType.displaydice} onChange={displaydiceOnChange}/>
                     <span>
                     <p>Display Dice</p>
                     </span>
@@ -263,7 +370,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.lvl1only}/>
+                  <input type="checkbox" checked={formObject.categoryType.lvl1only} name="lvl1only" value={formObject.categoryType.lvl1only} onChange={lvl1onlyOnChange}/>
                     <span>
                     <p>Lvl One Only</p>
                     </span>
@@ -274,7 +381,7 @@ function DmUpdateForm() {
                 <p>
                   <label>
                   {/* {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.voyuerallowed}/>
+                  <input type="checkbox" checked={formObject.categoryType.voyuerallowed} name="voyuerallowed" value={formObject.categoryType.voyuerallowed} onChange={voyuerallowedOnChange}/>
                     <span>
                     <p>Watchers Allowed</p>
                     </span>
