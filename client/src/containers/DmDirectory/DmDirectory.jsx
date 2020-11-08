@@ -26,6 +26,10 @@ function DmDirectory() {
       .catch((err) => console.log(err));
   }
 
+  // function loadSearchDms() {
+  //   setSearchedDms
+  // }
+
   function setOriginalDms() {
     setSearchedDms(allDms);
   }
@@ -50,36 +54,26 @@ function DmDirectory() {
       for (var i = 0; i < categoryFilters.categories.length; i++) {
         let filterCategory = categoryFilters.categories[i];
 
-      for (var j = 0; j < searchedDms.length; j++) {
-        // console.log(searchedDms[j].categoryType)
-        // console.log(filterCategory)
-        // console.log("=============")
-        // console.log(Object.keys(searchedDms[j].categoryType))
-        console.log("====================")
-        for (const[key, value] of Object.entries(searchedDms[j].categoryType)) {
-          if ( filterCategory === key && value === true) {
-          console.log("count me")
-          console.log(searchedDms[j]) 
-          
-          searchedArrayDm.push(searchedDms[j])
-          setSearchedDms(searchedArrayDm)
-         }
+        for (var j = 0; j < searchedDms.length; j++) {
+          console.log("====================");
+          for (const [key, value] of Object.entries(
+            searchedDms[j].categoryType
+          )) {
+            if (key === filterCategory && value === true) {
+              if (searchedArrayDm.includes(filterCategory).pop())
+              searchedArrayDm.push(searchedDms[j])
+              
+              console.log(searchedArrayDm);
+              console.log(filterCategory);
+              // searchedDms.filter((dm) => {
+              // searchedArrayDm.push(dm)
+              // })
+            } 
+          }
         }
-        // if (searchedDms[j].categoryType.displaydice == true)  {
-        //   console.log(searchedDms[j].categoryTypes.keys)
-        // }
       }
-
-        // searchedDms.filter((dm) => {
-        //   if (dm.categoryType.filterCategory === filterCategory ) {
-        //     return dm
-        //   };
-        // })
-      }
-    } else {
-      loadDms();
     }
-  };
+  }
 
   const handleFilters = (filters, category) => {
     // console.log(filters)
