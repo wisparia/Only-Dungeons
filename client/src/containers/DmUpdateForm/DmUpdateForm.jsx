@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
@@ -8,6 +8,8 @@ import API from "../../utils/API"
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
+
+  const history = useHistory()
   const {id} = useParams()
 
   const [dm, setDm] = useState({
@@ -82,7 +84,8 @@ function DmUpdateForm() {
     let selectedRole = e.target.value
     setFormObject({...formObject, preferredRole: selectedRole})
   }
-
+  
+  // UPDATING USER
   function handleFormSubmit(event) {
     event.preventDefault();
       API.updateUser(id, {
@@ -110,6 +113,7 @@ function DmUpdateForm() {
         }
       })
       .then(response=>console.log(response))
+      .then(history.go(0))
       .catch((err)=> console.error(err))
   
   };
@@ -143,10 +147,6 @@ function DmUpdateForm() {
       },
       preferredRole: response.data.preferredRole
     })
-    // .then((res)=> {
-    //   console.log(res.data.categoryType.campaigns)
-    //   setDm(res.data)})
-    // .catch((err)=> console.log(err, "Could not reach page"))
   },[])
 
 
