@@ -44,51 +44,36 @@ function DmDirectory() {
     }
   }
 
-  // handle filters is updating the state of our search from DmCheckbox.jsx
   const handleFilters = (filters, category) => {
     if (filters.length === 0) {
-      setOriginalDms()
+      setOriginalDms();
     } else {
-    console.log(filters)
-    const newFilters = { ...categoryFilters };
-    newFilters[category] = filters;
-    setFilters(newFilters);
-  }
-    // showFilteredResults(newFilters);    
+      const newFilters = { ...categoryFilters };
+      newFilters[category] = filters;
+      setFilters(newFilters);
+    }
   };
-  
-  // Using the array of filters we have to check agains the array of searchedDms
-  // to see if the FILTERS we have match the categoryType.____ and if it is true
-  // const showFilteredResults = (filters) => {
-  //   console.log(searchedDms)
-  //   // hardcoded position 0 for proof of concept
-  //   let filter = categoryFilters.categories[0]
-  //   searchedDms.filter((dm) => {
-  //     return (console.log(dm.categoryType.campaigns === true))
-  //   })
-  //   console.log(categoryFilters.categories);
-  // }
 
   useEffect(() => {
+    console.log("USE EFFECT");
     let filtersArray = categoryFilters.categories;
 
-    setSearchedDms((prevState) => prevState.filter((dm) =>  {
-      for (const [key, value ] of Object.entries(dm.categoryType)) {
-        console.log(key, value)
-        if (key === filtersArray[0] && value === true) {
-        console.log(dm)
-
-        // setSearchedDms(filteredDMs)
-        // filteredDMs = []  // filteredDMs.push(dm)
-        return dm
-        }
+    for (let i = 0; i < filtersArray.length; i++) {
+      let x = i + 1;
+      if (filtersArray.length === x) {
+        setSearchedDms((prevState) =>
+          prevState.filter((dm) => {
+            for (const [key, value] of Object.entries(dm.categoryType)) {
+              // console lo the amount of times the array works through
+              if (key === filtersArray[i] && value === true) {
+                return dm;
+              }
+            }
+          })
+        );
       }
-
-    }))
-  }, [categoryFilters.categories])
-
-
-
+    }
+  }, [categoryFilters.categories]);
 
   return (
     <>
