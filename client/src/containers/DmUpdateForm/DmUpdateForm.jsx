@@ -3,8 +3,13 @@ import { useParams } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
+// TODO: Make sure to grab value from dropdown
+// TODO: Think about ways to dry up those functions
+// TODO: Make a put request with the formObject 
+
 function DmUpdateForm() {
   const {id} = useParams()
+
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -35,17 +40,299 @@ function DmUpdateForm() {
     preferredRole: ""
 
   });
- 
+
+  const [formObject, setFormObject] = useState({
+    userName: "",
+    password: "",
+    email: "",
+    isDm: true,
+    roomName: "",
+    tagLine: "",
+    categoryType:{
+      byTheBook: false,
+      campaigns: false,
+      norestriction: false,
+      homebrew: false,
+      lvl1only: false,
+      rpersonly: false,
+      oneshots: false,
+      displaydice: false,
+      voyuerallowed: false
+    },
+    availability:{
+      monday: false,
+      tuesday: false, 
+      wednesday: false,
+      thursday: false,
+      friday: false,
+      saturday: false,
+      sunday: false
+    },
+    preferredRole: ""
+
+  })
+  
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
+
+  function test (event) {
+    event.preventDefault()
+    console.log(formObject)
+  }
+
+
 
   useEffect(async()=>{
     const response = await API.getUser(id)
     console.log(response.data)
     setDm(response.data)
+    setFormObject({
+      categoryType:{
+        byTheBook: response.data.categoryType.byTheBook,
+        campaigns: response.data.categoryType.campaigns,
+        norestriction: response.data.categoryType.norestriction,
+        homebrew: response.data.categoryType.homebrew,
+        lvl1only: response.data.categoryType.lvl1only,
+        rpersonly: response.data.categoryType.rpersonly,
+        oneshots: response.data.categoryType.oneshots,
+        displaydice: response.data.categoryType.displaydice,
+        voyuerallowed: response.data.categoryType.voyuerallowed
+      },
+      availability:{
+        monday: response.data.availability.monday,
+        tuesday: response.data.availability.tuesday, 
+        wednesday: response.data.availability.wednesday,
+        thursday: response.data.availability.thursday,
+        friday: response.data.availability.friday,
+        saturday: response.data.availability.saturday,
+        sunday: response.data.availability.sunday
+      }
+    })
     // .then((res)=> {
     //   console.log(res.data.categoryType.campaigns)
     //   setDm(res.data)})
     // .catch((err)=> console.log(err, "Could not reach page"))
   },[])
+
+
+  // TODO: FIND A WAY TO INJECT EVENT.NAME INSTEAD OF REPEAT THIS NIGHTMARE
+  function campaignOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.campaigns
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, campaigns:!current
+      }
+  }))
+  }
+
+  function oneshotsOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.oneshots
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, oneshots:!current
+      }
+  }))
+  }
+
+  // homebrew
+
+  function homebrewOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.homebrew
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, homebrew:!current
+      }
+  }))
+  }
+
+  // byTheBook
+  function byTheBookOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.byTheBook
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, byTheBook:!current
+      }
+  }))
+  }
+
+  // rpersonly
+  function rpersonlyOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.rpersonly
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, rpersonly:!current
+      }
+  }))
+  }
+
+  // norestriction
+  function norestrictionOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.norestriction
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, norestriction:!current
+      }
+  }))
+  }
+  
+  // displaydice
+  function displaydiceOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.displaydice
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, displaydice:!current
+      }
+  }))
+  }
+
+
+  // lvl1only
+  function lvl1onlyOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.lvl1only
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, lvl1only:!current
+      }
+  }))
+  }
+  // voyuerallowed
+  function voyuerallowedOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.voyuerallowed
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, voyuerallowed:!current
+      }
+  }))
+  }
+// ======= END OF CATEGORY CHECK BOX FUNCTIONS============
+
+// ====== START OF AVAILABILITY CHECK BOX FUNCTIONS
+
+// monday
+function mondayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.monday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, monday:!current
+    }
+}))
+}
+
+// tuesday
+function tuesdayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.tuesday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, tuesday:!current
+    }
+}))
+}
+
+// wednesday
+
+function wednesdayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.wednesday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, wednesday:!current
+    }
+}))
+}
+
+// thursday
+
+function thursdayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.thursday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, thursday:!current
+    }
+}))
+}
+
+// friday
+
+function fridayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.friday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, friday:!current
+    }
+}))
+}
+
+// saturday
+function saturdayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.saturday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, saturday:!current
+    }
+}))
+}
+
+// sunday
+
+function sundayOnChange(event){
+  event.stopPropagation()
+  let current = formObject.availability.sunday
+  // console.log(current)
+  setFormObject(prevState => ({
+    ...prevState,
+    availability: {
+        ...prevState.availability, sunday:!current
+    }
+}))
+}
+
+// ===== THIS IS THE END OF THE AVAILABILITY CHECKBOX FUNCTIONS=======
 
   return (
     <>
@@ -57,12 +344,12 @@ function DmUpdateForm() {
             <div className="col s6">
             <p>Room Name: </p>
               <div className="content-border">
-                <input id="roomName" className="validate" type="text" value={dm.roomName} placeholder={dm.roomName}/>
+                <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
               </div>
 
             <p>Tagline: </p>
               <div className="content-border">
-                <input id="Tagline" type="text" className="validate" value={dm.tagLine} placeholder={dm.tagLine} />
+                <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
               </div>
             </div>
 
@@ -107,7 +394,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.categoryType.campaigns} name="campaigns" value={formObject.categoryType.campaigns} onChange={campaignOnChange}/>
                     <span>
                     <p>Campaigns</p>
                     </span>
@@ -117,7 +405,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    {dm.categoryType.oneshots ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.categoryType.oneshots ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.categoryType.oneshots} name="oneshots" value={formObject.categoryType.oneshots} onChange={oneshotsOnChange}/>
                     <span>
                     <p>One Shots</p>
                     </span>
@@ -127,7 +416,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.homebrew ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.homebrew ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.homebrew} name="homebrew" value={formObject.categoryType.homebrew} onChange={homebrewOnChange}/>
                     <span>
                     <p>HomeBrew</p>
                     </span>
@@ -140,7 +430,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.byTheBook} name="byTheBook" value={formObject.categoryType.byTheBook} onChange={byTheBookOnChange}/>
                     <span>
                     <p>By The Book</p>
                     </span>
@@ -150,7 +441,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.rpersonly} name="rpersonly" value={formObject.categoryType.rpersonly} onChange={rpersonlyOnChange}/>
                     <span>
                     <p>Role Play Only</p>
                     </span>
@@ -160,7 +452,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.norestriction} name="norestriction" value={formObject.categoryType.norestriction} onChange={norestrictionOnChange}/>
                     <span>
                     <p>No Restriction</p>
                     </span>
@@ -173,7 +466,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.displaydice} name="displaydice" value={formObject.categoryType.displaydice} onChange={displaydiceOnChange}/>
                     <span>
                     <p>Display Dice</p>
                     </span>
@@ -183,7 +477,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.lvl1only} name="lvl1only" value={formObject.categoryType.lvl1only} onChange={lvl1onlyOnChange}/>
                     <span>
                     <p>Lvl One Only</p>
                     </span>
@@ -193,7 +488,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.voyuerallowed} name="voyuerallowed" value={formObject.categoryType.voyuerallowed} onChange={voyuerallowedOnChange}/>
                     <span>
                     <p>Watchers Allowed</p>
                     </span>
@@ -210,7 +506,8 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                    {dm.availability.monday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.availability.monday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.availability.monday} name="monday" value={formObject.availability.monday} onChange={mondayOnChange}/>
                       <span>
                         <p>Monday</p>
                       </span>
@@ -220,7 +517,8 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                      {dm.availability.tuesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                      {/* {dm.availability.tuesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                      <input type="checkbox" checked={formObject.availability.tuesday} name="tuesday" value={formObject.availability.tuesday} onChange={tuesdayOnChange}/>
                       <span>
                         <p>Tuesday</p>
                       </span>
@@ -230,7 +528,8 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                    {dm.availability.wednesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.availability.wednesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.availability.wednesday} name="wednesday" value={formObject.availability.wednesday} onChange={wednesdayOnChange}/>
                       <span>
                         <p>Wednesday</p>
                       </span>
@@ -240,7 +539,8 @@ function DmUpdateForm() {
                 <div className="col s3">
                   <p>
                     <label>
-                    {dm.availability.thursday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.availability.thursday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.availability.thursday} name="thursday" value={formObject.availability.thursday} onChange={thursdayOnChange}/>
                       <span>
                         <p>Thursday</p>
                       </span>
@@ -253,7 +553,8 @@ function DmUpdateForm() {
                 <div className="col s4">
                   <p>
                     <label>
-                    {dm.availability.friday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.availability.friday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.availability.friday} name="friday" value={formObject.availability.friday} onChange={fridayOnChange}/>
                       <span>
                         <p>Friday</p>
                       </span>
@@ -263,7 +564,8 @@ function DmUpdateForm() {
                 <div className="col s4">
                   <p>
                     <label>
-                    {dm.availability.saturday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.availability.saturday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.availability.saturday} name="saturday" value={formObject.availability.saturday} onChange={saturdayOnChange}/>
                       <span>
                         <p>Saturday</p>
                       </span>
@@ -273,7 +575,8 @@ function DmUpdateForm() {
                 <div className="col s4">
                   <p>
                     <label>
-                    {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.availability.sunday} name="sunday" value={formObject.availability.sunday} onChange={sundayOnChange}/>
                       <span>
                         <p>Sunday</p>
                       </span>
@@ -287,8 +590,8 @@ function DmUpdateForm() {
                   Cancel
                 </button>
                 <div className="col s1 "></div>
-                <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
-                  Create Account
+                <button onClick={test} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                  Update Account
                 </button>
                 <div className="col s1 "></div>
               </div>
@@ -298,6 +601,9 @@ function DmUpdateForm() {
 
 
       <h5>Delete Your Account?</h5>
+      <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
+        Delte Your Account?
+      </button>
 
       </div>
     </>
