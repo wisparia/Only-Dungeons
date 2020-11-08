@@ -47,6 +47,7 @@ function DmDirectory() {
   const handleFilters = (filters, category) => {
     if (filters.length === 0) {
       setOriginalDms();
+      // setFilters()
     } else {
       const newFilters = { ...categoryFilters };
       newFilters[category] = filters;
@@ -55,14 +56,13 @@ function DmDirectory() {
   };
 
   useEffect(() => {
-    console.log("USE EFFECT");
+    setOriginalDms();
+    console.log("USE EFFECT OF CHECKBOXES")
     let filtersArray = categoryFilters.categories;
-
     for (let i = 0; i < filtersArray.length; i++) {
-      let x = i + 1;
-      if (filtersArray.length === x) {
+    let x = i + 1;
         setSearchedDms((prevState) =>
-          prevState.filter((dm) => {
+        prevState.filter((dm) => {
             for (const [key, value] of Object.entries(dm.categoryType)) {
               // console lo the amount of times the array works through
               if (key === filtersArray[i] && value === true) {
@@ -71,7 +71,7 @@ function DmDirectory() {
             }
           })
         );
-      }
+  
     }
   }, [categoryFilters.categories]);
 
