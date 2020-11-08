@@ -369,7 +369,6 @@ function sundayOnChange(event){
 
   return (
     <>
-      {dm.isDm ? <h1>hi dm</h1> : null}
       <div className="container">
         <div className="row section"></div>
         <form className="row section content-border">
@@ -396,7 +395,7 @@ function sundayOnChange(event){
                 />
               </div>
 
-            {dm.isDm ? <> <p>Preferred Role: </p>
+            {!dm.isDm ? <> <p>Preferred Role: </p>
             <div className="content-border">
               <select className="browser-default" onChange={handleDropDownChange}>
                 <option value="" disabled selected> 
