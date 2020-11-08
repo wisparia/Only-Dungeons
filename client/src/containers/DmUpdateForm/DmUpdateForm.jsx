@@ -77,10 +77,36 @@ function DmUpdateForm() {
     setFormObject({...formObject, [name]: value})
   };
 
-  function test (event) {
-    event.preventDefault()
-    console.log(formObject)
-  }
+  function handleFormSubmit(event) {
+    event.preventDefault();
+      API.updateUser(id, {
+        roomName: formObject.roomName,
+        tagLine: formObject.tagLine,
+        categoryType:{
+          byTheBook: formObject.categoryType.byTheBook,
+          campaigns: formObject.categoryType.campaigns,
+          norestriction: formObject.categoryType.norestriction,
+          homebrew: formObject.categoryType.homebrew,
+          lvl1only: formObject.categoryType.lvl1only,
+          rpersonly: formObject.categoryType.rprsonly,
+          oneshots: formObject.categoryType.oneshots,
+          displaydice: formObject.categoryType.displaydice,
+          voyuerallowed: formObject.categoryType.voyuerallowed
+        },
+        availability:{
+          monday: formObject.availability.monday,
+          tuesday: formObject.availability.tuesday, 
+          wednesday: formObject.availability.wednesday,
+          thursday: formObject.availability.thursday,
+          friday: formObject.availability.friday,
+          saturday: formObject.availability.saturday,
+          sunday: formObject.availability.sunday
+        }
+      })
+      .then(response=>console.log(response))
+      .catch((err)=> console.error(err))
+  
+  };
 
 
 
@@ -336,17 +362,18 @@ function sundayOnChange(event){
 
   return (
     <>
+      {dm.isDm ? <h1>hi dm</h1> : null}
       <div className="container">
         <div className="row section"></div>
-
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
             <div className="col s6">
-            <p>Room Name: </p>
+            {dm.isDm ? <>
+              <p>Room Name: </p>
               <div className="content-border">
-                <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
+              <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
               </div>
-
+            </> : null}
             <p>Tagline: </p>
               <div className="content-border">
                 <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
@@ -590,7 +617,7 @@ function sundayOnChange(event){
                   Cancel
                 </button>
                 <div className="col s1 "></div>
-                <button onClick={test} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                <button onClick={handleFormSubmit} className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Update Account
                 </button>
                 <div className="col s1 "></div>
