@@ -5,6 +5,7 @@ import API from "../../utils/API"
 
 function DmUpdateForm() {
   const {id} = useParams()
+
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -35,17 +36,88 @@ function DmUpdateForm() {
     preferredRole: ""
 
   });
- 
+
+  const [formObject, setFormObject] = useState({
+    userName: "",
+    password: "",
+    email: "",
+    isDm: true,
+    roomName: "",
+    tagLine: "",
+    categoryType:{
+      byTheBook: false,
+      campaigns: false,
+      norestriction: false,
+      homebrew: false,
+      lvl1only: false,
+      rpersonly: false,
+      oneshots: false,
+      displaydice: false,
+      voyuerallowed: false
+    },
+    availability:{
+      monday: false,
+      tuesday: false, 
+      wednesday: false,
+      thursday: false,
+      friday: false,
+      saturday: false,
+      sunday: false
+    },
+    preferredRole: ""
+
+  })
+  
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
+
+
 
   useEffect(async()=>{
     const response = await API.getUser(id)
     console.log(response.data)
     setDm(response.data)
+    setFormObject({
+      categoryType:{
+        byTheBook: response.data.categoryType.byTheBook,
+        campaigns: response.data.categoryType.campaigns,
+        norestriction: response.data.categoryType.norestriction,
+        homebrew: response.data.categoryType.homebrew,
+        lvl1only: response.data.categoryType.lvl1only,
+        rpersonly: response.data.categoryType.rpersonly,
+        oneshots: response.data.categoryType.oneshots,
+        displaydice: response.data.categoryType.displaydice,
+        voyuerallowed: response.data.categoryType.voyuerallowed
+      },
+      availability:{
+        monday: response.data.availability.monday,
+        tuesday: response.data.availability.tuesday, 
+        wednesday: response.data.availability.wednesday,
+        thursday: response.data.availability.thursday,
+        friday: response.data.availability.friday,
+        saturday: response.data.availability.saturday,
+        sunday: response.data.availability.sunday
+      }
+    })
     // .then((res)=> {
     //   console.log(res.data.categoryType.campaigns)
     //   setDm(res.data)})
     // .catch((err)=> console.log(err, "Could not reach page"))
   },[])
+
+  function campaignOnChange(event){
+    event.stopPropagation()
+    let current = formObject.categoryType.campaigns
+    // console.log(current)
+    setFormObject(prevState => ({
+      ...prevState,
+      categoryType: {
+          ...prevState.categoryType, campaigns:!current
+      }
+  }))
+  }
 
   return (
     <>
@@ -57,12 +129,12 @@ function DmUpdateForm() {
             <div className="col s6">
             <p>Room Name: </p>
               <div className="content-border">
-                <input id="roomName" className="validate" type="text" value={dm.roomName} placeholder={dm.roomName}/>
+                <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
               </div>
 
             <p>Tagline: </p>
               <div className="content-border">
-                <input id="Tagline" type="text" className="validate" value={dm.tagLine} placeholder={dm.tagLine} />
+                <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
               </div>
             </div>
 
@@ -107,7 +179,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.categoryType.campaigns} name="campaigns" value={formObject.categoryType.campaigns} onChange={campaignOnChange}/>
                     <span>
                     <p>Campaigns</p>
                     </span>
@@ -117,7 +190,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                    {dm.categoryType.oneshots ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    {/* {dm.categoryType.oneshots ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
+                    <input type="checkbox" checked={formObject.categoryType.oneshots}/>
                     <span>
                     <p>One Shots</p>
                     </span>
@@ -127,7 +201,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.homebrew ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.homebrew ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.homebrew}/>
                     <span>
                     <p>HomeBrew</p>
                     </span>
@@ -140,7 +215,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.byTheBook}/>
                     <span>
                     <p>By The Book</p>
                     </span>
@@ -150,7 +226,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.rpersonly}/>
                     <span>
                     <p>Role Play Only</p>
                     </span>
@@ -160,7 +237,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.norestriction}/>
                     <span>
                     <p>No Restriction</p>
                     </span>
@@ -173,7 +251,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.displaydice}/>
                     <span>
                     <p>Display Dice</p>
                     </span>
@@ -183,7 +262,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.lvl1only}/>
                     <span>
                     <p>Lvl One Only</p>
                     </span>
@@ -193,7 +273,8 @@ function DmUpdateForm() {
               <div className="col s4">
                 <p>
                   <label>
-                  {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                  {/* {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
+                  <input type="checkbox" checked={formObject.categoryType.voyuerallowed}/>
                     <span>
                     <p>Watchers Allowed</p>
                     </span>
@@ -288,7 +369,7 @@ function DmUpdateForm() {
                 </button>
                 <div className="col s1 "></div>
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
-                  Create Account
+                  Update Account
                 </button>
                 <div className="col s1 "></div>
               </div>
@@ -298,6 +379,9 @@ function DmUpdateForm() {
 
 
       <h5>Delete Your Account?</h5>
+      <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
+        Delte Your Account?
+      </button>
 
       </div>
     </>
