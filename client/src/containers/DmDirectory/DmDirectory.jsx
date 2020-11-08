@@ -44,7 +44,7 @@ function DmDirectory() {
     }
   }
 
-  // handle filters is updating the state of our search
+  // handle filters is updating the state of our search from DmCheckbox.jsx
   const handleFilters = async (filters, category) => {
     console.log(filters)
     const newFilters = await { ...categoryFilters };
@@ -53,8 +53,11 @@ function DmDirectory() {
     const displayFilter = await showFilteredResults(filterResult);    
   };
   
+  // Using the array of filters we have to check agains the array of searchedDms
+  // to see if the FILTERS we have match the categoryType.____ and if it is true
   const showFilteredResults = (filters) => {
     console.log(searchedDms)
+    // hardcoded position 0 for proof of concept
     let filter = categoryFilters.categories[0]
     searchedDms.filter((dm) => {
       return (console.log(dm.categoryType.campaigns === true))
