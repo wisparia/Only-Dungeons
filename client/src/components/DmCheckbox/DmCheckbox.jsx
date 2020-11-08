@@ -44,12 +44,10 @@ const DmCheckbox = (props) => {
   const [Checked, setChecked] = useState([]);
 
   useEffect(() => {
-    console.log("used the effect");
     setCheckboxes(categoryCheckboxes);
   }, []);
 
   const handleToggle = (value) => {
-    console.log(value);
     const currentIndex = Checked.indexOf(value);
     const newChecked = [...Checked];
 
@@ -86,7 +84,7 @@ const DmCheckbox = (props) => {
           </label>
         </div>
       ))}
-      <h4 onClick={checkChecked}> CHECKED </h4>
+      {/* <h4 onClick={checkChecked}> CHECKED </h4> */}
     </>
   );
 };

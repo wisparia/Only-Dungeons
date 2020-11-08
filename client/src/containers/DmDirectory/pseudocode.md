@@ -33,5 +33,9 @@ RETURN TO THIS AS ISSUES ARISE OR ARE COMPLETED
     *  showFilteredResults function works for limiting the display of Dms based on a hardcoded click event.
     *   Make that single on click event dynamic, so that when clicked the event limits the outcome
     *   It is an array so creating a for loop if conditional makes the most sense to check if the index is > 0, and if so then to create a filter for each category type that comes in.
-     
+    *   Create a conditional that allows to check IF the string in the array matches the boolean value SET TO FALSE, then filter
+
 4. Celebrate
+
+
+if this 

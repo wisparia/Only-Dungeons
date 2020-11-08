@@ -10,7 +10,8 @@ function DmDirectory() {
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
-  })
+  });
+  const searchedArrayDm = [];
 
   useEffect(() => {
     loadDms();
@@ -19,8 +20,6 @@ function DmDirectory() {
   function loadDms() {
     API.getDms()
       .then((res) => {
-
-
         setDms(res.data);
         setSearchedDms(res.data);
       })
@@ -41,34 +40,56 @@ function DmDirectory() {
           return dm.userName.indexOf(searchedDm) !== -1;
         })
       );
-      console.log(searchedDms);
     }
   }
 
   const showFilteredResults = (filters) => {
-    console.log(searchedDms)
-    
-    if (filters > 0)  {
-      console.log("I am greater than ZERO!")
+    // console.log(searchedDms);
+    // console.log(categoryFilters.categories);
+    if (categoryFilters.categories.length > 0) {
+      for (var i = 0; i < categoryFilters.categories.length; i++) {
+        let filterCategory = categoryFilters.categories[i];
+
+      for (var j = 0; j < searchedDms.length; j++) {
+        // console.log(searchedDms[j].categoryType)
+        // console.log(filterCategory)
+        // console.log("=============")
+        // console.log(Object.keys(searchedDms[j].categoryType))
+        console.log("====================")
+        for (const[key, value] of Object.entries(searchedDms[j].categoryType)) {
+          if ( filterCategory === key && value === true) {
+          console.log("count me")
+          console.log(searchedDms[j]) 
+          
+          searchedArrayDm.push(searchedDms[j])
+          setSearchedDms(searchedArrayDm)
+         }
+        }
+        // if (searchedDms[j].categoryType.displaydice == true)  {
+        //   console.log(searchedDms[j].categoryTypes.keys)
+        // }
+      }
+
+        // searchedDms.filter((dm) => {
+        //   if (dm.categoryType.filterCategory === filterCategory ) {
+        //     return dm
+        //   };
+        // })
+      }
+    } else {
+      loadDms();
     }
-    // setSearchedDms(
-    //   searchedDms.filter((dm) => {
-    //     return dm.categoryType.byTheBook
-    //   })
-    // )
-    // searchedDms.filter((dm) => {
-    //   return dm.categoryType.campaign })
-  }
+  };
 
   const handleFilters = (filters, category) => {
-    console.log(filters)
-    const newFilters = {...categoryFilters}
+    // console.log(filters)
+    const newFilters = { ...categoryFilters };
 
-    newFilters[category] = filters
+    newFilters[category] = filters;
 
-    showFilteredResults(newFilters)
-    setFilters(newFilters)
-  }
+    showFilteredResults(newFilters);
+    setFilters(newFilters);
+  };
 
   return (
     <>
@@ -79,8 +100,12 @@ function DmDirectory() {
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              <DmCheckbox handleFilters={filters => handleFilters(filters, "categories")} />
-              
+              <DmCheckbox
+                handleFilters={(filters) =>
+                  handleFilters(filters, "categories")
+                }
+              />
+
               <div className="col s12">
                 <h5>Availability:</h5>
               </div>
