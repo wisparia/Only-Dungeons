@@ -9,7 +9,7 @@ import API from "../../utils/API"
 
 function DmUpdateForm() {
 
-  const history = useHistory()
+  const history = useHistory
   const {id} = useParams()
 
   const [dm, setDm] = useState({
@@ -73,6 +73,12 @@ function DmUpdateForm() {
     preferredRole: ""
 
   })
+
+  function handleDeleteAccount(event){
+    API.deleteUser(id)
+    .then(history.push("/NewUser"))
+    .catch(err=>console.log(err))
+  }
   
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -618,9 +624,12 @@ function sundayOnChange(event){
                 </div>
               </div>
               <div className="row vertical-spacer-sm">
-                <div className="col s4 "></div>
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Cancel
+                </button>
+                <div className="col s1 "></div>
+                <button onClick={handleDeleteAccount} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                 Delte Your Account?
                 </button>
                 <div className="col s1 "></div>
                 <button onClick={handleFormSubmit} className="vertical-spacer-sm waves-effect waves-light btn col s3">
@@ -631,13 +640,6 @@ function sundayOnChange(event){
             </div>
           </div>
         </form>
-
-
-      <h5>Delete Your Account?</h5>
-      <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
-        Delte Your Account?
-      </button>
-
       </div>
     </>
   );
