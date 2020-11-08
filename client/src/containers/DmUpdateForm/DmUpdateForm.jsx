@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
+// TODO: Make sure to grab value from dropdown
+// TODO: Think about ways to dry up those functions
+// TODO: Make a put request with the formObject 
+
 function DmUpdateForm() {
   const {id} = useParams()
 
