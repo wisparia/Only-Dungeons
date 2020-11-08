@@ -1,129 +1,105 @@
 // import { load } from "npm";
 import React, { useEffect, useState } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
+import DmSearch from "../../components/DmSearch/DmSearch";
+import DmCheckbox from "../../components/DmCheckbox/DmCheckbox";
 import API from "../../utils/API";
 
 function DmDirectory() {
-  const [allDms, setDms] = useState([
-  ]);
+  const [allDms, setDms] = useState([]);
+  const [searchedDms, setSearchedDms] = useState([]);
+  const [categoryFilters, setFilters] = useState({
+    categories: [],
+  });
+  const searchedArrayDm = [];
 
   useEffect(() => {
-    loadDMs();
+    loadDms();
   }, []);
 
-  function loadDMs() {
+  function loadDms() {
     API.getDms()
-      .then((res) => setDms(res.data))
+      .then((res) => {
+        setDms(res.data);
+        setSearchedDms(res.data);
+      })
       .catch((err) => console.log(err));
   }
 
+  // function loadSearchDms() {
+  //   setSearchedDms
+  // }
+
+  function setOriginalDms() {
+    setSearchedDms(allDms);
+  }
+
+  function handleSearch(event) {
+    let searchedDm = event.target.value;
+    if (searchedDm === "") {
+      setOriginalDms();
+    } else {
+      setSearchedDms(
+        searchedDms.filter((dm) => {
+          return dm.userName.indexOf(searchedDm) !== -1;
+        })
+      );
+    }
+  }
+
+  const showFilteredResults = (filters) => {
+    // console.log(searchedDms);
+    // console.log(categoryFilters.categories);
+    if (categoryFilters.categories.length > 0) {
+      for (var i = 0; i < categoryFilters.categories.length; i++) {
+        let filterCategory = categoryFilters.categories[i];
+
+        for (var j = 0; j < searchedDms.length; j++) {
+          console.log("====================");
+          for (const [key, value] of Object.entries(
+            searchedDms[j].categoryType
+          )) {
+            if (key === filterCategory && value === true) {
+              if (searchedArrayDm.includes(filterCategory).pop())
+              searchedArrayDm.push(searchedDms[j])
+              
+              console.log(searchedArrayDm);
+              console.log(filterCategory);
+              // searchedDms.filter((dm) => {
+              // searchedArrayDm.push(dm)
+              // })
+            } 
+          }
+        }
+      }
+    }
+  }
+
+  const handleFilters = (filters, category) => {
+    // console.log(filters)
+    const newFilters = { ...categoryFilters };
+
+    newFilters[category] = filters;
+
+    showFilteredResults(newFilters);
+    setFilters(newFilters);
+  };
+
   return (
     <>
-      <div className="container">
-        <form className="content-border">
-          <input type="text" />
-          <input
-            className="vertical-spacer-sm waves-effect waves-light btn"
-            type="submit"
-          />
-        </form>
-      </div>
+      <DmSearch handleSearch={handleSearch} />
 
       <div className="row">
         <div className="col s3 content-border">
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>campaigns</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>oneshots</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>homebrew</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>byTheBook</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>rpersonly</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>norestriction</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>displaydice</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>lvl1only</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>voyuerallowed</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
+              <DmCheckbox
+                handleFilters={(filters) =>
+                  handleFilters(filters, "categories")
+                }
+              />
+
               <div className="col s12">
                 <h5>Availability:</h5>
               </div>
@@ -202,12 +178,8 @@ function DmDirectory() {
         </div>
 
         <div className="col s9 content-border">
-          {allDms.map((dm) => (
-            <Dmaster
-              key={dm.userName}
-              userName={dm.userName}
-              tagLine={dm.tagLine}
-            />
+          {searchedDms.map((dm) => (
+            <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} />
           ))}
         </div>
       </div>
