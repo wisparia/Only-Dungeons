@@ -8,11 +8,11 @@ import { resolve } from "path";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
+  const [filteredDms, setFilteredDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
   });
-  const filteredArrayDm = [];
 
   useEffect(() => {
     loadDms();
@@ -45,25 +45,50 @@ function DmDirectory() {
   }
 
   // handle filters is updating the state of our search from DmCheckbox.jsx
-  const handleFilters = async (filters, category) => {
+  const handleFilters = (filters, category) => {
+    if (filters.length === 0) {
+      setOriginalDms()
+    } else {
     console.log(filters)
-    const newFilters = await { ...categoryFilters };
+    const newFilters = { ...categoryFilters };
     newFilters[category] = filters;
-    const filterResult = await setFilters(newFilters);
-    const displayFilter = await showFilteredResults(filterResult);    
+    setFilters(newFilters);
+  }
+    // showFilteredResults(newFilters);    
   };
   
   // Using the array of filters we have to check agains the array of searchedDms
   // to see if the FILTERS we have match the categoryType.____ and if it is true
-  const showFilteredResults = (filters) => {
-    console.log(searchedDms)
-    // hardcoded position 0 for proof of concept
-    let filter = categoryFilters.categories[0]
-    searchedDms.filter((dm) => {
-      return (console.log(dm.categoryType.campaigns === true))
-    })
-    console.log(categoryFilters.categories);
-  }
+  // const showFilteredResults = (filters) => {
+  //   console.log(searchedDms)
+  //   // hardcoded position 0 for proof of concept
+  //   let filter = categoryFilters.categories[0]
+  //   searchedDms.filter((dm) => {
+  //     return (console.log(dm.categoryType.campaigns === true))
+  //   })
+  //   console.log(categoryFilters.categories);
+  // }
+
+  useEffect(() => {
+    let filtersArray = categoryFilters.categories;
+
+    setSearchedDms((prevState) => prevState.filter((dm) =>  {
+      for (const [key, value ] of Object.entries(dm.categoryType)) {
+        console.log(key, value)
+        if (key === filtersArray[0] && value === true) {
+        console.log(dm)
+
+        // setSearchedDms(filteredDMs)
+        // filteredDMs = []  // filteredDMs.push(dm)
+        return dm
+        }
+      }
+
+    }))
+  }, [categoryFilters.categories])
+
+
+
 
   return (
     <>
