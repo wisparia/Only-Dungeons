@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
@@ -8,6 +8,8 @@ import API from "../../utils/API"
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
+
+  const history = useHistory()
   const {id} = useParams()
 
   const [dm, setDm] = useState({
@@ -52,7 +54,7 @@ function DmUpdateForm() {
       campaigns: false,
       norestriction: false,
       homebrew: false,
-      lvl1only: false,
+      lvl1only: false, 
       rpersonly: false,
       oneshots: false,
       displaydice: false,
@@ -70,16 +72,59 @@ function DmUpdateForm() {
     preferredRole: ""
 
   })
+
+  function handleDeleteAccount(event){
+    event.preventDefault()
+    const userId = id
+    history.push("/")
+    API.deleteUser(userId)
+    .then(console.log("Your journey has ended..."))
+    
+  }
   
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value})
   };
 
-  function test (event) {
-    event.preventDefault()
-    console.log(formObject)
+  function handleDropDownChange(e){
+    console.log(e.target.value)
+    let selectedRole = e.target.value
+    setFormObject({...formObject, preferredRole: selectedRole})
   }
+  
+  // UPDATING USER
+  function handleFormSubmit(event) {
+    event.preventDefault();
+      API.updateUser(id, {
+        roomName: formObject.roomName,
+        tagLine: formObject.tagLine,
+        categoryType:{
+          byTheBook: formObject.categoryType.byTheBook,
+          campaigns: formObject.categoryType.campaigns,
+          norestriction: formObject.categoryType.norestriction,
+          homebrew: formObject.categoryType.homebrew,
+          lvl1only: formObject.categoryType.lvl1only,
+          rpersonly: formObject.categoryType.rprsonly,
+          oneshots: formObject.categoryType.oneshots,
+          displaydice: formObject.categoryType.displaydice,
+          voyuerallowed: formObject.categoryType.voyuerallowed
+        },
+        availability:{
+          monday: formObject.availability.monday,
+          tuesday: formObject.availability.tuesday, 
+          wednesday: formObject.availability.wednesday,
+          thursday: formObject.availability.thursday,
+          friday: formObject.availability.friday,
+          saturday: formObject.availability.saturday,
+          sunday: formObject.availability.sunday
+        }
+      })
+      .then(response=>console.log(response))
+      .then(history.go(0))
+      .catch((err)=> console.error(err))
+  
+  };
 
 
 
@@ -107,12 +152,9 @@ function DmUpdateForm() {
         friday: response.data.availability.friday,
         saturday: response.data.availability.saturday,
         sunday: response.data.availability.sunday
-      }
+      },
+      preferredRole: response.data.preferredRole
     })
-    // .then((res)=> {
-    //   console.log(res.data.categoryType.campaigns)
-    //   setDm(res.data)})
-    // .catch((err)=> console.log(err, "Could not reach page"))
   },[])
 
 
@@ -154,6 +196,7 @@ function DmUpdateForm() {
       }
   }))
   }
+
 
   // byTheBook
   function byTheBookOnChange(event){
@@ -336,15 +379,15 @@ function sundayOnChange(event){
     <>
       <div className="container">
         <div className="row section"></div>
-
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
             <div className="col s6">
-            <p>Room Name: </p>
+            {dm.isDm ? <>
+              <p>Room Name: </p>
               <div className="content-border">
-                <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
+              <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
               </div>
-
+            </> : null}
             <p>Tagline: </p>
               <div className="content-border">
                 <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
@@ -360,26 +403,26 @@ function sundayOnChange(event){
                 />
               </div>
 
-              <p>Preferred Role: </p>
-              <div className="content-border">
-                <select className="browser-default">
-                  <option value="" disabled selected>
-                    Select
-                  </option>
-                  {dm.prefferedRole === "Barbarian" ? <option selected value="Barbarian">Barbarian</option> : <option value="Barbarian">Barbarian</option>}
-                  {dm.prefferedRole === "Bard" ? <option selected value="Bard">Bard</option> : <option value="Bard">Bard</option>}
-                  {dm.prefferedRole === "Cleric" ? <option selected value="Cleric">Cleric</option> : <option value="Cleric">Cleric</option>}
-                  {dm.prefferedRole === "Druid" ? <option selected value="Druid">Druid</option> : <option value="Druid">Druid</option>}
-                  {dm.prefferedRole === "Fighter" ? <option selected value="Fighter">Fighter</option> : <option value="Fighter">Fighter</option>}
-                  {dm.prefferedRole === "Monk" ? <option selected value="Monk">Monk</option> : <option value="Monk">Monk</option>}
-                  {dm.prefferedRole === "Paladin" ? <option selected value="Paladin">Paladin</option> : <option value="Paladin">Paladin</option>}
-                  {dm.prefferedRole === "Ranger" ? <option selected value="Ranger">Ranger</option> : <option value="Ranger">Ranger</option>}
-                  {dm.prefferedRole === "Rogue" ? <option selected value="Rogue">Rogue</option> : <option value="Rogue">Rogue</option>}
-                  {dm.prefferedRole === "Sorcerer" ? <option selected value="Sorcerer">Sorcerer</option> : <option value="Sorcerer">Sorcerer</option>}
-                  {dm.prefferedRole === "Warlock" ? <option selected value="Warlock">Warlock</option> : <option value="Warlock">Warlock</option>}
-                  {dm.prefferedRole === "Wizard" ? <option selected value="Wizard">Wizard</option> : <option value="Wizard">Wizard</option>}
-                </select>
-              </div>
+            {!dm.isDm ? <> <p>Preferred Role: </p>
+            <div className="content-border">
+              <select className="browser-default" onChange={handleDropDownChange}>
+                <option value="" disabled selected> 
+                  Select
+                </option>
+                {dm.preferredRole === "Barbarian" ? <option selected name="preferredRole" value="Barbarian">Barbarian</option> : <option name="preferredRole" value="Barbarian">Barbarian</option>}
+                {dm.preferredRole === "Bard" ? <option selected name="preferredRole" value="Bard">Bard</option> : <option name="preferredRole" value="Bard">Bard</option>}
+                {dm.preferredRole === "Cleric" ? <option selected name="preferredRole" value="Cleric">Cleric</option> : <option name="preferredRole" value="Cleric">Cleric</option>}
+                {dm.preferredRole === "Druid" ? <option selected name="preferredRole" value="Druid">Druid</option> : <option name="preferredRole" value="Druid">Druid</option>}
+                {dm.preferredRole === "Fighter" ? <option selected name="preferredRole" value="Fighter">Fighter</option> : <option name="preferredRole" value="Fighter">Fighter</option>}
+                {dm.preferredRole === "Monk" ? <option selected name="preferredRole" value="Monk">Monk</option> : <option onChange={handleDropDownChange} name="preferredRole" value="Monk">Monk</option>}
+                {dm.preferredRole === "Paladin" ? <option selected name="preferredRole" value="Paladin">Paladin</option> : <option name="preferredRole" value="Paladin">Paladin</option>}
+                {dm.preferredRole === "Ranger" ? <option selected name="preferredRole" value="Ranger">Ranger</option> : <option name="preferredRole" value="Ranger">Ranger</option>}
+                {dm.preferredRole === "rogue" ? <option selected name="preferredRole" value="Rogue">Rogue</option> : <option name="preferredRole" value="Rogue">Rogue</option>}
+                {dm.preferredRole === "Sorcerer" ? <option selected name="preferredRole" value="Sorcerer">Sorcerer</option> : <option name="preferredRole" value="Sorcerer">Sorcerer</option>}
+                {dm.preferredRole === "Warlock" ? <option selected name="preferredRole" value="Warlock">Warlock</option> : <option name="preferredRole" value="Warlock">Warlock</option>}
+                {dm.preferredRole === "Wizard" ? <option selected name="preferredRole" value="Wizard">Wizard</option> : <option name="preferredRole" value="Wizard">Wizard</option>}
+              </select>
+            </div> </> : null}
             </div>
           </div>
 
@@ -583,12 +626,15 @@ function sundayOnChange(event){
                 </div>
               </div>
               <div className="row vertical-spacer-sm">
-                <div className="col s4 "></div>
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Cancel
                 </button>
                 <div className="col s1 "></div>
-                <button onClick={test} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                 Delte Your Account?
+                </button>
+                <div className="col s1 "></div>
+                <button onClick={handleFormSubmit} className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Update Account
                 </button>
                 <div className="col s1 "></div>
@@ -596,13 +642,6 @@ function sundayOnChange(event){
             </div>
           </div>
         </form>
-
-
-      <h5>Delete Your Account?</h5>
-      <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
-        Delte Your Account?
-      </button>
-
       </div>
     </>
   );

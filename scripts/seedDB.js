@@ -38,7 +38,7 @@ const userSeed = [
             saturday: true,
             sunday: false
         }, 
-        preferredRole: "rogue"
+        preferredRole: "Rogue"
     },
 
     {
@@ -68,7 +68,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "paladin"
+        preferredRole: "Paladin"
     },
 
     {
@@ -98,7 +98,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "warlock"
+        preferredRole: "Warlock"
     },
 
     {
@@ -127,7 +127,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "barbarian"
+        preferredRole: "Barbarian"
     }, 
     {
         userName: "Feisty_Ferret",
@@ -185,7 +185,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "wizard"
+        preferredRole: "Wizard"
     },
     {
         userName: "titacularTonks",
@@ -214,7 +214,7 @@ const userSeed = [
             saturday: false,
             sunday: true
         }, 
-        preferredRole: "rogue"
+        preferredRole: "Rogue"
     },
     {
         userName: "Wisparia",
@@ -243,7 +243,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "druid"
+        preferredRole: "Druid"
     },
     {
         userName: "Game_Grunt",
@@ -272,7 +272,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "cleric"
+        preferredRole: "Cleric"
     },
     {
         userName: "KitFisto",
@@ -300,7 +300,7 @@ const userSeed = [
             saturday: false,
             sunday: false
         }, 
-        preferredRole: "paladin"
+        preferredRole: "Paladin"
     },
     {
         userName: "Ol' Tut",
@@ -328,7 +328,7 @@ const userSeed = [
             saturday: true,
             sunday: false
         }, 
-        preferredRole: "cleric"
+        preferredRole: "Cleric"
     },
     {
         userName: "Claudia_Minx",
@@ -356,7 +356,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "warlock"
+        preferredRole: "Warlock"
     },
     {
         userName: "Frost_Fey",
@@ -385,7 +385,7 @@ const userSeed = [
             saturday: true,
             sunday: true
         }, 
-        preferredRole: "druid"
+        preferredRole: "Druid"
     },
     {
         userName: "Shadowfiend",
@@ -414,7 +414,7 @@ const userSeed = [
             saturday: false,
             sunday: true
         }, 
-        preferredRole: "ranger"
+        preferredRole: "Ranger"
     }
 
 ];

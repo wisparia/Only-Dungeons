@@ -9,20 +9,22 @@ export default {
   getDms: function () {
     return axios.get("/api/users/dms");
   },
-  // Gets the book with the given id
+  // Gets the user with the given id
   getUser: function (userId) {
     return axios.get(`/api/users/${userId}`);
   },
-  // Deletes the book with the given id
+  // Deletes the user with the given id
   deleteUser: function (userId) {
     return axios.delete(`/api/users/${userId}`);
   },
-  // Saves a book to the database
+  // Saves a user to the database
   saveUser: function (userData) {
     console.log(userData)
     return axios.post("/api/users", userData);
   },
-  updateUser: function (id) {
-    return axios.put("/api/users" + id);
+
+  // Updates a user in the database
+  updateUser: function (id, userData) {
+    return axios.put("/api/users/" + id, userData);
   },
 };
