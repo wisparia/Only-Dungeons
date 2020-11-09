@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom" 
 import PlaceHolderImg from "./placeholder200x200.jpg";
+import "./Dmaster.css";
 
 function Dmaster({ userName, tagLine, id }) {
   return (

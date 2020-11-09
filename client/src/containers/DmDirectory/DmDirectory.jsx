@@ -111,9 +111,9 @@ function DmDirectory() {
     <>
       <DmSearch handleSearch={handleSearch} />
       <div className="row">
-        <div className="col s3 content-border">
+        <div className="col s12 m12 l4 content-border">
           <div className="row">
-            <div className="col s12">
+            <div className="col s6 l12">
               <h5>Category:</h5>
               <DmCategoryCheckbox
                 handleFilters={(filters) =>
@@ -121,7 +121,7 @@ function DmDirectory() {
                 }
               />
 
-              <div className="col s12">
+              <div className="col s6 l12">
                 <h5>Availability:</h5>
               </div>
               <DmAvailabilityCheckbox
@@ -133,7 +133,7 @@ function DmDirectory() {
           </div>
         </div>
 
-        <div className="col s9 content-border">
+        <div className="col s12 m12 l8 content-border">
           {searchedDms.map((dm) => (
             <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} id={dm._id} />
           ))}
