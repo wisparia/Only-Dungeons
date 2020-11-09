@@ -136,7 +136,7 @@ function DmDirectory() {
 
         <div className="col s9 content-border">
           {searchedDms.map((dm) => (
-            <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} />
+            <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} id={dm._id} />
           ))}
         </div>
       </div>

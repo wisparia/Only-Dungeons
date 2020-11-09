@@ -1,9 +1,11 @@
 import React from "react";
+import {Link} from "react-router-dom" 
 import PlaceHolderImg from "./placeholder200x200.jpg";
 
-function Dmaster({ userName, tagLine }) {
+function Dmaster({ userName, tagLine, id }) {
   return (
     <>
+    <Link to={`/dmone/${id}`} >
       <div className="card row">
         <img
           src={PlaceHolderImg}
@@ -14,6 +16,7 @@ function Dmaster({ userName, tagLine }) {
         <h5 className="col s4">{userName}</h5>
         <p className="col s6">{tagLine}</p>
       </div>
+      </Link>
     </>
   );
 }
