@@ -134,6 +134,7 @@ function DmDirectory() {
         </div>
 
         <div className="col s12 m12 l8 content-border">
+          <h5>Matched Games:</h5>
           {searchedDms.map((dm) => (
             <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} id={dm._id} />
           ))}
