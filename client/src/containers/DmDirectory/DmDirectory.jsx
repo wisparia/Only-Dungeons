@@ -8,7 +8,7 @@ import API from "../../utils/API";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
-  const [filteredDms, setFilteredDms] = useState([]);
+  // const [filteredDms, setFilteredDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
@@ -75,7 +75,7 @@ function DmDirectory() {
     console.log("USE EFFECT OF CHECKBOXES");
     let filtersArray = categoryFilters.categories;
     for (let i = 0; i < filtersArray.length; i++) {
-      let x = i + 1;
+      // let x = i + 1;
       setSearchedDms((prevState) =>
         prevState.filter((dm) => {
           for (const [key, value] of Object.entries(dm.categoryType)) {
@@ -94,7 +94,7 @@ function DmDirectory() {
     console.log("USE EFFECT OF CHECKBOXES");
     let dayFiltersArray = availabilityFilters.days;
     for (let i = 0; i < dayFiltersArray.length; i++) {
-      let x = i + 1;
+      // let x = i + 1;
       setSearchedDms((prevState) =>
         prevState.filter((dm) => {
           for (const [key, value] of Object.entries(dm.availability)) {
@@ -110,7 +110,6 @@ function DmDirectory() {
   return (
     <>
       <DmSearch handleSearch={handleSearch} />
-
       <div className="row">
         <div className="col s3 content-border">
           <div className="row">

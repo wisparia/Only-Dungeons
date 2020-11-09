@@ -15,14 +15,3 @@ const DmSearch = ({handleSearch}) => {
 };
 
 export default DmSearch;
-
-
-      {/* <div className="container">
-        <form className="content-border">
-          <input type="text" />
-          <input
-            className="vertical-spacer-sm waves-effect waves-light btn"
-            type="submit"
-          />
-        </form>
-      </div> */}

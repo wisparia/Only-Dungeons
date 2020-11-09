@@ -13,7 +13,7 @@ function Dmaster({ userName, tagLine, id }) {
           className="col s2"
           style={{ width: "80px" }}
         />
-        <h5 className="col s4">{userName}</h5>
+        <p className="col s4">{userName}</p>
         <p className="col s6">{tagLine}</p>
       </div>
       </Link>
