@@ -22,8 +22,6 @@ function NewUser1() {
       isDm: value === "1" ? true : false  });
   }
   
-
-
   function handleFormSubmit(event) {
     event.preventDefault();
       API.saveUser({

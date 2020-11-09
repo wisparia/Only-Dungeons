@@ -35,6 +35,10 @@ function DmDirectory() {
   function setOriginalDms() {
     setSearchedDms(allDms);
   }
+  // watch out there cowboy
+  function setUnoriginalDms() {
+    setSearchedDms(searchedDms);
+  }
 
   function handleSearch(event) {
     let searchedDm = event.target.value;
@@ -50,7 +54,7 @@ function DmDirectory() {
   }
 
   const handleFilters = (filters, category) => {
-    if (filters.length === 0) {
+    if (filters.length === 0 && availabilityFilters.days.length === 0) {
       setOriginalDms();
       // setFilters()
     } else {
@@ -61,7 +65,7 @@ function DmDirectory() {
   };
 
   const handleDayFilters = (dayFilters, day) => {
-    if (dayFilters.length === 0) {
+    if (dayFilters.length === 0 && categoryFilters.categories.length === 0) {
       setOriginalDms();
     } else {
       const newFilters = { ...availabilityFilters };
@@ -71,41 +75,97 @@ function DmDirectory() {
   };
 
   useEffect(() => {
-    setOriginalDms();
-    console.log("USE EFFECT OF CHECKBOXES");
-    let filtersArray = categoryFilters.categories;
-    for (let i = 0; i < filtersArray.length; i++) {
-      // let x = i + 1;
-      setSearchedDms((prevState) =>
-        prevState.filter((dm) => {
-          for (const [key, value] of Object.entries(dm.categoryType)) {
-            // console lo the amount of times the array works through
-            if (key === filtersArray[i] && value === true) {
-              return dm;
-            }
-          }
-        })
-      );
-    }
-  }, [categoryFilters.categories]);
 
-  useEffect(() => {
-    setOriginalDms();
-    console.log("USE EFFECT OF CHECKBOXES");
-    let dayFiltersArray = availabilityFilters.days;
-    for (let i = 0; i < dayFiltersArray.length; i++) {
-      // let x = i + 1;
-      setSearchedDms((prevState) =>
-        prevState.filter((dm) => {
-          for (const [key, value] of Object.entries(dm.availability)) {
-            if (key === dayFiltersArray[i] && value === true) {
-              return dm;
+    if (
+      availabilityFilters.days.length > 0 &&
+      categoryFilters.categories.length > 0
+    ) {
+      // setUnoriginalDms();
+      setOriginalDms();
+      let dayFiltersArray = availabilityFilters.days;
+      let filtersArray = categoryFilters.categories;
+      for (let i = 0; i < filtersArray.length; i++) {
+        setSearchedDms((prevState) =>
+          prevState.filter((dm) => {
+            for (const [key, value] of Object.entries(dm.categoryType)) {
+              if (key === filtersArray[i] && value === true) {
+                return dm;
+              }
             }
-          }
-        })
-      );
+          })
+        );
+      }
+      for (let i = 0; i < dayFiltersArray.length; i++) {
+        setSearchedDms((prevState) =>
+          prevState.filter((dm) => {
+            for (const [key, value] of Object.entries(dm.availability)) {
+              if (key === dayFiltersArray[i] && value === true) {
+                return dm;
+              }
+            }
+          })
+        );
+      }
+    } else {
+      setOriginalDms();
+      let dayFiltersArray = availabilityFilters.days;
+      let filtersArray = categoryFilters.categories;
+      for (let i = 0; i < filtersArray.length; i++) {
+        setSearchedDms((prevState) =>
+          prevState.filter((dm) => {
+            for (const [key, value] of Object.entries(dm.categoryType)) {
+              if (key === filtersArray[i] && value === true) {
+                return dm;
+              }
+            }
+          })
+        );
+      }
+      for (let i = 0; i < dayFiltersArray.length; i++) {
+        setSearchedDms((prevState) =>
+          prevState.filter((dm) => {
+            for (const [key, value] of Object.entries(dm.availability)) {
+              if (key === dayFiltersArray[i] && value === true) {
+                return dm;
+              }
+            }
+          })
+        );
+      }
     }
-  }, [availabilityFilters.days]);
+  }, [categoryFilters.categories, availabilityFilters.days]);
+
+  // useEffect(() => {
+  //   if (categoryFilters.categories.length > 0)  {
+  //     setUnoriginalDms();
+  //     let dayFiltersArray = availabilityFilters.days;
+  //     for (let i = 0; i < dayFiltersArray.length; i++) {
+  //       setSearchedDms((prevState) =>
+  //         prevState.filter((dm) => {
+  //           for (const [key, value] of Object.entries(dm.availability)) {
+  //             if (key === dayFiltersArray[i] && value === true) {
+  //               return dm;
+  //             }
+  //           }
+  //         })
+  //       );
+  //     }
+  // } else {
+  //   setOriginalDms();
+  //   let dayFiltersArray = availabilityFilters.days;
+  //   for (let i = 0; i < dayFiltersArray.length; i++) {
+  //     setSearchedDms((prevState) =>
+  //       prevState.filter((dm) => {
+  //         for (const [key, value] of Object.entries(dm.availability)) {
+  //           if (key === dayFiltersArray[i] && value === true) {
+  //             return dm;
+  //           }
+  //         }
+  //       })
+  //     );
+  //   }
+  // }
+  // }, [availabilityFilters.days]);
 
   return (
     <>
@@ -135,7 +195,12 @@ function DmDirectory() {
 
         <div className="col s9 content-border">
           {searchedDms.map((dm) => (
-            <Dmaster key={dm._id} userName={dm.userName} tagLine={dm.tagLine} id={dm._id} />
+            <Dmaster
+              key={dm._id}
+              userName={dm.userName}
+              tagLine={dm.tagLine}
+              id={dm._id}
+            />
           ))}
         </div>
       </div>
