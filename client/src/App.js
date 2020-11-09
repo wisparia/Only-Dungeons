@@ -7,9 +7,10 @@ import PcForm from "./containers/PcForm/PcForm";
 import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
+import ThreeD from "./containers/ThreeD/ThreeD"
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "materialize-css";
-// import { Button, Card, Row, Col } from "react-materialize";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/DmDirectory" component={DmDirectory} />
           <Route exact path="/DmOne/:id" component={DmOne} />
           <Route exact path="/UpdateForm/:id" component={UpdateForm} />
+          <Route exact path="/ThreeD/:id" component={ThreeD} />
           <Route path="/" component={SigninPage} />
         </Switch>
       </Router>
