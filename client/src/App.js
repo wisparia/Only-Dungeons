@@ -6,7 +6,7 @@ import DmForm from "./containers/DmForm/DmForm";
 import PcForm from "./containers/PcForm/PcForm";
 import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
-import DmUpdateForm from "./containers/DmUpdateForm/DmUpdateForm";
+import UpdateForm from "./containers/UpdateForm/UpdateForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "materialize-css";
 // import { Button, Card, Row, Col } from "react-materialize";
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/DmForm/:id" component={DmForm} />
           <Route exact path="/DmDirectory" component={DmDirectory} />
           <Route exact path="/DmOne/:id" component={DmOne} />
-          <Route exact path="/DmUpdateForm/:id" component={DmUpdateForm} />
+          <Route exact path="/UpdateForm/:id" component={UpdateForm} />
           <Route path="/" component={SigninPage} />
         </Switch>
       </Router>
