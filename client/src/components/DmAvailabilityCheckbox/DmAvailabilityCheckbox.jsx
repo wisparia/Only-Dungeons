@@ -39,7 +39,7 @@ const DmAvailabilityCheckbox = (props) => {
       setCheckboxes(availabilityCheckboxes);
     }, []);
 
-    const handleToggle = (value) => {
+    const handleDayToggle = (value) => {
         const currentIndex = Checked.indexOf(value);
         const newChecked = [...Checked]
 
@@ -68,7 +68,7 @@ const DmAvailabilityCheckbox = (props) => {
               type="checkbox"
               name={checkboxItem.name}
               value={checkboxItem.name}
-              onChange={() => handleToggle(checkboxItem.name)}
+              onChange={() => handleDayToggle(checkboxItem.name)}
               checked={Checked.indexOf(checkboxItem.name) === -1 ? false : true}
             />
             <span>

@@ -60,13 +60,12 @@ function DmDirectory() {
   };
 
   const handleDayFilters = (dayFilters, day) => {
-    if (dayFilters.length === 0 && filters.length === 0) {
+    if (dayFilters.length === 0) {
       setOriginalDms();
-      // setFilters()
     } else {
       const newFilters = { ...availabilityFilters };
-      newFilters[availability] = dayFilters;
-      setFilters(newFilters);
+      newFilters[day] = dayFilters;
+      setAvailabilityFilters(newFilters);
     }
   };
 
@@ -89,6 +88,24 @@ function DmDirectory() {
     }
   }, [categoryFilters.categories]);
 
+  useEffect(() => {
+    setOriginalDms();
+    console.log("USE EFFECT OF CHECKBOXES");
+    let dayFiltersArray = availabilityFilters.days;
+    for (let i = 0; i < dayFiltersArray.length; i++) {
+      let x = i + 1;
+      setSearchedDms((prevState) =>
+        prevState.filter((dm) => {
+          for (const [key, value] of Object.entries(dm.availability)) {
+            if (key === dayFiltersArray[i] && value === true) {
+              return dm;
+            }
+          }
+        })
+      );
+    }
+  }, [availabilityFilters.days]);
+
   return (
     <>
       <DmSearch handleSearch={handleSearch} />
@@ -109,7 +126,7 @@ function DmDirectory() {
               </div>
               <DmAvailabilityCheckbox
                 handleDayFilters={(dayFilters) =>
-                  handleFilters(dayFilters, "days")
+                  handleDayFilters(dayFilters, "days")
                 }
               />
             </div>
