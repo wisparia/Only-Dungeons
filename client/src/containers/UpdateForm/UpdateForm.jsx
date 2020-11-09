@@ -119,7 +119,8 @@ function DmUpdateForm() {
           friday: formObject.availability.friday,
           saturday: formObject.availability.saturday,
           sunday: formObject.availability.sunday
-        }
+        },
+        preferredRole: formObject.preferredRole
       })
       .then(response=>console.log(response))
       .then(history.go(0))
