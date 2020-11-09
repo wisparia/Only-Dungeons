@@ -12,9 +12,9 @@ function Navbar() {
       </div>
       <div className="nav-content">
         <ul className="tabs tabs-transparent">
-          <li className="tab"><a href="#test1">Home</a></li>
-          <li className="tab"><a href="#test2">Games</a></li>
-          <li className="tab"><a href="#test3">Profile</a></li>
+          <li className="tab"><Link to="/">Home</Link></li>
+          <li className="tab"><Link to="/dmdirectory">Games</Link></li>
+          <li className="tab"><Link to="/PcForm/:id">Profile</Link></li>
           <li className="tab"><a href="#test4">Logout</a></li>
         </ul>
       </div>
