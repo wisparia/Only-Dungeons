@@ -39,6 +39,38 @@ const categoryCheckboxes = [
   },
 ];
 
+const availabilityCheckboxes = [
+  {
+    _id: 1,
+    name: "monday",
+  },
+  {
+    _id: 2,
+    name: "tuesday",
+  },
+  {
+    _id: 3,
+    name: "wednesday",
+  },
+  {
+    _id: 4,
+    name: "thursday",
+  },
+  {
+    _id: 5,
+    name: "friday",
+  },
+  {
+    _id: 6,
+    name: "saturday",
+  },
+  {
+    _id: 7,
+    name: "sunday",
+  }
+]
+
+
 const DmCheckbox = (props) => {
   const [checkboxItems, setCheckboxes] = useState([]);
   const [Checked, setChecked] = useState([]);
