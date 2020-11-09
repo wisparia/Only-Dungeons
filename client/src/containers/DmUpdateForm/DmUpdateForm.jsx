@@ -1,5 +1,5 @@
 import React, { useEffect, useState, } from "react";
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 
@@ -9,7 +9,7 @@ import API from "../../utils/API"
 
 function DmUpdateForm() {
 
-  const history = useHistory
+  const history = useHistory()
   const {id} = useParams()
 
   const [dm, setDm] = useState({
@@ -55,7 +55,7 @@ function DmUpdateForm() {
       campaigns: false,
       norestriction: false,
       homebrew: false,
-      lvl1only: false,
+      lvl1only: false, 
       rpersonly: false,
       oneshots: false,
       displaydice: false,
@@ -75,9 +75,12 @@ function DmUpdateForm() {
   })
 
   function handleDeleteAccount(event){
-    API.deleteUser(id)
-    .then(history.push("/NewUser"))
-    .catch(err=>console.log(err))
+    event.preventDefault()
+    const userId = id
+    history.push("/NewUser")
+    API.deleteUser(userId)
+    .then(console.log("Your journey has ended..."))
+    
   }
   
   function handleInputChange(event) {
@@ -194,6 +197,7 @@ function DmUpdateForm() {
       }
   }))
   }
+
 
   // byTheBook
   function byTheBookOnChange(event){
@@ -628,7 +632,7 @@ function sundayOnChange(event){
                   Cancel
                 </button>
                 <div className="col s1 "></div>
-                <button onClick={handleDeleteAccount} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
                  Delte Your Account?
                 </button>
                 <div className="col s1 "></div>
