@@ -12,8 +12,11 @@ function DmDirectory() {
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
-    days: []
   });
+  const [availabilityFilters, setAvailabilityFilters] = useState({
+    days: [],
+  });
+
 
   useEffect(() => {
     loadDms();
@@ -56,6 +59,17 @@ function DmDirectory() {
     }
   };
 
+  const handleDayFilters = (dayFilters, day) => {
+    if (dayFilters.length === 0 && filters.length === 0) {
+      setOriginalDms();
+      // setFilters()
+    } else {
+      const newFilters = { ...availabilityFilters };
+      newFilters[availability] = dayFilters;
+      setFilters(newFilters);
+    }
+  };
+
   useEffect(() => {
     setOriginalDms();
     console.log("USE EFFECT OF CHECKBOXES");
@@ -94,8 +108,8 @@ function DmDirectory() {
                 <h5>Availability:</h5>
               </div>
               <DmAvailabilityCheckbox
-                handleFilters={(filters) =>
-                  handleFilters(filters, "days")
+                handleDayFilters={(dayFilters) =>
+                  handleFilters(dayFilters, "days")
                 }
               />
             </div>

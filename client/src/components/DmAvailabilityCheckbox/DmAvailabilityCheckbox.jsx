@@ -50,7 +50,7 @@ const DmAvailabilityCheckbox = (props) => {
           }
           setChecked(newChecked);
           // giving our newChecked items to the handleFilters()
-          props.handleFilters(newChecked)
+          props.handleDayFilters(newChecked)
     }
 
     const checkChecked = () => {
