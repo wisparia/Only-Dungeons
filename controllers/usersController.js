@@ -31,6 +31,8 @@ module.exports = {
     .catch(err=> res.json(err))
   },
 
+  // Authentication would go here 
+
   updateField: function(req,res){
     // console.log("route hit")
     console.log(req.body)
