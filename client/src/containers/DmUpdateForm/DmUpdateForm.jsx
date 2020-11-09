@@ -118,7 +118,8 @@ function DmUpdateForm() {
           friday: formObject.availability.friday,
           saturday: formObject.availability.saturday,
           sunday: formObject.availability.sunday
-        }
+        },
+        preferredRole: formObject.preferredRole
       })
       .then(response=>console.log(response))
       .then(history.go(0))
@@ -417,7 +418,7 @@ function sundayOnChange(event){
                 {dm.preferredRole === "Monk" ? <option selected name="preferredRole" value="Monk">Monk</option> : <option onChange={handleDropDownChange} name="preferredRole" value="Monk">Monk</option>}
                 {dm.preferredRole === "Paladin" ? <option selected name="preferredRole" value="Paladin">Paladin</option> : <option name="preferredRole" value="Paladin">Paladin</option>}
                 {dm.preferredRole === "Ranger" ? <option selected name="preferredRole" value="Ranger">Ranger</option> : <option name="preferredRole" value="Ranger">Ranger</option>}
-                {dm.preferredRole === "rogue" ? <option selected name="preferredRole" value="Rogue">Rogue</option> : <option name="preferredRole" value="Rogue">Rogue</option>}
+                {dm.preferredRole === "Rogue" ? <option selected name="preferredRole" value="Rogue">Rogue</option> : <option name="preferredRole" value="Rogue">Rogue</option>}
                 {dm.preferredRole === "Sorcerer" ? <option selected name="preferredRole" value="Sorcerer">Sorcerer</option> : <option name="preferredRole" value="Sorcerer">Sorcerer</option>}
                 {dm.preferredRole === "Warlock" ? <option selected name="preferredRole" value="Warlock">Warlock</option> : <option name="preferredRole" value="Warlock">Warlock</option>}
                 {dm.preferredRole === "Wizard" ? <option selected name="preferredRole" value="Wizard">Wizard</option> : <option name="preferredRole" value="Wizard">Wizard</option>}
