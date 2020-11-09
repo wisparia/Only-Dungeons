@@ -159,7 +159,6 @@ function DmUpdateForm() {
     })
   },[])
 
-
   // TODO: FIND A WAY TO INJECT EVENT.NAME INSTEAD OF REPEAT THIS NIGHTMARE
   function campaignOnChange(event){
     event.stopPropagation()

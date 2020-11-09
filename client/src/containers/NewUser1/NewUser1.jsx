@@ -22,30 +22,6 @@ function NewUser1() {
     const { value } = event.target;
     setNewUserObject({ ...newUserObj, isDm: value === "1" ? true : false });
   }
-<<<<<<< HEAD
-  
-  function handleFormSubmit(event) {
-    event.preventDefault();
-      API.saveUser({
-        userName: newUserObj.userName,
-        email: newUserObj.email,
-        password: newUserObj.password,
-        isDm: newUserObj.isDm,
-      })
-        .then(() =>
-          setNewUserObject({
-            userName: "",
-            email: "",
-            password: "",
-            isDm: false,
-          })
-        )
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-=======
->>>>>>> fa1f8e7fb0346635ba822765974f6ac78b2084bb
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -56,6 +32,7 @@ function NewUser1() {
       isDm: newUserObj.isDm,
     })
       .then((result) => {
+        console.log(result)
         const userID = result.data._id
         history.push(`/UpdateForm/${userID}`)
       });
