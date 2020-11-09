@@ -17,6 +17,7 @@ function DmDirectory() {
     days: [],
   });
 
+  // Address clearing search when something is unselected && being able to use both category & availability filtering.
 
   useEffect(() => {
     loadDms();
