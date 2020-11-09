@@ -8,3 +8,5 @@ router.route("/signUp")
 // Matches with "/auth/login"
 // router.route("/login")
 // .post(authController.)
+
+module.exports = router;
