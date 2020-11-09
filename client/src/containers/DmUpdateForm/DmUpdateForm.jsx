@@ -77,7 +77,7 @@ function DmUpdateForm() {
   function handleDeleteAccount(event){
     event.preventDefault()
     const userId = id
-    history.push("/NewUser")
+    history.push("/")
     API.deleteUser(userId)
     .then(console.log("Your journey has ended..."))
     
