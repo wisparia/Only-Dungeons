@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
 import DmSearch from "../../components/DmSearch/DmSearch";
-import DmCheckbox from "../../components/DmCheckbox/DmCheckbox";
+import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
+import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
-import { resolve } from "path";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
@@ -12,6 +12,7 @@ function DmDirectory() {
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
+    days: []
   });
 
   useEffect(() => {
@@ -57,21 +58,20 @@ function DmDirectory() {
 
   useEffect(() => {
     setOriginalDms();
-    console.log("USE EFFECT OF CHECKBOXES")
+    console.log("USE EFFECT OF CHECKBOXES");
     let filtersArray = categoryFilters.categories;
     for (let i = 0; i < filtersArray.length; i++) {
-    let x = i + 1;
-        setSearchedDms((prevState) =>
+      let x = i + 1;
+      setSearchedDms((prevState) =>
         prevState.filter((dm) => {
-            for (const [key, value] of Object.entries(dm.categoryType)) {
-              // console lo the amount of times the array works through
-              if (key === filtersArray[i] && value === true) {
-                return dm;
-              }
+          for (const [key, value] of Object.entries(dm.categoryType)) {
+            // console lo the amount of times the array works through
+            if (key === filtersArray[i] && value === true) {
+              return dm;
             }
-          })
-        );
-  
+          }
+        })
+      );
     }
   }, [categoryFilters.categories]);
 
@@ -84,7 +84,7 @@ function DmDirectory() {
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              <DmCheckbox
+              <DmCategoryCheckbox
                 handleFilters={(filters) =>
                   handleFilters(filters, "categories")
                 }
@@ -93,76 +93,11 @@ function DmDirectory() {
               <div className="col s12">
                 <h5>Availability:</h5>
               </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Monday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Tuesday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Wednesday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Thursday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Friday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Saturday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Sunday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
+              <DmAvailabilityCheckbox
+                handleFilters={(filters) =>
+                  handleFilters(filters, "days")
+                }
+              />
             </div>
           </div>
         </div>
