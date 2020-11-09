@@ -40,7 +40,6 @@ function DmUpdateForm() {
       sunday: false
     },
     preferredRole: ""
-
   });
 
   const [formObject, setFormObject] = useState({
@@ -335,7 +334,6 @@ function thursdayOnChange(event){
 }
 
 // friday
-
 function fridayOnChange(event){
   event.stopPropagation()
   let current = formObject.availability.friday

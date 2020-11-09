@@ -39,7 +39,8 @@ const categoryCheckboxes = [
   },
 ];
 
-const DmCheckbox = (props) => {
+
+const DmCategoryCheckbox = (props) => {
   const [checkboxItems, setCheckboxes] = useState([]);
   const [Checked, setChecked] = useState([]);
 
@@ -89,4 +90,4 @@ const DmCheckbox = (props) => {
   );
 };
 
-export default DmCheckbox;
+export default DmCategoryCheckbox;

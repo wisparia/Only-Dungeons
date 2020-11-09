@@ -2,16 +2,22 @@
 import React, { useEffect, useState } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
 import DmSearch from "../../components/DmSearch/DmSearch";
-import DmCheckbox from "../../components/DmCheckbox/DmCheckbox";
+import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
+import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
+  const [filteredDms, setFilteredDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
   });
-  const searchedArrayDm = [];
+  const [availabilityFilters, setAvailabilityFilters] = useState({
+    days: [],
+  });
+
+  // Address clearing search when something is unselected && being able to use both category & availability filtering.
 
   useEffect(() => {
     loadDms();
@@ -25,10 +31,6 @@ function DmDirectory() {
       })
       .catch((err) => console.log(err));
   }
-
-  // function loadSearchDms() {
-  //   setSearchedDms
-  // }
 
   function setOriginalDms() {
     setSearchedDms(allDms);
@@ -47,43 +49,63 @@ function DmDirectory() {
     }
   }
 
-  const showFilteredResults = (filters) => {
-    // console.log(searchedDms);
-    // console.log(categoryFilters.categories);
-    if (categoryFilters.categories.length > 0) {
-      for (var i = 0; i < categoryFilters.categories.length; i++) {
-        let filterCategory = categoryFilters.categories[i];
-
-        for (var j = 0; j < searchedDms.length; j++) {
-          console.log("====================");
-          for (const [key, value] of Object.entries(
-            searchedDms[j].categoryType
-          )) {
-            if (key === filterCategory && value === true) {
-              if (searchedArrayDm.includes(filterCategory).pop())
-              searchedArrayDm.push(searchedDms[j])
-              
-              console.log(searchedArrayDm);
-              console.log(filterCategory);
-              // searchedDms.filter((dm) => {
-              // searchedArrayDm.push(dm)
-              // })
-            } 
-          }
-        }
-      }
-    }
-  }
-
   const handleFilters = (filters, category) => {
-    // console.log(filters)
-    const newFilters = { ...categoryFilters };
-
-    newFilters[category] = filters;
-
-    showFilteredResults(newFilters);
-    setFilters(newFilters);
+    if (filters.length === 0) {
+      setOriginalDms();
+      // setFilters()
+    } else {
+      const newFilters = { ...categoryFilters };
+      newFilters[category] = filters;
+      setFilters(newFilters);
+    }
   };
+
+  const handleDayFilters = (dayFilters, day) => {
+    if (dayFilters.length === 0) {
+      setOriginalDms();
+    } else {
+      const newFilters = { ...availabilityFilters };
+      newFilters[day] = dayFilters;
+      setAvailabilityFilters(newFilters);
+    }
+  };
+
+  useEffect(() => {
+    setOriginalDms();
+    console.log("USE EFFECT OF CHECKBOXES");
+    let filtersArray = categoryFilters.categories;
+    for (let i = 0; i < filtersArray.length; i++) {
+      let x = i + 1;
+      setSearchedDms((prevState) =>
+        prevState.filter((dm) => {
+          for (const [key, value] of Object.entries(dm.categoryType)) {
+            // console lo the amount of times the array works through
+            if (key === filtersArray[i] && value === true) {
+              return dm;
+            }
+          }
+        })
+      );
+    }
+  }, [categoryFilters.categories]);
+
+  useEffect(() => {
+    setOriginalDms();
+    console.log("USE EFFECT OF CHECKBOXES");
+    let dayFiltersArray = availabilityFilters.days;
+    for (let i = 0; i < dayFiltersArray.length; i++) {
+      let x = i + 1;
+      setSearchedDms((prevState) =>
+        prevState.filter((dm) => {
+          for (const [key, value] of Object.entries(dm.availability)) {
+            if (key === dayFiltersArray[i] && value === true) {
+              return dm;
+            }
+          }
+        })
+      );
+    }
+  }, [availabilityFilters.days]);
 
   return (
     <>
@@ -94,7 +116,7 @@ function DmDirectory() {
           <div className="row">
             <div className="col s12">
               <h5>Category:</h5>
-              <DmCheckbox
+              <DmCategoryCheckbox
                 handleFilters={(filters) =>
                   handleFilters(filters, "categories")
                 }
@@ -103,76 +125,11 @@ function DmDirectory() {
               <div className="col s12">
                 <h5>Availability:</h5>
               </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Monday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Tuesday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Wednesday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Thursday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Friday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Saturday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
-              <div className="col s12">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>
-                      <p>Sunday</p>
-                    </span>
-                  </label>
-                </p>
-              </div>
+              <DmAvailabilityCheckbox
+                handleDayFilters={(dayFilters) =>
+                  handleDayFilters(dayFilters, "days")
+                }
+              />
             </div>
           </div>
         </div>
