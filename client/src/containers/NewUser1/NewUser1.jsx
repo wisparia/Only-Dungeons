@@ -32,6 +32,7 @@ function NewUser1() {
       isDm: newUserObj.isDm,
     })
       .then((result) => {
+        console.log(result)
         const userID = result.data._id
         history.push(`/UpdateForm/${userID}`)
       });
