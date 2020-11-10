@@ -18,5 +18,4 @@ router.route("/:id")
 .put(usersController.updateField)
 .delete(usersController.remove)
 
-
 module.exports = router;
