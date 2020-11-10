@@ -13,13 +13,13 @@ router.route("/")
 
 // Matches with "/api/users/dms"
 router.route("/dms")
-  .get(usersController.findAllDms)
+  .get(auth, usersController.findAllDms)
 
 
 // Matches with "/api/users/:id"
 router.route("/:id")
 .get(usersController.findById)
 .put(usersController.updateField)
-.delete(ausersController.remove)
+.delete(usersController.remove)
 
 module.exports = router;
