@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PlaceholderImg from "./placeholder200x200.jpg";
 import { useParams } from "react-router-dom";
 import API from "../../utils/API";
+import "./DmOne.css";
 
 function DmOne() {
   const [dm, setDm] = useState({
@@ -42,24 +43,24 @@ function DmOne() {
 
   return (
     <>
-      <div className="content-border container">
+      <div className="container center tagline">
         <h5>{dm.tagLine}</h5>
       </div>
       <div>
         <div className="container content-border row">
-          <div className="col s4">
+          <div className="col s12 m12 l4 center">
             <img src={PlaceholderImg} alt="" />
             <h5>{dm.userName}</h5>
-            <div className="row">
+            <div className="row center">
               <a className="col s8 m8 l8" href={`mailto:${dm.email}`}>
                 Email
               </a>
-              <div className="btn col s8">Back</div>
+              <div className="btn col s12">Back</div>
             </div>
           </div>
-          <div className="col s8">
+          <div className="col s12 m8">
             <div className="row">
-              <div className="col s6">
+              <div className="col s12 m12 l6">
                 <div className="row">
                   <div className="col s12"></div>
 
@@ -180,7 +181,7 @@ function DmOne() {
               </div>
 
               <div className="row">
-                <div className="col s6">
+                <div className="col s12 l6">
                   <div className="col s12">
                     <h5>Availability:</h5>
                   </div>

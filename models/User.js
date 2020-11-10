@@ -15,7 +15,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     validate: [
-      ({ length }) => length >= 8 && length <= 36,
+      ({ length }) => length >= 8 && length <= 100,
       "Password should be greater than 8 or less than 36 characters.",
     ],
     trim: true,

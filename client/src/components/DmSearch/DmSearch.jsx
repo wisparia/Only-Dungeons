@@ -1,10 +1,11 @@
 import React from 'react';
+import "./DmSearch.css";
 
 const DmSearch = ({handleSearch}) => {
 
   
     return (
-        <div className="container">
+        <div className="searchBox container">
         <div className="row"></div>
         <div className="col s12">
           Search

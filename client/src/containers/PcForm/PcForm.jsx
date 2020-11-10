@@ -1,6 +1,7 @@
 import React from "react";
 import placeholderImg from "./placeholder200x200.jpg";
 import { Link } from "react-router-dom"
+import "./PcForm.css";
 
 function PcForm() {
   return (
@@ -10,14 +11,14 @@ function PcForm() {
 
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
-            <div className="col s6">
+            <div className="col s12 l6">
               <p>Tagline: </p>
-              <div className="content-border">
+              <div className="mainContent">
                 <input id="tagLine" type="text" className="validate" />
               </div>
 
               <p>Preferred Role: </p>
-              <div className="content-border">
+              <div className="mainContent">
                 <select className="browser-default">
                   <option value="" disabled selected>
                     Select
@@ -38,11 +39,11 @@ function PcForm() {
               </div>
             </div>
 
-            <div className="col s6">
+            <div className="col s12 l6">
               <div className="col s12">
                 <p>Avatar:</p>
                 <img
-                  className="content-border col s12 image-true"
+                  className="center content-border col s12 image-true img"
                   src={placeholderImg} alt = "placeholder"
                 />
               </div>
@@ -55,7 +56,7 @@ function PcForm() {
             </div>
 
             <div className="row">
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -65,7 +66,7 @@ function PcForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -75,7 +76,7 @@ function PcForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -88,7 +89,7 @@ function PcForm() {
             </div>
 
             <div className="row">
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -98,7 +99,7 @@ function PcForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -108,7 +109,7 @@ function PcForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -121,7 +122,7 @@ function PcForm() {
             </div>
 
             <div className="row">
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -131,7 +132,7 @@ function PcForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -141,7 +142,7 @@ function PcForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -159,7 +160,7 @@ function PcForm() {
             <div className="col s12">
               <h5 className="form-text">Availability:</h5>
               <div className="row">
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -169,7 +170,7 @@ function PcForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -179,7 +180,7 @@ function PcForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -189,7 +190,7 @@ function PcForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -202,7 +203,7 @@ function PcForm() {
               </div>
 
               <div className="row">
-                <div className="col s4">
+                <div className="col s12 m6 l4">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -212,7 +213,7 @@ function PcForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s4">
+                <div className="col s12 m6 l4">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -222,7 +223,7 @@ function PcForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s4">
+                <div className="col s12 m6 l4">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -233,16 +234,16 @@ function PcForm() {
                   </p>
                 </div>
               </div>
-              <div className="row vertical-spacer-sm">
-                <div className="col s4 "></div>
-                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s3" to = "/NewUser">
+              <div className="row vertical-spacer-sm center">
+                <div className="col l6 ">
+                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s12" to = "/NewUser">
                   Cancel
-                </Link>
-                <div className="col s1 "></div>
-                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s3" to = "/DmDirectory">
+                </Link></div>
+                <div className="col l6">
+                <Link button className="vertical-spacer-sm waves-effect waves-light btn col s12" to = "/DmDirectory">
                   Create Account
                 </Link>
-                <div className="col s1 "></div>
+              </div>
               </div>
             </div>
           </div>
