@@ -99,6 +99,7 @@ function DmUpdateForm() {
       API.updateUser(id, {
         roomName: formObject.roomName,
         tagLine: formObject.tagLine,
+        preferredRole: formObject.preferredRole,
         categoryType:{
           byTheBook: formObject.categoryType.byTheBook,
           campaigns: formObject.categoryType.campaigns,
@@ -157,7 +158,6 @@ function DmUpdateForm() {
       preferredRole: response.data.preferredRole
     })
   },[])
-
 
   // TODO: FIND A WAY TO INJECT EVENT.NAME INSTEAD OF REPEAT THIS NIGHTMARE
   function campaignOnChange(event){

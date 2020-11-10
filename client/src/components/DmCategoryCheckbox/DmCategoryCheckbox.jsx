@@ -45,8 +45,15 @@ const DmCategoryCheckbox = (props) => {
   const [Checked, setChecked] = useState([]);
 
   useEffect(() => {
+    console.log("checkbox use effect")
     setCheckboxes(categoryCheckboxes);
-  }, []);
+    setChecked(Checked);
+  }, [Checked]);
+ 
+  // useEffect(() => {
+  //   setChecked(Checked);
+  // }, []);
+
 
   const handleToggle = (value) => {
     const currentIndex = Checked.indexOf(value);
@@ -60,10 +67,6 @@ const DmCategoryCheckbox = (props) => {
     setChecked(newChecked);
     // giving our newChecked items to the handleFilters()
     props.handleFilters(newChecked)
-  }
-
-  const checkChecked = () => {
-    console.log(Checked)
   }
 
   return (
