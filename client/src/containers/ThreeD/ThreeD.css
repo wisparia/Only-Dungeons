@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+}
+
+#info {
+    position: absolute;
+    color: black;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+}

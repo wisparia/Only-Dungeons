@@ -17,7 +17,6 @@ function DmDirectory() {
     days: [],
   });
 
-  // Address clearing search when something is unselected && being able to use both category & availability filtering.
 
   useEffect(() => {
     loadDms();
@@ -135,37 +134,6 @@ function DmDirectory() {
     }
   }, [categoryFilters.categories, availabilityFilters.days]);
 
-  // useEffect(() => {
-  //   if (categoryFilters.categories.length > 0)  {
-  //     setUnoriginalDms();
-  //     let dayFiltersArray = availabilityFilters.days;
-  //     for (let i = 0; i < dayFiltersArray.length; i++) {
-  //       setSearchedDms((prevState) =>
-  //         prevState.filter((dm) => {
-  //           for (const [key, value] of Object.entries(dm.availability)) {
-  //             if (key === dayFiltersArray[i] && value === true) {
-  //               return dm;
-  //             }
-  //           }
-  //         })
-  //       );
-  //     }
-  // } else {
-  //   setOriginalDms();
-  //   let dayFiltersArray = availabilityFilters.days;
-  //   for (let i = 0; i < dayFiltersArray.length; i++) {
-  //     setSearchedDms((prevState) =>
-  //       prevState.filter((dm) => {
-  //         for (const [key, value] of Object.entries(dm.availability)) {
-  //           if (key === dayFiltersArray[i] && value === true) {
-  //             return dm;
-  //           }
-  //         }
-  //       })
-  //     );
-  //   }
-  // }
-  // }, [availabilityFilters.days]);
 
   return (
     <>
