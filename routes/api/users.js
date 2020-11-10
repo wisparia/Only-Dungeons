@@ -13,7 +13,7 @@ router.route("/")
 
 // Matches with "/api/users/dms"
 router.route("/dms")
-  .get(auth, usersController.findAllDms)
+  .get(usersController.findAllDms)
 
 
 // Matches with "/api/users/:id"
