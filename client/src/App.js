@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useContext, useEffect } from "react";
-import UserContext from "./utils/userContext";
+import UserContext from "./utils/UserContext";
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";
@@ -11,7 +11,6 @@ import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
 import ThreeD from "./containers/ThreeD/ThreeD";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import userContext from "./utils/userContext";
 import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
@@ -37,8 +36,9 @@ function App() {
 
   return (
     <div className="App">
+       <UserContext.Provider value={{ userId, setUserId }}>
       <Router>
-        <UserContext.Provider value={{ userId, setUserId }}>
+       
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
             <Switch>
@@ -53,8 +53,9 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-        </UserContext.Provider>
+
       </Router>
+      </UserContext.Provider>
     </div>
   );
 }

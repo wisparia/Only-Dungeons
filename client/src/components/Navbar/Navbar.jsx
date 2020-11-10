@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 
-import UserContext from "../../utils/userContext";
+import UserContext from "../../utils/UserContext";
 
 import { Link } from 'react-router-dom';
 import 'materialize-css';
