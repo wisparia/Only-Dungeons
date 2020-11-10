@@ -1,4 +1,6 @@
 import "./App.css";
+import { useState, useContext } from "react"
+import UserContext from "./utils/userContext"
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";
@@ -7,6 +9,8 @@ import PcForm from "./containers/PcForm/PcForm";
 import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
+import ThreeD from "./containers/ThreeD/ThreeD"
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import userContext from "./utils/userContext";
 import "materialize-css";
@@ -16,10 +20,13 @@ import { setAxiosDefaults } from "./utils/axiosDefaults";
 function App() {
 
   const [jwt, setJwt] = useState()
+  const [userId, setUserId] = useState("");
+
 
   return (
     <div className="App">
-      <Router>
+       <UserContext.Provider  value={{userId, setUserId}}>
+         <Router>
         <Navbar />
         <Switch>
           <Route exact path="/" component={SigninPage} />
@@ -29,9 +36,11 @@ function App() {
           <Route exact path="/DmDirectory" component={DmDirectory} />
           <Route exact path="/DmOne/:id" component={DmOne} />
           <Route exact path="/UpdateForm/:id" component={UpdateForm} />
+          <Route exact path="/ThreeD/:id" component={ThreeD} />
           <Route path="/" component={SigninPage} />
         </Switch>
       </Router>
+      </UserContext.Provider>
     </div>
   );
 }
