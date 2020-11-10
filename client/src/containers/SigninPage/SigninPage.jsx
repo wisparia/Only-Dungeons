@@ -48,8 +48,8 @@ function SigninPage() {
         </div>
 
         <div className="col s12 l6 content-border center">
-          <p>Welcome to Only Dungeons!
-          </p><br/><p>A place where you can find other people to play tabletop RPGs with depending on waht fits your style or your availibility. You can be a player, or a DM, so login or create an account to start matching with other nerds.</p><br/><p>Have Fun!</p>
+          <h4>Welcome to Only Dungeons!</h4>
+          <p>A place where you can find other people to play tabletop RPGs with depending on waht fits your style or your availibility. You can be a player, or a DM, so login or create an account to start matching with other nerds.</p><br/><p>Have Fun!</p>
         </div>
       </div>
     </div>
