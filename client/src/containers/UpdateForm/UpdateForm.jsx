@@ -152,7 +152,8 @@ const [show2, setShow2] = useState(false)
 
 
 
-  useEffect(async()=>{
+  useEffect(()=>{
+    async function renderUserDetails(){
     const response = await API.getUser(id)
     console.log(response.data)
     setDm(response.data)
@@ -179,224 +180,23 @@ const [show2, setShow2] = useState(false)
       },
       preferredRole: response.data.preferredRole
     })
+    }
+    renderUserDetails()
   },[])
 
-  // TODO: FIND A WAY TO INJECT EVENT.NAME INSTEAD OF REPEAT THIS NIGHTMARE
-  function campaignOnChange(event){
+
+  function handleCheckbox(event, objKey){
     event.stopPropagation()
-    let current = formObject.categoryType.campaigns
-    // console.log(current)
-    setFormObject(prevState => ({
+    let current = formObject[objKey][event.target.name]
+    console.log(current)
+    setFormObject(prevState=>({
       ...prevState,
-      categoryType: {
-          ...prevState.categoryType, campaigns:!current
+      [objKey]: {
+        ...prevState[objKey], [event.target.name]: !current
       }
-  }))
+    }))
+
   }
-
-  function oneshotsOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.oneshots
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, oneshots:!current
-      }
-  }))
-  }
-
-  // homebrew
-
-  function homebrewOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.homebrew
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, homebrew:!current
-      }
-  }))
-  }
-
-
-  // byTheBook
-  function byTheBookOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.byTheBook
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, byTheBook:!current
-      }
-  }))
-  }
-
-  // rpersonly
-  function rpersonlyOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.rpersonly
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, rpersonly:!current
-      }
-  }))
-  }
-
-  // norestriction
-  function norestrictionOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.norestriction
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, norestriction:!current
-      }
-  }))
-  }
-  
-  // displaydice
-  function displaydiceOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.displaydice
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, displaydice:!current
-      }
-  }))
-  }
-
-
-  // lvl1only
-  function lvl1onlyOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.lvl1only
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, lvl1only:!current
-      }
-  }))
-  }
-  // voyuerallowed
-  function voyuerallowedOnChange(event){
-    event.stopPropagation()
-    let current = formObject.categoryType.voyuerallowed
-    // console.log(current)
-    setFormObject(prevState => ({
-      ...prevState,
-      categoryType: {
-          ...prevState.categoryType, voyuerallowed:!current
-      }
-  }))
-  }
-// ======= END OF CATEGORY CHECK BOX FUNCTIONS============
-
-// ====== START OF AVAILABILITY CHECK BOX FUNCTIONS
-
-// monday
-function mondayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.monday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, monday:!current
-    }
-}))
-}
-
-// tuesday
-function tuesdayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.tuesday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, tuesday:!current
-    }
-}))
-}
-
-// wednesday
-
-function wednesdayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.wednesday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, wednesday:!current
-    }
-}))
-}
-
-// thursday
-
-function thursdayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.thursday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, thursday:!current
-    }
-}))
-}
-
-// friday
-function fridayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.friday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, friday:!current
-    }
-}))
-}
-
-// saturday
-function saturdayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.saturday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, saturday:!current
-    }
-}))
-}
-
-// sunday
-
-function sundayOnChange(event){
-  event.stopPropagation()
-  let current = formObject.availability.sunday
-  // console.log(current)
-  setFormObject(prevState => ({
-    ...prevState,
-    availability: {
-        ...prevState.availability, sunday:!current
-    }
-}))
-}
-
-// ===== THIS IS THE END OF THE AVAILABILITY CHECKBOX FUNCTIONS=======
 
   return (
    
@@ -438,7 +238,7 @@ function sundayOnChange(event){
                 {dm.preferredRole === "Cleric" ? <option selected name="preferredRole" value="Cleric">Cleric</option> : <option name="preferredRole" value="Cleric">Cleric</option>}
                 {dm.preferredRole === "Druid" ? <option selected name="preferredRole" value="Druid">Druid</option> : <option name="preferredRole" value="Druid">Druid</option>}
                 {dm.preferredRole === "Fighter" ? <option selected name="preferredRole" value="Fighter">Fighter</option> : <option name="preferredRole" value="Fighter">Fighter</option>}
-                {dm.preferredRole === "Monk" ? <option selected name="preferredRole" value="Monk">Monk</option> : <option onChange={handleDropDownChange} name="preferredRole" value="Monk">Monk</option>}
+                {dm.preferredRole === "Monk" ? <option selected name="preferredRole" value="Monk">Monk</option> : <option name="preferredRole" value="Monk">Monk</option>}
                 {dm.preferredRole === "Paladin" ? <option selected name="preferredRole" value="Paladin">Paladin</option> : <option name="preferredRole" value="Paladin">Paladin</option>}
                 {dm.preferredRole === "Ranger" ? <option selected name="preferredRole" value="Ranger">Ranger</option> : <option name="preferredRole" value="Ranger">Ranger</option>}
                 {dm.preferredRole === "Rogue" ? <option selected name="preferredRole" value="Rogue">Rogue</option> : <option name="preferredRole" value="Rogue">Rogue</option>}
@@ -459,8 +259,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                    {/* {dm.categoryType.campaigns ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.categoryType.campaigns} name="campaigns" value={formObject.categoryType.campaigns} onChange={campaignOnChange}/>
+                    <input type="checkbox" checked={formObject.categoryType.campaigns} name="campaigns" value={formObject.categoryType.campaigns} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Campaigns</p>
                     </span>
@@ -470,8 +269,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                    {/* {dm.categoryType.oneshots ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.categoryType.oneshots} name="oneshots" value={formObject.categoryType.oneshots} onChange={oneshotsOnChange}/>
+                    <input type="checkbox" checked={formObject.categoryType.oneshots} name="oneshots" value={formObject.categoryType.oneshots} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>One Shots</p>
                     </span>
@@ -481,8 +279,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.homebrew ? <input checked="checked" type="checkbox"/> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.homebrew} name="homebrew" value={formObject.categoryType.homebrew} onChange={homebrewOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.homebrew} name="homebrew" value={formObject.categoryType.homebrew} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>HomeBrew</p>
                     </span>
@@ -495,8 +292,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.byTheBook ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.byTheBook} name="byTheBook" value={formObject.categoryType.byTheBook} onChange={byTheBookOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.byTheBook} name="byTheBook" value={formObject.categoryType.byTheBook} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>By The Book</p>
                     </span>
@@ -506,8 +302,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.rpersonly ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.rpersonly} name="rpersonly" value={formObject.categoryType.rpersonly} onChange={rpersonlyOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.rpersonly} name="rpersonly" value={formObject.categoryType.rpersonly} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Role Play Only</p>
                     </span>
@@ -517,8 +312,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.norestriction ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.norestriction} name="norestriction" value={formObject.categoryType.norestriction} onChange={norestrictionOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.norestriction} name="norestriction" value={formObject.categoryType.norestriction} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>No Restriction</p>
                     </span>
@@ -531,8 +325,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.displaydice ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.displaydice} name="displaydice" value={formObject.categoryType.displaydice} onChange={displaydiceOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.displaydice} name="displaydice" value={formObject.categoryType.displaydice} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Display Dice</p>
                     </span>
@@ -542,8 +335,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.lvl1only ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.lvl1only} name="lvl1only" value={formObject.categoryType.lvl1only} onChange={lvl1onlyOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.lvl1only} name="lvl1only" value={formObject.categoryType.lvl1only} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Lvl One Only</p>
                     </span>
@@ -553,8 +345,7 @@ function sundayOnChange(event){
               <div className="col s4">
                 <p>
                   <label>
-                  {/* {dm.categoryType.voyuerallowed ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                  <input type="checkbox" checked={formObject.categoryType.voyuerallowed} name="voyuerallowed" value={formObject.categoryType.voyuerallowed} onChange={voyuerallowedOnChange}/>
+                  <input type="checkbox" checked={formObject.categoryType.voyuerallowed} name="voyuerallowed" value={formObject.categoryType.voyuerallowed} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Watchers Allowed</p>
                     </span>
@@ -571,8 +362,7 @@ function sundayOnChange(event){
                 <div className="col s3">
                   <p>
                     <label>
-                    {/* {dm.availability.monday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.availability.monday} name="monday" value={formObject.availability.monday} onChange={mondayOnChange}/>
+                    <input type="checkbox" checked={formObject.availability.monday} name="monday" value={formObject.availability.monday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Monday</p>
                       </span>
@@ -582,8 +372,7 @@ function sundayOnChange(event){
                 <div className="col s3">
                   <p>
                     <label>
-                      {/* {dm.availability.tuesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                      <input type="checkbox" checked={formObject.availability.tuesday} name="tuesday" value={formObject.availability.tuesday} onChange={tuesdayOnChange}/>
+                      <input type="checkbox" checked={formObject.availability.tuesday} name="tuesday" value={formObject.availability.tuesday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Tuesday</p>
                       </span>
@@ -593,8 +382,7 @@ function sundayOnChange(event){
                 <div className="col s3">
                   <p>
                     <label>
-                    {/* {dm.availability.wednesday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.availability.wednesday} name="wednesday" value={formObject.availability.wednesday} onChange={wednesdayOnChange}/>
+                    <input type="checkbox" checked={formObject.availability.wednesday} name="wednesday" value={formObject.availability.wednesday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Wednesday</p>
                       </span>
@@ -604,8 +392,7 @@ function sundayOnChange(event){
                 <div className="col s3">
                   <p>
                     <label>
-                    {/* {dm.availability.thursday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.availability.thursday} name="thursday" value={formObject.availability.thursday} onChange={thursdayOnChange}/>
+                    <input type="checkbox" checked={formObject.availability.thursday} name="thursday" value={formObject.availability.thursday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Thursday</p>
                       </span>
@@ -618,8 +405,7 @@ function sundayOnChange(event){
                 <div className="col s4">
                   <p>
                     <label>
-                    {/* {dm.availability.friday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.availability.friday} name="friday" value={formObject.availability.friday} onChange={fridayOnChange}/>
+                    <input type="checkbox" checked={formObject.availability.friday} name="friday" value={formObject.availability.friday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Friday</p>
                       </span>
@@ -629,8 +415,7 @@ function sundayOnChange(event){
                 <div className="col s4">
                   <p>
                     <label>
-                    {/* {dm.availability.saturday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.availability.saturday} name="saturday" value={formObject.availability.saturday} onChange={saturdayOnChange}/>
+                    <input type="checkbox" checked={formObject.availability.saturday} name="saturday" value={formObject.availability.saturday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Saturday</p>
                       </span>
@@ -640,15 +425,15 @@ function sundayOnChange(event){
                 <div className="col s4">
                   <p>
                     <label>
-                    {/* {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> } */}
-                    <input type="checkbox" checked={formObject.availability.sunday} name="sunday" value={formObject.availability.sunday} onChange={sundayOnChange}/>
+                    {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
+                    <input type="checkbox" checked={formObject.availability.sunday} name="sunday" value={formObject.availability.sunday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Sunday</p>
                       </span>
                     </label>
                   </p>
                 </div>
-              </div>
+              </div> 
               <div className="row vertical-spacer-sm">
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Cancel
@@ -663,8 +448,8 @@ function sundayOnChange(event){
                 </button>
                 <div className="col s1 "></div>
               </div>
-            </div>
           </div>
+          </div> 
         </form>
       </div>
             <UpdateModal show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
