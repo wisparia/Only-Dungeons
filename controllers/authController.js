@@ -15,7 +15,7 @@ module.exports = {
       res.status(400);
     } else {
       bcrypt.hash(password, 10).then((hashedPassword) => {
-        console.log(hashedPassword);
+        // console.log(hashedPassword);
         db.User.create({
           userName: userName,
           email: email,
@@ -23,13 +23,26 @@ module.exports = {
         }).then((response) => {
           console.log(response);
           res.json(response);
-          // db.createUser({
-
-          // })
         });
       });
     }
   },
+
+  login: function (req, res) {
+    const { email, password } = req.body;
+    db.User.findOne({ email }).then((foundUser) => {
+      console.log(req.body)
+      // console.log(foundUser);
+      if (!foundUser) return res.status(400).json({message: "User not found"})
+
+      bcrypt.compare(password, foundUser.password)
+      .then((isMatch)=> {
+          if (!isMatch) return res.status(400).json({message: "Invalid password"})
+          console.log(isMatch)
+      });
+    });
+  },
+ 
 };
 
 // Section is for the sign up
