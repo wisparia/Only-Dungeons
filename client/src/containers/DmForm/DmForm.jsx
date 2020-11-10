@@ -1,5 +1,6 @@
 import React from "react";
 import placeholderImg from "./placeholder200x200.jpg";
+import "./DmForm.css";
 
 function DmForm() {
   return (
@@ -9,29 +10,33 @@ function DmForm() {
 
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
-            <div className="col s6">
+
+          <div className="col s12 l5 center-align">
+              <div className="col s12 center-align">
+                <p>Avatar:</p>
+                <img
+                  className="center-align content-border image-true img"
+                  src={placeholderImg} alt = "placeholder"
+                />
+              </div>
+            </div>
+
+            <div className="col s12 l7">
             <p>Room Name: </p>
-              <div className="content-border">
+              <div className="mainContent">
                 <input id="roomName" type="text" className="validate" />
               </div>
 
             <p>Tagline: </p>
-              <div className="content-border">
+              <div className="mainContent">
                 <input id="Tagline" type="text" className="validate" />
               </div>
             </div>
 
-            <div className="col s6">
-              <div className="col s12">
-                <p>Avatar:</p>
-                <img
-                  className="content-border col s12 image-true"
-                  src={placeholderImg} alt = "placeHolder"
-                />
-              </div>
+            
 
               <p>Preferred Role: </p>
-              <div className="content-border">
+              <div className="mainContent">
                 <select className="browser-default">
                   <option value="" disabled selected>
                     Select
@@ -51,7 +56,6 @@ function DmForm() {
                 </select>
               </div>
             </div>
-          </div>
 
           <div className="row">
             <div className="col s12">
@@ -59,7 +63,7 @@ function DmForm() {
             </div>
 
             <div className="row">
-              <div className="col s4">
+            <div className="col s12 m6 l4">
                 <p>
                   <label>
                   {/* checked={isDm ? "checked" : ""} */}
@@ -70,7 +74,7 @@ function DmForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -80,7 +84,7 @@ function DmForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -93,7 +97,7 @@ function DmForm() {
             </div>
 
             <div className="row">
-              <div className="col s4">
+            <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -103,7 +107,7 @@ function DmForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -113,7 +117,7 @@ function DmForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -126,7 +130,7 @@ function DmForm() {
             </div>
 
             <div className="row">
-              <div className="col s4">
+            <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -136,7 +140,7 @@ function DmForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -146,7 +150,7 @@ function DmForm() {
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" />
@@ -164,7 +168,7 @@ function DmForm() {
             <div className="col s12">
               <h5 className="form-text">Availability:</h5>
               <div className="row">
-                <div className="col s3">
+              <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -174,7 +178,7 @@ function DmForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -184,7 +188,7 @@ function DmForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -194,7 +198,7 @@ function DmForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -207,7 +211,7 @@ function DmForm() {
               </div>
 
               <div className="row">
-                <div className="col s4">
+              <div className="col s12 m6 l4">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -217,7 +221,7 @@ function DmForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s4">
+                <div className="col s12 m6 l4">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -227,7 +231,7 @@ function DmForm() {
                     </label>
                   </p>
                 </div>
-                <div className="col s4">
+                <div className="col s12 m6 l4">
                   <p>
                     <label>
                       <input type="checkbox" />
@@ -239,15 +243,15 @@ function DmForm() {
                 </div>
               </div>
               <div className="row vertical-spacer-sm">
-                <div className="col s4 "></div>
+              <div className="col s12 m6 l6 ">
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Cancel
-                </button>
-                <div className="col s1 "></div>
+                </button></div>
+                <div className="col s12 m6 l6 ">
                 <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Create Account
                 </button>
-                <div className="col s1 "></div>
+                </div>
               </div>
             </div>
           </div>
