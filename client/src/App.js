@@ -36,8 +36,9 @@ function App() {
 
   return (
     <div className="App">
+       <UserContext.Provider value={{ userId, setUserId }}>
       <Router>
-        <UserContext.Provider value={{ userId, setUserId }}>
+       
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
             <Switch>
@@ -52,8 +53,9 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-        </UserContext.Provider>
+
       </Router>
+      </UserContext.Provider>
     </div>
   );
 }
