@@ -1,7 +1,13 @@
+<<<<<<< HEAD
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState, } from "react";
+=======
 import React, { useEffect, useState, useContext } from "react";
+>>>>>>> main
 import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
+import DeleteModal from "../../components/DeleteModal/DeleteModal"
 
 
 // TODO: Make sure to grab value from dropdown
@@ -11,7 +17,7 @@ import API from "../../utils/API"
 function DmUpdateForm() {
   const history = useHistory()
   const {id} = useParams()
-
+const [show, setShow] = useState(false)
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -72,8 +78,16 @@ function DmUpdateForm() {
     preferredRole: ""
 
   })
+  const showModal = () => {
+    setShow(true);
+  };
+ 
+  const hideModal = () => {
+    setShow(false );
+  };
 
   function handleDeleteAccount(event){
+    hideModal()
     event.preventDefault()
     const userId = id
     history.push("/")
@@ -81,6 +95,7 @@ function DmUpdateForm() {
     .then(console.log("Your journey has ended..."))
     
   }
+  
   
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -633,7 +648,11 @@ function sundayOnChange(event){
                   Cancel
                 </button>
                 <div className="col s1 "></div>
+<<<<<<< HEAD
+                <button type = "button"  onClick={showModal}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+=======
                 <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+>>>>>>> main
                  Delete Your Account?
                 </button>
                 <div className="col s1 "></div>
@@ -645,10 +664,16 @@ function sundayOnChange(event){
             </div>
           </div>
         </form>
+<<<<<<< HEAD
+      </div>
+            <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
+    </>
+=======
               </div>
 
       </>
     
+>>>>>>> main
   );
 }
 
