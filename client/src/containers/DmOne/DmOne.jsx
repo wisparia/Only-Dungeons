@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PlaceholderImg from "./placeholder200x200.jpg";
 import { useParams } from "react-router-dom";
 import API from "../../utils/API";
+import "./DmOne.css";
 
 function DmOne() {
   const [dm, setDm] = useState({
@@ -42,7 +43,7 @@ function DmOne() {
 
   return (
     <>
-      <div className="content-border container center">
+      <div className="container center tagline">
         <h5>{dm.tagLine}</h5>
       </div>
       <div>
