@@ -1,14 +1,14 @@
-import React, { useEffect, useState, } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
+
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
-
   const history = useHistory()
   const {id} = useParams()
 
@@ -123,7 +123,7 @@ function DmUpdateForm() {
         preferredRole: formObject.preferredRole
       })
       .then(response=>console.log(response))
-      .then(history.go(0))
+      // .then(history.go(0))
       .catch((err)=> console.error(err))
   
   };
@@ -377,6 +377,7 @@ function sundayOnChange(event){
 // ===== THIS IS THE END OF THE AVAILABILITY CHECKBOX FUNCTIONS=======
 
   return (
+   
     <>
       <div className="container">
         <div className="row section"></div>
@@ -632,7 +633,7 @@ function sundayOnChange(event){
                 </button>
                 <div className="col s1 "></div>
                 <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
-                 Delte Your Account?
+                 Delete Your Account?
                 </button>
                 <div className="col s1 "></div>
                 <button onClick={handleFormSubmit} className="vertical-spacer-sm waves-effect waves-light btn col s3">
@@ -643,8 +644,10 @@ function sundayOnChange(event){
             </div>
           </div>
         </form>
-      </div>
-    </>
+              </div>
+
+      </>
+    
   );
 }
 

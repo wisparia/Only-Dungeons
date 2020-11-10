@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import THREEx from "threex-domevents"
 import React, { useEffect, useState } from "react";
 
 import "./ThreeD.css";

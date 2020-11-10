@@ -1,4 +1,6 @@
 import "./App.css";
+import { useState, useContext } from "react"
+import UserContext from "./utils/userContext"
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";
@@ -12,11 +14,15 @@ import ThreeD from "./containers/ThreeD/ThreeD"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "materialize-css";
 
+
 function App() {
+  const [userId, setUserId] = useState("");
+
+
   return (
     <div className="App">
-      
-      <Router>
+       <UserContext.Provider  value={{userId, setUserId}}>
+         <Router>
         <Navbar />
         <Switch>
           <Route exact path="/" component={SigninPage} />
@@ -30,6 +36,7 @@ function App() {
           <Route path="/" component={SigninPage} />
         </Switch>
       </Router>
+      </UserContext.Provider>
     </div>
   );
 }

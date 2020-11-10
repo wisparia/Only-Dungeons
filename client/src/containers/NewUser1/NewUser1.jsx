@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../../utils/userContext"
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 
+
 function NewUser1() {
+  
   const history = useHistory();
   const [newUserObj, setNewUserObject] = useState({
     _id: "",
@@ -12,6 +15,8 @@ function NewUser1() {
     confirmPassword: "",
     isDm: false,
   });
+
+  const {userId, setUserId} = useContext(UserContext);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -32,14 +37,16 @@ function NewUser1() {
       isDm: newUserObj.isDm,
     })
       .then((result) => {
-        console.log(result)
+        setNewUserObject(result)
         const userID = result.data._id
+        setUserId(userID)
         history.push(`/UpdateForm/${userID}`)
       });
   };
 
   return (
-    <>
+            
+      <>
       <div className="container"></div>
       <div className="row section"></div>
       <form className="row section content-border">
@@ -157,7 +164,8 @@ function NewUser1() {
           </div>
         </div>
       </form>
-    </>
+      </>
+
   );
 }
 // test build
