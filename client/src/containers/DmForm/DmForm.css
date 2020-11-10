@@ -1,0 +1,43 @@
+.btn {
+  margin: auto;
+  padding: 15px;
+  border-style: outset !important;
+  border: 8px solid;
+  border-color: rgb(190, 141, 35);
+  background: url("../../components/assets/tilebgdark.png");
+  color: rgb(206, 168, 87) !important;
+}
+
+.mainContent {
+  margin: auto;
+  padding: 30px;
+  border-style: outset !important;
+  border: 8px solid;
+  border-color: rgb(190, 141, 35);
+  background: url("../../components/assets/tilebgdark.png");
+  color: rgb(206, 168, 87) !important;
+}
+
+.img {
+  background: url("../../components/assets/tilebgdark.png");
+  margin: auto;
+}
+
+.browser-default {
+  background: url("../../components/assets/tilebgdark.png");
+  color: rgb(206, 168, 87) !important;
+  font-family: "Press Start 2P", cursive;
+  border: none;
+}
+
+option {
+  background-color: rgb(20, 14, 29);
+  color: rgb(206, 168, 87) !important;
+  font-family: "Press Start 2P", cursive;
+  border: none;
+}
+
+select:active,
+select:hover {
+  outline-color: rgb(206, 168, 87);
+}
