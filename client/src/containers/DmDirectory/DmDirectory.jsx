@@ -139,18 +139,18 @@ function DmDirectory() {
     <>
       <DmSearch handleSearch={handleSearch} />
       <div className="row">
-        <div className="col s12 m12 l4 content-border">
+        <div className="col s12 offset-m2 m8 offset-l1 l3 content-border">
           <div className="row">
-            <div className="col s6 l12">
-              <h5>Category:</h5>
+            <div className="col s12">
+              <h4>Category:</h4>
               <DmCategoryCheckbox
                 handleFilters={(filters) =>
                   handleFilters(filters, "categories")
                 }
               />
-
-              <div className="col s6 l12">
-                <h5>Availability:</h5>
+                
+              <div className="col s12">
+                <h4>Availability:</h4>
               </div>
               <DmAvailabilityCheckbox
                 handleDayFilters={(dayFilters) =>
@@ -161,7 +161,7 @@ function DmDirectory() {
           </div>
         </div>
 
-        <div className="col s12 m12 l8 content-border">
+        <div className="col s12 m12 l7 content-border">
           <h5>Matched Games:</h5>
           {searchedDms.map((dm) => (
             <Dmaster
