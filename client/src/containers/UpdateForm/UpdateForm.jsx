@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, } from "react";
 import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
+import DeleteModal from "../../components/DeleteModal/DeleteModal"
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
@@ -11,7 +13,7 @@ function DmUpdateForm() {
 
   const history = useHistory()
   const {id} = useParams()
-
+const [show, setShow] = useState(false)
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -72,8 +74,16 @@ function DmUpdateForm() {
     preferredRole: ""
 
   })
+  const showModal = () => {
+    setShow(true);
+  };
+ 
+  const hideModal = () => {
+    setShow(false );
+  };
 
   function handleDeleteAccount(event){
+    hideModal()
     event.preventDefault()
     const userId = id
     history.push("/")
@@ -81,6 +91,7 @@ function DmUpdateForm() {
     .then(console.log("Your journey has ended..."))
     
   }
+  
   
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -123,7 +134,6 @@ function DmUpdateForm() {
         preferredRole: formObject.preferredRole
       })
       .then(response=>console.log(response))
-      .then(history.go(0))
       .catch((err)=> console.error(err))
   
   };
@@ -631,8 +641,8 @@ function sundayOnChange(event){
                   Cancel
                 </button>
                 <div className="col s1 "></div>
-                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
-                 Delte Your Account?
+                <button type = "button"  onClick={showModal}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                 Delete Your Account?
                 </button>
                 <div className="col s1 "></div>
                 <button onClick={handleFormSubmit} className="vertical-spacer-sm waves-effect waves-light btn col s3">
@@ -644,6 +654,7 @@ function sundayOnChange(event){
           </div>
         </form>
       </div>
+            <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
     </>
   );
 }
