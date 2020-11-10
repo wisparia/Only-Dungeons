@@ -1,5 +1,9 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
+const auth = require("../../middleware/auth")
+
+// TODO: RESTRICT THE FOLLOWING (AFTER DOING CLIENT-SIDE)
+// 1) users post 2) put users route and 3) Delete user route
 
 // Matches with "/api/users"
 router.route("/")
@@ -16,6 +20,6 @@ router.route("/dms")
 router.route("/:id")
 .get(usersController.findById)
 .put(usersController.updateField)
-.delete(usersController.remove)
+.delete(ausersController.remove)
 
 module.exports = router;
