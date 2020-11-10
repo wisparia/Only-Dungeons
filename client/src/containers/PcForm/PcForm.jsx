@@ -11,7 +11,18 @@ function PcForm() {
 
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
-            <div className="col s12 l6">
+
+          <div className="col s12 l5 center-align">
+              <div className="col s12 center-align">
+                <p>Avatar:</p>
+                <img
+                  className="center-align content-border image-true img"
+                  src={placeholderImg} alt = "placeholder"
+                />
+              </div>
+            </div>
+
+            <div className="col s12 l7">
               <p>Tagline: </p>
               <div className="mainContent">
                 <input id="tagLine" type="text" className="validate" />
@@ -20,7 +31,7 @@ function PcForm() {
               <p>Preferred Role: </p>
               <div className="mainContent">
                 <select className="browser-default">
-                  <option value="" disabled selected>
+                  <option hover="true" value="" disabled selected>
                     Select
                   </option>
                   <option value="Barbarian">Barbarian</option>
@@ -39,15 +50,7 @@ function PcForm() {
               </div>
             </div>
 
-            <div className="col s12 l6">
-              <div className="col s12">
-                <p>Avatar:</p>
-                <img
-                  className="center content-border col s12 image-true img"
-                  src={placeholderImg} alt = "placeholder"
-                />
-              </div>
-            </div>
+          
           </div>
 
           <div className="row">
@@ -235,11 +238,11 @@ function PcForm() {
                 </div>
               </div>
               <div className="row vertical-spacer-sm center">
-                <div className="col l6 ">
+                <div className="col s12 m6 l6 ">
                 <Link button className="vertical-spacer-sm waves-effect waves-light btn col s12" to = "/NewUser">
                   Cancel
                 </Link></div>
-                <div className="col l6">
+                <div className="col s12 m6 l6">
                 <Link button className="vertical-spacer-sm waves-effect waves-light btn col s12" to = "/DmDirectory">
                   Create Account
                 </Link>
