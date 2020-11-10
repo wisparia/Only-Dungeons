@@ -1,16 +1,20 @@
+<<<<<<< HEAD
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, } from "react";
+=======
+import React, { useEffect, useState, useContext } from "react";
+>>>>>>> main
 import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal"
+
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
-
   const history = useHistory()
   const {id} = useParams()
 const [show, setShow] = useState(false)
@@ -133,7 +137,9 @@ const [show, setShow] = useState(false)
         },
         preferredRole: formObject.preferredRole
       })
-      .then(response=>console.log(response))
+      .then((response)=>{
+        console.log(response.data)
+      })
       .catch((err)=> console.error(err))
   
   };
@@ -387,6 +393,7 @@ function sundayOnChange(event){
 // ===== THIS IS THE END OF THE AVAILABILITY CHECKBOX FUNCTIONS=======
 
   return (
+   
     <>
       <div className="container">
         <div className="row section"></div>
@@ -641,7 +648,11 @@ function sundayOnChange(event){
                   Cancel
                 </button>
                 <div className="col s1 "></div>
+<<<<<<< HEAD
                 <button type = "button"  onClick={showModal}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+=======
+                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+>>>>>>> main
                  Delete Your Account?
                 </button>
                 <div className="col s1 "></div>
@@ -653,9 +664,16 @@ function sundayOnChange(event){
             </div>
           </div>
         </form>
+<<<<<<< HEAD
       </div>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
     </>
+=======
+              </div>
+
+      </>
+    
+>>>>>>> main
   );
 }
 

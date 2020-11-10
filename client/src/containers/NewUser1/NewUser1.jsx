@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../../utils/userContext"
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 
+
 function NewUser1() {
+  
   const history = useHistory();
   const [newUserObj, setNewUserObject] = useState({
     _id: "",
@@ -12,6 +15,8 @@ function NewUser1() {
     confirmPassword: "",
     isDm: false,
   });
+
+  const {userId, setUserId} = useContext(UserContext);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -32,18 +37,19 @@ function NewUser1() {
       isDm: newUserObj.isDm,
     })
       .then((result) => {
-        console.log(result)
+        setNewUserObject(result)
         const userID = result.data._id
+        setUserId(userID)
         history.push(`/UpdateForm/${userID}`)
       });
   };
 
   return (
     <>
-      <div className="container"></div>
+      <div className="container mainbox"></div>
       <div className="row section"></div>
-      <form className="row section content-border">
-        <div className="col s6">
+      <form className="row section content-border mainbox">
+        <div className="col s12 l6">
           <div className="row">
             <div className="col s12">
               <label htmlFor="username">
@@ -106,7 +112,7 @@ function NewUser1() {
           </div>
         </div>
 
-        <div className="col s6 vertical-spacer-md center">
+        <div className="col s12 l6 vertical-spacer-md center">
           <p>Do you tell the stories or do you live them?</p>
           <div className="row">
             <div className="col s5">
@@ -125,7 +131,7 @@ function NewUser1() {
               </div>
             </div>
             <div className="col s5">
-              <div className="vertical-spacer-sm center">
+              <div className="vertical-spacer-sm center-align">
                 <label>
                   <input
                     name="isDm"
@@ -139,25 +145,27 @@ function NewUser1() {
                 </label>
               </div>
             </div>
-            <div className="row vertical-spacer-md center">
+            <div className="row">
+              <div className="col s12 center-align vertical-spacer-md">
               <div
-                className="vertical-spacer-md waves-effect waves-light btn col s3"
+                className=" vertical-spacer-md waves-effect waves-light btn col s6"
                 to="/"
               >
                 Cancel
               </div>
               <div
-                className="vertical-spacer-md waves-effect waves-light btn col s3"
+                className="vertical-spacer-md waves-effect waves-light btn col s6"
                 disabled={!(newUserObj.password && newUserObj.email)}
                 onClick={handleFormSubmit}
               >
                 Create Account
-              </div>
+              </div></div>
             </div>
           </div>
         </div>
       </form>
-    </>
+      </>
+
   );
 }
 // test build

@@ -17,7 +17,6 @@ function DmDirectory() {
     days: [],
   });
 
-  // Address clearing search when something is unselected && being able to use both category & availability filtering.
 
   useEffect(() => {
     loadDms();
@@ -135,54 +134,23 @@ function DmDirectory() {
     }
   }, [categoryFilters.categories, availabilityFilters.days]);
 
-  // useEffect(() => {
-  //   if (categoryFilters.categories.length > 0)  {
-  //     setUnoriginalDms();
-  //     let dayFiltersArray = availabilityFilters.days;
-  //     for (let i = 0; i < dayFiltersArray.length; i++) {
-  //       setSearchedDms((prevState) =>
-  //         prevState.filter((dm) => {
-  //           for (const [key, value] of Object.entries(dm.availability)) {
-  //             if (key === dayFiltersArray[i] && value === true) {
-  //               return dm;
-  //             }
-  //           }
-  //         })
-  //       );
-  //     }
-  // } else {
-  //   setOriginalDms();
-  //   let dayFiltersArray = availabilityFilters.days;
-  //   for (let i = 0; i < dayFiltersArray.length; i++) {
-  //     setSearchedDms((prevState) =>
-  //       prevState.filter((dm) => {
-  //         for (const [key, value] of Object.entries(dm.availability)) {
-  //           if (key === dayFiltersArray[i] && value === true) {
-  //             return dm;
-  //           }
-  //         }
-  //       })
-  //     );
-  //   }
-  // }
-  // }, [availabilityFilters.days]);
 
   return (
     <>
       <DmSearch handleSearch={handleSearch} />
       <div className="row">
-        <div className="col s12 m12 l4 content-border">
+        <div className="col s12 offset-m2 m8 offset-l1 l3 content-border">
           <div className="row">
-            <div className="col s6 l12">
-              <h5>Category:</h5>
+            <div className="col s12">
+              <h4>Category:</h4>
               <DmCategoryCheckbox
                 handleFilters={(filters) =>
                   handleFilters(filters, "categories")
                 }
               />
-
-              <div className="col s6 l12">
-                <h5>Availability:</h5>
+                
+              <div className="col s12">
+                <h4>Availability:</h4>
               </div>
               <DmAvailabilityCheckbox
                 handleDayFilters={(dayFilters) =>
@@ -193,7 +161,7 @@ function DmDirectory() {
           </div>
         </div>
 
-        <div className="col s12 m12 l8 content-border">
+        <div className="col s12 m12 l7 content-border">
           <h5>Matched Games:</h5>
           {searchedDms.map((dm) => (
             <Dmaster
