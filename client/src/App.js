@@ -8,13 +8,16 @@ import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import userContext from "./utils/userContext"
+import userContext from "./utils/userContext";
 import "materialize-css";
+import { setAxiosDefaults } from "./utils/axiosDefaults";
 // import { Button, Card, Row, Col } from "react-materialize";
 
 function App() {
+
+  const [jwt, setJwt] = useState()
+
   return (
-    
     <div className="App">
       <Router>
         <Navbar />
