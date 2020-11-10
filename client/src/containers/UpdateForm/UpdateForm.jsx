@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, } from "react";
-=======
 import React, { useEffect, useState, useContext } from "react";
->>>>>>> main
 import { useParams, useHistory, Link } from "react-router-dom"
 import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
-import DeleteModal from "../../components/DeleteModal/DeleteModal"
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import UpdateModal from "../../components/UpdateModal/UpdateModal";
 
 
 // TODO: Make sure to grab value from dropdown
@@ -18,6 +14,7 @@ function DmUpdateForm() {
   const history = useHistory()
   const {id} = useParams()
 const [show, setShow] = useState(false)
+const [show2, setShow2] = useState(false)
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -109,7 +106,16 @@ const [show, setShow] = useState(false)
   }
   
   // UPDATING USER
+  const showModal2 = () => {
+    setShow2(true);
+  };
+ 
+  const hideModal2 = () => {
+    setShow2(false );
+  };
+
   function handleFormSubmit(event) {
+    hideModal2();
     event.preventDefault();
       API.updateUser(id, {
         roomName: formObject.roomName,
@@ -648,15 +654,11 @@ function sundayOnChange(event){
                   Cancel
                 </button>
                 <div className="col s1 "></div>
-<<<<<<< HEAD
                 <button type = "button"  onClick={showModal}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
-=======
-                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
->>>>>>> main
                  Delete Your Account?
                 </button>
                 <div className="col s1 "></div>
-                <button onClick={handleFormSubmit} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                <button type="button" onClick={showModal2} className="vertical-spacer-sm waves-effect waves-light btn col s3">
                   Update Account
                 </button>
                 <div className="col s1 "></div>
@@ -664,16 +666,10 @@ function sundayOnChange(event){
             </div>
           </div>
         </form>
-<<<<<<< HEAD
       </div>
+            <UpdateModal show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
     </>
-=======
-              </div>
-
-      </>
-    
->>>>>>> main
   );
 }
 
