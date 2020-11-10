@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../../utils/userContext"
+import UserContext from "../../utils/UserContext"
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 
@@ -39,6 +39,7 @@ function NewUser1() {
       .then((result) => {
         setNewUserObject(result)
         const userID = result.data._id
+        console.log(userID)
         setUserId(userID)
         history.push(`/UpdateForm/${userID}`)
       });
