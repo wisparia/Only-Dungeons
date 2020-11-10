@@ -25,7 +25,7 @@ h5 {
 }
 
 .vertical-spacer-md {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .form-text {
@@ -36,7 +36,7 @@ h5 {
   border-style: outset !important;
   border: 8px solid;
   border-color: rgb(190, 141, 35);
-  background: url("./components/Navbar/tilebg.png");
+  background: url("./components/assets/tilebg.png");
   color: rgb(206, 168, 87) !important;
   padding: 25px !important;
 }
@@ -50,7 +50,7 @@ h5 {
   padding: 10px !important;
   height: auto;
   width: auto;
-  background: url("./components/Navbar/tilebg.png");
+  background: url("./components/assets/tilebg.png");
   color: rgb(190, 141, 35) !important;
   border-style: outset !important;
   border: 8px solid;
@@ -60,4 +60,8 @@ h5 {
 input {
   color: rgb(190, 141, 35) !important;
   font-family: "Press Start 2P", cursive;
+}
+
+.mainbox {
+  margin: 20px !important;
 }
