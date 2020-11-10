@@ -122,8 +122,9 @@ function DmUpdateForm() {
         },
         preferredRole: formObject.preferredRole
       })
-      .then(response=>console.log(response))
-      .then(history.go(0))
+      .then((response)=>{
+        console.log(response.data)
+      })
       .catch((err)=> console.error(err))
   
   };
