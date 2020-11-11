@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import { useHistory, Link } from "react-router-dom";
 import API from "../../utils/API";
@@ -14,6 +14,14 @@ function SigninPage(props) {
     password: "",
   });
 
+  function clearStorage (){
+    localStorage.removeItem("jwt")
+  }
+
+  useEffect(()=>{
+    clearStorage();
+  }, [])
+
   const {jwt, setJwt} = useContext(AuthContext)
 
   const { userId, setUserId } = useContext(UserContext);
@@ -24,6 +32,7 @@ function SigninPage(props) {
   }
 
   const handleFormSubmit = (e) => {
+    localStorage.removeItem("jwt");
     console.log("Click")
     e.preventDefault();
     API.loginUser({
@@ -32,22 +41,22 @@ function SigninPage(props) {
     }).then((result) => {
       console.log(result.data)
       console.log(result.data.data);
-
       const tokenToStore = result.data.data;
 
       if (result.data.data) {
         localStorage.setItem("jwt", tokenToStore);
 
-        const localToken = localStorage.getItem("jwt")
-        // console.log(localToken)
-        setJwt(localToken)
-        console.log({jwt})
+        const assignToken = async function(){
+          const localToken = localStorage.getItem("jwt")
+          await setJwt(localToken)
+          console.log({jwt})
+        }
+        
+        assignToken()
+        
       }
       
-      // setNewUserObject(result)
-      // console.log(result.data.user)
       const userID = result.data.user._id
-      // // console.log(userID)
       setUserId(userID)
       history.push(`/DmDirectory`)
     });
