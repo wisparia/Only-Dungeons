@@ -3,7 +3,6 @@ import UserContext from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import { setAxiosDefaults } from "../../utils/axiosDefaults";
-// imports AuthContext from the axios defaults
 import AuthContext from "../../context/AuthContext"
 
 function NewUser1() {
@@ -17,14 +16,9 @@ function NewUser1() {
     isDm: false,
   });
 
-  // const [newJwt, setnewJwt] = useState("")
-  // const [jwt, setJwt] = useState("")
   const {jwt, setJwt} = useContext(AuthContext)
 
   const { userId, setUserId } = useContext(UserContext);
-
-  // state for AuthContext
-  // const {jwt, setJwt} = useContext(AuthorizationContext)
 
   function handleInputChange(event) {
     const { name, value } = event.target;

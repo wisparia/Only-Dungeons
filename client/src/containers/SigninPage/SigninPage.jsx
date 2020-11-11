@@ -53,14 +53,10 @@ function SigninPage(props) {
         }
         
         assignToken()
-        // console.log(localToken)
         
       }
       
-      // setNewUserObject(result)
-      // console.log(result.data.user)
       const userID = result.data.user._id
-      // // console.log(userID)
       setUserId(userID)
       history.push(`/DmDirectory`)
     });

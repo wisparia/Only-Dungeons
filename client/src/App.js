@@ -13,7 +13,7 @@ import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
-// import Audio from "./components/Audio/Audio";
+import Audio from "./components/Audio/Audio";
 // import { Button, Card, Row, Col } from "react-materialize";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Audio /> */}
+      <Audio />
       <UserContext.Provider value={{ userId, setUserId }}>
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
