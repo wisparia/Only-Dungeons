@@ -15,6 +15,7 @@ import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
 import Audio from "./components/Audio/Audio";
 // import { Button, Card, Row, Col } from "react-materialize";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -49,12 +50,16 @@ function App() {
                 render={() => <SigninPage user={user} setUser={setUser} />}
               />
               <Route exact path="/NewUser" component={NewUser1} />
-              <Route exact path="/PcForm/:id" component={PcForm} />
-              <Route exact path="/DmForm/:id" component={DmForm} />
               <Route
                 exact
                 path="/DmDirectory"
                 render={() => <DmDirectory user={user} />}
+              />
+              {/* <Route exact path="/DmDirectory" component={DmDirectory} /> */}
+              <ProtectedRoute
+                exact
+                path="/DmDirectory"
+                component={DmDirectory}
               />
               <Route exact path="/DmOne/:id" component={DmOne} />
               {/* <Route exact path="/UpdateForm/:id" component={UpdateForm} /> */}
