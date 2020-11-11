@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import { useHistory, Link } from "react-router-dom";
 import API from "../../utils/API";
@@ -13,6 +13,14 @@ function SigninPage(props) {
     email: "",
     password: "",
   });
+
+  function clearStorage (){
+    localStorage.removeItem("jwt")
+  }
+
+  useEffect(()=>{
+    clearStorage();
+  }, [])
 
   const {jwt, setJwt} = useContext(AuthContext)
 
