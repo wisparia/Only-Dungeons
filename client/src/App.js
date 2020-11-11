@@ -39,7 +39,10 @@ function App() {
 
   return (
     <div className="App">
+<<<<<<< HEAD
       <Audio />
+=======
+>>>>>>> main
       <UserContext.Provider value={{ userId, setUserId }}>
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
@@ -64,7 +67,10 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
+<<<<<<< HEAD
           <Footer />
+=======
+>>>>>>> main
         </Router>
       </UserContext.Provider>
     </div>
