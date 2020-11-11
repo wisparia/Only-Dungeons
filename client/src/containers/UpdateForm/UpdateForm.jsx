@@ -4,6 +4,9 @@ import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
+import AuthContext from "../../context/AuthContext";
+
+
 
 
 // TODO: Make sure to grab value from dropdown
@@ -11,6 +14,25 @@ import UpdateModal from "../../components/UpdateModal/UpdateModal";
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
+
+  const userAuthContext = useContext(AuthContext)
+
+  // const [jwt, setJwt] = useState();
+
+  // useEffect(() => {
+  //   const localJwt = localStorage.getItem("jwt");
+  //   if (localJwt) {
+  //     setJwt(localJwt);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   if (jwt) {
+  //     setAxiosDefaults(jwt);
+  //     localStorage.setItem("jwt", jwt);
+  //   }
+  // },[jwt]);
+
   const history = useHistory()
   const {id} = useParams()
 const [show, setShow] = useState(false)
@@ -425,7 +447,6 @@ const [show2, setShow2] = useState(false)
                 <div className="col s12 m6 l3">
                   <p>
                     <label>
-                    {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
                     <input type="checkbox" checked={formObject.availability.sunday} name="sunday" value={formObject.availability.sunday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Sunday</p>
