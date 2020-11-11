@@ -68,28 +68,24 @@ function App() {
 
   return (
     <div className="App">
-      {/* <UserContext.Provider value={{ userId, setUserId }}> */}
-      <Router>
-        {/* <AuthContext.Provider value={{ jwt, setJwt }}> */}
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={SigninPage} />
-            <Route exact path="/NewUser" component={NewUser1} />
-            {/* <ProtectedRoute exact path="/NewUser" component={NewUser1} /> */}
-            <Route exact path="/DmDirectory" component={DmDirectory} />
-            <Route exact path="/DmOne/:id" component={DmOne} />
-            <Route exact path="/UpdateForm/:id" component={UpdateForm} />
-            {/* <ProtectedRoute
-              exact
-              path="/UpdateForm/:id"
-              component={UpdateForm}
-            /> */}
-            <Route exact path="/ThreeD/:id" component={ThreeD} />
-            <Route path="/" component={SigninPage} />
-          </Switch>
-        {/* </AuthContext.Provider> */}
-      </Router>
-      {/* </UserContext.Provider> */}
+      <UserContext.Provider value={{ userId, setUserId }}>
+        <Router>
+          <AuthContext.Provider value={{ jwt, setJwt }}>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={SigninPage} />
+              <Route exact path="/NewUser" component={NewUser1} />
+              <Route exact path="/PcForm/:id" component={PcForm} />
+              <Route exact path="/DmForm/:id" component={DmForm} />
+              <Route exact path="/DmDirectory" component={DmDirectory} />
+              <Route exact path="/DmOne/:id" component={DmOne} />
+              <Route exact path="/UpdateForm/:id" component={UpdateForm} />
+              <Route exact path="/ThreeD/:id" component={ThreeD} />
+              <Route path="/" component={SigninPage} />
+            </Switch>
+          </AuthContext.Provider>
+        </Router>
+      </UserContext.Provider>
     </div>
   );
 }

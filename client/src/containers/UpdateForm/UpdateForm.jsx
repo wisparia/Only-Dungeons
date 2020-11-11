@@ -205,7 +205,17 @@ const [show2, setShow2] = useState(false)
         <div className="row section"></div>
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
-            <div className="col s6">
+
+            <div className="col s12 l5 center-align">
+                <p>Avatar:</p>
+                <img
+                  className="center-align content-border image-true img"
+                  src={placeholderImg}
+                />
+              </div>
+
+            <div className="col s12 l7">
+
             {dm.isDm ? <>
               <p>Room Name: </p>
               <div className="content-border">
@@ -216,16 +226,7 @@ const [show2, setShow2] = useState(false)
               <div className="content-border">
                 <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
               </div>
-            </div>
-
-            <div className="col s6">
-              <div className="col s12">
-                <p>Avatar:</p>
-                <img
-                  className="content-border col s12 image-true"
-                  src={placeholderImg}
-                />
-              </div>
+            
 
             {!dm.isDm ? <> <p>Preferred Role: </p>
             <div className="content-border">
@@ -247,8 +248,7 @@ const [show2, setShow2] = useState(false)
                 {dm.preferredRole === "Wizard" ? <option selected name="preferredRole" value="Wizard">Wizard</option> : <option name="preferredRole" value="Wizard">Wizard</option>}
               </select>
             </div> </> : null}
-            </div>
-          </div>
+            </div></div>
 
           <div className="row">
             <div className="col s12">
@@ -256,7 +256,7 @@ const [show2, setShow2] = useState(false)
             </div>
 
             <div className="row">
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" checked={formObject.categoryType.campaigns} name="campaigns" value={formObject.categoryType.campaigns} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -266,7 +266,7 @@ const [show2, setShow2] = useState(false)
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                     <input type="checkbox" checked={formObject.categoryType.oneshots} name="oneshots" value={formObject.categoryType.oneshots} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -276,7 +276,7 @@ const [show2, setShow2] = useState(false)
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.homebrew} name="homebrew" value={formObject.categoryType.homebrew} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -289,7 +289,7 @@ const [show2, setShow2] = useState(false)
             </div>
 
             <div className="row">
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.byTheBook} name="byTheBook" value={formObject.categoryType.byTheBook} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -299,7 +299,7 @@ const [show2, setShow2] = useState(false)
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.rpersonly} name="rpersonly" value={formObject.categoryType.rpersonly} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -309,7 +309,7 @@ const [show2, setShow2] = useState(false)
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.norestriction} name="norestriction" value={formObject.categoryType.norestriction} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -322,7 +322,7 @@ const [show2, setShow2] = useState(false)
             </div>
 
             <div className="row">
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.displaydice} name="displaydice" value={formObject.categoryType.displaydice} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -332,7 +332,7 @@ const [show2, setShow2] = useState(false)
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.lvl1only} name="lvl1only" value={formObject.categoryType.lvl1only} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -342,7 +342,7 @@ const [show2, setShow2] = useState(false)
                   </label>
                 </p>
               </div>
-              <div className="col s4">
+              <div className="col s12 m6 l4">
                 <p>
                   <label>
                   <input type="checkbox" checked={formObject.categoryType.voyuerallowed} name="voyuerallowed" value={formObject.categoryType.voyuerallowed} onChange={(e) => handleCheckbox(e, "categoryType")}/>
@@ -359,7 +359,7 @@ const [show2, setShow2] = useState(false)
             <div className="col s12">
               <h5 className="form-text">Availability:</h5>
               <div className="row">
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                     <input type="checkbox" checked={formObject.availability.monday} name="monday" value={formObject.availability.monday} onChange={(e) => handleCheckbox(e, "availability")}/>
@@ -369,7 +369,7 @@ const [show2, setShow2] = useState(false)
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                       <input type="checkbox" checked={formObject.availability.tuesday} name="tuesday" value={formObject.availability.tuesday} onChange={(e) => handleCheckbox(e, "availability")}/>
@@ -379,7 +379,7 @@ const [show2, setShow2] = useState(false)
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                     <input type="checkbox" checked={formObject.availability.wednesday} name="wednesday" value={formObject.availability.wednesday} onChange={(e) => handleCheckbox(e, "availability")}/>
@@ -389,7 +389,7 @@ const [show2, setShow2] = useState(false)
                     </label>
                   </p>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                     <input type="checkbox" checked={formObject.availability.thursday} name="thursday" value={formObject.availability.thursday} onChange={(e) => handleCheckbox(e, "availability")}/>
@@ -402,7 +402,7 @@ const [show2, setShow2] = useState(false)
               </div>
 
               <div className="row">
-                <div className="col s4">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                     <input type="checkbox" checked={formObject.availability.friday} name="friday" value={formObject.availability.friday} onChange={(e) => handleCheckbox(e, "availability")}/>
@@ -412,7 +412,7 @@ const [show2, setShow2] = useState(false)
                     </label>
                   </p>
                 </div>
-                <div className="col s4">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                     <input type="checkbox" checked={formObject.availability.saturday} name="saturday" value={formObject.availability.saturday} onChange={(e) => handleCheckbox(e, "availability")}/>
@@ -422,7 +422,7 @@ const [show2, setShow2] = useState(false)
                     </label>
                   </p>
                 </div>
-                <div className="col s4">
+                <div className="col s12 m6 l3">
                   <p>
                     <label>
                     {dm.availability.sunday ? <input checked="checked" type="checkbox" /> : <input type="checkbox" /> }
@@ -435,18 +435,18 @@ const [show2, setShow2] = useState(false)
                 </div>
               </div> 
               <div className="row vertical-spacer-sm">
-                <button className="vertical-spacer-sm waves-effect waves-light btn col s3">
+              <div className="col s12 m12 l4">
+                <button className="vertical-spacer-sm waves-effect waves-light btn col s12">
                   Cancel
-                </button>
-                <div className="col s1 "></div>
-                <button type = "button"  onClick={showModal}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                </button></div>
+                <div className="col s12 m12 l4">
+                <button type = "button"  onClick={showModal}  className="vertical-spacer-sm waves-effect waves-light btn col s12">
                  Delete Your Account?
-                </button>
-                <div className="col s1 "></div>
-                <button type="button" onClick={showModal2} className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                </button></div>
+                <div className="col s12 m12 l4">
+                <button type="button" onClick={showModal2} className="vertical-spacer-sm waves-effect waves-light btn col s12">
                   Update Account
-                </button>
-                <div className="col s1 "></div>
+                </button></div>
               </div>
           </div>
           </div> 

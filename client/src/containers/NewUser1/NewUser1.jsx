@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import { setAxiosDefaults } from "../../utils/axiosDefaults";
 // imports AuthContext from the axios defaults
-import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext"
 
 function NewUser1() {
   const history = useHistory();
@@ -19,9 +19,9 @@ function NewUser1() {
 
   // const [newJwt, setnewJwt] = useState("")
   // const [jwt, setJwt] = useState("")
-  const { jwt, setJwt } = useContext(AuthContext);
+  const {jwt, setJwt} = useContext(AuthContext)
 
-  // const { userId, setUserId } = useContext(UserContext);
+  const { userId, setUserId } = useContext(UserContext);
 
   // state for AuthContext
   // const {jwt, setJwt} = useContext(AuthorizationContext)
@@ -44,24 +44,26 @@ function NewUser1() {
       password: newUserObj.password,
       isDm: newUserObj.isDm,
     }).then((result) => {
-      // console.log(result.data);
+      console.log(result.data)
+      console.log(result.data.data);
 
-      // const token = result.data.data;
+      const tokenToStore = result.data.data;
 
       if (result.data.data) {
-        const localToken = localStorage.setItem("jwt");
-        // console.log(token);
-        setJwt(localToken);
-        // console.log(jwt)
+        localStorage.setItem("jwt", tokenToStore);
+
+        const localToken = localStorage.getItem("jwt")
+        console.log(localToken)
+        setJwt(localToken)
+        console.log({jwt})
       }
-      // console.log("======================")
-      // console.log(jwt)
-      // console.log("======================")
+      
       // setNewUserObject(result)
-      // const userID = result.data._id
+      console.log(result.data.user)
+      const userID = result.data.user._id
       // console.log(userID)
-      // setUserId(userID)
-      // history.push(`/UpdateForm/${userID}`)
+      setUserId(userID)
+      history.push(`/UpdateForm/${userID}`)
     });
   };
 
