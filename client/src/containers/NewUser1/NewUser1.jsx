@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../../utils/UserContext"
+import UserContext from "../../utils/UserContext";
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
-
+import { setAxiosDefaults } from "../../utils/axiosDefaults";
+// imports AuthContext from the axios defaults
+import AuthContext from "../../context/AuthContext";
 
 function NewUser1() {
-  
   const history = useHistory();
   const [newUserObj, setNewUserObject] = useState({
     _id: "",
@@ -16,7 +17,14 @@ function NewUser1() {
     isDm: false,
   });
 
-  const {userId, setUserId} = useContext(UserContext);
+  // const [newJwt, setnewJwt] = useState("")
+  // const [jwt, setJwt] = useState("")
+  const { jwt, setJwt } = useContext(AuthContext);
+
+  // const { userId, setUserId } = useContext(UserContext);
+
+  // state for AuthContext
+  // const {jwt, setJwt} = useContext(AuthorizationContext)
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -35,15 +43,47 @@ function NewUser1() {
       email: newUserObj.email,
       password: newUserObj.password,
       isDm: newUserObj.isDm,
-    })
-      .then((result) => {
-        setNewUserObject(result)
-        const userID = result.data._id
-        console.log(userID)
-        setUserId(userID)
-        history.push(`/UpdateForm/${userID}`)
-      });
+    }).then((result) => {
+      // console.log(result.data);
+
+      // const token = result.data.data;
+
+      if (result.data.data) {
+        const localToken = localStorage.setItem("jwt");
+        // console.log(token);
+        setJwt(localToken);
+        // console.log(jwt)
+      }
+      // console.log("======================")
+      // console.log(jwt)
+      // console.log("======================")
+      // setNewUserObject(result)
+      // const userID = result.data._id
+      // console.log(userID)
+      // setUserId(userID)
+      // history.push(`/UpdateForm/${userID}`)
+    });
   };
+
+  // test for jwts creating the key within the newUser1
+
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+  //   API.saveUser({
+  //     userName: newUserObj.userName,
+  //     email: newUserObj.email,
+  //     password: newUserObj.password,
+  //     isDm: newUserObj.isDm,
+  //   })
+  //     .then((result) => {
+  //       console.log(result)
+  //       // setNewUserObject(result)
+  //       // const userID = result.data
+  //       // console.log(userID)
+  //       // setUserId(userID)
+  //       // history.push(`/UpdateForm/${userID}`)
+  //     });
+  // };
 
   return (
     <>
@@ -148,25 +188,25 @@ function NewUser1() {
             </div>
             <div className="row">
               <div className="col s12 center-align vertical-spacer-md">
-              <div
-                className=" vertical-spacer-md waves-effect waves-light btn col s6"
-                to="/"
-              >
-                Cancel
+                <div
+                  className=" vertical-spacer-md waves-effect waves-light btn col s6"
+                  to="/"
+                >
+                  Cancel
+                </div>
+                <div
+                  className="vertical-spacer-md waves-effect waves-light btn col s6"
+                  disabled={!(newUserObj.password && newUserObj.email)}
+                  onClick={handleFormSubmit}
+                >
+                  Create Account
+                </div>
               </div>
-              <div
-                className="vertical-spacer-md waves-effect waves-light btn col s6"
-                disabled={!(newUserObj.password && newUserObj.email)}
-                onClick={handleFormSubmit}
-              >
-                Create Account
-              </div></div>
             </div>
           </div>
         </div>
       </form>
-      </>
-
+    </>
   );
 }
 // test build
