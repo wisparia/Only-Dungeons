@@ -63,35 +63,68 @@ const ThreeD = () => {
     skybox.position.set(0,55,0)
 
 
-    const createBar = (ShX,ShY, ShZ, x,y,z) => {
+    const createTable = (ShX,ShY, ShZ, x,y,z) => {
     const geometry = new THREE.BoxGeometry(ShX, ShY, ShZ);
-    const material = new THREE.MeshPhongMaterial({ color: 0x191107 });
-    const bar = new THREE.Mesh(geometry, material);
-    scene.add(bar);
-    bar.position.set(x,y,z) }
-    createBar(150, 40, 40, 0, 0,-50)
-    createBar(40, 40, 150, 200,0,-50)
+    const material = new THREE.MeshLambertMaterial({ color: 0x191107 });
+    const table = new THREE.Mesh(geometry, material);
+
+    scene.add(table);
+    table.position.set(x,y,z) }
+    // createTable(150, 40, 40, 0, 0,-50)
+
+    createTable(40, 40, 150, 200,0,-50)
 
     const createStool = (x,y,z) =>   {
     const geometry = new THREE.CylinderGeometry( 20, 10, 25, 32 );
-    const material = new THREE.MeshPhongMaterial( {color: 0x191107} );
+    const material = new THREE.MeshDepthMaterial( {color: 0x191107} );
     const cylinder = new THREE.Mesh( geometry, material );
     scene.add( cylinder );
     cylinder.position.set(x, y, z) }
+
+    // x = 0, +50, -50 // y = y-10 // z = z+10, z+100 z-100
   
-    createStool(0,-10,10)
-    createStool(50,-10,10)
-    createStool(-50,-10,10)
-    createStool(0,-10,-100)
-    createStool(50,-10,-100)
-    createStool(-50,-10,-100)
+    const stools = (x, y, z) => {
+    createStool((x), (y-10), (z+10))
+    createStool((x+50),(y-10), (z+10))
+    createStool((x-50), (y-10), (z+10))
+    createStool((x), (y-10), (z-100))
+    createStool((x+50), (y-10), (z-100))
+    createStool((x-50), (y-10), (z-100))
+  }
   
-    createStool(250,-10,-100)
-    createStool(250,-10,-50)
-    createStool(250,-10, 0)
-    createStool(150,-10,-100)
-    createStool(150,-10,-50)
-    createStool(150,-10, 0)
+  createTable(150, 40, 40, 0, 0,-50)
+  stools( 0, 0, 0)
+  
+  createTable(150, 40, 40, 300, 0,-50)
+  stools( 300, 0, 0)
+ 
+  createTable(150, 40, 40, -300, 0,-50)
+  stools( -300, 0,0)
+  
+  createTable(150, 40, 40, 0, 0, -300)
+  stools( 0, 0, -250)
+
+  createTable(150, 40, 40, 300, 0, -300)
+  stools( 300, 0, -250)
+  
+  createTable(150, 40, 40, -300, 0, -300)
+  stools( -300, 0, -250)
+
+  
+  
+  
+  
+  
+  
+
+
+    // createStool(250,-10, 0)
+    // createStool(150,-10, 0)
+    // createStool(250,-10,-50)
+    // createStool(150,-10,-50)
+    // createStool(250,-10,-100) 
+    // createStool(150,-10,-100)
+   
 
     camera.position.set(40,60,50);
     camera.rotation.set(0,.5,0)
