@@ -14,11 +14,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
+import Footer from "./components/Footer/Footer";
+import Audio from "./components/Audio/Audio";
 // import { Button, Card, Row, Col } from "react-materialize";
 
 function App() {
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -36,25 +39,33 @@ function App() {
 
   return (
     <div className="App">
-       <UserContext.Provider value={{ userId, setUserId }}>
-      <Router>
-       
+      <Audio />
+      <UserContext.Provider value={{ userId, setUserId }}>
+        <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
             <Switch>
-              <Route exact path="/" component={SigninPage} />
+              <Route
+                exact
+                path="/"
+                render={() => <SigninPage user={user} setUser={setUser} />}
+              />
               <Route exact path="/NewUser" component={NewUser1} />
               <Route exact path="/PcForm/:id" component={PcForm} />
               <Route exact path="/DmForm/:id" component={DmForm} />
-              <Route exact path="/DmDirectory" component={DmDirectory} />
+              <Route
+                exact
+                path="/DmDirectory"
+                render={() => <DmDirectory user={user} />}
+              />
               <Route exact path="/DmOne/:id" component={DmOne} />
               <Route exact path="/UpdateForm/:id" component={UpdateForm} />
               <Route exact path="/ThreeD/:id" component={ThreeD} />
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-
-      </Router>
+          <Footer />
+        </Router>
       </UserContext.Provider>
     </div>
   );

@@ -6,7 +6,7 @@ import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCh
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
 
-function DmDirectory() {
+function DmDirectory(props) {
   const [allDms, setDms] = useState([]);
   // const [filteredDms, setFilteredDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
@@ -162,6 +162,7 @@ function DmDirectory() {
         </div>
 
         <div className="col s12 m12 l7 content-border">
+      {props.user.userName}
           <h5>Matched Games:</h5>
           {searchedDms.map((dm) => (
             <Dmaster

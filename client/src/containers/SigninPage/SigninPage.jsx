@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-function SigninPage() {
+function SigninPage(props) {
   return (
     <>
     <div className="container section">
@@ -16,7 +16,13 @@ function SigninPage() {
                 <label for="username">
                     <p className="form-text">Username</p>
                   </label>
-                  <input id="username" type="text" class="validate" />
+                  <input id="username" type="text" class="validate" onChange={(e) => {
+                    console.log("value", e.target.value)
+                    const newUser = {...props.user}
+                    newUser.userName = e.target.value
+                    console.log('newUser', newUser)
+                    props.setUser(newUser)
+                  }} />
                 </div>
               </div>
               <div className="row">
