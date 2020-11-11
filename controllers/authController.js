@@ -71,14 +71,13 @@ module.exports = {
         // console.log(foundUser);
         if (!foundUser)
           return res.status(400).json({ message: "User not found" });
-
-        bcrypt
-          .compare(password, foundUser.password)
+        bcrypt.compare(password, foundUser.password)
           .then((isMatch) => {
             if (!isMatch)
               return res.status(400).json({ message: "Invalid password" });
-            console.log(isMatch);
             if (isMatch) {
+              console.log(isMatch);
+              console.log(foundUser)
               const token = jwt.sign(
                 {
                   _id: foundUser._id,
@@ -88,6 +87,12 @@ module.exports = {
               );
               res.json({
                 error: false,
+                user: {
+                  _id: foundUser._id,
+                  isDm: foundUser.isDm,
+                  email: foundUser.email,
+                  userName: foundUser.userName
+                },
                 data: token,
                 message: "Login Successful",
               });

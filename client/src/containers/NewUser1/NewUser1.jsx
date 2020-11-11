@@ -53,7 +53,7 @@ function NewUser1() {
         localStorage.setItem("jwt", tokenToStore);
 
         const localToken = localStorage.getItem("jwt")
-        console.log(localToken)
+        // console.log(localToken)
         setJwt(localToken)
         console.log({jwt})
       }

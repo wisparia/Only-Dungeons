@@ -27,6 +27,10 @@ export default {
     return axios.post("/api/auth/signUp", userData);
   },
 
+  loginUser: function(userData) {
+    return axios.post("/api/auth/login", userData)
+  },
+
   // Updates a user in the database
   updateUser: function (id, userData) {
     return axios.put("/api/users/" + id, userData);
