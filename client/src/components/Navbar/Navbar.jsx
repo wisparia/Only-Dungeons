@@ -1,14 +1,12 @@
-import React, {useContext, useState} from 'react';
-
-import UserContext from "../../utils/UserContext";
-
+import React, {useContext} from 'react';
+import UserContext from "../../context/UserContext";
 import { Link } from 'react-router-dom';
 import 'materialize-css';
 import Logo from "./ODlogo2.png";
 import "./navbar.css";
 // import { Button, Card, Row, Col } from 'react-materialize';
 function Navbar() {
-  const {userId, setUserId} = useContext(UserContext);
+  const {userId} = useContext(UserContext);
   
     return (
       <nav className="nav-extended">

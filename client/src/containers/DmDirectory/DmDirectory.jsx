@@ -17,7 +17,6 @@ function DmDirectory(props) {
     days: [],
   });
 
-
   useEffect(() => {
     loadDms();
   }, []);
@@ -74,7 +73,6 @@ function DmDirectory(props) {
   };
 
   useEffect(() => {
-
     if (
       availabilityFilters.days.length > 0 &&
       categoryFilters.categories.length > 0
@@ -148,7 +146,6 @@ function DmDirectory(props) {
                   handleFilters(filters, "categories")
                 }
               />
-                
               <div className="col s12">
                 <h4>Availability:</h4>
               </div>
@@ -160,7 +157,6 @@ function DmDirectory(props) {
             </div>
           </div>
         </div>
-
         <div className="col s12 m12 l7 content-border">
       {props.user.userName}
           <h5>Matched Games:</h5>
