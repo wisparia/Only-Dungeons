@@ -6,7 +6,7 @@ import { setAxiosDefaults } from "../../utils/axiosDefaults";
 // imports AuthContext from the axios defaults
 import AuthContext from "../../context/AuthContext"
 
-function SigninPage() {
+function SigninPage(props) {
 
   const history = useHistory();
   const [returnUserObj, setReturnUserObject] = useState({
