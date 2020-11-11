@@ -13,6 +13,8 @@ const ThreeD = () => {
   }, []);
 
   function dimensions() {
+   
+   
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       100,
@@ -81,17 +83,6 @@ const ThreeD = () => {
     createStool(50,-10,-100)
     createStool(-50,-10,-100)
 
-    
-    // const geometry1 = new THREE.SphereGeometry(1,5,20);
-    // const material1 = new THREE.MeshLambertMaterial({ color: 0xFF0000}) 
-    // const mesh = new THREE.Mesh(geometry1, material1)
-    // const mesh1 = new THREE.Mesh(geometry1, material)
-    // scene.add(mesh)
-    // scene.add(mesh1)
-    // position is based on XYZ
-    // mesh.position.set(1,2,2.5)
-    // mesh1.position.set(5,0,-4)
-    // can you .rotation.set() & scale.set()
     camera.position.set(40,60,50);
     camera.rotation.set(0,.5,0)
 
