@@ -7,6 +7,8 @@ const db = require("../models");
 // const { response } = require("express");
 // const { User } = require("../models");
 
+// Weird
+
 module.exports = {
   signUp: function (req, res) {
     const { userName, email, password, isDm } = req.body;
