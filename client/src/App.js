@@ -12,20 +12,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
-<<<<<<< HEAD
 import Footer from "./components/Footer/Footer";
 import Audio from "./components/Audio/Audio";
 // import { Button, Card, Row, Col } from "react-materialize";
-=======
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
->>>>>>> main
 
 function App() {
-
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
   const [user, setUser] = useState({});
-
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -39,7 +33,7 @@ function App() {
       setAxiosDefaults(jwt);
       localStorage.setItem("jwt", jwt);
     }
-  },[jwt]);
+  }, [jwt]);
 
   return (
     <div className="App">
