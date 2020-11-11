@@ -1,7 +1,58 @@
-import React from "react";
-import { Link } from "react-router-dom"
+import React, { useContext, useState } from "react";
+import UserContext from "../../utils/UserContext";
+import { useHistory, Link } from "react-router-dom";
+import API from "../../utils/API";
+import { setAxiosDefaults } from "../../utils/axiosDefaults";
+// imports AuthContext from the axios defaults
+import AuthContext from "../../context/AuthContext"
 
 function SigninPage() {
+
+  const history = useHistory();
+  const [returnUserObj, setReturnUserObject] = useState({
+    email: "",
+    password: "",
+  });
+
+  const {jwt, setJwt} = useContext(AuthContext)
+
+  const { userId, setUserId } = useContext(UserContext);
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setReturnUserObject({ ...returnUserObj, [name]: value });
+  }
+
+  const handleFormSubmit = (e) => {
+    console.log("Click")
+    e.preventDefault();
+    API.loginUser({
+      email: returnUserObj.email.trim(),
+      password: returnUserObj.password.trim(),
+    }).then((result) => {
+      console.log(result.data)
+      console.log(result.data.data);
+
+      const tokenToStore = result.data.data;
+
+      if (result.data.data) {
+        localStorage.setItem("jwt", tokenToStore);
+
+        const localToken = localStorage.getItem("jwt")
+        // console.log(localToken)
+        setJwt(localToken)
+        console.log({jwt})
+      }
+      
+      // setNewUserObject(result)
+      // console.log(result.data.user)
+      const userID = result.data.user._id
+      // // console.log(userID)
+      setUserId(userID)
+      history.push(`/DmDirectory`)
+    });
+  };
+
   return (
     <>
     <div className="container section">
@@ -13,18 +64,18 @@ function SigninPage() {
             <form className="col s12">
               <div className="row">
                 <div className="col s12">
-                <label for="username">
-                    <p className="form-text">Username</p>
+                <label htmlFor="email">
+                    <p className="form-text">Email</p>
                   </label>
-                  <input id="username" type="text" class="validate" />
+                  <input id="email" onChange={handleInputChange} value={returnUserObj.email} name="email" type="email" class="validate" />
                 </div>
               </div>
               <div className="row">
                 <div className="col s12">
-                <label for="password">
+                <label htmlFor="password">
                     <p className="form-text">Password</p>
                   </label>
-                  <input id="password" type="password" className="validate" />
+                  <input id="password" onChange={handleInputChange} name="password" value={returnUserObj.password} type="password" className="validate" />
                 </div>
               </div>
               
@@ -38,9 +89,16 @@ function SigninPage() {
 
               <div className="row">
                 <div className="col s2"></div>
-              <Link button className="vertical-spacer-sm waves-effect waves-light btn col s8" to = "/DmDirectory">
+              {/* <button onChange={handleFormSubmit} type="button" className="vertical-spacer-sm waves-effect waves-light btn col s8">
                 Login
-              </Link>
+              </button> */}
+              <div
+                  className="vertical-spacer-md waves-effect waves-light btn col s6"
+                  disabled={!(returnUserObj.password && returnUserObj.email)}
+                  onClick={handleFormSubmit}
+                >
+                  Login
+                </div>
               <div className="col s2"></div>
               </div>
             </form>

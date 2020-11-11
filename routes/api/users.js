@@ -19,7 +19,7 @@ router.route("/dms")
 // Matches with "/api/users/:id"
 router.route("/:id")
 .get(usersController.findById)
-.put(usersController.updateField)
-.delete(usersController.remove)
+.put(auth, usersController.updateField)
+.delete(auth, usersController.remove)
 
 module.exports = router;

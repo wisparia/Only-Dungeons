@@ -9,7 +9,7 @@ const db = require("../models");
 
 module.exports = {
   signUp: function (req, res) {
-    const { userName, email, password } = req.body;
+    const { userName, email, password, isDm } = req.body;
     // console.log(email);
     // console.log(password);
     if (!email.trim() || !password.trim()) {
@@ -22,10 +22,11 @@ module.exports = {
           db.User.create({
             userName: userName,
             email: email,
+            isDm: isDm,
             password: hashedPassword,
           })
             .then((response) => {
-              // console.log(response);
+              console.log(response);
               // res.json(response);
               const token = jwt.sign(
                 {
@@ -37,6 +38,12 @@ module.exports = {
               );
               res.json({
                 error: false,
+                user: {
+                  _id: response._id,
+                  isDm: response.isDm,
+                  email: response.email,
+                  userName: response.userName
+                },
                 data: token,
                 message: "Signup Successful",
               });
@@ -64,14 +71,13 @@ module.exports = {
         // console.log(foundUser);
         if (!foundUser)
           return res.status(400).json({ message: "User not found" });
-
-        bcrypt
-          .compare(password, foundUser.password)
+        bcrypt.compare(password, foundUser.password)
           .then((isMatch) => {
             if (!isMatch)
               return res.status(400).json({ message: "Invalid password" });
-            console.log(isMatch);
             if (isMatch) {
+              console.log(isMatch);
+              console.log(foundUser)
               const token = jwt.sign(
                 {
                   _id: foundUser._id,
@@ -81,6 +87,12 @@ module.exports = {
               );
               res.json({
                 error: false,
+                user: {
+                  _id: foundUser._id,
+                  isDm: foundUser.isDm,
+                  email: foundUser.email,
+                  userName: foundUser.userName
+                },
                 data: token,
                 message: "Login Successful",
               });
