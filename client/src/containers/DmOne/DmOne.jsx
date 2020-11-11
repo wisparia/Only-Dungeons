@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import PlaceholderImg from "./placeholder200x200.jpg";
 import { useParams } from "react-router-dom";
 import API from "../../utils/API";
+import ClericImg from "../../components/assets/AvatarImg/Cleric.jpg"
+import DruidImg from "../../components/assets/AvatarImg/Druid.jpg"
+import FighterImg from "../../components/assets/AvatarImg/Fighter.jpg"
+import MageImg from "../../components/assets/AvatarImg/Mage.jpg"
+import MonkImg from "../../components/assets/AvatarImg/Monk.jpg"
+import PaladinImg from "../../components/assets/AvatarImg/Paladin.jpg"
+import RogueImg from "../../components/assets/AvatarImg/Rogue.jpg"
+import WarlockImg from "../../components/assets/AvatarImg/Warlock.jpg"
+
 import "./DmOne.css";
 
 function DmOne() {
@@ -49,7 +58,7 @@ function DmOne() {
       <div>
         <div className="container content-border row">
           <div className="col s12 m12 l4 center">
-            <img src={PlaceholderImg} alt="" />
+            <img src={`${dm.preferredRole}Img`} alt="" />
             <h5>{dm.userName}</h5>
             <div className="row center">
               <a className="col s8 m8 l8" href={`mailto:${dm.email}`}>

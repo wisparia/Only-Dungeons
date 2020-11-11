@@ -6,7 +6,14 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
 import AuthContext from "../../context/AuthContext";
 
-
+import ClericImg from "../../components/assets/AvatarImg/Cleric.jpg"
+import DruidImg from "../../components/assets/AvatarImg/Druid.jpg"
+import FighterImg from "../../components/assets/AvatarImg/Fighter.jpg"
+import MageImg from "../../components/assets/AvatarImg/Mage.jpg"
+import MonkImg from "../../components/assets/AvatarImg/Monk.jpg"
+import PaladinImg from "../../components/assets/AvatarImg/Paladin.jpg"
+import RogueImg from "../../components/assets/AvatarImg/Rogue.jpg"
+import WarlockImg from "../../components/assets/AvatarImg/Warlock.jpg"
 
 
 // TODO: Make sure to grab value from dropdown
@@ -14,6 +21,9 @@ import AuthContext from "../../context/AuthContext";
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
+
+  const ImgArray = [ClericImg,]
+
 
   const userAuthContext = useContext(AuthContext)
 
@@ -35,8 +45,8 @@ function DmUpdateForm() {
 
   const history = useHistory()
   const {id} = useParams()
-const [show, setShow] = useState(false)
-const [show2, setShow2] = useState(false)
+  const [show, setShow] = useState(false)
+  const [show2, setShow2] = useState(false)
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -228,12 +238,25 @@ const [show2, setShow2] = useState(false)
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
 
+            
             <div className="col s12 l5 center-align">
                 <p>Avatar:</p>
-                <img
+                
+                {formObject.preferredRole === "Cleric" ? 
+                 <img
                   className="center-align content-border image-true img"
-                  src={placeholderImg}
-                />
+                src={ClericImg}  /> : null}
+                
+                {formObject.preferredRole === "Druid" ? 
+                 <img
+                  className="center-align content-border image-true img"
+                src={DruidImg}  /> : null}
+                 
+                 {formObject.preferredRole === "Rogue" ? 
+                  <img
+                  className="center-align content-border image-true img"
+                src={RogueImg}  /> : null}
+               
               </div>
 
             <div className="col s12 l7">
