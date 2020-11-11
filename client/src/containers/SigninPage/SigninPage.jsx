@@ -6,7 +6,7 @@ import { setAxiosDefaults } from "../../utils/axiosDefaults";
 // imports AuthContext from the axios defaults
 import AuthContext from "../../context/AuthContext"
 
-function SigninPage() {
+function SigninPage(props) {
 
   const history = useHistory();
   const [returnUserObj, setReturnUserObject] = useState({
@@ -67,7 +67,13 @@ function SigninPage() {
                 <label htmlFor="email">
                     <p className="form-text">Email</p>
                   </label>
-                  <input id="email" onChange={handleInputChange} value={returnUserObj.email} name="email" type="email" class="validate" />
+                  <input id="username" type="text" class="validate" onChange={(e) => {
+                    console.log("value", e.target.value)
+                    const newUser = {...props.user}
+                    newUser.userName = e.target.value
+                    console.log('newUser', newUser)
+                    props.setUser(newUser)
+                  }} />
                 </div>
               </div>
               <div className="row">

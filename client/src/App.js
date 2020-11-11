@@ -12,13 +12,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
+import Footer from "./components/Footer/Footer";
+import Audio from "./components/Audio/Audio";
+// import { Button, Card, Row, Col } from "react-materialize";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
-
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
-
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -32,24 +34,34 @@ function App() {
       setAxiosDefaults(jwt);
       localStorage.setItem("jwt", jwt);
     }
-  },[jwt]);
+  }, [jwt]);
 
   return (
     <div className="App">
+      <Audio />
       <UserContext.Provider value={{ userId, setUserId }}>
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
             <Switch>
-              <Route exact path="/" component={SigninPage} />
+              <Route
+                exact
+                path="/"
+                render={() => <SigninPage user={user} setUser={setUser} />}
+              />
               <Route exact path="/NewUser" component={NewUser1} />
+              <Route
+                exact
+                path="/DmDirectory"
+                render={() => <DmDirectory user={user} />}
+              />
               {/* <Route exact path="/DmDirectory" component={DmDirectory} /> */}
-              <ProtectedRoute
+              {/* <ProtectedRoute
                 exact
                 path="/DmDirectory"
                 component={DmDirectory}
               />
-              <Route exact path="/DmOne/:id" component={DmOne} />
+              <Route exact path="/DmOne/:id" component={DmOne} /> */}
               {/* <Route exact path="/UpdateForm/:id" component={UpdateForm} /> */}
               <ProtectedRoute
                 exact
@@ -60,6 +72,7 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
+          <Footer />
         </Router>
       </UserContext.Provider>
     </div>

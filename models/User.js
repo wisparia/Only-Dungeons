@@ -49,35 +49,32 @@ const userSchema = new Schema({
       "Tagline must be less than 25 characters.",
     ],
   },
-  categoryType: 
-    {
-      byTheBook: { type: Boolean, default: false},
-      campaigns: { type: Boolean, default: false},
-      norestriction: { type: Boolean, default: false},
-      homebrew: { type: Boolean, default: false},
-      lvl1only: { type: Boolean, default: false},
-      rpersonly: { type: Boolean, default: false},
-      oneshots: { type: Boolean, default: false},
-      displaydice: { type: Boolean, default: false},
-      voyuerallowed: { type: Boolean, default: false},
-    },
-  availability: 
-    {
-      monday: { type: Boolean, default: false},
-      tuesday: { type: Boolean, default: false},
-      wednesday: { type: Boolean, default: false},
-      thursday: { type: Boolean, default: false},
-      friday: { type: Boolean, default: false},
-      saturday: { type: Boolean, default: false},
-      sunday: { type: Boolean, default: false},
-    },
+  categoryType: {
+    byTheBook: { type: Boolean, default: false },
+    campaigns: { type: Boolean, default: false },
+    norestriction: { type: Boolean, default: false },
+    homebrew: { type: Boolean, default: false },
+    lvl1only: { type: Boolean, default: false },
+    rpersonly: { type: Boolean, default: false },
+    oneshots: { type: Boolean, default: false },
+    displaydice: { type: Boolean, default: false },
+    voyuerallowed: { type: Boolean, default: false },
+  },
+  availability: {
+    monday: { type: Boolean, default: false },
+    tuesday: { type: Boolean, default: false },
+    wednesday: { type: Boolean, default: false },
+    thursday: { type: Boolean, default: false },
+    friday: { type: Boolean, default: false },
+    saturday: { type: Boolean, default: false },
+    sunday: { type: Boolean, default: false },
+  },
   // we hard-code the values in a drop-down on the front end. Then we can access asset files
-  preferredRole:{
+  preferredRole: {
     type: String,
     trim: true,
     // required: true,
   },
-    
 });
 
 const User = mongoose.model("User", userSchema);
