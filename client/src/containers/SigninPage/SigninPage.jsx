@@ -24,6 +24,7 @@ function SigninPage(props) {
   }
 
   const handleFormSubmit = (e) => {
+    localStorage.removeItem("jwt");
     console.log("Click")
     e.preventDefault();
     API.loginUser({
@@ -32,16 +33,20 @@ function SigninPage(props) {
     }).then((result) => {
       console.log(result.data)
       console.log(result.data.data);
-
       const tokenToStore = result.data.data;
 
       if (result.data.data) {
         localStorage.setItem("jwt", tokenToStore);
 
-        const localToken = localStorage.getItem("jwt")
+        const assignToken = async function(){
+          const localToken = localStorage.getItem("jwt")
+          await setJwt(localToken)
+          console.log({jwt})
+        }
+        
+        assignToken()
         // console.log(localToken)
-        setJwt(localToken)
-        console.log({jwt})
+        
       }
       
       // setNewUserObject(result)

@@ -37,6 +37,7 @@ function NewUser1() {
   }
 
   const handleFormSubmit = (e) => {
+    localStorage.removeItem("jwt")
     e.preventDefault();
     API.saveUser({
       userName: newUserObj.userName,
@@ -46,16 +47,18 @@ function NewUser1() {
     }).then((result) => {
       console.log(result.data)
       console.log(result.data.data);
-
       const tokenToStore = result.data.data;
 
       if (result.data.data) {
         localStorage.setItem("jwt", tokenToStore);
 
-        const localToken = localStorage.getItem("jwt")
-        // console.log(localToken)
-        setJwt(localToken)
-        console.log({jwt})
+        const assignToken = async function(){
+          const localToken = localStorage.getItem("jwt")
+          await setJwt(localToken)
+          console.log({jwt})
+        }
+        
+        assignToken()
       }
       
       // setNewUserObject(result)
