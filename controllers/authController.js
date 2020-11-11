@@ -9,7 +9,7 @@ const db = require("../models");
 
 module.exports = {
   signUp: function (req, res) {
-    const { userName, email, password } = req.body;
+    const { userName, email, password, isDm } = req.body;
     // console.log(email);
     // console.log(password);
     if (!email.trim() || !password.trim()) {
@@ -22,6 +22,7 @@ module.exports = {
           db.User.create({
             userName: userName,
             email: email,
+            isDm: isDm,
             password: hashedPassword,
           })
             .then((response) => {
@@ -37,6 +38,12 @@ module.exports = {
               );
               res.json({
                 error: false,
+                user: {
+                  _id: response._id,
+                  isDm: response.isDm,
+                  email: response.email,
+                  userName: response.userName
+                },
                 data: token,
                 message: "Signup Successful",
               });
