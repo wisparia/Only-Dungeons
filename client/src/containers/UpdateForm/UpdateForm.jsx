@@ -5,16 +5,7 @@ import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
 import AuthContext from "../../context/AuthContext";
-
-import ClericImg from "../../components/assets/AvatarImg/Cleric.jpg"
-import DruidImg from "../../components/assets/AvatarImg/Druid.jpg"
-import FighterImg from "../../components/assets/AvatarImg/Fighter.jpg"
-import MageImg from "../../components/assets/AvatarImg/Mage.jpg"
-import MonkImg from "../../components/assets/AvatarImg/Monk.jpg"
-import PaladinImg from "../../components/assets/AvatarImg/Paladin.jpg"
-import RogueImg from "../../components/assets/AvatarImg/Rogue.jpg"
-import WarlockImg from "../../components/assets/AvatarImg/Warlock.jpg"
-
+import AvatarImage from "../../components/AvatarImage/AvatarImage"
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
@@ -22,7 +13,6 @@ import WarlockImg from "../../components/assets/AvatarImg/Warlock.jpg"
 
 function DmUpdateForm() {
 
-  const ImgArray = [ClericImg,]
 
 
   const userAuthContext = useContext(AuthContext)
@@ -237,28 +227,10 @@ function DmUpdateForm() {
         <div className="row section"></div>
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
-
-            
-            <div className="col s12 l5 center-align">
-                <p>Avatar:</p>
-                
-                {formObject.preferredRole === "Cleric" ? 
-                 <img
-                  className="center-align content-border image-true img"
-                src={ClericImg}  /> : null}
-                
-                {formObject.preferredRole === "Druid" ? 
-                 <img
-                  className="center-align content-border image-true img"
-                src={DruidImg}  /> : null}
-                 
-                 {formObject.preferredRole === "Rogue" ? 
-                  <img
-                  className="center-align content-border image-true img"
-                src={RogueImg}  /> : null}
-               
-              </div>
-
+          <div className="col s12 l5 center-align">
+        <p>Avatar:</p>
+            <AvatarImage preferredRole={formObject.preferredRole} />
+            </div>
             <div className="col s12 l7">
 
             {dm.isDm ? <>

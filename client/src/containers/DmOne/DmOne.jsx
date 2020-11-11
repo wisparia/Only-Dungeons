@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import PlaceholderImg from "./placeholder200x200.jpg";
 import { useParams } from "react-router-dom";
 import API from "../../utils/API";
-import ClericImg from "../../components/assets/AvatarImg/Cleric.jpg"
-import DruidImg from "../../components/assets/AvatarImg/Druid.jpg"
-import FighterImg from "../../components/assets/AvatarImg/Fighter.jpg"
-import MageImg from "../../components/assets/AvatarImg/Mage.jpg"
-import MonkImg from "../../components/assets/AvatarImg/Monk.jpg"
-import PaladinImg from "../../components/assets/AvatarImg/Paladin.jpg"
-import RogueImg from "../../components/assets/AvatarImg/Rogue.jpg"
-import WarlockImg from "../../components/assets/AvatarImg/Warlock.jpg"
+
 
 import "./DmOne.css";
 
