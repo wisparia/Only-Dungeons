@@ -1,6 +1,9 @@
 import React, {useContext} from 'react';
 import UserContext from "../../context/UserContext";
-import { Link } from 'react-router-dom';
+import HomeButton from "../HomeButton/HomeButton";
+import GamesButton from "../GamesButton/GamesButton";
+import ProfileButton from "../ProfileButton/ProfileButton";
+import LogoutButton from "../LogoutButton/LogoutButton"
 import 'materialize-css';
 import Logo from "./ODlogo2.png";
 import "./navbar.css";
@@ -15,10 +18,10 @@ function Navbar() {
       </div>
       <div className="nav-content">
         <ul className="tabs tabs-transparent">
-          <li className="tab"><Link to="/">Home</Link></li>
-          <li className="tab"><Link to="/dmdirectory">Games</Link></li>
-          <li className="tab"><Link to={`/UpdateForm/${userId}`}>Profile</Link></li>
-          <li className="tab"><a href="#test4">Logout</a></li>
+          <HomeButton />
+          <GamesButton />
+          <ProfileButton />
+          <LogoutButton />
         </ul>
       </div>
     </nav>
