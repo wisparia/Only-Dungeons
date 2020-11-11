@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect, useContext } from "react";
-import UserContext from "./utils/UserContext";
+import UserContext from "./context/UserContext"
+
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";

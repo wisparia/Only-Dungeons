@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../../utils/UserContext";
+import UserContext from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import { setAxiosDefaults } from "../../utils/axiosDefaults";

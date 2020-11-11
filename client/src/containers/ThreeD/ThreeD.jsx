@@ -5,6 +5,8 @@ import Door from "./Door.png";
 import Floor from "./tilebg.png";
 import Ceiling from "./Ceiling.png";
 import Wall from "./Wall.png"
+import TavWall from "./TavernWall.png"
+import TavFloor from "./TavernFloor.png"
 import "./ThreeD.css";
 
 const ThreeD = () => {
@@ -37,12 +39,12 @@ const ThreeD = () => {
     })
 
     let materialArray = []
-    let texture_ft = new THREE.TextureLoader().load(Wall)
-    let texture_bk = new THREE.TextureLoader().load(Wall)
+    let texture_ft = new THREE.TextureLoader().load(TavWall)
+    let texture_bk = new THREE.TextureLoader().load(TavWall)
     let texture_up = new THREE.TextureLoader().load(Floor)
-    let texture_dn = new THREE.TextureLoader().load(Floor)
-    let texture_rt = new THREE.TextureLoader().load(Wall)
-    let texture_lf = new THREE.TextureLoader().load(Wall)
+    let texture_dn = new THREE.TextureLoader().load(TavFloor)
+    let texture_rt = new THREE.TextureLoader().load(TavWall)
+    let texture_lf = new THREE.TextureLoader().load(TavWall)
 
     materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}))
     materialArray.push(new THREE.MeshBasicMaterial({map: texture_bk}))
@@ -55,19 +57,20 @@ const ThreeD = () => {
       materialArray[i].side = THREE.DoubleSide;
     }
     
-    let skyboxGeo = new THREE.BoxGeometry(1000, 100, 400)
+    let skyboxGeo = new THREE.BoxGeometry(1000, 150, 800)
     let skybox = new THREE.Mesh(skyboxGeo, materialArray)
     scene.add(skybox);
-    skybox.position.set(0,25,0)
+    skybox.position.set(0,55,0)
 
 
-    const createBar = () => {
-    const geometry = new THREE.BoxGeometry(150, 40, 40);
+    const createBar = (ShX,ShY, ShZ, x,y,z) => {
+    const geometry = new THREE.BoxGeometry(ShX, ShY, ShZ);
     const material = new THREE.MeshPhongMaterial({ color: 0x191107 });
     const bar = new THREE.Mesh(geometry, material);
     scene.add(bar);
-    bar.position.set(0,-10,-50) }
-    createBar()
+    bar.position.set(x,y,z) }
+    createBar(150, 40, 40, 0, 0,-50)
+    createBar(40, 40, 150, 200,0,-50)
 
     const createStool = (x,y,z) =>   {
     const geometry = new THREE.CylinderGeometry( 20, 10, 25, 32 );
@@ -75,13 +78,20 @@ const ThreeD = () => {
     const cylinder = new THREE.Mesh( geometry, material );
     scene.add( cylinder );
     cylinder.position.set(x, y, z) }
-    
+  
     createStool(0,-10,10)
     createStool(50,-10,10)
     createStool(-50,-10,10)
     createStool(0,-10,-100)
     createStool(50,-10,-100)
     createStool(-50,-10,-100)
+  
+    createStool(250,-10,-100)
+    createStool(250,-10,-50)
+    createStool(250,-10, 0)
+    createStool(150,-10,-100)
+    createStool(150,-10,-50)
+    createStool(150,-10, 0)
 
     camera.position.set(40,60,50);
     camera.rotation.set(0,.5,0)
@@ -130,7 +140,7 @@ const ThreeD = () => {
   }
   return (
       <>
-      <div id="info"> your journey starts here </div>
+      {/* <div id="info"> your journey starts here </div> */}
       </>
   )
 };
