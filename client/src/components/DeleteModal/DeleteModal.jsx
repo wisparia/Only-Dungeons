@@ -11,15 +11,16 @@ class DeleteModal extends Component {
       	   <div id="DeleteModal" className="DModal">
  
 			  <div className="modal-content">
-			    <div className="modal-header">
-			      <span className="close" onClick={handleClose}>×</span>
-			      <h2>Delete Account</h2>
+			    <div className="modal-header center">
+
+			      <h4>Delete Account</h4>
 			    </div>
-			    <div className="modal-body"> 
-                    <p>Quitting never gets you anywhere in life! Are you sure you want to delete you account???</p> 
-                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+          <div className="modal-body center
+          "> 
+                    <p>Quitting never gets you anywhere in life! Are you sure you want to delete you account?</p> 
+                <button to="/" onClick={handleDeleteAccount}  className="vertical-spacer-sm waves-effect waves-light btn col s6">
                  Delete Your Account?</button>
-                 <button to="/" onClick={handleClose}  className="vertical-spacer-sm waves-effect waves-light btn col s3">
+                 <button to="/" onClick={handleClose}  className="vertical-spacer-sm waves-effect waves-light btn col s6">
                  Cancel</button>
                  
                 </div>

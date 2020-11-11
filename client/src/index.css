@@ -4,4 +4,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: aliceblue;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
+}
+
+button {
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
+}
+
+button:active {
+  cursor: url("./components/assets/cursorHandClick.png"), auto !important;
 }
