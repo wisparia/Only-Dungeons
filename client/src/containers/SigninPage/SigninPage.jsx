@@ -67,13 +67,16 @@ function SigninPage(props) {
                 <label htmlFor="email">
                     <p className="form-text">Email</p>
                   </label>
-                  <input id="username" type="text" class="validate" onChange={(e) => {
+
+                <input id="email" onChange={handleInputChange} value={returnUserObj.email}  name="email"
+                type="email" class="validate" />
+{/*                   
+                  <input id="email" type="text" class="validate" onChange={(e) => {
                     console.log("value", e.target.value)
                     const newUser = {...props.user}
-                    newUser.userName = e.target.value
-                    console.log('newUser', newUser)
+                    newUser.email = e.target.value
                     props.setUser(newUser)
-                  }} />
+                  }} /> */}
                 </div>
               </div>
               <div className="row">
@@ -100,7 +103,7 @@ function SigninPage(props) {
               </button> */}
               <div
                   className="vertical-spacer-md waves-effect waves-light btn col s6"
-                  disabled={!(returnUserObj.password && returnUserObj.email)}
+                  // disabled={!(returnUserObj.password && returnUserObj.email)}
                   onClick={handleFormSubmit}
                 >
                   Login
