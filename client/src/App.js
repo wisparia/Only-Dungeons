@@ -43,7 +43,12 @@ function App() {
             <Switch>
               <Route exact path="/" component={SigninPage} />
               <Route exact path="/NewUser" component={NewUser1} />
-              <Route exact path="/DmDirectory" component={DmDirectory} />
+              {/* <Route exact path="/DmDirectory" component={DmDirectory} /> */}
+              <ProtectedRoute
+                exact
+                path="/DmDirectory"
+                component={DmDirectory}
+              />
               <Route exact path="/DmOne/:id" component={DmOne} />
               {/* <Route exact path="/UpdateForm/:id" component={UpdateForm} /> */}
               <ProtectedRoute
