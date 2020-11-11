@@ -44,24 +44,19 @@ function App() {
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
             <Switch>
-              <Route
+              {/* <Route
                 exact
                 path="/"
                 render={() => <SigninPage user={user} setUser={setUser} />}
-              />
-              <Route exact path="/NewUser" component={NewUser1} />
-              <Route
+              /> */}
+              <Route exact path="/NewUser" component={NewUser1} /> 
+              {/*<Route
                 exact
                 path="/DmDirectory"
                 render={() => <DmDirectory user={user} />}
-              />
-              {/* <Route exact path="/DmDirectory" component={DmDirectory} /> */}
-              {/* <ProtectedRoute
-                exact
-                path="/DmDirectory"
-                component={DmDirectory}
-              />
-              <Route exact path="/DmOne/:id" component={DmOne} /> */}
+              /> */}
+              <Route exact path="/DmDirectory" component={DmDirectory} />
+              <Route exact path="/DmOne/:id" component={DmOne} /> 
               {/* <Route exact path="/UpdateForm/:id" component={UpdateForm} /> */}
               <ProtectedRoute
                 exact
@@ -72,7 +67,7 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </UserContext.Provider>
     </div>
@@ -80,3 +75,6 @@ function App() {
 }
 
 export default App;
+
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFjMjI2NTFjZDQyMjRmNTgxZWE4NDYiLCJlbWFpbCI6ImVzdGVydGVzdGVyMDAwQGdtYWlsLmNvbSIsImlhdCI6MTYwNTExNjY0MX0.OyX_qJTe5JTxjRtxf7lDPteNsYOo6RMwY0GPzPS-Y_g

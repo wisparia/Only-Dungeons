@@ -158,7 +158,7 @@ function DmDirectory(props) {
           </div>
         </div>
         <div className="col s12 m12 l7 content-border">
-      {props.user.userName}
+
           <h5>Matched Games:</h5>
           {searchedDms.map((dm) => (
             <Dmaster
