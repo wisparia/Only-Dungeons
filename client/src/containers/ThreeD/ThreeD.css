@@ -9,7 +9,8 @@ canvas {
 
 #info {
     position: absolute;
-    color: black;
+    color: white;
+    background: purple;
 	top: 50%;
 	width: 100%;
 	text-align: center;
