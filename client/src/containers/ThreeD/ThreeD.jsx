@@ -1,7 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import React, { useEffect, useState } from "react";
-
+import Door from "./Door.png";
+import Floor from "./tilebg.png";
+import Ceiling from "./Ceiling.png";
+import Wall from "./Wall.png"
 import "./ThreeD.css";
 
 const ThreeD = () => {
@@ -12,7 +15,7 @@ const ThreeD = () => {
   function dimensions() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      75,
+      100,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
@@ -31,63 +34,112 @@ const ThreeD = () => {
         camera.updateProjectionMatrix()
     })
 
-    // tracking mouse movement & click events
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2()
+    let materialArray = []
+    let texture_ft = new THREE.TextureLoader().load(Wall)
+    let texture_bk = new THREE.TextureLoader().load(Wall)
+    let texture_up = new THREE.TextureLoader().load(Floor)
+    let texture_dn = new THREE.TextureLoader().load(Floor)
+    let texture_rt = new THREE.TextureLoader().load(Wall)
+    let texture_lf = new THREE.TextureLoader().load(Wall)
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x9400D3 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}))
+    materialArray.push(new THREE.MeshBasicMaterial({map: texture_bk}))
+    materialArray.push(new THREE.MeshBasicMaterial({map: texture_up}))
+    materialArray.push(new THREE.MeshBasicMaterial({map: texture_dn}))
+    materialArray.push(new THREE.MeshBasicMaterial({map: texture_rt}))
+    materialArray.push(new THREE.MeshBasicMaterial({map: texture_lf}))
 
-    const geometry1 = new THREE.SphereGeometry(1,5,20);
-    const material1 = new THREE.MeshLambertMaterial({ color: 0x00FF00}) 
-    const mesh = new THREE.Mesh(geometry1, material1)
-    const mesh1 = new THREE.Mesh(geometry1, material)
-    scene.add(mesh)
-    scene.add(mesh1)
+    for(let i=0; i < 6; i++)  {
+      materialArray[i].side = THREE.DoubleSide;
+    }
+    
+    let skyboxGeo = new THREE.BoxGeometry(1000, 100, 400)
+    let skybox = new THREE.Mesh(skyboxGeo, materialArray)
+    scene.add(skybox);
+    skybox.position.set(0,25,0)
+
+
+    const createBar = () => {
+    const geometry = new THREE.BoxGeometry(150, 40, 40);
+    const material = new THREE.MeshPhongMaterial({ color: 0x191107 });
+    const bar = new THREE.Mesh(geometry, material);
+    scene.add(bar);
+    bar.position.set(0,-10,-50) }
+    createBar()
+
+    const createStool = (x,y,z) =>   {
+    const geometry = new THREE.CylinderGeometry( 20, 10, 25, 32 );
+    const material = new THREE.MeshPhongMaterial( {color: 0x191107} );
+    const cylinder = new THREE.Mesh( geometry, material );
+    scene.add( cylinder );
+    cylinder.position.set(x, y, z) }
+    
+    createStool(0,-10,10)
+    createStool(50,-10,10)
+    createStool(-50,-10,10)
+    createStool(0,-10,-100)
+    createStool(50,-10,-100)
+    createStool(-50,-10,-100)
+
+    
+    // const geometry1 = new THREE.SphereGeometry(1,5,20);
+    // const material1 = new THREE.MeshLambertMaterial({ color: 0xFF0000}) 
+    // const mesh = new THREE.Mesh(geometry1, material1)
+    // const mesh1 = new THREE.Mesh(geometry1, material)
+    // scene.add(mesh)
+    // scene.add(mesh1)
     // position is based on XYZ
-    mesh.position.set(1,2,2.5)
-    mesh1.position.set(5,0,-4)
+    // mesh.position.set(1,2,2.5)
+    // mesh1.position.set(5,0,-4)
     // can you .rotation.set() & scale.set()
-    camera.position.z = 0;
+    camera.position.set(40,60,50);
+    camera.rotation.set(0,.5,0)
 
    let controls = new OrbitControls(camera, renderer.domElement)
    controls.minDistance = 1;
    controls.maxDistance = 1000;
 
 
-    const light = new THREE.PointLight(0xFFFFFF, 1, 500)
-    light.position.set(10,0,25)
+    const light = new THREE.AmbientLight(0xFFFFFF)
+
     scene.add(light)
 
-    function onMouseMove(event) {
-        event.preventDefault()
-        mouse.x = ( event.clientX / window.innerWidth) * 2 -1;
-        mouse.y = - ( event.clientY / window.innerHeight) * 2 -1;
+    const light2 = new THREE.PointLight(0xFFFFFF, 1, 500)
+    light2.position.set(10,100,20)
+    scene.add(light2)
 
-        raycaster.setFromCamera(mouse, camera)
+    // tracking mouse movement & click events
+    // const raycaster = new THREE.Raycaster();
+    // const mouse = new THREE.Vector2()
 
-        var intersects = raycaster.intersectObjects(scene.children, true);
-        for ( var i = 0; i < intersects.length; i++ )   {
-            intersects[i].object.material.color.set(0xff0000)
-        }
-    }
+    // function onMouseMove(event) {
+    //     event.preventDefault()
+    //     mouse.x = ( event.clientX / window.innerWidth) * 2 -1;
+    //     mouse.y = - ( event.clientY / window.innerHeight) * 2 -1;
+
+    //     raycaster.setFromCamera(mouse, camera)
+
+    //     var intersects = raycaster.intersectObjects(scene.children, true);
+    //     for ( var i = 0; i < intersects.length; i++ )   {
+    //         intersects[i].object.material.color.set(0xff0000)
+    //     }
+    // }
 
     function animate() {
       requestAnimationFrame(animate);
-      mesh.rotation.x += 0.05;
-      mesh.rotation.y += 0.05;
+      // mesh.rotation.x += 0.05;
+      // mesh.rotation.y += 0.05;
       
       renderer.render(scene, camera);
     }
     animate();
 
-    window.addEventListener("click", onMouseMove)
+    // window.addEventListener("click", onMouseMove)
 
   }
   return (
       <>
+      <div id="info"> your journey starts here </div>
       </>
   )
 };
