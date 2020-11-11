@@ -72,7 +72,7 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </UserContext.Provider>
     </div>
