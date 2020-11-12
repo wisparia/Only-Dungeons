@@ -161,6 +161,7 @@ function DmDirectory() {
               key={dm._id}
               userName={dm.userName}
               tagLine={dm.tagLine}
+              preferredRole={dm.preferredRole}
               id={dm._id}
             />
           ))}

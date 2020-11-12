@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import PlaceholderImg from "./placeholder200x200.jpg";
+import dmImage from "./dmImage.png";
 import { useParams } from "react-router-dom";
 import API from "../../utils/API";
-
+import AvatarImage from "../../components/AvatarImage/AvatarImage"
 
 import "./DmOne.css";
 
@@ -51,7 +51,7 @@ function DmOne() {
       <div>
         <div className="container content-border row">
           <div className="col s12 m12 l4 center">
-            <img src={`${dm.preferredRole}Img`} alt="" />
+            <AvatarImage dmImage={dmImage}  preferredRole = {dm.preferredRole} />
             <h5>{dm.userName}</h5>
             <div className="row center">
               <a className="col s8 m8 l8" href={`mailto:${dm.email}`}>
