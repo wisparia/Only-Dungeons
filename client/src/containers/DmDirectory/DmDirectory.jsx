@@ -5,8 +5,9 @@ import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
+import AvatarImageSmall from "../../components/AvatarImageSmall/AvatarImageSmall"
 
-function DmDirectory(props) {
+function DmDirectory() {
   const [allDms, setDms] = useState([]);
   // const [filteredDms, setFilteredDms] = useState([]);
   const [searchedDms, setSearchedDms] = useState([]);
@@ -33,10 +34,7 @@ function DmDirectory(props) {
   function setOriginalDms() {
     setSearchedDms(allDms);
   }
-  // watch out there cowboy
-  function setUnoriginalDms() {
-    setSearchedDms(searchedDms);
-  }
+
 
   function handleSearch(event) {
     let searchedDm = event.target.value;
@@ -77,7 +75,6 @@ function DmDirectory(props) {
       availabilityFilters.days.length > 0 &&
       categoryFilters.categories.length > 0
     ) {
-      // setUnoriginalDms();
       setOriginalDms();
       let dayFiltersArray = availabilityFilters.days;
       let filtersArray = categoryFilters.categories;
@@ -165,6 +162,7 @@ function DmDirectory(props) {
               key={dm._id}
               userName={dm.userName}
               tagLine={dm.tagLine}
+              preferredRole={dm.preferredRole}
               id={dm._id}
             />
           ))}

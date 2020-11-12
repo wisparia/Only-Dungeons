@@ -5,15 +5,15 @@ import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
 import AuthContext from "../../context/AuthContext";
-
-
-
+import AvatarImage from "../../components/AvatarImage/AvatarImage"
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
 // TODO: Make a put request with the formObject 
 
 function DmUpdateForm() {
+
+
 
   const userAuthContext = useContext(AuthContext)
 
@@ -35,8 +35,8 @@ function DmUpdateForm() {
 
   const history = useHistory()
   const {id} = useParams()
-const [show, setShow] = useState(false)
-const [show2, setShow2] = useState(false)
+  const [show, setShow] = useState(false)
+  const [show2, setShow2] = useState(false)
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -227,15 +227,10 @@ const [show2, setShow2] = useState(false)
         <div className="row section"></div>
         <form className="row section content-border">
           <div className="row vertical-spacer-md">
-
-            <div className="col s12 l5 center-align">
-                <p>Avatar:</p>
-                <img
-                  className="center-align content-border image-true img"
-                  src={placeholderImg}
-                />
-              </div>
-
+          <div className="col s12 l5 center-align">
+        <p>Avatar:</p>
+            <AvatarImage preferredRole={formObject.preferredRole} />
+            </div>
             <div className="col s12 l7">
 
             {dm.isDm ? <>
