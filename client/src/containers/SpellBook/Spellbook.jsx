@@ -12,7 +12,7 @@ function Spellbook() {
     API.getDndInfo()
       .then((res) => {
         // console.log(res.data);
-        console.log(res.data.proficiencies[0].name);
+        // console.log(res.data.proficiencies[0].name);
         setClassInfo(res.data);
       })
       .catch((err) => console.log(err));
@@ -35,15 +35,15 @@ function Spellbook() {
         <div className="content-border">
           <select className="browser-default">
             <option value="">Select</option>
-            <option value="Barbarian">Barbarian</option>
+            {/* <option value="rogue" onChange={dndInfo}>Rogue</option> */}
           </select>
-          <div>
-            <button onClick={dndInfo}>test to get back API</button>
-          </div>
-          <div>
+          {/* <div>
+            <button value = "rogue" onClick={dndInfo}>test to get back API</button>
+          </div> */}
+          <div className="col 1">
             {classInfo && (
               <>
-                <h1>{classInfo.name}</h1>
+                <h1 className ="col">{classInfo.name}</h1>
                 <br />
               </>
             )}
