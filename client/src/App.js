@@ -39,7 +39,6 @@ function App() {
 
   return (
     <div className="App">
-      <Audio />
       <UserContext.Provider value={{ userId, setUserId }}>
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
