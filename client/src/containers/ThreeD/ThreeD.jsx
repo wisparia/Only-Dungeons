@@ -186,6 +186,11 @@ const ThreeD = () => {
   <>
   {/* <div id="info"> your journey starts here </div> */}
   <div id="myCanvas">  </div>
+  <div id="info">
+    <iframe   src="https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer" height="200" width="100%" frameborder="0" className="chatBorder"></iframe>
+  </div>
+  
+
   </>
   )
 };

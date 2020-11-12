@@ -10,8 +10,7 @@ canvas {
 #info {
     position: absolute;
     color: white;
-    background: purple;
-	top: 50%;
+	top: 100%;
 	width: 100%;
 	text-align: center;
 	z-index: 100;
