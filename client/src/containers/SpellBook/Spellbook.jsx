@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
+import "./Spellbook.css"
 
 function Spellbook() {
   const [classInfo, setClassInfo] = useState({});
@@ -34,9 +35,20 @@ function Spellbook() {
         <div className="container">
           <h1 className="text-center"> Spellbook </h1>
           <div className="content-border">
-            <select className="browser-default">
+            <select className="browser-default ">
               <option value="">Select</option>
-              {/* <option value="rogue" onChange={dndInfo}>Rogue</option> */}
+              <option value="">Barbarian</option>
+              <option value="">Bard</option>
+              <option value="">Cleric</option>
+              <option value="">Druid</option>
+              <option value="">Fighter</option>
+              <option value="">Monk</option>
+              <option value="">Paladin</option>
+              <option value="">Ranger</option>
+              <option value="">Rogue</option>
+              <option value="">Sorcerer</option>
+              <option value="">Warlock</option>
+              <option value="">Wizard</option>
             </select>
             {/* <div>
             <button value = "rogue" onClick={dndInfo}>test to get back API</button>
