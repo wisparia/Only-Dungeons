@@ -25,7 +25,8 @@ const ThreeD = () => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setClearColor("#e5e5e5");
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    const container = document.getElementById("myCanvas")
+    container.appendChild(renderer.domElement);
 
     // this is updating the of the scene ever time
     window.addEventListener("resize", () => {
@@ -181,7 +182,12 @@ const ThreeD = () => {
 
     // window.addEventListener("click", onMouseMove)
   }
-  return <>{/* <div id="info"> your journey starts here </div> */}</>;
+  return (
+  <>
+  <div id="info"> your journey starts here </div>
+  <canvas id="myCanvas">  </canvas>
+  </>
+  )
 };
 
 export default ThreeD;
