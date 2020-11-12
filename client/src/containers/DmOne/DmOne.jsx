@@ -230,9 +230,10 @@ function DmOne() {
                         </span>
                       </label>
                 </div>
-              </div>
-            </div>
-          </div>
+              </div></div></div>
+              <iframe src="https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer" height="600" width="100%" frameborder="0" className="chatBorder"></iframe>
+            
+          
         </div>
       </div>
     </>
