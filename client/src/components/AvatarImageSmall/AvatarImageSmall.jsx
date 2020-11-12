@@ -20,71 +20,83 @@ const AvatarImageSmall = ({ preferredRole }) => {
       {preferredRole === "Barbarian" ? (
         <img
           src={BarbarianImg}
+          alt= "Barbarian"
         />
       ) : null}
 
       {preferredRole === "Bard" ? (
         <img
           src={BardImg}
+          alt= "Bard"
         />
       ) : null}
       {preferredRole === "Cleric" ? (
         <img
           src={ClericImg}
+          alt= "Cleric"
         />
       ) : null}
      
       {preferredRole === "Druid" ? (
         <img
           src={DruidImg}
+          alt= "Druid"
         />
       ) : null}
 
       {preferredRole === "Fighter" ? (
         <img
           src={FighterImg}
+          alt= "Fighter"
         />
       ) : null}
 
       {preferredRole === "Monk" ? (
         <img
           src={MonkImg}
+          alt= "Monk"
         />
       ) : null}
 
       {preferredRole === "Paladin" ? (
         <img
           src={PaladinImg}
+          alt= "Paladin"
         />
       ) : null}
 
       {preferredRole === "Ranger" ? (
         <img
           src={RangerImg}
+          alt= "Ranger"
         />
       ) : null}
 
       {preferredRole === "Rogue" ? (
         <img
           src={RogueImg}
+          alt= "Rouge"
         />
       ) : null}
 
       {preferredRole === "Sorcerer" ? (
         <img
           src={SorcererImg}
+          alt= "Sorcerer"
         />
       ) : null}
 
       {preferredRole === "Warlock" ? (
         <img
           src={WarlockImg}
+          alt= "Warlock"
         />
       ) : null}
 
       {preferredRole === "Wizard" ? (
         <img
           src={WizardImg}
+          alt= "Wizard"
         />
       ) : null}
 
