@@ -13,15 +13,15 @@ function Spellbook() {
     API.getDndInfo()
       .then((res) => {
         // console.log(res.data);
-        // console.log(res.data.proficiencies[0].name);
+        console.log(res.data.proficiencies[0].name);
         setClassInfo(res.data);
       })
       .catch((err) => console.log(err));
   }
 
-  //   console.log("====================================");
-  //   console.log(classInfo);
-  //   console.log("====================================");
+    console.log("====================================");
+    console.log(classInfo);
+    console.log("====================================");
 
   // dndInfo()
 
