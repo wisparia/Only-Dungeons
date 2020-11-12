@@ -273,102 +273,60 @@ function DmUpdateForm() {
             </div>
 
             <div className="row">
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                     <input type="checkbox" checked={formObject.categoryType.campaigns} name="campaigns" value={formObject.categoryType.campaigns} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Campaigns</p>
                     </span>
                   </label>
-                </p>
-              </div>
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                     <input type="checkbox" checked={formObject.categoryType.oneshots} name="oneshots" value={formObject.categoryType.oneshots} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>One Shots</p>
                     </span>
                   </label>
-                </p>
-              </div>
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.homebrew} name="homebrew" value={formObject.categoryType.homebrew} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>HomeBrew</p>
                     </span>
                   </label>
-                </p>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.byTheBook} name="byTheBook" value={formObject.categoryType.byTheBook} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>By The Book</p>
                     </span>
                   </label>
-                </p>
-              </div>
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.rpersonly} name="rpersonly" value={formObject.categoryType.rpersonly} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Role Play Only</p>
                     </span>
                   </label>
-                </p>
-              </div>
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.norestriction} name="norestriction" value={formObject.categoryType.norestriction} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>No Restriction</p>
                     </span>
                   </label>
-                </p>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.displaydice} name="displaydice" value={formObject.categoryType.displaydice} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Display Dice</p>
                     </span>
                   </label>
-                </p>
-              </div>
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.lvl1only} name="lvl1only" value={formObject.categoryType.lvl1only} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Lvl One Only</p>
                     </span>
                   </label>
-                </p>
-              </div>
-              <div className="col s12 m6 l4">
-                <p>
-                  <label>
+                  <label className="col s12 m6 l6 xl4">
                   <input type="checkbox" checked={formObject.categoryType.voyuerallowed} name="voyuerallowed" value={formObject.categoryType.voyuerallowed} onChange={(e) => handleCheckbox(e, "categoryType")}/>
                     <span>
                     <p>Watchers Allowed</p>
                     </span>
                   </label>
-                </p>
-              </div>
             </div>
           </div>
 
@@ -376,79 +334,48 @@ function DmUpdateForm() {
             <div className="col s12">
               <h5 className="form-text">Availability:</h5>
               <div className="row">
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                     <input type="checkbox" checked={formObject.availability.monday} name="monday" value={formObject.availability.monday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Monday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                       <input type="checkbox" checked={formObject.availability.tuesday} name="tuesday" value={formObject.availability.tuesday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Tuesday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                     <input type="checkbox" checked={formObject.availability.wednesday} name="wednesday" value={formObject.availability.wednesday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Wednesday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                     <input type="checkbox" checked={formObject.availability.thursday} name="thursday" value={formObject.availability.thursday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Thursday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                     <input type="checkbox" checked={formObject.availability.friday} name="friday" value={formObject.availability.friday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Friday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                     <input type="checkbox" checked={formObject.availability.saturday} name="saturday" value={formObject.availability.saturday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Saturday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
-                <div className="col s12 m6 l3">
-                  <p>
-                    <label>
+                    <label className="col s12 m6 l4 xl3">
                     <input type="checkbox" checked={formObject.availability.sunday} name="sunday" value={formObject.availability.sunday} onChange={(e) => handleCheckbox(e, "availability")}/>
                       <span>
                         <p>Sunday</p>
                       </span>
                     </label>
-                  </p>
-                </div>
               </div> 
               <div className="row vertical-spacer-sm">
               <div className="col s12 m12 l4">

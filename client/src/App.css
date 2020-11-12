@@ -110,3 +110,7 @@ select:hover {
 .checkbox {
   font-size: small !important;
 }
+
+label {
+  margin: auto;
+}
