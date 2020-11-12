@@ -20,7 +20,6 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 function App() {
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
-  const [user, setUser] = useState({});
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");

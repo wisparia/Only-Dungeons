@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom"
-import placeholderImg from "./placeholder200x200.jpg";
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
