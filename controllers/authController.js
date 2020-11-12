@@ -15,7 +15,9 @@ module.exports = {
     // console.log(email);
     // console.log(password);
     if (!email.trim() || !password.trim()) {
-      res.status(400);
+      res.status(400).json({
+        msg: "Missing Credentials"
+      });
     } else {
       bcrypt
         .hash(password, 10)
@@ -72,7 +74,7 @@ module.exports = {
         console.log(req.body);
         // console.log(foundUser);
         if (!foundUser)
-          return res.status(400).json({ message: "User not found" });
+          return res.json({ message: "User not found" });
         bcrypt.compare(password, foundUser.password)
           .then((isMatch) => {
             if (!isMatch)
