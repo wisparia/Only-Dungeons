@@ -23,10 +23,10 @@ export default {
 
   // Saves a user to the database
   saveUser: function (userData) {
-    // console.log(userData)
     return axios.post("/api/auth/signUp", userData);
   },
 
+  // Allows the user to login w Authentication
   loginUser: function(userData) {
     return axios.post("/api/auth/login", userData)
   },

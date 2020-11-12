@@ -2,10 +2,11 @@ import React from 'react';
 import HomeButton from "../HomeButton/HomeButton";
 import GamesButton from "../GamesButton/GamesButton";
 import ProfileButton from "../ProfileButton/ProfileButton";
-import LogoutButton from "../LogoutButton/LogoutButton"
-import 'materialize-css';
+import LogoutButton from "../LogoutButton/LogoutButton";
+import "materialize-css";
 import Logo from "./ODlogo2.png";
 import "./navbar.css";
+import { Link } from "react-router-dom"
 // import { Button, Card, Row, Col } from 'react-materialize';
 function Navbar() {
     return (
@@ -20,9 +21,12 @@ function Navbar() {
           <ProfileButton />
           <LogoutButton />
         </ul>
+        <a className="tab">
+          <Link to="/Spellbook">SpellBook</Link>
+        </a>
       </div>
     </nav>
-    );
-};
+  );
+}
 
 export default Navbar;
