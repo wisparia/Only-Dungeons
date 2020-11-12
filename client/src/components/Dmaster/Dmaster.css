@@ -5,8 +5,18 @@
   background: url("../assets/tilebgdark.png");
   color: rgb(206, 168, 87) !important;
   margin-bottom: 2px !important;
+  padding: 5px;
+}
+
+.username {
+  font-size: large;
 }
 
 .card:active {
   border-style: inset !important;
+}
+
+.taglinetext {
+  padding-top: 10px !important;
+  font-size: small;
 }
