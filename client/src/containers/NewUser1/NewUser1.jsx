@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import { setAxiosDefaults } from "../../utils/axiosDefaults";
 import AuthContext from "../../context/AuthContext"
+import NoCreateModal from "../../components/NoCreateModal/NoCreateModal"
+
 
 function NewUser1() {
   const history = useHistory();
@@ -18,6 +20,8 @@ function NewUser1() {
 
   const {jwt, setJwt} = useContext(AuthContext)
 
+  const [show2, setShow2] = useState(false)
+
   const { userId, setUserId } = useContext(UserContext);
 
   function handleInputChange(event) {
@@ -25,12 +29,25 @@ function NewUser1() {
     setNewUserObject({ ...newUserObj, [name]: value });
   }
 
+  function goBack(event){
+    history.goBack()
+  }
+
+  const showModal2 = () => {
+    setShow2(true);
+  };
+ 
+  const hideModal2 = () => {
+    setShow2(false );
+  };
+
   function handleRadioChange(event) {
     const { value } = event.target;
     setNewUserObject({ ...newUserObj, isDm: value === "1" ? true : false });
   }
 
   const handleFormSubmit = (e) => {
+    hideModal2()
     localStorage.removeItem("jwt")
     e.preventDefault();
     API.saveUser({
@@ -39,6 +56,9 @@ function NewUser1() {
       password: newUserObj.password,
       isDm: newUserObj.isDm,
     }).then((result) => {
+      if(!result.data.data){
+        showModal2()
+      }
       console.log(result.data)
       console.log(result.data.data);
       const tokenToStore = result.data.data;
@@ -53,14 +73,15 @@ function NewUser1() {
         }
         
         assignToken()
+        console.log(result.data.user)
+        const userID = result.data.user._id
+      // console.log(userID)
+        setUserId(userID)
+        history.push(`/UpdateForm/${userID}`)
       }
       
       // setNewUserObject(result)
-      console.log(result.data.user)
-      const userID = result.data.user._id
-      // console.log(userID)
-      setUserId(userID)
-      history.push(`/UpdateForm/${userID}`)
+      
     });
   };
 
@@ -152,6 +173,7 @@ function NewUser1() {
           </div>
         </div>
 
+
         <div className="col s12 l6 vertical-spacer-md center">
           <p>Do you tell the stories or do you live them?</p>
           <div className="row">
@@ -189,7 +211,7 @@ function NewUser1() {
               <div className="col s12 center-align vertical-spacer-md">
                 <div
                   className=" vertical-spacer-md waves-effect waves-light btn col s6"
-                  to="/"
+                  onClick={goBack}
                 >
                   Cancel
                 </div>
@@ -205,6 +227,7 @@ function NewUser1() {
           </div>
         </div>
       </form>
+      <NoCreateModal show2={show2} handleClose ={hideModal2}/>
     </>
   );
 }

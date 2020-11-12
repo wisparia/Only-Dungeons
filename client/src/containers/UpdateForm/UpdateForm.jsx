@@ -378,7 +378,7 @@ function DmUpdateForm() {
               </div> 
               <div className="row vertical-spacer-sm">
               <div className="col s12 m12 l4">
-                <button className="vertical-spacer-sm waves-effect waves-light btn col s12">
+                <button type= "button" onClick={()=>{history.push("/DmDirectory")}}className="vertical-spacer-sm waves-effect waves-light btn col s12">
                   Cancel
                 </button></div>
                 <div className="col s12 m12 l4">

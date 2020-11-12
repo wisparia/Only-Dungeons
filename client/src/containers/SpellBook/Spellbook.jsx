@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
+import API from "../../utils/SpellBookAPI";
 import "./Spellbook.css"
 
 function Spellbook() {
