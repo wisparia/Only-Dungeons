@@ -23,10 +23,10 @@ export default {
 
   // Saves a user to the database
   saveUser: function (userData) {
-    // console.log(userData)
     return axios.post("/api/auth/signUp", userData);
   },
 
+  // Allows the user to login w Authentication
   loginUser: function(userData) {
     return axios.post("/api/auth/login", userData)
   },
@@ -35,4 +35,9 @@ export default {
   updateUser: function (id, userData) {
     return axios.put("/api/users/" + id, userData);
   },
+
+  //Gets the class information from the DnD API
+  getDndInfo: function (){
+    return axios.get(`https://www.dnd5eapi.co/api/classes/barbarian`)
+  }
 };
