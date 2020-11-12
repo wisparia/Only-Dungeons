@@ -9,11 +9,11 @@ function Dmaster({ userName, tagLine, id, preferredRole }) {
     <>
       <Link to={`/dmone/${id}`}>
         <div className="card row">
-          <div className="col s2">
+          <div className="col s2 xl1">
             <AvatarImageSmall preferredRole={preferredRole} />
           </div>
-          <p className="col s4">{userName}</p>
-          <p className="col s6">{tagLine}</p>
+          <p className="col s6 l6 xl3 username">{userName}</p>
+          <p className="col l12 offset-xl3 xl5 taglinetext">{tagLine}</p>
         </div>
       </Link>
     </>
