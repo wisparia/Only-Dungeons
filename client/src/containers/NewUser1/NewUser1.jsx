@@ -169,6 +169,7 @@ function NewUser1() {
           </div>
         </div>
 
+
         <div className="col s12 l6 vertical-spacer-md center">
           <p>Do you tell the stories or do you live them?</p>
           <div className="row">

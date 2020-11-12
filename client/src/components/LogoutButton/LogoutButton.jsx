@@ -1,6 +1,5 @@
 import React from "react";
 import "./logoutbutton.css";
-import AuthContext from "../../context"
 
 export default function HomeButton() {
 
