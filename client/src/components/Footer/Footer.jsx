@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./Footer.css";
 
 const footer = () => {
     return (
@@ -8,23 +9,18 @@ const footer = () => {
           <div className="container">
             <div className="row">
               <div className="col l6 s12">
-                <h5 className="white-text">Footer Content</h5>
-                <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <p>It's dangerous to go alone.</p>
               </div>
               <div className="col l4 offset-l2 s12">
-                <h5 className="white-text">Links</h5>
-                <ul>
-                  <li><Link className="grey-text text-lighten-3" to="#!">Link 1</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="#!">Link 2</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="#!">Link 3</Link></li>
-                  <li><Link className="grey-text text-lighten-3" to="#!">Link 4</Link></li>
-                </ul>
+
+                <Link className="btn" to="/Team">Meet the Team</Link>
+
               </div>
             </div>
           </div>
           <div className="footer-copyright">
-            <div className="container">
-            © 2014 Copyright Text
+            <div className="container center">
+            © 2020 Black Phosphorous
             </div>
           </div>
         </footer>

@@ -1,9 +1,14 @@
 .tagline {
-  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 30px;
   border-style: outset !important;
   border: 8px solid;
   border-color: rgb(190, 141, 35);
   color: rgb(206, 168, 87) !important;
   background: url("../../components/assets/tilebgdark.png") !important;
+}
+
+.checkspacer {
+  margin-left: 20px !important;
 }

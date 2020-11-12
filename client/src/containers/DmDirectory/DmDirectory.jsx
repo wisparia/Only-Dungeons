@@ -5,7 +5,6 @@ import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
-import AvatarImageSmall from "../../components/AvatarImageSmall/AvatarImageSmall"
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
@@ -17,6 +16,7 @@ function DmDirectory() {
   const [availabilityFilters, setAvailabilityFilters] = useState({
     days: [],
   });
+
 
   useEffect(() => {
     loadDms();
@@ -34,7 +34,10 @@ function DmDirectory() {
   function setOriginalDms() {
     setSearchedDms(allDms);
   }
-
+  // watch out there cowboy
+  function setUnoriginalDms() {
+    setSearchedDms(searchedDms);
+  }
 
   function handleSearch(event) {
     let searchedDm = event.target.value;
@@ -71,10 +74,12 @@ function DmDirectory() {
   };
 
   useEffect(() => {
+
     if (
       availabilityFilters.days.length > 0 &&
       categoryFilters.categories.length > 0
     ) {
+      // setUnoriginalDms();
       setOriginalDms();
       let dayFiltersArray = availabilityFilters.days;
       let filtersArray = categoryFilters.categories;
@@ -134,7 +139,7 @@ function DmDirectory() {
     <>
       <DmSearch handleSearch={handleSearch} />
       <div className="row">
-        <div className="col s12 offset-m2 m8 offset-l1 l3 content-border">
+        <div className="col s12 offset-m2 m8 offset-l1 l4 content-border">
           <div className="row">
             <div className="col s12">
               <h4>Category:</h4>
@@ -143,6 +148,7 @@ function DmDirectory() {
                   handleFilters(filters, "categories")
                 }
               />
+                
               <div className="col s12">
                 <h4>Availability:</h4>
               </div>
@@ -154,15 +160,14 @@ function DmDirectory() {
             </div>
           </div>
         </div>
-        <div className="col s12 m12 l7 content-border">
 
+        <div className="col s12 m12 l6 content-border">
           <h5>Matched Games:</h5>
           {searchedDms.map((dm) => (
             <Dmaster
               key={dm._id}
               userName={dm.userName}
               tagLine={dm.tagLine}
-              preferredRole={dm.preferredRole}
               id={dm._id}
             />
           ))}

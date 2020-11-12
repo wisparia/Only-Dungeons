@@ -1,9 +1,10 @@
 import "./App.css";
-import { useState, useEffect} from "react";
-import UserContext from "./context/UserContext"
+import { useState, useEffect } from "react";
+import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";
+import Team from "./containers/Team/Team";
 import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
@@ -49,24 +50,25 @@ function App() {
                 path="/"
                 render={() => <SigninPage user={user} setUser={setUser} />}
               /> */}
-              <Route exact path="/NewUser" component={NewUser1} /> 
+              <Route exact path="/NewUser" component={NewUser1} />
               {/*<Route
                 exact
                 path="/DmDirectory"
                 render={() => <DmDirectory user={user} />}
               /> */}
               <Route exact path="/DmDirectory" component={DmDirectory} />
-              <Route exact path="/DmOne/:id" component={DmOne} /> 
+              <Route exact path="/DmOne/:id" component={DmOne} />
               <ProtectedRoute
                 exact
                 path="/UpdateForm/:id"
                 component={UpdateForm}
               />
               <Route exact path="/ThreeD/:id" component={ThreeD} />
+              <Route exact path="/Team" component={Team} />
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </UserContext.Provider>
     </div>
@@ -74,6 +76,5 @@ function App() {
 }
 
 export default App;
-
 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFjMjI2NTFjZDQyMjRmNTgxZWE4NDYiLCJlbWFpbCI6ImVzdGVydGVzdGVyMDAwQGdtYWlsLmNvbSIsImlhdCI6MTYwNTExNjY0MX0.OyX_qJTe5JTxjRtxf7lDPteNsYOo6RMwY0GPzPS-Y_g
