@@ -1,0 +1,10 @@
+.footer-copyright {
+  background: url("../assets/tilebgdark.png");
+  color: rgb(206, 168, 87) !important;
+}
+
+.page-footer {
+  background: url("../assets/tilebg.png");
+  border-top: 8px solid;
+  border-color: rgb(190, 141, 35);
+}

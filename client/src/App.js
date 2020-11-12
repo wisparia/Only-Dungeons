@@ -4,6 +4,7 @@ import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";
+import Team from "./containers/Team/Team";
 import DmDirectory from "./containers/DmDirectory/DmDirectory";
 import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
@@ -63,6 +64,7 @@ function App() {
                 component={UpdateForm}
               />
               <Route exact path="/ThreeD/:id" component={ThreeD} />
+              <Route exact path="/Team" component={Team} />
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>

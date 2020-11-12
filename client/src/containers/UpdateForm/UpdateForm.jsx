@@ -235,12 +235,12 @@ function DmUpdateForm() {
 
             {dm.isDm ? <>
               <p>Room Name: </p>
-              <div className="content-border">
+              <div className="content-border mainContent">
               <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
               </div>
             </> : null}
             <p>Tagline: </p>
-              <div className="content-border">
+              <div className="content-border mainContent">
                 <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
               </div>
             
