@@ -5,6 +5,7 @@ import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
+import AvatarImageSmall from "../../components/AvatarImageSmall/AvatarImageSmall"
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);

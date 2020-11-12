@@ -1,17 +1,17 @@
 import React from "react";
-import BarbarianImg from "../assets/AvatarImages/Barbarian.png";
-import BardImg from "../assets/AvatarImages/Bard.png";
-import ClericImg from "../assets/AvatarImages/Cleric.png";
-import DruidImg from "../assets/AvatarImages/Druid.png";
-import FighterImg from "../assets/AvatarImages/Fighter.png";
-import MonkImg from "../assets/AvatarImages/Monk.png";
-import PaladinImg from "../assets/AvatarImages/Paladin.png";
-import RangerImg from "../assets/AvatarImages/Ranger.png";
-import RogueImg from "../assets/AvatarImages/Rogue.png";
-import SorcererImg from "../assets/AvatarImages/Sorcerer.png";
-import WarlockImg from "../assets/AvatarImages/Warlock.png";
-import WizardImg from "../assets/AvatarImages/Wizard.png";
-import dmImage from "../assets/AvatarImages/dmImage.png"
+import BarbarianImg from "../assets/imgs200x200/Barbarian.png";
+import BardImg from "../assets/imgs200x200/Bard.png";
+import ClericImg from "../assets/imgs200x200/Cleric.png";
+import DruidImg from "../assets/imgs200x200/Druid.png";
+import FighterImg from "../assets/imgs200x200/Fighter.png";
+import MonkImg from "../assets/imgs200x200/Monk.png";
+import PaladinImg from "../assets/imgs200x200/Paladin.png";
+import RangerImg from "../assets/imgs200x200/Ranger.png";
+import RogueImg from "../assets/imgs200x200/Rogue.png";
+import SorcererImg from "../assets/imgs200x200/Sorcerer.png";
+import WarlockImg from "../assets/imgs200x200/Warlock.png";
+import WizardImg from "../assets/imgs200x200/Wizard.png";
+import dmImage from "../assets/imgs200x200/dmImage.png"
 
 const AvatarImage = ({ preferredRole }) => {
   return (
