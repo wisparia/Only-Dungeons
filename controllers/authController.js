@@ -18,7 +18,11 @@ module.exports = {
       res.status(400).json({
         msg: "Missing Credentials"
       });
-    } else {
+    }
+    // CHECK FOR EXISITING USER
+    db.User.findOne({email})
+    .then((user) =>{
+      if(user) return res.json({msg:"Unable to Sign up"}) //<--- If user with credentials already existis, prevent new user create
       bcrypt
         .hash(password, 10)
         .then((hashedPassword) => {
@@ -64,7 +68,8 @@ module.exports = {
         .catch((err) => {
           res.status(500);
         });
-    }
+    })
+
   },
 
   login: function (req, res) {
