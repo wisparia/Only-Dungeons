@@ -37,7 +37,7 @@ function DmDirectory() {
 
 
   function handleSearch(event) {
-    let searchedDm = event.target.value;
+    let searchedDm = event.target.value.toLowerCase();
     if (searchedDm === "") {
       setOriginalDms();
     } else {
