@@ -29,6 +29,10 @@ function NewUser1() {
     setNewUserObject({ ...newUserObj, [name]: value });
   }
 
+  function goBack(event){
+    history.goBack()
+  }
+
   const showModal2 = () => {
     setShow2(true);
   };
@@ -207,7 +211,7 @@ function NewUser1() {
               <div className="col s12 center-align vertical-spacer-md">
                 <div
                   className=" vertical-spacer-md waves-effect waves-light btn col s6"
-                  to="/"
+                  onClick={goBack}
                 >
                   Cancel
                 </div>
