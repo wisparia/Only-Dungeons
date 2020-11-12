@@ -114,3 +114,10 @@ select:hover {
 label {
   margin: auto;
 }
+
+.chatBorder {
+  border-style: outset !important;
+  border: 8px solid;
+  border-color: rgb(190, 141, 35);
+  background: url("./components/assets/tilebgdark.png");
+}
