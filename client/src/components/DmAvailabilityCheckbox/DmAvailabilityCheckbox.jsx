@@ -53,10 +53,6 @@ const DmAvailabilityCheckbox = (props) => {
           props.handleDayFilters(newChecked)
     }
 
-    const checkChecked = () => {
-        console.log(Checked)
-      }
-
     return (
 
 <>
