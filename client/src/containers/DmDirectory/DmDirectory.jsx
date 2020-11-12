@@ -8,7 +8,7 @@ import API from "../../utils/API";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
-  // const [filteredDms, setFilteredDms] = useState([]);
+  const [searchBox, setSearchBox] = useState("");
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
@@ -16,7 +16,6 @@ function DmDirectory() {
   const [availabilityFilters, setAvailabilityFilters] = useState({
     days: [],
   });
-
 
   useEffect(() => {
     loadDms();
@@ -38,17 +37,33 @@ function DmDirectory() {
   
 
   function handleSearch(event) {
-    let searchedDm = event.target.value;
-    if (searchedDm === "") {
-      setOriginalDms();
-    } else {
-      setSearchedDms(
-        searchedDms.filter((dm) => {
-          return dm.userName.indexOf(searchedDm) !== -1;
-        })
-      );
-    }
+    let searchedDm = event.target.value.toLowerCase();
+    setSearchBox(searchedDm);
+
+    // // if (searchedDm == "" && categoryFilters.categories == 0) {
+    // //   setOriginalDms();
+    // // } 
+    // if (categoryFilters.categories.length > 0) {
+      
+    //   const searchedBoxDms = searchedDms.filter((dm) => {
+    //     return dm.userName.indexOf(searchedDm.toLowerCase()) !== -1;
+    //   });
+    //   setSearchedDms(searchedBoxDms);
+
+    // } else {
+    //   // setSearchedDms(
+    //   const searchedBoxDms = allDms.filter((dm) => {
+    //     return dm.userName.indexOf(searchedDm.toLowerCase()) !== -1;
+    //   });
+    //   // );
+    //   setSearchedDms(searchedBoxDms);
+    // }
   }
+
+  useEffect(() => {
+    console.log(searchBox);
+    // setOriginalDms()
+  }, [searchBox]);
 
   const handleFilters = (filters, category) => {
     if (filters.length === 0 && availabilityFilters.days.length === 0) {
@@ -72,11 +87,12 @@ function DmDirectory() {
   };
 
   useEffect(() => {
-
     if (
       availabilityFilters.days.length > 0 &&
-      categoryFilters.categories.length > 0
+      categoryFilters.categories.length > 0 &&
+      searchBox.length > 0
     ) {
+      console.log("I'm greater than 0")
       // setUnoriginalDms();
       setOriginalDms();
       let dayFiltersArray = availabilityFilters.days;
@@ -103,6 +119,11 @@ function DmDirectory() {
           })
         );
       }
+      for (let i = 0; i < searchBox.length; i++)  {
+        setSearchedDms((prevState) => prevState.filter((dm) => {
+          return dm.userName.indexOf(searchBox) !== -1;
+        }))
+      }
     } else {
       setOriginalDms();
       let dayFiltersArray = availabilityFilters.days;
@@ -129,9 +150,13 @@ function DmDirectory() {
           })
         );
       }
+      for (let i = 0; i < searchBox.length; i++)  {
+        setSearchedDms((prevState) => prevState.filter((dm) => {
+          return dm.userName.indexOf(searchBox) !== -1;
+        }))
+      }
     }
-  }, [categoryFilters.categories, availabilityFilters.days]);
-
+  }, [categoryFilters.categories, availabilityFilters.days, searchBox]);
 
   return (
     <>
@@ -146,7 +171,7 @@ function DmDirectory() {
                   handleFilters(filters, "categories")
                 }
               />
-                
+
               <div className="col s12">
                 <h4>Availability:</h4>
               </div>
