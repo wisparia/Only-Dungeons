@@ -184,8 +184,8 @@ const ThreeD = () => {
   }
   return (
   <>
-  <div id="info"> your journey starts here </div>
-  <canvas id="myCanvas">  </canvas>
+  {/* <div id="info"> your journey starts here </div> */}
+  <div id="myCanvas">  </div>
   </>
   )
 };
