@@ -109,7 +109,7 @@ const [show2, setShow2] = useState(false)
     hideModal()
     event.preventDefault()
     const userId = id
-    history.push("/")
+    window.location.replace("/")
     API.deleteUser(userId)
     .then(console.log("Your journey has ended..."))
     
@@ -149,7 +149,7 @@ const [show2, setShow2] = useState(false)
           norestriction: formObject.categoryType.norestriction,
           homebrew: formObject.categoryType.homebrew,
           lvl1only: formObject.categoryType.lvl1only,
-          rpersonly: formObject.categoryType.rprsonly,
+          rpersonly: formObject.categoryType.rpersonly,
           oneshots: formObject.categoryType.oneshots,
           displaydice: formObject.categoryType.displaydice,
           voyuerallowed: formObject.categoryType.voyuerallowed
