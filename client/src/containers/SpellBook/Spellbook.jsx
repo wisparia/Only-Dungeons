@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/SpellBookAPI";
-import "./Spellbook.css";
+import "./Spellbook.css"
 
 function Spellbook() {
   const [classInfo, setClassInfo] = useState({});
