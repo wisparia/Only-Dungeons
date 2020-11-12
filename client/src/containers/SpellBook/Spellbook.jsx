@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
-import "./Spellbook.css"
+import API from "../../utils/SpellBookAPI";
+import "./Spellbook.css";
 
 function Spellbook() {
   const [classInfo, setClassInfo] = useState({});
@@ -19,9 +19,9 @@ function Spellbook() {
       .catch((err) => console.log(err));
   }
 
-    console.log("====================================");
-    console.log(classInfo);
-    console.log("====================================");
+  console.log("====================================");
+  console.log(classInfo);
+  console.log("====================================");
 
   // dndInfo()
 
@@ -57,19 +57,18 @@ function Spellbook() {
               {classInfo && (
                 <>
                   <h1 className="col">{classInfo.name}</h1>
-                  <br />
                 </>
               )}
 
-              {/* {classInfo && (
-              <ul>
-                {classInfo.proficiencies.map((proficiencyType, i) => (
-                  <li>
-                    {i + 1} {proficiencyType.name}
-                  </li>
-                ))}
-              </ul>
-            )} */}
+              {classInfo && (
+                <ul>
+                  {classInfo.proficiencies.map((proficiencyType, i) => (
+                    <li>
+                      {i + 1} {proficiencyType.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </div>
