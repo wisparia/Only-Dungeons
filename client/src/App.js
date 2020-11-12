@@ -14,7 +14,6 @@ import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
-// import Audio from "./components/Audio/Audio";
 // import { Button, Card, Row, Col } from "react-materialize";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Spellbook from "./containers/SpellBook/Spellbook";
@@ -22,7 +21,6 @@ import Spellbook from "./containers/SpellBook/Spellbook";
 function App() {
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
-  const [user, setUser] = useState({});
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
