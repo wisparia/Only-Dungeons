@@ -8,7 +8,7 @@ import API from "../../utils/API";
 
 function DmDirectory() {
   const [allDms, setDms] = useState([]);
-  // const [filteredDms, setFilteredDms] = useState([]);
+  const [searchBox, setSearchBox] = useState((""));
   const [searchedDms, setSearchedDms] = useState([]);
   const [categoryFilters, setFilters] = useState({
     categories: [],
@@ -40,17 +40,25 @@ function DmDirectory() {
   }
 
   function handleSearch(event) {
-    let searchedDm = event.target.value.toLowerCase();
-    if (searchedDm === "") {
+    let searchedDm = event.target.value;
+    setSearchBox(searchedDm)
+
+    if (searchedDm == "") {
       setOriginalDms();
     } else {
-      setSearchedDms(
-        searchedDms.filter((dm) => {
+      // setSearchedDms(
+      const searchedBoxDms = allDms.filter((dm) => {
           return dm.userName.indexOf(searchedDm) !== -1;
         })
-      );
+      // );
+      setSearchedDms(searchedBoxDms)
     }
   }
+
+  useEffect(() => {
+    console.log(searchBox)
+    // setOriginalDms()
+  }, [searchBox])
 
   const handleFilters = (filters, category) => {
     if (filters.length === 0 && availabilityFilters.days.length === 0) {
@@ -74,7 +82,6 @@ function DmDirectory() {
   };
 
   useEffect(() => {
-
     if (
       availabilityFilters.days.length > 0 &&
       categoryFilters.categories.length > 0
