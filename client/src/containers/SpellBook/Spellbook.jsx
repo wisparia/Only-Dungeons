@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
+import SpellBookAPI from "../../utils/SpellBookAPI";
 import "./Spellbook.css"
 
 function Spellbook() {
@@ -10,7 +10,7 @@ function Spellbook() {
     // console.log("----------------------------------")
     // console.log("this clicked")
     // console.log("----------------------------------")
-    API.getDndInfo()
+    SpellBookAPI.getDndInfo()
       .then((res) => {
         // console.log(res.data);
         console.log(res.data.proficiencies[0].name);
