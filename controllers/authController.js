@@ -15,8 +15,14 @@ module.exports = {
     // console.log(email);
     // console.log(password);
     if (!email.trim() || !password.trim()) {
-      res.status(400);
-    } else {
+      res.status(400).json({
+        msg: "Missing Credentials"
+      });
+    }
+    // CHECK FOR EXISITING USER
+    db.User.findOne({email})
+    .then((user) =>{
+      if(user) return res.json({msg:"Unable to Sign up"}) //<--- If user with credentials already existis, prevent new user create
       bcrypt
         .hash(password, 10)
         .then((hashedPassword) => {
@@ -62,7 +68,8 @@ module.exports = {
         .catch((err) => {
           res.status(500);
         });
-    }
+    })
+
   },
 
   login: function (req, res) {
@@ -72,7 +79,7 @@ module.exports = {
         console.log(req.body);
         // console.log(foundUser);
         if (!foundUser)
-          return res.status(400).json({ message: "User not found" });
+          return res.json({ message: "User not found" });
         bcrypt.compare(password, foundUser.password)
           .then((isMatch) => {
             if (!isMatch)

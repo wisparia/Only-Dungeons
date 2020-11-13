@@ -21,6 +21,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={BarbarianImg}
+          alt= "Barbarian"
+
         />
       ) : null}
 
@@ -28,12 +30,16 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={BardImg}
+          alt= "Bard"
+
         />
       ) : null}
       {preferredRole === "Cleric" ? (
         <img
           className="center-align content-border img"
           src={ClericImg}
+          alt= "Cleric"
+
         />
       ) : null}
      
@@ -41,6 +47,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={DruidImg}
+          alt= "Druid"
+
         />
       ) : null}
 
@@ -48,6 +56,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={FighterImg}
+          alt= "Fighter"
+
         />
       ) : null}
 
@@ -55,6 +65,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={MonkImg}
+          alt= "Monk"
+
         />
       ) : null}
 
@@ -62,6 +74,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={PaladinImg}
+          alt= "Paladin"
+
         />
       ) : null}
 
@@ -69,6 +83,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={RangerImg}
+          alt= "Ranger"
+
         />
       ) : null}
 
@@ -76,6 +92,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={RogueImg}
+          alt= "Rogue"
+
         />
       ) : null}
 
@@ -83,6 +101,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={SorcererImg}
+          alt= "Sorcerer"
+
         />
       ) : null}
 
@@ -90,6 +110,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={WarlockImg}
+          alt= "Warlock"
+
         />
       ) : null}
 
@@ -97,6 +119,8 @@ const AvatarImage = ({ preferredRole }) => {
         <img
           className="center-align content-border img"
           src={WizardImg}
+          alt= "Wizard"
+
         />
       ) : null}
 

@@ -34,9 +34,7 @@ function DmDirectory() {
     setSearchedDms(allDms);
   }
   // watch out there cowboy
-  function setUnoriginalDms() {
-    setSearchedDms(searchedDms);
-  }
+  
 
   function handleSearch(event) {
     let searchedDm = event.target.value.toLowerCase();
