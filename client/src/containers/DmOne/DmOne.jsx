@@ -238,7 +238,7 @@ function DmOne() {
                       </label>
                 </div>
               </div></div></div>
-                        {dm.discordServer === "" ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
+                        {dm.discordServer === "" || dm.discordServer === undefined ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
             
           
         </div>
