@@ -1,6 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "../../utils/SpellBookAPI";
 import "./Spellbook.css";
+import Characters from "../../components/Spellbook/Characters/Characters";
+import Armor from "../../components/Spellbook/Armor/Armor";
+import Equipment from "../../components/Spellbook/Equipment/Equipment";
+import Monsters from "../../components/Spellbook/Monsters/Monsters";
+import Race from "../../components/Spellbook/Race/Race";
+import RulesComp from "../../components/Spellbook/RulesComp/RulesComp";
+import Spells from "../../components/Spellbook/Spells/Spells";
+import Weapons from "../../components/Spellbook/Weapon/Weapons";
 
 function Spellbook() {
   const [characterClassState, setCharacterClassState] = useState([]);
@@ -21,7 +29,7 @@ function Spellbook() {
     getDndArmorArray();
     getDndWeaponArray();
     getDndRules();
-  }, []);
+  }, [raceState]);
 
   // function dndClassInfo(event) {
   //   let classType = event.target.value;
@@ -36,11 +44,9 @@ function Spellbook() {
   //     .catch((err) => console.log(err));
   // }
 
-    // console.log("++++++++++++++++++++++++++++++++++++");
-    // console.log(weaponState);
-    // console.log("++++++++++++++++++++++++++++++++++++");
-
-    
+  //   console.log("++++++++++++++++++++++++++++++++++++");
+  //   console.log("000000000000000000000000000000000000");
+  //   console.log("++++++++++++++++++++++++++++++++++++");
 
   function getClassesArray() {
     API.getDndClasses()
@@ -49,6 +55,11 @@ function Spellbook() {
         const classInformation = res.data.results;
         setCharacterClassState(classInformation);
       })
+      //   .then((drill) => {
+      //     console.log("++++++++++++++++++++++++++++++++++++");
+      //     console.log(drill);
+      //     console.log("++++++++++++++++++++++++++++++++++++");
+      //   })
       .catch((err) => {
         console.log(err);
       });
@@ -142,40 +153,89 @@ function Spellbook() {
 
   // need to add more information
 
+  // console.log("++++++++++++++++++++++++++++++++++++");
+  // console.log(raceState);
+  // console.log("++++++++++++++++++++++++++++++++++++");
+
   return (
     <>
       <div>
         <div className="container">
           <h1 className="center">Spellbook</h1>
-          <div className="content-border sm12 m6 l4">
-            <select className="browser-default" onChange="" key="">
-              <option value="">Select</option>
-              <option value="barbarian">Barbarian</option>
-              <option value="bard">Bard</option>
-              <option value="cleric">Cleric</option>
-              <option value="druid">Druid</option>
-              <option value="fighter">Fighter</option>
-              <option value="monk">Monk</option>
-              <option value="paladin">Paladin</option>
-              <option value="ranger">Ranger</option>
-              <option value="rogue">Rogue</option>
-              <option value="sorcerer">Sorcerer</option>
-              <option value="warlock">Warlock</option>
-              <option value="wizard">Wizard</option>
-            </select>
-
-            <div className="">
-              {/* <h3 className="col s12 m6 l4">{classInfo.name}</h3> */}
-
-              <ul>
-                {/* {proficiencies.map((proficiencyType, i) => (
-                  <li>
-                    {i + 1} {proficiencyType.name}
-                  </li>
-                ))} */}
-              </ul>
-            </div>
-          </div>
+          <br />
+          <br />
+          <Characters />
+          <ul>
+            {characterClassState.map((characterlist, i) => (
+              <li>
+                {i + 1} {characterlist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <Monsters />
+          <ul>
+            {monsterState.map((monsterlist, i) => (
+              <li>
+                {i + 1} {monsterlist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <Race />
+          <ul>
+            {raceState.map((racelist, i) => (
+              <li>
+                {i + 1} {racelist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <Equipment />
+          <ul>
+            {equipmentState.map((equipmentlist, i) => (
+              <li>
+                {i + 1} {equipmentlist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <Spells />
+          <ul>
+            {spellState.map((spelllist, i) => (
+              <li>
+                {i + 1} {spelllist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <Armor />
+          <ul>
+            {armorState.map((armorlist, i) => (
+              <li>
+                {i + 1} {armorlist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <Weapons />
+          <ul>
+            {weaponState.map((weaponlist, i) => (
+              <li>
+                {i + 1} {weaponlist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
+          <RulesComp />
+          <ul>
+            {rulesState.map((ruleslist, i) => (
+              <li>
+                {i + 1} {ruleslist.name}
+              </li>
+            ))}
+          </ul>
+          <br />
         </div>
       </div>
     </>
