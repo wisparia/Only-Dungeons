@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import SpellBookAPI from "../../utils/SpellBookAPI";
-=======
 import API from "../../utils/SpellBookAPI";
->>>>>>> 6b8641c2b5c706f269a366e9b103f7c04f07238d
 import "./Spellbook.css"
 
 function Spellbook() {
   const [classInfo, setClassInfo] = useState({});
 
   function dndInfo(e) {
-    // e.preventDefault();
-    // console.log("----------------------------------")
-    // console.log("this clicked")
-    // console.log("----------------------------------")
-    SpellBookAPI.getDndInfo()
+    API.getDndInfo()
       .then((res) => {
         // console.log(res.data);
-        console.log(res.data.proficiencies[0].name);
+        console.log(res.data.monsters);
         setClassInfo(res.data);
       })
       .catch((err) => console.log(err));
   }
 
+
+
     console.log("====================================");
     console.log(classInfo);
     console.log("====================================");
-
-  // dndInfo()
 
   useEffect(() => {
     dndInfo();
