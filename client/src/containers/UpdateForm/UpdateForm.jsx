@@ -63,7 +63,8 @@ function DmUpdateForm() {
       saturday: false,
       sunday: false
     },
-    preferredRole: ""
+    preferredRole: "",
+    discordServer: ""
   });
 
   const [formObject, setFormObject] = useState({
@@ -93,7 +94,8 @@ function DmUpdateForm() {
       saturday: false,
       sunday: false
     },
-    preferredRole: ""
+    preferredRole: "",
+    discordServer: ""
 
   })
   const showModal = () => {
@@ -162,7 +164,9 @@ function DmUpdateForm() {
           saturday: formObject.availability.saturday,
           sunday: formObject.availability.sunday
         },
-        preferredRole: formObject.preferredRole
+        preferredRole: formObject.preferredRole,
+        discordServer: formObject.discordServer
+
       })
       .then((response)=>{
         console.log(response.data)
@@ -199,7 +203,9 @@ function DmUpdateForm() {
         saturday: response.data.availability.saturday,
         sunday: response.data.availability.sunday
       },
-      preferredRole: response.data.preferredRole
+      preferredRole: response.data.preferredRole,
+      discordServer: response.data.discordServer
+
     })
     }
     renderUserDetails()
@@ -238,10 +244,17 @@ function DmUpdateForm() {
               <input id="roomName" className="validate" type="text" value={formObject.roomName} name="roomName" placeholder={dm.roomName} onChange={handleInputChange}/>
               </div>
             </> : null}
+            {dm.isDm ? <>
+              <p>Discord Server: </p>
+              <div className="content-border mainContent">
+              <input id="discordServer" className="validate" type="text" value={formObject.discordServer} name="discordServer" placeholder={dm.discordServer} onChange={handleInputChange}/>
+              </div>
+            </> : null}
             <p>Tagline: </p>
               <div className="content-border mainContent">
                 <input id="Tagline" type="text" className="validate" value={formObject.tagLine} name="tagLine" placeholder={dm.tagLine} onChange={handleInputChange} />
               </div>
+              
             
 
             {!dm.isDm ? <> <p>Preferred Role: </p>

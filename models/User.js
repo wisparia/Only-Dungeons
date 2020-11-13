@@ -75,6 +75,15 @@ const userSchema = new Schema({
     trim: true,
     // required: true,
   },
+
+  discordServer: {
+    type: String,
+    trim: true,
+    validate: [
+      ({ length }) => (length = 18),
+      "Discord server id must be 18 characters",
+    ],
+  },
 });
 
 const User = mongoose.model("User", userSchema);
