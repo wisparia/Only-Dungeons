@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 import { useHistory } from "react-router-dom";
 import API from "../../utils/API";
-import { setAxiosDefaults } from "../../utils/axiosDefaults";
 import AuthContext from "../../context/AuthContext"
 import NoCreateModal from "../../components/NoCreateModal/NoCreateModal"
 
@@ -22,6 +21,7 @@ function NewUser1() {
 
   const [show2, setShow2] = useState(false)
 
+  //eslint-disable-next-line
   const { userId, setUserId } = useContext(UserContext);
 
   function handleInputChange(event) {
@@ -75,35 +75,14 @@ function NewUser1() {
         assignToken()
         console.log(result.data.user)
         const userID = result.data.user._id
-      // console.log(userID)
+      //eslint-disable-next-line
         setUserId(userID)
         history.push(`/UpdateForm/${userID}`)
       }
-      
-      // setNewUserObject(result)
-      
+            
     });
   };
 
-  // test for jwts creating the key within the newUser1
-
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
-  //   API.saveUser({
-  //     userName: newUserObj.userName,
-  //     email: newUserObj.email,
-  //     password: newUserObj.password,
-  //     isDm: newUserObj.isDm,
-  //   })
-  //     .then((result) => {
-  //       console.log(result)
-  //       // setNewUserObject(result)
-  //       // const userID = result.data
-  //       // console.log(userID)
-  //       // setUserId(userID)
-  //       // history.push(`/UpdateForm/${userID}`)
-  //     });
-  // };
 
   return (
     <>
@@ -231,5 +210,4 @@ function NewUser1() {
     </>
   );
 }
-// test build
 export default NewUser1;
