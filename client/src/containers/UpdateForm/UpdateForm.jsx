@@ -1,37 +1,17 @@
 /* eslint-disable no-dupe-keys */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
-import AuthContext from "../../context/AuthContext";
 import AvatarImage from "../../components/AvatarImage/AvatarImage"
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
 // TODO: Make a put request with the formObject 
 
-function DmUpdateForm() {
+function UpdateForm() {
 
-
-
-  const userAuthContext = useContext(AuthContext)
-
-  // const [jwt, setJwt] = useState();
-
-  // useEffect(() => {
-  //   const localJwt = localStorage.getItem("jwt");
-  //   if (localJwt) {
-  //     setJwt(localJwt);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   if (jwt) {
-  //     setAxiosDefaults(jwt);
-  //     localStorage.setItem("jwt", jwt);
-  //   }
-  // },[jwt]);
 
   const history = useHistory()
   const {id} = useParams()
@@ -121,17 +101,11 @@ function DmUpdateForm() {
   function handleSpotifyChange(){
     let stringArray = []
     let newString;
-    console.log("---------------------")
-    console.log(formObject.getSpotify)
-    console.log("--------------------")
     if(formObject.getSpotify.length > 22){
       stringArray = formObject.getSpotify.split(":");
       newString = stringArray[2];
       console.log(newString)
-      setFormObject({...formObject, getSpotify: newString})
-      console.log("----------------")
-      console.log(formObject.getSpotify)
-      console.log("--------------")
+      formObject.getSpotify = newString
     } 
   }
   
@@ -236,7 +210,7 @@ function DmUpdateForm() {
     })
     }
     renderUserDetails()
-  },[])
+  },[id])
 
 
   function handleCheckbox(event, objKey){
@@ -446,4 +420,4 @@ function DmUpdateForm() {
   );
 }
 
-export default DmUpdateForm;
+export default UpdateForm;
