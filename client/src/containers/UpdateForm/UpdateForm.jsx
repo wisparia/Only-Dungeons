@@ -106,7 +106,9 @@ function UpdateForm() {
       newString = stringArray[2];
       console.log(newString)
       formObject.getSpotify = newString
-    } 
+    } else {
+      console.log("You didn't enter anything here")
+    }
   }
   
   function handleInputChange(event) {
@@ -133,8 +135,6 @@ function UpdateForm() {
     hideModal2();
     event.preventDefault();
 
-    async function submit(){
-      await handleSpotifyChange()
     
     
 
@@ -170,9 +170,8 @@ function UpdateForm() {
       })
       .catch((err)=> console.error(err))
     }
-    submit()
   
-  };
+
 
 
 
