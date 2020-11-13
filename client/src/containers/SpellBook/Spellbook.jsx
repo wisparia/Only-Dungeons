@@ -40,6 +40,8 @@ function Spellbook() {
     // console.log(weaponState);
     // console.log("++++++++++++++++++++++++++++++++++++");
 
+    
+
   function getClassesArray() {
     API.getDndClasses()
       .then((res) => {
