@@ -25,7 +25,8 @@ const ThreeD = () => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setClearColor("#e5e5e5");
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    const container = document.getElementById("myCanvas")
+    container.appendChild(renderer.domElement);
 
     // this is updating the of the scene ever time
     window.addEventListener("resize", () => {
@@ -180,8 +181,20 @@ const ThreeD = () => {
     animate();
 
     // window.addEventListener("click", onMouseMove)
+
+
   }
-  return <>{/* <div id="info"> your journey starts here </div> */}</>;
+  return (
+  <>
+  {/* <div id="info"> your journey starts here </div> */}
+  <div id="myCanvas">  </div>
+  <div id="info">
+    <iframe   src="https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer" height="200" width="100%" frameborder="0" className="chatBorder"></iframe>
+  </div>
+
+
+  </>
+  )
 };
 
 export default ThreeD;
