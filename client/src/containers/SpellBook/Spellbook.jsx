@@ -21,7 +21,7 @@ function Spellbook() {
     getDndArmorArray();
     getDndWeaponArray();
     getDndRules();
-  }, []);
+  }, [raceState]);
 
   // function dndClassInfo(event) {
   //   let classType = event.target.value;
@@ -147,35 +147,8 @@ function Spellbook() {
       <div>
         <div className="container">
           <h1 className="center">Spellbook</h1>
-          <div className="content-border sm12 m6 l4">
-            <select className="browser-default" onChange="" key="">
-              <option value="">Select</option>
-              <option value="barbarian">Barbarian</option>
-              <option value="bard">Bard</option>
-              <option value="cleric">Cleric</option>
-              <option value="druid">Druid</option>
-              <option value="fighter">Fighter</option>
-              <option value="monk">Monk</option>
-              <option value="paladin">Paladin</option>
-              <option value="ranger">Ranger</option>
-              <option value="rogue">Rogue</option>
-              <option value="sorcerer">Sorcerer</option>
-              <option value="warlock">Warlock</option>
-              <option value="wizard">Wizard</option>
-            </select>
+         
 
-            <div className="">
-              {/* <h3 className="col s12 m6 l4">{classInfo.name}</h3> */}
-
-              <ul>
-                {/* {proficiencies.map((proficiencyType, i) => (
-                  <li>
-                    {i + 1} {proficiencyType.name}
-                  </li>
-                ))} */}
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </>
