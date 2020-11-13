@@ -84,6 +84,14 @@ const userSchema = new Schema({
       "Discord server id must be 18 characters",
     ],
   },
+  getSpotify: {
+    type: String,
+    trim: true,
+    // validate: [
+    //   ({ length }) => (length = 22),
+    //   "Spotify id must be 22 characters",
+    // ],
+  },
 });
 
 const User = mongoose.model("User", userSchema);
