@@ -37,7 +37,7 @@ function DmOne() {
   });
 
   const { id } = useParams();
-  const ServerID = dm.discordServer.toString();
+  const ServerID = dm.discordServer;
   const serverURL =  "https://titanembeds.com/embed/" + ServerID + "?css=183&username=Explorer";
   const defaultServerURL = "https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer";
 
