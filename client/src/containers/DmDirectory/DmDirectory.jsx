@@ -171,10 +171,9 @@ function DmDirectory() {
                   handleFilters(filters, "categories")
                 }
               />
-
+</div>
               <div className="col s12">
                 <h4>Availability:</h4>
-              </div>
               <DmAvailabilityCheckbox
                 handleDayFilters={(dayFilters) =>
                   handleDayFilters(dayFilters, "days")

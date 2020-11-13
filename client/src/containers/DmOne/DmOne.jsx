@@ -71,7 +71,7 @@ function DmOne() {
                 Email
               </a>
               <div className="btn col s12">Back</div>
-              {dm.getSpotify === "" || dm.getSpotify === undefined ? <iframe src={defaultSpotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> : <iframe src={spotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
+              {dm.getSpotify === "" || dm.getSpotify === undefined ? <iframe src={defaultSpotifyURL} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> : <iframe src={spotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
             </div>
           </div>
           <div className="col s12 m8">
