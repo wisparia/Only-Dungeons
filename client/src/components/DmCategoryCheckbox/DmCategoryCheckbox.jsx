@@ -72,7 +72,7 @@ const DmCategoryCheckbox = (props) => {
   return (
     <>
       {checkboxItems.map((checkboxItem) => (
-        <div className="col s12">
+        <div>
           <label>
             <input
               key={checkboxItem._id}

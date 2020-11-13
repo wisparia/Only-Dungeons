@@ -10,20 +10,17 @@ class NoCreateModal extends Component {
       <div className={showHideClassName}>
         <div id="NoCreateModal" className="NoCreateModal">
           <div className="modal-content">
-            <div className="modal-header">
-              <span className="close" onClick={handleClose}>
-                ×
-              </span>
-              <h2>Failed to Create Account</h2>
+            <div className="modal-header center">
+              <h4>Failed to Create Account</h4>
             </div>
-            <div className="modal-body">
+            <div className="modal-body center">
               <p>
                 Sorry, we weren't able to create your account. Please try again!
               </p>
               <button
                 to="/"
                 onClick={handleClose}
-                className="vertical-spacer-sm waves-effect waves-light btn col s3"
+                className="vertical-spacer-sm btn col s3"
               >
                 Cancel
               </button>
