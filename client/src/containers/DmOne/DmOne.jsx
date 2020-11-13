@@ -71,7 +71,7 @@ function DmOne() {
                 Email
               </a>
               <div className="btn col s12">Back</div>
-              {dm.getSpotify === "" ? <iframe src={defaultSpotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> : <iframe src={spotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
+              {dm.getSpotify === "" || dm.getSpotify === undefined ? <iframe src={defaultSpotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> : <iframe src={spotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
             </div>
           </div>
           <div className="col s12 m8">
@@ -245,8 +245,7 @@ function DmOne() {
                       </label>
                 </div>
               </div></div></div>
-                        {dm.discordServer === "" ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
-                        
+              {dm.discordServer === "" || dm.discordServer === undefined ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
             
           
         </div>
