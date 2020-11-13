@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState, useEffect } from "react";
 import dmImage from "./dmImage.png";
 import { useParams } from "react-router-dom";
@@ -40,6 +43,9 @@ function DmOne() {
   const ServerID = dm.discordServer;
   const serverURL =  "https://titanembeds.com/embed/" + ServerID + "?css=183&username=Explorer";
   const defaultServerURL = "https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer";
+  const SpotifyID = dm.getSpotify;
+  const spotifyURL = "https://open.spotify.com/embed/playlist/" + SpotifyID
+  const defaultSpotifyURL = "https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO2MKTk6";
 
   useEffect(async () => {
     const response = await API.getUser(id);
@@ -65,6 +71,7 @@ function DmOne() {
                 Email
               </a>
               <div className="btn col s12">Back</div>
+              {dm.getSpotify === "" || dm.getSpotify === undefined ? <iframe src={defaultSpotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> : <iframe src={spotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
             </div>
           </div>
           <div className="col s12 m8">
@@ -238,7 +245,7 @@ function DmOne() {
                       </label>
                 </div>
               </div></div></div>
-                        {dm.discordServer === "" ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
+              {dm.discordServer === "" || dm.discordServer === undefined ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
             
           
         </div>
