@@ -9,17 +9,32 @@ function Spellbook() {
   function dndClassInfo(event) {
     let classType = event.target.value;
     console.log(event.target.value);
-
     API.getDndInfo(classType)
       .then((res) => {
         console.log(res.data);
+
         setClassInfo(res.data);
         setProficiencies(res.data.proficiencies);
       })
       .catch((err) => console.log(err));
   }
 
-// need to add more information 
+//   function dndClassInfo(event) {
+//     let classType = event.target.value;
+//     console.log(event.target.value);
+//     API.getDndInfo(classType)
+//       .then((res) => {
+//         console.log(res.data);
+//         const drill1 = res.data;
+//         setClassInfo(res.data);
+//         setProficiencies(res.data.proficiencies);
+//       })
+//       .API.getProfInfo(drill1)
+//       .then((drill1 = {}))
+//       .catch((err) => console.log(err));
+//   }
+
+  // need to add more information
 
   return (
     <>
