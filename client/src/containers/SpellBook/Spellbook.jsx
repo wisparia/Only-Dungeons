@@ -6,6 +6,7 @@ function Spellbook() {
   const [classInfo, setClassInfo] = useState([]);
   const [proficiencies, setProficiencies] = useState([]);
 
+  
   useEffect(() => {
     getClassesArray();
     getMonstersArray();
