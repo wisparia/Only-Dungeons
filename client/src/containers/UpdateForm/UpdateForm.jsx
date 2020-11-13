@@ -118,6 +118,22 @@ function DmUpdateForm() {
     
   }
   
+  function handleSpotifyChange(){
+    let stringArray = []
+    let newString;
+    console.log("---------------------")
+    console.log(formObject.getSpotify)
+    console.log("--------------------")
+    if(formObject.getSpotify.length > 22){
+      stringArray = formObject.getSpotify.split(":");
+      newString = stringArray[2];
+      console.log(newString)
+      setFormObject({...formObject, getSpotify: newString})
+      console.log("----------------")
+      console.log(formObject.getSpotify)
+      console.log("--------------")
+    } 
+  }
   
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -142,6 +158,12 @@ function DmUpdateForm() {
   function handleFormSubmit(event) {
     hideModal2();
     event.preventDefault();
+
+    async function submit(){
+      await handleSpotifyChange()
+    
+    
+
       API.updateUser(id, {
         roomName: formObject.roomName,
         tagLine: formObject.tagLine,
@@ -174,6 +196,8 @@ function DmUpdateForm() {
         console.log(response.data)
       })
       .catch((err)=> console.error(err))
+    }
+    submit()
   
   };
 
@@ -416,7 +440,7 @@ function DmUpdateForm() {
           </div> 
         </form>
       </div>
-            <UpdateModal show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
+            <UpdateModal handleSpotifyChange = {handleSpotifyChange} show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
     </>
   );
