@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import API from "../../utils/API"
@@ -95,7 +96,8 @@ function DmUpdateForm() {
       sunday: false
     },
     preferredRole: "",
-    discordServer: ""
+    discordServer: "",
+    getSpotify: ""
 
   })
   const showModal = () => {
@@ -165,8 +167,8 @@ function DmUpdateForm() {
           sunday: formObject.availability.sunday
         },
         preferredRole: formObject.preferredRole,
-        discordServer: formObject.discordServer
-
+        discordServer: formObject.discordServer,
+        getSpotify: formObject.getSpotify
       })
       .then((response)=>{
         console.log(response.data)
@@ -204,7 +206,8 @@ function DmUpdateForm() {
         sunday: response.data.availability.sunday
       },
       preferredRole: response.data.preferredRole,
-      discordServer: response.data.discordServer
+      discordServer: response.data.discordServer,
+      getSpotify: response.data.getSpotify
 
     })
     }
@@ -248,6 +251,12 @@ function DmUpdateForm() {
               <p>Discord Server: </p>
               <div className="content-border mainContent">
               <input id="discordServer" className="validate" type="text" value={formObject.discordServer} name="discordServer" placeholder={dm.discordServer} onChange={handleInputChange}/>
+              </div>
+            </> : null}
+            {dm.isDm ? <>
+              <p>Spotify: </p>
+              <div className="content-border mainContent">
+              <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" placeholder={dm.getSpotify} onChange={handleInputChange}/>
               </div>
             </> : null}
             <p>Tagline: </p>
