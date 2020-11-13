@@ -1,6 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import API from "../../utils/SpellBookAPI";
 import "./Spellbook.css";
+import Characters from "../../components/Spellbook/Characters/Characters";
+import Armor from "../../components/Spellbook/Armor/Armor";
+import Equipment from "../../components/Spellbook/Equipment/Equipment";
+import Monsters from "../../components/Spellbook/Monsters/Monsters";
+import Race from "../../components/Spellbook/Race/Race";
+import RulesComp from "../../components/Spellbook/RulesComp/RulesComp";
+import Spells from "../../components/Spellbook/Spells/Spells";
+import Weapons from "../../components/Spellbook/Weapon/Weapons";
 
 function Spellbook() {
   const [characterClassState, setCharacterClassState] = useState([]);
@@ -145,15 +153,18 @@ function Spellbook() {
 
   // need to add more information
 
-  console.log("++++++++++++++++++++++++++++++++++++");
-  console.log(raceState);
-  console.log("++++++++++++++++++++++++++++++++++++");
+  // console.log("++++++++++++++++++++++++++++++++++++");
+  // console.log(raceState);
+  // console.log("++++++++++++++++++++++++++++++++++++");
 
   return (
     <>
       <div>
         <div className="container">
           <h1 className="center">Spellbook</h1>
+          <br />
+          <br />
+          <Characters />
           <ul>
             {characterClassState.map((characterlist, i) => (
               <li>
@@ -162,6 +173,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <Monsters />
           <ul>
             {monsterState.map((monsterlist, i) => (
               <li>
@@ -170,6 +182,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <Race />
           <ul>
             {raceState.map((racelist, i) => (
               <li>
@@ -178,6 +191,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <Equipment />
           <ul>
             {equipmentState.map((equipmentlist, i) => (
               <li>
@@ -186,6 +200,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <Spells />
           <ul>
             {spellState.map((spelllist, i) => (
               <li>
@@ -194,6 +209,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <Armor />
           <ul>
             {armorState.map((armorlist, i) => (
               <li>
@@ -202,6 +218,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <Weapons />
           <ul>
             {weaponState.map((weaponlist, i) => (
               <li>
@@ -210,6 +227,7 @@ function Spellbook() {
             ))}
           </ul>
           <br />
+          <RulesComp />
           <ul>
             {rulesState.map((ruleslist, i) => (
               <li>
@@ -218,11 +236,6 @@ function Spellbook() {
             ))}
           </ul>
           <br />
-          {/* <ul>
-            {raceState.map((racelist) => {
-              <li>{racelist.name}</li>;
-            })}
-          </ul> */}
         </div>
       </div>
     </>
