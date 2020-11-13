@@ -5,7 +5,6 @@ class UpdateModal extends Component {
   render() {
     const { handleClose, show2, handleFormSubmit} = this.props;
     const showHideClassName = show2 ? "display-block" : "display-none";
-    console.log(this.props);
     return (
       <div className={showHideClassName}>
         <div id="UpdateModal" className="UModal">

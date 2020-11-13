@@ -5,7 +5,6 @@ class DeleteModal extends Component {
     render() {
 		const { handleClose, show, handleDeleteAccount } = this.props
 		const showHideClassName = show ? 'display-block' : 'display-none';
-		console.log(this.props);
       return (
       	<div className={showHideClassName}>
       	   <div id="DeleteModal" className="DModal">

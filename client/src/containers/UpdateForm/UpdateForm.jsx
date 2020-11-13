@@ -167,7 +167,6 @@ function UpdateForm() {
         getSpotify: formObject.getSpotify
       })
       .then((response)=>{
-        console.log(response.data)
       })
       .catch((err)=> console.error(err))
     }
@@ -180,7 +179,6 @@ function UpdateForm() {
   useEffect(()=>{
     async function renderUserDetails(){
     const response = await API.getUser(id)
-    console.log(response.data)
     setDm(response.data)
     setFormObject({
       categoryType:{
@@ -216,7 +214,6 @@ function UpdateForm() {
   function handleCheckbox(event, objKey){
     event.stopPropagation()
     let current = formObject[objKey][event.target.name]
-    console.log(current)
     setFormObject(prevState=>({
       ...prevState,
       [objKey]: {
