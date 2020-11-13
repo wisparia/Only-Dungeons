@@ -33,13 +33,20 @@ function DmOne() {
       sunday: false,
     },
     preferredRole: "",
+    discordServer: ""
   });
 
   const { id } = useParams();
+  const ServerID = dm.discordServer.toString();
+  const serverURL =  "https://titanembeds.com/embed/" + ServerID + "?css=183&username=Explorer";
+  const defaultServerURL = "https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer";
 
   useEffect(async () => {
     const response = await API.getUser(id);
     console.log(response.data);
+    const ServerID = dm.discordServer;
+    console.log(dm.discordServer);
+    console.log(serverURL);
     setDm(response.data);
   }, []);
 
@@ -231,7 +238,7 @@ function DmOne() {
                       </label>
                 </div>
               </div></div></div>
-              <iframe src="https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer" height="600" width="100%" frameborder="0" className="chatBorder"></iframe>
+                        {dm.discordServer === "" ? <iframe src={defaultServerURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="600" width="100%" frameborder="0" className="chatBorder"></iframe>}
             
           
         </div>

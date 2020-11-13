@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import SpellBookAPI from "../../utils/SpellBookAPI";
+=======
+import API from "../../utils/SpellBookAPI";
+>>>>>>> 6b8641c2b5c706f269a366e9b103f7c04f07238d
 import "./Spellbook.css"
 
 function Spellbook() {

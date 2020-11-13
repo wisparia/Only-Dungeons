@@ -5,10 +5,13 @@ import API from "../../utils/API";
 import { setAxiosDefaults } from "../../utils/axiosDefaults";
 // imports AuthContext from the axios defaults
 import AuthContext from "../../context/AuthContext"
+import NoUserModal from "../../components/NoUserModal/NoUserModal"
+
 
 function SigninPage(props) {
 
   const history = useHistory();
+  const [show2, setShow2] = useState(false)
   const [returnUserObj, setReturnUserObject] = useState({
     email: "",
     password: "",
@@ -17,6 +20,14 @@ function SigninPage(props) {
   function clearStorage (){
     localStorage.removeItem("jwt")
   }
+
+  const showModal2 = () => {
+    setShow2(true);
+  };
+ 
+  const hideModal2 = () => {
+    setShow2(false );
+  };
 
   useEffect(()=>{
     clearStorage();
@@ -32,6 +43,7 @@ function SigninPage(props) {
   }
 
   const handleFormSubmit = (e) => {
+    hideModal2()
     localStorage.removeItem("jwt");
     console.log("Click")
     e.preventDefault();
@@ -39,6 +51,9 @@ function SigninPage(props) {
       email: returnUserObj.email.trim(),
       password: returnUserObj.password.trim(),
     }).then((result) => {
+      if(!result.data.data){
+        showModal2()
+      }
       console.log(result.data)
       console.log(result.data.data);
       const tokenToStore = result.data.data;
@@ -53,12 +68,11 @@ function SigninPage(props) {
         }
         
         assignToken()
-        
+        const userID = result.data.user._id
+        setUserId(userID)
+        history.push(`/DmDirectory`)
       }
       
-      const userID = result.data.user._id
-      setUserId(userID)
-      history.push(`/DmDirectory`)
     });
   };
 
@@ -125,6 +139,7 @@ function SigninPage(props) {
         </div>
       </div>
     </div>
+    <NoUserModal show2={show2} handleClose ={hideModal2}/>
     </>
   );
 }
