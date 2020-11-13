@@ -89,7 +89,7 @@ function SigninPage(props) {
                   </label>
 
                 <input id="email" onChange={handleInputChange} value={returnUserObj.email}  name="email"
-                type="email" class="validate" />
+                type="email" className="validate" />
                 </div>
               </div>
               <div className="row">
