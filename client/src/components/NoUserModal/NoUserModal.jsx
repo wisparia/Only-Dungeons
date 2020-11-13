@@ -5,7 +5,6 @@ class NoUserModal extends Component {
   render() {
     const { handleClose, show2 } = this.props;
     const showHideClassName = show2 ? "display-block" : "display-none";
-    console.log(this.props);
     return (
       <div className={showHideClassName}>
         <div id="NoUserModal" className="NoUModal">

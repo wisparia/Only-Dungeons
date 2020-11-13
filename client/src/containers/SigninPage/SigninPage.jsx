@@ -2,8 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 import { useHistory, Link } from "react-router-dom";
 import API from "../../utils/API";
-import { setAxiosDefaults } from "../../utils/axiosDefaults";
-// imports AuthContext from the axios defaults
 import AuthContext from "../../context/AuthContext"
 import NoUserModal from "../../components/NoUserModal/NoUserModal"
 
@@ -35,6 +33,7 @@ function SigninPage(props) {
 
   const {jwt, setJwt} = useContext(AuthContext)
 
+  //eslint-disable-next-line
   const { userId, setUserId } = useContext(UserContext);
 
   function handleInputChange(event) {
@@ -90,14 +89,7 @@ function SigninPage(props) {
                   </label>
 
                 <input id="email" onChange={handleInputChange} value={returnUserObj.email}  name="email"
-                type="email" class="validate" />
-{/*                   
-                  <input id="email" type="text" class="validate" onChange={(e) => {
-                    console.log("value", e.target.value)
-                    const newUser = {...props.user}
-                    newUser.email = e.target.value
-                    props.setUser(newUser)
-                  }} /> */}
+                type="email" className="validate" />
                 </div>
               </div>
               <div className="row">
@@ -116,12 +108,9 @@ function SigninPage(props) {
               </div>
 
               <div className="row">
-              {/* <button onChange={handleFormSubmit} type="button" className="vertical-spacer-sm waves-effect waves-light btn col s8">
-                Login
-              </button> */}
               <div
                   className=" btn col s12"
-                  // disabled={!(returnUserObj.password && returnUserObj.email)}
+                  disabled={!(returnUserObj.password && returnUserObj.email)}
                   onClick={handleFormSubmit}
                 >
                   Login

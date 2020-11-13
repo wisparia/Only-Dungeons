@@ -3,9 +3,8 @@ import "../UpdateModal/UpdateModal.css";
 
 class UpdateModal extends Component {
   render() {
-    const { handleClose, show2, handleFormSubmit } = this.props;
+    const { handleClose, show2, handleFormSubmit} = this.props;
     const showHideClassName = show2 ? "display-block" : "display-none";
-    console.log(this.props);
     return (
       <div className={showHideClassName}>
         <div id="UpdateModal" className="UModal">
@@ -18,8 +17,7 @@ class UpdateModal extends Component {
             </div>
             <div className="modal-body">
               <p>
-                Quitting never gets you anywhere in life! Are you sure you want
-                to update you account???
+                Ready to update your account? These changes will be saved automatically, but can be modifed at any time!
               </p>
               <button
                 to="/"

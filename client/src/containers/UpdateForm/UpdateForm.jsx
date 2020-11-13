@@ -1,37 +1,17 @@
 /* eslint-disable no-dupe-keys */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
-import AuthContext from "../../context/AuthContext";
 import AvatarImage from "../../components/AvatarImage/AvatarImage"
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
 // TODO: Make a put request with the formObject 
 
-function DmUpdateForm() {
+function UpdateForm() {
 
-
-
-  const userAuthContext = useContext(AuthContext)
-
-  // const [jwt, setJwt] = useState();
-
-  // useEffect(() => {
-  //   const localJwt = localStorage.getItem("jwt");
-  //   if (localJwt) {
-  //     setJwt(localJwt);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   if (jwt) {
-  //     setAxiosDefaults(jwt);
-  //     localStorage.setItem("jwt", jwt);
-  //   }
-  // },[jwt]);
 
   const history = useHistory()
   const {id} = useParams()
@@ -118,6 +98,16 @@ function DmUpdateForm() {
     
   }
   
+  function handleSpotifyChange(){
+    let stringArray = []
+    let newString;
+    if(formObject.getSpotify.length > 22){
+      stringArray = formObject.getSpotify.split(":");
+      newString = stringArray[2];
+      console.log(newString)
+      formObject.getSpotify = newString
+    } 
+  }
   
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -142,6 +132,12 @@ function DmUpdateForm() {
   function handleFormSubmit(event) {
     hideModal2();
     event.preventDefault();
+
+    async function submit(){
+      await handleSpotifyChange()
+    
+    
+
       API.updateUser(id, {
         roomName: formObject.roomName,
         tagLine: formObject.tagLine,
@@ -171,9 +167,10 @@ function DmUpdateForm() {
         getSpotify: formObject.getSpotify
       })
       .then((response)=>{
-        console.log(response.data)
       })
       .catch((err)=> console.error(err))
+    }
+    submit()
   
   };
 
@@ -182,7 +179,6 @@ function DmUpdateForm() {
   useEffect(()=>{
     async function renderUserDetails(){
     const response = await API.getUser(id)
-    console.log(response.data)
     setDm(response.data)
     setFormObject({
       categoryType:{
@@ -212,13 +208,12 @@ function DmUpdateForm() {
     })
     }
     renderUserDetails()
-  },[])
+  },[id])
 
 
   function handleCheckbox(event, objKey){
     event.stopPropagation()
     let current = formObject[objKey][event.target.name]
-    console.log(current)
     setFormObject(prevState=>({
       ...prevState,
       [objKey]: {
@@ -416,10 +411,10 @@ function DmUpdateForm() {
           </div> 
         </form>
       </div>
-            <UpdateModal show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
+            <UpdateModal handleSpotifyChange = {handleSpotifyChange} show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
     </>
   );
 }
 
-export default DmUpdateForm;
+export default UpdateForm;
