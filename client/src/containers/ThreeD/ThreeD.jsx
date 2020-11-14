@@ -3,9 +3,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import React, { useEffect, useState } from "react";
 import tavScene from "./tavScene/tavScene"
 import dwellScene from "./dwellScene/dwellScene"
-import "./ThreeD.css";
+import forestScene from "./forestScene/forestScene"
 import worldScene from "./worldScene/worldScene";
-
+import "./ThreeD.css";
 const ThreeD = () => {
   useEffect(() => {
     dimensions();
@@ -22,7 +22,7 @@ function dimensions() {
     10000
   );
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setClearColor("#e5e5e5");
+  renderer.setClearColor("#000000");
   renderer.setSize(window.innerWidth, window.innerHeight);
   const container = document.getElementById("myCanvas")
   container.appendChild(renderer.domElement);
@@ -34,14 +34,6 @@ function dimensions() {
     // every time an adjustment is made on the camera this must be called
     camera.updateProjectionMatrix();
   });
-
-  const createStool = (x, y, z) => {
-    const geometry = new THREE.CylinderGeometry(20, 10, 25, 32);
-    const material = new THREE.MeshDepthMaterial({ color: 0x191107 });
-    const cylinder = new THREE.Mesh(geometry, material);
-    scene.add(cylinder);
-    cylinder.position.set(x, y, z);
-  };
 
   // x = 0, +50, -50 // y = y-10 // z = z+10, z+100 z-100
   camera.position.set(-100, 100, 0);
@@ -79,7 +71,19 @@ function dimensions() {
   //     }
   // }
 
-  dwellScene(scene, camera, renderer, 0, 1, 0);
+  forestScene(scene, camera, renderer, -50, 0 , 0);
+  forestScene(scene, camera, renderer, 50, 0 , 0);
+  forestScene(scene, camera, renderer, -100, 0 , -150);
+  forestScene(scene, camera, renderer, -150, 0 , -250);
+  forestScene(scene, camera, renderer, -150, 0 , -300);
+  forestScene(scene, camera, renderer, -200, 0 , 150);
+  forestScene(scene, camera, renderer, -250, 0 , 300);
+  forestScene(scene, camera, renderer, -300, 0 , -400);
+  forestScene(scene, camera, renderer, -400, 0 , -450);
+  forestScene(scene, camera, renderer, -350, 0 , -450);
+  forestScene(scene, camera, renderer, -450, 0 , -550);
+
+  dwellScene(scene, camera, renderer, 350, 1, 0);
   tavScene(scene, camera, renderer, 1200, 1, -200);
   tavScene(scene, camera, renderer, -800, 1, 0);
 

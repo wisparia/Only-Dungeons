@@ -60,7 +60,7 @@ const dwellScene = (scene, camera, renderer, locX, locY, locZ) => {
 
     //bed
     createTable(150, 40, 80, locX+25, (locY), (locZ+190/5))
-    
+
 };
 
 export default dwellScene;
