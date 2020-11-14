@@ -5,6 +5,7 @@ import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
 import AvatarImage from "../../components/AvatarImage/AvatarImage"
+import "./updateform.css"
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
@@ -248,13 +249,13 @@ function UpdateForm() {
               </div>
             </> : null}
             {dm.isDm ? <>
-              <p>Discord Server: </p>
+              <p>Discord Server: <div className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
               <div className="content-border mainContent">
               <input id="discordServer" className="validate" type="text" value={formObject.discordServer} name="discordServer" placeholder={dm.discordServer} onChange={handleInputChange}/>
               </div>
             </> : null}
             {dm.isDm ? <>
-              <p>Spotify: </p>
+              <p>Spotify: <div className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
               <div className="content-border mainContent">
               <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" onChange={handleInputChange}/>
               </div>
