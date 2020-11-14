@@ -5,6 +5,7 @@ import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
 import DiscordModal from "../../components/DiscordModal/DiscordModal"
+import SpotifyInfoModal from "../../components/SpotifyInfoModal/SpotifyInfoModal"
 import AvatarImage from "../../components/AvatarImage/AvatarImage";
 import "./updateform.css";
 
@@ -13,7 +14,6 @@ import "./updateform.css";
 // TODO: Make a put request with the formObject 
 
 function UpdateForm() {
-
 
   const history = useHistory()
   const {id} = useParams()
@@ -83,6 +83,11 @@ function UpdateForm() {
     getSpotify: "",
 
   })
+
+  // state for spotify modal 
+  const [modalSpotifyState, setmodalSpotifyState]=useState(false)
+
+
   const showModal = () => {
     setShow(true);
   };
@@ -137,6 +142,16 @@ function UpdateForm() {
     setShow2(false );
   };
 
+  // Spotify tutorial
+  //=================================================================
+  const showModalSpotify = () => {
+    setmodalSpotifyState(true)
+  }
+
+  const hideModalSpotify = () => {
+    setmodalSpotifyState(false)
+  }
+  //=================================================================
   const showDiscordModal = () =>{
     setShowDiscord(true);
   }
@@ -264,7 +279,7 @@ function UpdateForm() {
               </div>
             </> : null}
             {dm.isDm ? <>
-              <p>Spotify: <div className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
+              <p>Spotify: <div onClick={showModalSpotify} className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
               <div className="content-border mainContent">
               <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" onChange={handleInputChange}/>
               </div>
@@ -428,6 +443,7 @@ function UpdateForm() {
       </div>
             <UpdateModal handleSpotifyChange = {handleSpotifyChange} show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
+            <SpotifyInfoModal showModalSpotify = {modalSpotifyState} hideModalSpotify={hideModalSpotify} />
             <DiscordModal showDiscord= {showDiscord} hideDiscordModal ={hideDiscordModal} />
     </>
   );
