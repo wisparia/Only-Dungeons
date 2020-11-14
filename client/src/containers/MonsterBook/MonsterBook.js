@@ -17,24 +17,35 @@ export const MonsterBook = () => {
   }, []);
 
   return (
-    <div>
-      {monsters.slice(10 * page, 10 * page + 10).map((monster) => (
-        <div>
-          <h4>{monster.name}</h4>
-          <p>{monster.type}</p>
-          <p>{monster.size}</p>
-          <p>{monster.alignment}</p>
-          <p>{monster.armor_class}</p>
-          <p>{monster.armor_hit_points}</p>
+    <>
+      <div className="row">
+        {monsters.slice(4 * page, 4 * page + 4).map((monster) => (
+          <div className="container col m3 content-border vertical-spacer-md">
+            <h5>{monster.name}</h5>
+            <p>{monster.type}</p>
+            <p>{monster.size}</p>
+            <p>{monster.alignment}</p>
+            <p>{monster.armor_class}</p>
+            <p>{monster.armor_hit_points}</p>
+          </div>
+        ))}
+      </div>
+      <div className="row">
+        <div className="center container">
+          <button
+            className="btn col s12 m6 vertical-spacer-md"
+            onClick={() => setPage(page - 1)}
+          >
+            Click To Decrease
+          </button>
+          <button
+            className="btn col s12 m6 vertical-spacer-md"
+            onClick={() => setPage(page + 1)}
+          >
+            Click To Increase
+          </button>
         </div>
-      ))}
-      <button onClick={() => setPage(page + 1)}>Click To Increase</button>
-      {/* {monsters
-        ? monsters.slice(10 * page, 10 * page + 10).map((element) => {
-            return <h1>{element}</h1>;
-          })
-        : ""}
-      <button onClick={() => setPage(page + 1)}>Click To Increase</button> */}
-    </div>
+      </div>
+    </>
   );
 };
