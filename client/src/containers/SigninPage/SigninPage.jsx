@@ -53,8 +53,6 @@ function SigninPage(props) {
       if(!result.data.data){
         showModal2()
       }
-      console.log(result.data)
-      console.log(result.data.data);
       const tokenToStore = result.data.data;
 
       if (result.data.data) {
