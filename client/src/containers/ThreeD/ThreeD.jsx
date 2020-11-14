@@ -57,7 +57,9 @@ function dimensions() {
     scene.add(light)
   }
 
-  torchLight(-50, 50, 100)
+  torchLight()
+  torchLight()
+  torchLight()
 
 
 
@@ -79,8 +81,8 @@ function dimensions() {
   // }
 
   tavScene(scene, camera, renderer, 0, 1, 0);
-  // tavScene(scene, camera, renderer, 400, 1, 0);
-  // tavScene(scene, camera, renderer, -800, 1, 0);
+  tavScene(scene, camera, renderer, 1200, 1, -200);
+  tavScene(scene, camera, renderer, -800, 1, 0);
   worldScene(scene, camera, renderer);
 
   function animate() {

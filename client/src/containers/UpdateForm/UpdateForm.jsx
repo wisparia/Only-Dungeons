@@ -110,14 +110,8 @@ function UpdateForm() {
       newString = stringArray[2];
       console.log(newString)
       formObject.getSpotify = newString
-<<<<<<< HEAD
-    } else {
-      console.log("You didn't enter anything here")
-    }
-=======
     }
     
->>>>>>> a3cfd237471bfe3a4c8dbf5ea8c43222297ca7a9
   }
   
   function handleInputChange(event) {

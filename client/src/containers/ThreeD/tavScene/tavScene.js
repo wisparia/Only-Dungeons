@@ -85,18 +85,17 @@ const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
         stools(locX, locY, (locZ + 250/4));
 
         // // bar scene
-        createTable(40, 40, 300, (locX+200/4), (locY + 30), (locZ+250/4));
-        createTable(300, 40, 40, (locX + 350/4), (locY + 30), (locZ +120/4));
+        createTable(40, 40, 300, (locX+188/4), (locY + 30), (locZ +250/4));
+        createTable(300, 40, 40, (locX + 350/4), (locY + 30), (locZ + 120/4));
 
         // // supports
-        createTable(20, 200, 20, (locX + 480/4), locY + 100, locZ/4)
-        createTable(20, 200, 20, (locX - 480/4), locY + 100, locZ/4)
-       
-       
-        // createTable(20, 200, 20, 480, 100, -200)
-        // createTable(20, 200, 20, -480, 100, -200)
-        // createTable(20, 200, 20, -480, 100, 200)
-        // createTable(20, 200, 20, 480, 100, 200)
+        createTable(20, 200, 20, (locX + 480/4), locY + 100, locZ + 0/4)
+        createTable(20, 200, 20, (locX - 480/4), locY + 100, locZ +0/4)
+        createTable(20, 200, 20, (locX + 480/4), locY + 100, locZ - 200/4)
+        createTable(20, 200, 20, (locX - 480/4), locY + 100, locZ - 200/4)
+        createTable(20, 200, 20, (locX - 480/4), locY + 100, locZ + 200/4)
+        createTable(20, 200, 20, (locX + 480/4), locY + 100, locZ + 200/4)
+    
 
         
       const torchLight = (x, y, z) => {
@@ -108,7 +107,8 @@ const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
 
       torchLight((locX+100), (locY+10), (locZ+20))
       torchLight((locX-100), (locY+100), (locZ+20))
-      torchLight(locX, (locY+200), (locZ+20))
+      // torchLight(locX, (locY+200), (locZ+200))
+      // torchLight(locX, (locY+200), (locZ20))
     
     
 
