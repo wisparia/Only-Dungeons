@@ -2,7 +2,7 @@ const router = require("express").Router();
 const userRoutes = require("./users");
 const authRoutes = require("./auth");
 const monsterRoutes = require("./monster");
-const spellRoutes = requie("./spells")
+const spellRoutes = require("./spells")
 
 // User routes
 router.use("/users", userRoutes);
