@@ -2,6 +2,9 @@
 import axios from "axios";
 
 export default {
+  getMonsters: function () {
+    return axios.get("/api/monsters");
+  },
 
   // Gets all books
   getUsers: function () {
@@ -27,8 +30,8 @@ export default {
   },
 
   // Allows the user to login w Authentication
-  loginUser: function(userData) {
-    return axios.post("/api/auth/login", userData)
+  loginUser: function (userData) {
+    return axios.post("/api/auth/login", userData);
   },
 
   // Updates a user in the database
