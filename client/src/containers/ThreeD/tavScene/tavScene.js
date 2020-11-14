@@ -1,16 +1,20 @@
-
 import * as THREE from "three";
 import TavWall from "./TavernWall.png"
 import TavFloor from "./TavernFloor.png"
+import Stone2 from "./Stone2.png"
+import Stone4 from "./Stone4.png"
 
 const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
+        let tavernWallType = [TavWall, Stone2];
+        let tavernWall = tavernWallType[(Math.floor(Math.random()*2))]
+
         let materialArray = [];
-        let texture_ft = new THREE.TextureLoader().load(TavWall);
-        let texture_bk = new THREE.TextureLoader().load(TavWall);
-        let texture_up = new THREE.TextureLoader().load(TavFloor);
+        let texture_ft = new THREE.TextureLoader().load(tavernWall);
+        let texture_bk = new THREE.TextureLoader().load(tavernWall);
+        let texture_up = new THREE.TextureLoader().load(Stone4);
         let texture_dn = new THREE.TextureLoader().load(TavFloor);
-        let texture_rt = new THREE.TextureLoader().load(TavWall);
-        let texture_lf = new THREE.TextureLoader().load(TavWall);
+        let texture_rt = new THREE.TextureLoader().load(tavernWall);
+        let texture_lf = new THREE.TextureLoader().load(tavernWall);
     
         materialArray.push(new THREE.MeshLambertMaterial({ map: texture_ft }));
         materialArray.push(new THREE.MeshLambertMaterial({ map: texture_bk }));

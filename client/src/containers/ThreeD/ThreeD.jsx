@@ -39,7 +39,7 @@ function dimensions() {
   });
 
   // x = 0, +50, -50 // y = y-10 // z = z+10, z+100 z-100
-  camera.position.set(0, -700, 300);
+  camera.position.set(-1200, 100, 300);
   
 
   let controls = new OrbitControls(camera, renderer.domElement);
@@ -52,6 +52,8 @@ function dimensions() {
   }
 
  
+  torchLight()
+  torchLight()
   torchLight()
 
 
@@ -88,30 +90,20 @@ function dimensions() {
   forestScene(scene, camera, renderer, -450, 0 , -600);
   forestScene(scene, camera, renderer, -450, 0 , 600);
 
-  dwellScene(scene, camera, renderer, 350, 1, 0);
-  tavScene(scene, camera, renderer, 1200, 1, -200);
-  tavScene(scene, camera, renderer, -800, 1, 0);
-
-  dwellScene(scene, camera, renderer, 500, 1, 0);
-  dwellScene(scene, camera, renderer, 500, 1, -300);
-  dwellScene(scene, camera, renderer, 500, 1, 150);
-
-  dwellScene(scene, camera, renderer, 800, 1, 0);
-  dwellScene(scene, camera, renderer, 700, 1, -300);
-  dwellScene(scene, camera, renderer, 800, 1, 300);
-  dwellScene(scene, camera, renderer, 900, 1, 500);
-  dwellScene(scene, camera, renderer, 800, 1, -600);
+  tavScene(scene, camera, renderer, 1200, 1, 0);
+  tavScene(scene, camera, renderer, 800, 1, -1000);
+  dwellScene(scene, camera, renderer, 800, 1, -300);
+  // dwellScene(scene, camera, renderer, 300, 1, -600);
+  // dwellScene(scene, camera, renderer, 600, 1, -500);
+  // dwellScene(scene, camera, renderer, 1000, 1, -650);
+  
   
 
-  graveScene(scene, camera, renderer, -1100, 0, 400)
-  graveScene(scene, camera, renderer, -1100, 0, 480)
-  graveScene(scene, camera, renderer, -1100, 0, 560)
-
-  graveScene(scene, camera, renderer, -1200, 0, 100)
-  graveScene(scene, camera, renderer, -1350, 0, 100)
-  graveScene(scene, camera, renderer, -1350, 0, 150)
-  graveScene(scene, camera, renderer, -1200, 0,400)
-  graveScene(scene, camera, renderer, -1200, 0,100)
+  
+  
+  graveScene(scene, camera, renderer, -1400, 0, 150)
+  graveScene(scene, camera, renderer, -1450, 0, 300)
+  graveScene(scene, camera, renderer, -1450, 0, 480)
 
   worldScene(scene, camera, renderer);
 
@@ -132,9 +124,9 @@ function dimensions() {
   return (
   <>
   <div id="myCanvas">  </div>
-  <div id="info">
+  {/* <div id="info">
     <iframe   src="https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer" height="200" width="100%" frameborder="0" className="chatBorder"></iframe>
-  </div>
+  </div> */}
   </>
   )
 };
