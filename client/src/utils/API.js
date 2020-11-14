@@ -8,6 +8,15 @@ export default {
 
   getSpells: function (){
     return axios.get("/api/spells")
+  
+  },
+  
+  getRace: function (){
+    return axios.get("/api/race")
+  },
+
+  getClass: function (){
+    return axios.get("/api/classes")
   },
 
   // Gets all books
