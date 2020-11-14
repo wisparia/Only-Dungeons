@@ -18,6 +18,7 @@ import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Spellbook from "./containers/SpellBook/Spellbook";
 import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
+import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -66,6 +67,7 @@ function App() {
               <Route exact path="/Spellbook/" component={Spellbook} />
               <Route exact path="/Team" component={Team} />
               <Route exact path="/testpage" component={MonsterBook} />
+              <Route exact path="/racetest" component={RaceBook} />
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
