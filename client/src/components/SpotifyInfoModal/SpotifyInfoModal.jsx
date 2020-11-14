@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 import "./SpotifyInfoModal.css";
 
-class NoCreateModal extends Component {
+class SpotifyInfoModal extends Component {
   render() {
-    const { handleClose, show2 } = this.props;
-    const showHideClassName = show2 ? "display-block" : "display-none";
+    const { hideModalSpotify, showModalSpotify } = this.props;
+    const showHideClassName = showModalSpotify
+      ? "display-block"
+      : "display-none";
     console.log(this.props);
     return (
       <div className={showHideClassName}>
-        <div id="NoCreateModal" className="NoCreateModal">
+        <div id="showModalSpotify" className="showModalSpotify">
           <div className="modal-content">
             <div className="modal-header center">
-              <h4>Failed to Create Account</h4>
+              <h4>Link Your Spotify Account to Only Dungeons</h4>
             </div>
             <div className="modal-body center">
               <p>
-                Tutorials for Spotify
+                Check out the video below for instructions on how to link your
+                discord account below!
               </p>
+              <div className="modal-content center">
+                <h1>VIDEO WILL GO HERE!</h1>
+              </div>
               <button
                 to="/"
-                onClick={handleClose}
+                onClick={hideModalSpotify}
                 className="vertical-spacer-sm btn col s3"
               >
                 Cancel
@@ -32,4 +38,4 @@ class NoCreateModal extends Component {
   }
 }
 
-export default NoCreateModal;
+export default SpotifyInfoModal;

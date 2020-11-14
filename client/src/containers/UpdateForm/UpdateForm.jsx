@@ -15,7 +15,6 @@ import "./updateform.css";
 
 function UpdateForm() {
 
-
   const history = useHistory()
   const {id} = useParams()
   const [show, setShow] = useState(false)
@@ -280,9 +279,7 @@ function UpdateForm() {
               </div>
             </> : null}
             {dm.isDm ? <>
-            {/* Added modal for spotify tutorial */}
-              <p>Spotify: <div className="tutorialMark"><span><button className="tutorialLink center align">?</button></span></div></p>
-            {/* ++++++++++++++++++++++++++++++++++++++++ */}
+              <p>Spotify: <div onClick={showModalSpotify} className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
               <div className="content-border mainContent">
               <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" onChange={handleInputChange}/>
               </div>
@@ -446,7 +443,7 @@ function UpdateForm() {
       </div>
             <UpdateModal handleSpotifyChange = {handleSpotifyChange} show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
-            <SpotifyInfoModal showModalSpotify = {show} handleClose={hideModalSpotify} />
+            <SpotifyInfoModal showModalSpotify = {modalSpotifyState} hideModalSpotify={hideModalSpotify} />
             <DiscordModal showDiscord= {showDiscord} hideDiscordModal ={hideDiscordModal} />
     </>
   );
