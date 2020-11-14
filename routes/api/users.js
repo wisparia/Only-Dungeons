@@ -15,6 +15,9 @@ router.route("/")
 router.route("/dms")
   .get(usersController.findAllDms)
 
+// Matches with "/api/users/pcs"
+  .get(usersController.findAllPcs)
+
 
 // Matches with "/api/users/:id"
 router.route("/:id")
