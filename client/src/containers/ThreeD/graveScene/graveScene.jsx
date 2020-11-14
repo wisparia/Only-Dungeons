@@ -7,10 +7,11 @@ import Stone5 from "./Stone5.png"
 
 const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
 
-    let stoneTypeArray = [Stone1, Stone2, Stone3, Stone4, Stone5 , Stone3, Stone4, Stone5];
-    let stoneType = stoneTypeArray[(Math.floor(Math.random()*8))]
+
 
     const createGrave1 = (locX, locY, locZ) => {
+        let stoneTypeArray = [Stone1, Stone2, Stone3, Stone4, Stone5, Stone3, Stone4, Stone5];
+        let stoneType = stoneTypeArray[(Math.floor(Math.random()*8))]
         const geometry = new THREE.BoxGeometry( 8, 20, 5 );
         let texture = new THREE.TextureLoader().load(stoneType)
         const material = new THREE.MeshBasicMaterial( {map: texture} );
@@ -22,15 +23,18 @@ const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
     }
 
     const createCrypt = (locX, locY, locZ) =>   {
+        let stoneTypeArray = [Stone1, Stone2, Stone3, Stone4, Stone5, Stone3, Stone4, Stone5];
+        let stoneType = stoneTypeArray[(Math.floor(Math.random()*8))]
+
         const geometry = new THREE.BoxGeometry( 30, 30, 40 );
-        let texture = new THREE.TextureLoader().load(Stone4)
+        let texture = new THREE.TextureLoader().load(stoneType)
         const material = new THREE.MeshBasicMaterial( {map: texture} );
         const crypt = new THREE.Mesh( geometry, material );
         scene.add(crypt);
 
         const geometry1 = new THREE.BoxGeometry( 10, 20, 5 );
-        let texture1 = new THREE.TextureLoader().load(Stone1)
-        const material1 = new THREE.MeshBasicMaterial( {color: 0x000000} );      
+        let texture1 = new THREE.TextureLoader().load(stoneType)
+        const material1 = new THREE.MeshBasicMaterial( {map: texture} );      
         const cone = new THREE.Mesh( geometry1, material1 );
 
         scene.add( cone );
@@ -110,7 +114,7 @@ const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
     // createGrave1((locX+20), locY, (locZ+75))
     createGrave1((locX-40), (locY), (locZ+120))
     createGrave1((locX+43), locY, (locZ+120))
-    createCrypt((locX-60), locY, (locZ+120))
+    createCrypt((locX-80), locY, (locZ+120))
     // createGrave1((locX+60), locY, (locZ+120))
     // createGrave1((locX-80), (locY-10), (locZ+120))
     // createGrave1((locX+80), locY, (locZ+120))
