@@ -2,16 +2,21 @@
 import axios from "axios";
 
 export default {
+  // Spellbook functions
   getMonsters: function () {
     return axios.get("/api/monsters");
   },
 
-  getRace: function (){
-    return axios.get("/api/race")
+  getRace: function () {
+    return axios.get("/api/race");
   },
 
-  getClass: function (){
-    return axios.get("/api/classes")
+  getClass: function () {
+    return axios.get("/api/classes");
+  },
+
+  getWpn: function () {
+    return axios.get("/api/wpn");
   },
 
   // Gets all books
