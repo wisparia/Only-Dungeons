@@ -2,18 +2,19 @@
 import axios from "axios";
 
 export default {
-  // Spellbook functions
+  //==================================
+  // Routes for Spellbook
+  //==================================
   getMonsters: function () {
     return axios.get("/api/monsters");
   },
 
-  getSpells: function (){
-    return axios.get("/api/spells")
-  
+  getSpells: function () {
+    return axios.get("/api/spells");
   },
-  
-  getRace: function (){
-    return axios.get("/api/race")
+
+  getRace: function () {
+    return axios.get("/api/race");
   },
 
   getClass: function () {
@@ -24,6 +25,13 @@ export default {
     return axios.get("/api/wpn");
   },
 
+  getArmor: function () {
+    return axios.get("/api/armor");
+  },
+
+  //==================================
+  // Routes for Application
+  //==================================
   // Gets all books
   getUsers: function () {
     return axios.get("/api/users");
