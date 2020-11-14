@@ -10,6 +10,10 @@ export default {
     return axios.get("/api/race")
   },
 
+  getClass: function (){
+    return axios.get("/api/classes")
+  },
+
   // Gets all books
   getUsers: function () {
     return axios.get("/api/users");
