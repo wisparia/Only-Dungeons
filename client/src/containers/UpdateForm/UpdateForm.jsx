@@ -4,8 +4,10 @@ import { useParams, useHistory } from "react-router-dom"
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
+import SpotifyInfoModal from "../../components/SpotifyInfoModal/SpotifyInfoModal"
 import AvatarImage from "../../components/AvatarImage/AvatarImage"
 import "./updateform.css"
+import { set } from "mongoose";
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
@@ -81,6 +83,11 @@ function UpdateForm() {
     getSpotify: "",
 
   })
+
+  // state for spotify modal 
+  const [modalSpotifyState, setmodalSpotifyState]=useState(false)
+
+
   const showModal = () => {
     setShow(true);
   };
@@ -134,6 +141,17 @@ function UpdateForm() {
   const hideModal2 = () => {
     setShow2(false );
   };
+
+  // Spotify tutorial
+  //=================================================================
+  const showModalSpotify = () => {
+    setmodalSpotifyState(true)
+  }
+
+  const hideModalSpotify = () => {
+    setmodalSpotifyState(false)
+  }
+  //=================================================================
 
   function handleFormSubmit(event) {
     hideModal2();
@@ -255,7 +273,9 @@ function UpdateForm() {
               </div>
             </> : null}
             {dm.isDm ? <>
-              <p>Spotify: <div className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
+            {/* Added modal for spotify tutorial */}
+              <p>Spotify: <div className="tutorialMark"><span><button className="tutorialLink center align">?</button></span></div></p>
+            {/* ++++++++++++++++++++++++++++++++++++++++ */}
               <div className="content-border mainContent">
               <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" onChange={handleInputChange}/>
               </div>
@@ -419,6 +439,7 @@ function UpdateForm() {
       </div>
             <UpdateModal handleSpotifyChange = {handleSpotifyChange} show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
+            <SpotifyInfoModal showModalSpotify = {show} handleClose={hideModalSpotify} />
     </>
   );
 }
