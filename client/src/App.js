@@ -20,6 +20,7 @@ import Spellbook from "./containers/SpellBook/Spellbook";
 import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
 import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
 import { ClassesBook } from "./containers/SpellBookClasses/SpellBookClasses";
+import BookButton from "./components/BookButton/BookButton";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -45,6 +46,7 @@ function App() {
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
+
             <Switch>
               {/* <Route
                 exact
@@ -73,7 +75,7 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-
+          <BookButton />
           <Footer />
         </Router>
       </UserContext.Provider>
