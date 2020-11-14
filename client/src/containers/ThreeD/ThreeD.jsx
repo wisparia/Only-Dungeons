@@ -5,7 +5,10 @@ import tavScene from "./tavScene/tavScene"
 import dwellScene from "./dwellScene/dwellScene"
 import forestScene from "./forestScene/forestScene"
 import worldScene from "./worldScene/worldScene";
+import graveScene from "./graveScene/graveScene";
+
 import "./ThreeD.css";
+
 const ThreeD = () => {
   useEffect(() => {
     dimensions();
@@ -19,7 +22,7 @@ function dimensions() {
     100,
     window.innerWidth / window.innerHeight,
     0.1,
-    10000
+    5000
   );
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setClearColor("#000000");
@@ -36,20 +39,19 @@ function dimensions() {
   });
 
   // x = 0, +50, -50 // y = y-10 // z = z+10, z+100 z-100
-  camera.position.set(-100, 100, 0);
+  camera.position.set(0, -700, 300);
   
 
   let controls = new OrbitControls(camera, renderer.domElement);
   controls.minDistance = 1;
-  controls.maxDistance = 10000;
+  controls.maxDistance = 5000;
 
   const torchLight = () => {
     const light = new THREE.AmbientLight(0x404040);
     scene.add(light)
   }
 
-  torchLight()
-  torchLight()
+ 
   torchLight()
 
 
@@ -82,6 +84,9 @@ function dimensions() {
   forestScene(scene, camera, renderer, -400, 0 , -450);
   forestScene(scene, camera, renderer, -350, 0 , -450);
   forestScene(scene, camera, renderer, -450, 0 , -550);
+  forestScene(scene, camera, renderer, -450, 0 , 500);
+  forestScene(scene, camera, renderer, -450, 0 , -600);
+  forestScene(scene, camera, renderer, -450, 0 , 600);
 
   dwellScene(scene, camera, renderer, 350, 1, 0);
   tavScene(scene, camera, renderer, 1200, 1, -200);
@@ -97,6 +102,17 @@ function dimensions() {
   dwellScene(scene, camera, renderer, 900, 1, 500);
   dwellScene(scene, camera, renderer, 800, 1, -600);
   
+
+  graveScene(scene, camera, renderer, -1100, 0, 400)
+  graveScene(scene, camera, renderer, -1100, 0, 480)
+  graveScene(scene, camera, renderer, -1100, 0, 560)
+
+  graveScene(scene, camera, renderer, -1200, 0, 100)
+  graveScene(scene, camera, renderer, -1350, 0, 100)
+  graveScene(scene, camera, renderer, -1350, 0, 150)
+  graveScene(scene, camera, renderer, -1200, 0,400)
+  graveScene(scene, camera, renderer, -1200, 0,100)
+
   worldScene(scene, camera, renderer);
 
   function animate() {
@@ -112,16 +128,6 @@ function dimensions() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
 
   return (
   <>

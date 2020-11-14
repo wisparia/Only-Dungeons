@@ -4,9 +4,6 @@ import TavWall from "./TavernWall.png"
 import TavFloor from "./TavernFloor.png"
 
 const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
-    
-        // camera.position.set(-100, 100, 0);
-
         let materialArray = [];
         let texture_ft = new THREE.TextureLoader().load(TavWall);
         let texture_bk = new THREE.TextureLoader().load(TavWall);
@@ -98,8 +95,7 @@ const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
 
         
       const torchLight = (x, y, z) => {
-        const light = new THREE.PointLight(0xFFFFFF, .65, 0, .55);
-        light.castShadow = true;
+        const light = new THREE.PointLight(0xFFFFFF, .95, 0, 0);
         light.position.set(x,y,z)
         scene.add(light)
       }

@@ -34,7 +34,7 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
 
 
 
-
+            
             createTreeSm(locX, locY, locZ)
             createTreeSm(locX+30, locY, locZ+30)
             createTreeSm(locX-30, locY, locZ+30)
@@ -50,11 +50,6 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
             createTreeLg(locX-120, locY, locZ+50)
             createTreeLg(locX-120, locY, locZ-250)
             createTreeLg(locX-200, locY, locZ-100)
-
-        // let fogColor = new THREE.Color(0x383838);
- 
-        // scene.background = fogColor;
-        // scene.fog = new THREE.Fog(fogColor, 0.005, 800);
 }
 
 export default forestScene;
