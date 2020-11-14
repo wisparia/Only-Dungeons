@@ -18,10 +18,17 @@ export const MonsterBook = () => {
 
   return (
     <div>
-      {monsters.map((monster) => (
-        <p>{monster.name}</p>
+      {monsters.slice(10 * page, 10 * page + 10).map((monster) => (
+        <div>
+          <h4>{monster.name}</h4>
+          <p>{monster.type}</p>
+          <p>{monster.size}</p>
+          <p>{monster.alignment}</p>
+          <p>{monster.armor_class}</p>
+          <p>{monster.armor_hit_points}</p>
+        </div>
       ))}
-
+      <button onClick={() => setPage(page + 1)}>Click To Increase</button>
       {/* {monsters
         ? monsters.slice(10 * page, 10 * page + 10).map((element) => {
             return <h1>{element}</h1>;
