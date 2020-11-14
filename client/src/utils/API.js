@@ -7,8 +7,13 @@ export default {
     return axios.get("/api/monsters");
   },
 
-  getRace: function () {
-    return axios.get("/api/race");
+  getSpells: function (){
+    return axios.get("/api/spells")
+  
+  },
+  
+  getRace: function (){
+    return axios.get("/api/race")
   },
 
   getClass: function () {
