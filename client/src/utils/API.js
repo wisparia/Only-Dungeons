@@ -6,6 +6,10 @@ export default {
     return axios.get("/api/monsters");
   },
 
+  getSpells: function (){
+    return axios.get("/api/spells")
+  }
+
   // Gets all books
   getUsers: function () {
     return axios.get("/api/users");
