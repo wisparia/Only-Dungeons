@@ -1,9 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import React, { useEffect, useState } from "react";
-
 import tavScene from "./tavScene/tavScene"
-
+import dwellScene from "./dwellScene/dwellScene"
 import "./ThreeD.css";
 import worldScene from "./worldScene/worldScene";
 
@@ -80,9 +79,20 @@ function dimensions() {
   //     }
   // }
 
-  tavScene(scene, camera, renderer, 0, 1, 0);
+  dwellScene(scene, camera, renderer, 0, 1, 0);
   tavScene(scene, camera, renderer, 1200, 1, -200);
   tavScene(scene, camera, renderer, -800, 1, 0);
+
+  dwellScene(scene, camera, renderer, 500, 1, 0);
+  dwellScene(scene, camera, renderer, 500, 1, -300);
+  dwellScene(scene, camera, renderer, 500, 1, 150);
+
+  dwellScene(scene, camera, renderer, 800, 1, 0);
+  dwellScene(scene, camera, renderer, 700, 1, -300);
+  dwellScene(scene, camera, renderer, 800, 1, 300);
+  dwellScene(scene, camera, renderer, 900, 1, 500);
+  dwellScene(scene, camera, renderer, 800, 1, -600);
+  
   worldScene(scene, camera, renderer);
 
   function animate() {
