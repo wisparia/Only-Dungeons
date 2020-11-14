@@ -8,7 +8,7 @@ export default {
 
   getSpells: function (){
     return axios.get("/api/spells")
-  }
+  },
 
   // Gets all books
   getUsers: function () {
