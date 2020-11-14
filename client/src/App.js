@@ -21,6 +21,9 @@ import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
 import {BookOfSpells} from "./containers/BookOfSpells/BookOfSpells"
 import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
 import { ClassesBook } from "./containers/SpellBookClasses/SpellBookClasses";
+import { WpnBook } from"./containers/SpellBookWpn/SpellBookWpn"
+
+
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -68,10 +71,13 @@ function App() {
               <Route exact path="/ThreeD/:id" component={ThreeD} />
               <Route exact path="/Spellbook/" component={Spellbook} />
               <Route exact path="/Team" component={Team} />
+
+              {/* section for spellbook */}
               <Route exact path="/testpage" component={MonsterBook} />
               <Route exact path="/spelltest" component={BookOfSpells} />
               <Route exact path="/racetest" component={RaceBook} />
               <Route exact path="/classestest" component={ClassesBook} />
+              <Route exact path= "/wpntest" component={WpnBook}/>
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
