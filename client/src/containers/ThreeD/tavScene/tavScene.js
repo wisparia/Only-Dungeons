@@ -30,71 +30,73 @@ const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
         let skyboxGeo = new THREE.BoxGeometry(250, 80, 200);
         let skybox = new THREE.Mesh(skyboxGeo, materialArray);
         scene.add(skybox);
-        skybox.position.set(locX, locY, locZ);
+        skybox.position.set(locX, (locY + 40), locZ);
 
-        const createTable = (ShX, ShY, ShZ, x, y, z) => {
+        const createTable = (ShX, ShY, ShZ, locX, locY, locZ) => {
           const geometry = new THREE.BoxGeometry((ShX/4), (ShY/4), (ShZ/4));
           const material = new THREE.MeshLambertMaterial({ color: 0x191107 });
           const table = new THREE.Mesh(geometry, material);
           scene.add(table);
-          table.position.set((x/4), (y/4), (z/4));
+          table.position.set((locX), (locY/4), (locZ));
         };
 
-        const createStool = (x, y, z) => {
+        const createStool = (locX, locY, locZ) => {
           const geometry = new THREE.CylinderGeometry(5, 2.5, (25/4), 8);
           const material = new THREE.MeshDepthMaterial({ color: 0x191107 });
           const cylinder = new THREE.Mesh(geometry, material);
           scene.add(cylinder);
-          cylinder.position.set((x/4), (y/4), (z/4));
+          cylinder.position.set((locX), (locY), (locZ));
         };
 
         // x = 0, +50, -50 // y = y-10 // z = z+10, z+100 z-100
 
-        const stools = (x, y, z) => {
-          createStool(x, y - 70, z + 10);
-          createStool(x + 50, y - 70, z + 10);
-          createStool(x - 50, y - 70, z + 10);
-          createStool(x, y - 70, z - 100);
-          createStool(x + 50, y - 70, z - 100);
-          createStool(x - 50, y - 70, z - 100);
+        const stools = (locX, locY, locZ) => {
+          createStool((locX), locY + 3.8, locZ + 2.5);
+          createStool((locX + 16), locY + 3.8, locZ + 2.5);
+          createStool((locX - 16), locY + 3.8, locZ + 2.5);
+          createStool(locX, locY + 3.8, locZ - 25);
+          createStool((locX + 16), locY + 3.8, locZ - 25);
+          createStool((locX - 16), locY + 3.8, locZ - 25);
         };
 
         // middle table
-        createTable(150, 40, 40, 0,-70, -50);
-        stools(0, 0, 0);
+        createTable(150, 40, 40, locX, (locY+16), (locZ-50/4));
+        stools(locX, locY, locZ);
 
-        createTable(150, 40, 40, 300, -70, -50);
-        stools(300, 0, 0);
+        createTable(150, 40, 40, (locX + 300/4), (locY+16), (locZ-50/4));
+        stools((locX + 300/4), (locY), locZ);
 
-        createTable(150, 40, 40, -300, -70, -50);
-        stools(-300, 0, 0);
+        createTable(150, 40, 40, (locX - 300/4), (locY+16), (locZ-50/4));
+        stools((locX-300/4), locY, locZ);
 
-        createTable(150, 40, 40, -300, -70, 200);
-        stools(-300, 0, 250);
+        createTable(150, 40, 40, (locX-300/4), (locY+16), (locZ + 200/4));
+        stools((locX-300/4), locY, (locZ + 250/4));
 
-        createTable(150, 40, 40, 0, -70, -300);
-        stools(0, 0, -250);
+        createTable(150, 40, 40, (locX), (locY+16), (locZ-300/4));
+        stools(locX, locY, (locZ - 250/4));
 
-        createTable(150, 40, 40, 300, -70, -300);
-        stools(300, 0, -250);
+        createTable(150, 40, 40, (locX + 300/4), (locY+16), (locZ-300/4));
+        stools((locX + 300/4), locY, (locZ-250/4));
 
-        createTable(150, 40, 40, -300, -70, -300);
-        stools(-300, 0, -250);
+        createTable(150, 40, 40, (locX-300/4), (locY+16),(locZ -300/4));
+        stools((locX-300/4), locY, (locZ - 250/4));
 
-        createTable(150, 40, 40, 0, -70, 200);
-        stools(0, 0, 250);
+        createTable(150, 40, 40, locX, (locY+16), (locZ + 200/4));
+        stools(locX, locY, (locZ + 250/4));
 
-        // bar scene
-        createTable(40, 40, 300, 200, -70, 250);
-        createTable(300, 40, 40, 350, -70, 120);
+        // // bar scene
+        createTable(40, 40, 300, (locX+200/4), (locY + 30), (locZ+250/4));
+        createTable(300, 40, 40, (locX + 350/4), (locY + 30), (locZ +120/4));
 
-        // supports
-        createTable(20, 200, 20, 480, 10, 0)
-        createTable(20, 200, 20, -480, 10, 0)
-        createTable(20, 200, 20, 480, 10, -200)
-        createTable(20, 200, 20, -480, 10, -200)
-        createTable(20, 200, 20, -480, 10, 200)
-        createTable(20, 200, 20, 480, 10, 200)
+        // // supports
+        createTable(20, 200, 20, (locX + 480/4), locY + 100, locZ/4)
+        createTable(20, 200, 20, (locX - 480/4), locY + 100, locZ/4)
+       
+       
+        // createTable(20, 200, 20, 480, 100, -200)
+        // createTable(20, 200, 20, -480, 100, -200)
+        // createTable(20, 200, 20, -480, 100, 200)
+        // createTable(20, 200, 20, 480, 100, 200)
 
         
       const torchLight = (x, y, z) => {
@@ -104,9 +106,9 @@ const  tavScene = (scene, camera, renderer, locX, locY, locZ) => {
         scene.add(light)
       }
 
-      torchLight(100, 10, 20)
-      torchLight(-100, 100, 20)
-      torchLight(0, 200, 20)
+      torchLight((locX+100), (locY+10), (locZ+20))
+      torchLight((locX-100), (locY+100), (locZ+20))
+      torchLight(locX, (locY+200), (locZ+20))
     
     
 

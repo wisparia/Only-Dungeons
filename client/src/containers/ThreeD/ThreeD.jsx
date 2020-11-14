@@ -52,14 +52,12 @@ function dimensions() {
   controls.minDistance = 1;
   controls.maxDistance = 10000;
 
-  const torchLight = (x, y, z) => {
+  const torchLight = () => {
     const light = new THREE.AmbientLight(0x404040);
-    // light.castShadow = true;
-    // light.position.set(x,y,z)
     scene.add(light)
   }
 
-  torchLight(0, 100, 100)
+  torchLight(-50, 50, 100)
 
 
 
@@ -80,8 +78,9 @@ function dimensions() {
   //     }
   // }
 
-  tavScene(scene, camera, renderer, 0, 20, 0);
-  tavScene(scene, camera, renderer, 400, 20, 0);
+  tavScene(scene, camera, renderer, 0, 1, 0);
+  // tavScene(scene, camera, renderer, 400, 1, 0);
+  // tavScene(scene, camera, renderer, -800, 1, 0);
   worldScene(scene, camera, renderer);
 
   function animate() {
