@@ -4,8 +4,9 @@ import { useParams, useHistory } from "react-router-dom"
 import API from "../../utils/API"
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import UpdateModal from "../../components/UpdateModal/UpdateModal";
-import AvatarImage from "../../components/AvatarImage/AvatarImage"
-import "./updateform.css"
+import DiscordModal from "../../components/DiscordModal/DiscordModal"
+import AvatarImage from "../../components/AvatarImage/AvatarImage";
+import "./updateform.css";
 
 // TODO: Make sure to grab value from dropdown
 // TODO: Think about ways to dry up those functions
@@ -18,6 +19,7 @@ function UpdateForm() {
   const {id} = useParams()
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(false)
+  const [showDiscord, setShowDiscord] = useState(false)
   const [dm, setDm] = useState({
     userName: "",
     password: "",
@@ -135,6 +137,13 @@ function UpdateForm() {
     setShow2(false );
   };
 
+  const showDiscordModal = () =>{
+    setShowDiscord(true);
+  }
+  const hideDiscordModal = () =>{
+    setShowDiscord(false)
+  }
+
   function handleFormSubmit(event) {
     hideModal2();
     event.preventDefault();
@@ -249,7 +258,7 @@ function UpdateForm() {
               </div>
             </> : null}
             {dm.isDm ? <>
-              <p>Discord Server: <div className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
+              <p>Discord Server: <div onClick={showDiscordModal} className="tutorialMark"><span className="tutorialLink center align">?</span></div></p>
               <div className="content-border mainContent">
               <input id="discordServer" className="validate" type="text" value={formObject.discordServer} name="discordServer" placeholder={dm.discordServer} onChange={handleInputChange}/>
               </div>
@@ -419,6 +428,7 @@ function UpdateForm() {
       </div>
             <UpdateModal handleSpotifyChange = {handleSpotifyChange} show2 = {show2} handleFormSubmit = {handleFormSubmit} handleClose ={hideModal2}/>
             <DeleteModal show = {show} handleDeleteAccount = {handleDeleteAccount} handleClose ={hideModal}/>
+            <DiscordModal showDiscord= {showDiscord} hideDiscordModal ={hideDiscordModal} />
     </>
   );
 }
