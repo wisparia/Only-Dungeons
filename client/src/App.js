@@ -18,12 +18,11 @@ import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Spellbook from "./containers/SpellBook/Spellbook";
 import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
-import {BookOfSpells} from "./containers/BookOfSpells/BookOfSpells"
+import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
 import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
 import { ClassesBook } from "./containers/SpellBookClasses/SpellBookClasses";
-import { WpnBook } from"./containers/SpellBookWpn/SpellBookWpn"
-
-
+import { WpnBook } from "./containers/SpellBookWpn/SpellBookWpn";
+import { ArmorBook } from "./containers/SpellbookArmor/SpellBookArmor";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -77,7 +76,8 @@ function App() {
               <Route exact path="/spelltest" component={BookOfSpells} />
               <Route exact path="/racetest" component={RaceBook} />
               <Route exact path="/classestest" component={ClassesBook} />
-              <Route exact path= "/wpntest" component={WpnBook}/>
+              <Route exact path="/wpntest" component={WpnBook} />
+              <Route exact path="/armortest" component={ArmorBook} />
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
