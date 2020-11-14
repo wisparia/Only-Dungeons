@@ -10,10 +10,7 @@ class UpdateModal extends Component {
         <div id="UpdateModal" className="UModal">
           <div className="modal-content">
             <div className="modal-header">
-              <span className="close" onClick={handleClose}>
-                ×
-              </span>
-              <h2>Update Account</h2>
+              <h4 className="center">Update Account</h4>
             </div>
             <div className="modal-body">
               <p>
@@ -22,14 +19,14 @@ class UpdateModal extends Component {
               <button
                 to="/"
                 onClick={handleFormSubmit}
-                className="vertical-spacer-sm waves-effect waves-light btn col s3"
+                className="vertical-spacer-sm btn col s3"
               >
                 Update Your Account?
               </button>
               <button
                 to="/"
                 onClick={handleClose}
-                className="vertical-spacer-sm waves-effect waves-light btn col s3"
+                className="vertical-spacer-sm btn col s3"
               >
                 Cancel
               </button>

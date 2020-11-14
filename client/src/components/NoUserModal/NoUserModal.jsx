@@ -10,10 +10,7 @@ class NoUserModal extends Component {
         <div id="NoUserModal" className="NoUModal">
           <div className="modal-content">
             <div className="modal-header">
-              <span className="close" onClick={handleClose}>
-                ×
-              </span>
-              <h2>Failed Sign In</h2>
+              <h4>Failed Sign In</h4>
             </div>
             <div className="modal-body">
               <p>
@@ -22,7 +19,7 @@ class NoUserModal extends Component {
               <button
                 to="/"
                 onClick={handleClose}
-                className="vertical-spacer-sm waves-effect waves-light btn col s3"
+                className="vertical-spacer-sm btn col s3"
               >
                 Cancel
               </button>

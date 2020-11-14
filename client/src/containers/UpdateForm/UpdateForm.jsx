@@ -77,7 +77,7 @@ function UpdateForm() {
     },
     preferredRole: "",
     discordServer: "",
-    getSpotify: ""
+    getSpotify: "",
 
   })
   const showModal = () => {
@@ -101,14 +101,23 @@ function UpdateForm() {
   function handleSpotifyChange(){
     let stringArray = []
     let newString;
-    if(formObject.getSpotify.length > 22){
+    
+    if(formObject.getSpotify === undefined || formObject.getSpotify === null){
+      formObject.getSpotify = ""
+    }
+    else if(formObject.getSpotify.length > 22){
       stringArray = formObject.getSpotify.split(":");
       newString = stringArray[2];
       console.log(newString)
       formObject.getSpotify = newString
+<<<<<<< HEAD
     } else {
       console.log("You didn't enter anything here")
     }
+=======
+    }
+    
+>>>>>>> a3cfd237471bfe3a4c8dbf5ea8c43222297ca7a9
   }
   
   function handleInputChange(event) {
@@ -250,7 +259,7 @@ function UpdateForm() {
             {dm.isDm ? <>
               <p>Spotify: </p>
               <div className="content-border mainContent">
-              <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" placeholder={dm.getSpotify} onChange={handleInputChange}/>
+              <input id="getSpotify" className="validate" type="text" value={formObject.getSpotify} name="getSpotify" onChange={handleInputChange}/>
               </div>
             </> : null}
             <p>Tagline: </p>

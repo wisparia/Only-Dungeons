@@ -1,7 +1,6 @@
 p {
-  font-size: 18px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  font-size: medium;
+  margin: 0px;
   color: rgb(206, 168, 87) !important;
   cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
@@ -14,11 +13,13 @@ h4 {
   color: rgb(206, 168, 87) !important;
   padding: 25px !important;
   margin-top: 0px;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 h5 {
   margin-top: 0px;
   margin-bottom: 0px;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .vertical-spacer-sm {
@@ -31,6 +32,7 @@ h5 {
 
 .form-text {
   font-weight: bold;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .content-border {
@@ -46,6 +48,7 @@ h5 {
 .image-true {
   max-width: 300px;
   height: auto;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .btn {
@@ -63,10 +66,14 @@ h5 {
 input {
   color: rgb(190, 141, 35) !important;
   font-family: "Press Start 2P", cursive;
+  font-size: small;
+  margin-top: none;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .mainbox {
   margin: 2% !important;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 a:active {
@@ -81,11 +88,13 @@ a:active {
   border-color: rgb(190, 141, 35);
   background: url("./components/assets/tilebgdark.png");
   color: rgb(206, 168, 87) !important;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .img {
   background: url("./components/assets/tilebgdark.png");
   margin: auto;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .browser-default {
@@ -93,6 +102,7 @@ a:active {
   color: rgb(206, 168, 87) !important;
   font-family: "Press Start 2P", cursive;
   border: none;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 option {
@@ -100,19 +110,24 @@ option {
   color: rgb(206, 168, 87) !important;
   font-family: "Press Start 2P", cursive;
   border: none;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 select:active,
 select:hover {
   outline-color: rgb(206, 168, 87) !important;
+  cursor: url("./components/assets/cursorHandClick.png"), auto !important;
 }
 
 .checkbox {
   font-size: small !important;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 label {
   margin: auto;
+  font-size: medium;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
 
 .chatBorder {
@@ -120,4 +135,11 @@ label {
   border: 8px solid;
   border-color: rgb(190, 141, 35);
   background: url("./components/assets/tilebgdark.png");
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
+}
+
+span {
+  padding: 0px !important;
+  align-self: auto;
+  cursor: url("./components/assets/cursorHand.png"), auto !important;
 }
