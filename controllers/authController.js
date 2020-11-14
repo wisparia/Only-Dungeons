@@ -34,7 +34,6 @@ module.exports = {
             password: hashedPassword,
           })
             .then((response) => {
-              console.log(response);
               // res.json(response);
               const token = jwt.sign(
                 {
