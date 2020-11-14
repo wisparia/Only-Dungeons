@@ -6,6 +6,7 @@ import dwellScene from "./dwellScene/dwellScene";
 import forestScene from "./forestScene/forestScene";
 import worldScene from "./worldScene/worldScene";
 import graveScene from "./graveScene/graveScene";
+import ThreeDLoader from "./ThreeDLoader/ThreeDLoader"
 
 import "./ThreeD.css";
 
@@ -69,11 +70,12 @@ const ThreeD = () => {
     //     }
     // }
 
-    camera.position.set(-900, 600, 300);
+    // camera.position.set(-900, 600, 300);
+    
 
     setTimeout(function () {
       worldScene(scene, camera, renderer);
-    }, 3000);
+    }, 10000);
 
     // Forest 400, 400, -1000
     // setTimeout(function () {
