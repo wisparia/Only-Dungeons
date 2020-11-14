@@ -1,33 +1,69 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 
-export const MonsterBook = () => {
+export const BookOfSpells = () => {
   const [spells, setSpells] = useState([]);
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(true)
 
   const spellBook = function () {
     API.getSpells().then((res) => {
-      setSpells(res.data.data.results);
-      console.log(res.data.data.results);
+      console.log(res.data)
+      setSpells(res.data);
+      setLoading(false);
+      // console.log(spellsToAdd);
     });
+    console.log(spells)
   };
 
   useEffect(() => {
-    monstersbook();
+    spellBook()
+    
+    
   }, []);
 
   return (
-    <div>
-      {spells.map((spell) => (
-        <p>{spell.name}</p>
-      ))}
+    <div> 
+      {!loading ? spells.slice(10 * page, 10 * page + 10).map((element) => {
+            return <div>
+            <h4>{element.name}</h4>
+            <p>Level {element.level} {element.school.name}</p>
+            <p>Available to: 
+              <ul>
+                <>
+                  {element.classes.map((element)=>(
+                      <li>{element.name}</li>
+                  ))}
+                </>
+              </ul>
+            </p>
 
-      {monsters
-        ? spells.slice(10 * page, 10 * page + 10).map((element) => {
-            return <h1>{element}</h1>;
+            <p>Duration: {element.duration}</p>
+            <p>Range: {element.range}</p>
+            <p>Description: {element.desc[0]}</p>
+            
+
+
+
+            </div>
           })
-        : ""}
-      <button onClick={() => setPage(page + 1)}>Click To Increase</button>
+        : 
+      <>
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+      <h2>Loading Spellbook</h2>
+      </>
+      }
+      {!loading ? <button onClick={() => setPage(page + 1)}>Click To Increase</button> : null}
+
     </div>
+  
   );
 };

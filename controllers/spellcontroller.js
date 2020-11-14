@@ -3,8 +3,9 @@ const axios = require("axios");
 module.exports = {
   getAll: async (req, res) => {
     const spells = await axios.get(
-      "https://dndmonsterdirectory.herokuapp.com/SpellNames"
+      "https://dndspelldirectory.herokuapp.com/SpellNames"
     );
-    res.json({ data: spells.data });
+   
+    res.json( spells.data.results);
   },
 };

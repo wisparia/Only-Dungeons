@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const spellcontroller = require("../../controllers/spell");
+const spellcontroller = require("../../controllers/spellcontroller");
 
 
-// Matches api/spells
+// Matches /spells
 router.route("/").get(spellcontroller.getAll);
 
 module.exports = router;
