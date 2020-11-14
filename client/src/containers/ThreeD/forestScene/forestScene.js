@@ -51,10 +51,10 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
             createTreeLg(locX-120, locY, locZ-250)
             createTreeLg(locX-200, locY, locZ-100)
 
-        let fogColor = new THREE.Color(0x383838);
+        // let fogColor = new THREE.Color(0x383838);
  
-        scene.background = fogColor;
-        scene.fog = new THREE.Fog(fogColor, 0.005, 800);
+        // scene.background = fogColor;
+        // scene.fog = new THREE.Fog(fogColor, 0.005, 800);
 }
 
 export default forestScene;
