@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 import { useHistory } from "react-router-dom";
 import "./Armor.css";
+import LoadSlime from "../../assets/Slime-Gif.gif";
 
 const ArmorBook = () => {
   const [armorState, setArmorState] = useState([]);
   const [page, setPage] = useState(0);
   const history = useHistory()
+  const [loading, setLoading] = useState(true);
+
   const armorSection = function () {
     API.getArmor().then((res) => {
       setArmorState(res.data.data.results);
+      setLoading(false);
     });
   };
 
@@ -36,21 +40,45 @@ const ArmorBook = () => {
       <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
       <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
       <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpmtest")} className="booktabs"> Weapons </button>
-      {armorState.slice(5 * page, 5 * page + 5).map((armorSelections) => (
-        <div className="col s12 Book">
+      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
+      {!loading ? (
+      armorState.slice(5 * page, 5 * page + 5).map((armorSelections) => {
+       return (
+       <div className="col s12 Book">
           <h3>{armorSelections.name}</h3>
           <p className="col s12 m4">Armor type: {armorSelections.armor_category}</p>
           <p className="col s12 m8">armor things</p>
           </div>
-          ))}
-          <div className="col s12 center">
-          <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-      <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
-        </div>
+          );
+        })
+      ) : (
+        <>
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+          <h1 className="loading center">Loading Armor <img src={LoadSlime}/></h1>
+        </>
+      )}
+      {!loading ? (
+        <div className="col s12 center">
+        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
       </div>
+      ) : null}
     </div>
-    </>
+
+         
+          
+      </div>
+    </> 
   );
 };
 

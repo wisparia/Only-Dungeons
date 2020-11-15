@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 import { useHistory } from "react-router-dom";
+import LoadSlime from "../../assets/Slime-Gif.gif";
 
 const ClassesBook = () => {
   const [classesState, setClassesState] = useState([]);
@@ -33,10 +34,10 @@ const ClassesBook = () => {
       <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
       <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
       <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpmtest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
 
           {!loading ? (
-            classesState.slice(1 * page, 1 * page + 1).map((classesSelections) => {
+            classesState.slice(6 * page, 6 * page + 6).map((classesSelections) => {
 
           return (
             <div className="col s12 Book">
@@ -63,7 +64,7 @@ const ClassesBook = () => {
               <div class="circle"></div>
             </div>
           </div>
-          <h2>Loading Classes</h2>
+          <h1 className="loading">Loading Classes <img src={LoadSlime}/></h1>
         </>
       )}
       {!loading ? (
