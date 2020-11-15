@@ -163,9 +163,11 @@ function UpdateForm() {
     hideModal2();
     event.preventDefault();
 
-    
+        async function submit(){
+      await handleSpotifyChange()
     
 
+          
       API.updateUser(id, {
         roomName: formObject.roomName,
         tagLine: formObject.tagLine,
@@ -198,9 +200,10 @@ function UpdateForm() {
       })
       .catch((err)=> console.error(err))
     }
+    submit()
+      
+  };
   
-
-
 
 
   useEffect(()=>{
