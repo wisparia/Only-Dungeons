@@ -6,6 +6,7 @@ import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCh
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
 import SpellContext from "../../context/Spellcontext";
+import MonsterContext from "../../context/MonsterContext"
 
 function DmDirectory() {
   
@@ -21,6 +22,8 @@ function DmDirectory() {
 
   const spellItems = useContext(SpellContext)
   console.log(spellItems)
+
+  const monsterItems = useContext(MonsterContext)
 
   useEffect(() => {
     loadDms();

@@ -16,6 +16,8 @@ import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import SpellContext from "./context/Spellcontext"
+import MonsterContext from "./context/MonsterContext"
+
 import API from "./utils/API"
 // import Spellbook from "./containers/SpellBook/Spellbook";
 // import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
@@ -30,6 +32,7 @@ function App() {
   const [userId, setUserId] = useState("");
 
   const [spells, setSpells] = useState()
+  const [monsters, setMonsters] = useState()
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -46,7 +49,13 @@ function App() {
       setSpells(spellArray)
     })
 
-  },[spells])
+    API.getMonsters().then((res)=>{
+      console.log(res.data.data.results)
+      let monsterArray = res.data.data.results
+      setMonsters(monsterArray)
+    })
+
+  },[])
 
   useEffect(() => {
     if (jwt) {
@@ -63,6 +72,7 @@ function App() {
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <SpellContext.Provider value = {{spells, setSpells}}>
+              <MonsterContext.Provider value = {{spells, setSpells}}>
             <Navbar />
             <Switch>
               {/* <Route
@@ -99,6 +109,7 @@ function App() {
               <Route exact path="/armortest" component={ArmorBook} /> */}
               <Route path="/" component={SigninPage} />
             </Switch>
+            </MonsterContext.Provider>
             </SpellContext.Provider>
           </AuthContext.Provider>
 
