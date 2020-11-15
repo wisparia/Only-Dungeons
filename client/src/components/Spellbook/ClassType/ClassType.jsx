@@ -38,7 +38,7 @@ const ClassesBook = () => {
 
           {!loading ? (
             classesState.slice(6 * page, 6 * page + 6).map((classesSelections) => {
-
+// testing
           return (
             <div className="col s12 Book">
               <h3>{classesSelections.name}</h3>
