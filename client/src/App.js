@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
 import SigninPage from "./containers/SigninPage/SigninPage";
@@ -15,6 +15,8 @@ import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import SpellContext from "./context/Spellcontext"
+import API from "./utils/API"
 // import Spellbook from "./containers/SpellBook/Spellbook";
 // import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
 // import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
@@ -27,12 +29,24 @@ function App() {
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
 
+  const [spells, setSpells] = useState()
+
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
     if (localJwt) {
       setJwt(localJwt);
     }
   }, []);
+
+  useEffect(()=>{
+
+    API.getSpells().then((res)=>{
+      console.log(res.data)
+      let spellArray = res.data
+      setSpells(spellArray)
+    })
+
+  },[spells])
 
   useEffect(() => {
     if (jwt) {
@@ -41,11 +55,14 @@ function App() {
     }
   }, [jwt]);
 
+  
+
   return (
     <div className="App">
       <UserContext.Provider value={{ userId, setUserId }}>
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
+            <SpellContext.Provider value = {{spells, setSpells}}>
             <Navbar />
             <Switch>
               {/* <Route
@@ -82,6 +99,7 @@ function App() {
               <Route exact path="/armortest" component={ArmorBook} /> */}
               <Route path="/" component={SigninPage} />
             </Switch>
+            </SpellContext.Provider>
           </AuthContext.Provider>
 
           <Footer />
