@@ -20,7 +20,8 @@ import MonsterContext from "./context/MonsterContext";
 import ClassTypeContext from "./context/ClassTypeContext";
 import WpnContext from "./context/WpnContext";
 import ArmorContext from "./context/ArmorContext";
-import RaceContext from "./context/RaceContext"
+import RaceContext from "./context/RaceContext";
+import BookPage from "./containers/BookPage/BookPage";
 
 import API from "./utils/API";
 // import Spellbook from "./containers/SpellBook/Spellbook";
@@ -40,7 +41,7 @@ function App() {
   const [ClassTypeState, setClassTypeState] = useState();
   const [wpnState, setwpnState] = useState([]);
   const [armorState, setArmorState] = useState();
-  const [races, setRaces] = useState()
+  const [races, setRaces] = useState();
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -73,16 +74,15 @@ function App() {
       setwpnState(wpnArray);
     });
 
-    API.getArmor().then((res)=>{
+    API.getArmor().then((res) => {
       let armorArray = res.data.data.results;
-      setArmorState(armorArray)
+      setArmorState(armorArray);
     });
 
-    API.getRace().then((res)=>{
+    API.getRace().then((res) => {
       let raceArray = res.data.data.results;
-      setRaces(raceArray)
-    })
-
+      setRaces(raceArray);
+    });
   }, []);
 
   useEffect(() => {
@@ -103,39 +103,41 @@ function App() {
                   value={{ ClassTypeState, setClassTypeState }}
                 >
                   <WpnContext.Provider value={{ wpnState, setwpnState }}>
-                    <ArmorContext.Provider value={{armorState, setArmorState}}>
-                      <RaceContext.Provider value={{races, setRaces}}>
-                    <Navbar />
-                    <Switch>
-                      {/* <Route
+                    <ArmorContext.Provider
+                      value={{ armorState, setArmorState }}
+                    >
+                      <RaceContext.Provider value={{ races, setRaces }}>
+                        <Navbar />
+                        <Switch>
+                          {/* <Route
                 exact
                 path="/"
                 render={() => <SigninPage user={user} setUser={setUser} />}
               /> */}
-                      <Route exact path="/NewUser" component={NewUser1} />
-                      {/*<Route
+                          <Route exact path="/NewUser" component={NewUser1} />
+                          {/*<Route
                 exact
                 path="/DmDirectory"
                 render={() => <DmDirectory user={user} />}
               /> */}
-                      <Route
-                        exact
-                        path="/DmDirectory"
-                        component={DmDirectory}
-                      />
+                          <Route
+                            exact
+                            path="/DmDirectory"
+                            component={DmDirectory}
+                          />
 
-                      <Route exact path="/DmOne/:id" component={DmOne} />
-                      <ProtectedRoute
-                        exact
-                        path="/UpdateForm/:id"
-                        component={UpdateForm}
-                      />
-                      <Route exact path="/ThreeD/:id" component={ThreeD} />
+                          <Route exact path="/DmOne/:id" component={DmOne} />
+                          <ProtectedRoute
+                            exact
+                            path="/UpdateForm/:id"
+                            component={UpdateForm}
+                          />
+                          <Route exact path="/ThreeD/:id" component={ThreeD} />
 
-                      <Route exact path="/Team" component={Team} />
-
-                      {/* section for spellbook */}
-                      {/* 
+                          <Route exact path="/Team" component={Team} />
+                          <Route exact path="/BookPage" component={BookPage} />
+                          {/* section for spellbook */}
+                          {/* 
               <Route exact path="/Spellbook/" component={Spellbook} />
               <Route exact path="/testpage" component={MonsterBook} />
               <Route exact path="/spelltest" component={BookOfSpells} />
@@ -143,9 +145,9 @@ function App() {
               <Route exact path="/classestest" component={ClassesBook} />
               <Route exact path="/wpntest" component={WpnBook} />
               <Route exact path="/armortest" component={ArmorBook} /> */}
-                      <Route path="/" component={SigninPage} />
-                    </Switch>
-                    </RaceContext.Provider>
+                          <Route path="/" component={SigninPage} />
+                        </Switch>
+                      </RaceContext.Provider>
                     </ArmorContext.Provider>
                   </WpnContext.Provider>
                 </ClassTypeContext.Provider>

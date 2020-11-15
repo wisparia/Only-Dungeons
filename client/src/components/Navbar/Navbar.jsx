@@ -11,6 +11,9 @@ import "./navbar.css";
 // import BookModal from "../BookModal/BookModal"
 function Navbar() {
 
+  // This is the info that pulls in the needed things for the book modal. 
+  // Please do not delete as I will be coming back to this later.
+  
 //   const [show, setShow] = useState(false)
 
 //   const showModal = () => {
