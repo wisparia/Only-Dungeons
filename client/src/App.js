@@ -21,8 +21,8 @@ import ClassTypeContext from "./context/ClassTypeContext";
 import WpnContext from "./context/WpnContext";
 import ArmorContext from "./context/ArmorContext";
 import RaceContext from "./context/RaceContext"
-
 import API from "./utils/API";
+import BookOfSpells from "./components/BookOfSpells/BookOfSpells"
 // import Spellbook from "./containers/SpellBook/Spellbook";
 // import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
 // import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
@@ -133,6 +133,7 @@ function App() {
                       <Route exact path="/ThreeD/:id" component={ThreeD} />
 
                       <Route exact path="/Team" component={Team} />
+                      <Route exact path="/spelltest" component={BookOfSpells} />
 
                       {/* section for spellbook */}
                       {/* 

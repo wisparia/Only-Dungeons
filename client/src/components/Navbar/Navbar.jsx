@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HomeButton from "../HomeButton/HomeButton";
 import GamesButton from "../GamesButton/GamesButton";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -10,7 +10,9 @@ import { Link } from "react-router-dom";
 import BookButton from "../BookButton/BookButton";
 import BookModal from "../BookModal/BookModal"
 import { Button, Card, Row, Col } from 'react-materialize';
+import AuthContext from "../../context/AuthContext"
 function Navbar() {
+  
 
   const [show, setShow] = useState(false)
 
