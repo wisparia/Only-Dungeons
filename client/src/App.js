@@ -49,7 +49,6 @@ function App() {
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
-
             <Switch>
               {/* <Route
                 exact
@@ -63,6 +62,7 @@ function App() {
                 render={() => <DmDirectory user={user} />}
               /> */}
               <Route exact path="/DmDirectory" component={DmDirectory} />
+
               <Route exact path="/DmOne/:id" component={DmOne} />
               <ProtectedRoute
                 exact
@@ -83,7 +83,7 @@ function App() {
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>
-          <BookButton />
+
           <Footer />
         </Router>
       </UserContext.Provider>

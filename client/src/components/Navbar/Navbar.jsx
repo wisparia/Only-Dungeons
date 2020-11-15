@@ -8,24 +8,24 @@ import Logo from "./ODlogo2.png";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import BookButton from "../BookButton/BookButton";
-// import BookModal from "../5eBookModal/BookModal"
-// import { Button, Card, Row, Col } from 'react-materialize';
+import BookModal from "../BookModal/BookModal"
+import { Button, Card, Row, Col } from 'react-materialize';
 function Navbar() {
 
-//   const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false)
 
-//   const showModal = () => {
-//     setShow(true);
-//   };
+  const showModal = () => {
+    setShow(true);
+  };
  
-//   const hideModal = () => {
-//     setShow(false);
-//   };
+  const hideModal = () => {
+    setShow(false);
+  };
 
-//   function handleBook(event) {
-//     hideModal();
-//     event.preventDefault();
-// }
+  function handleBook(event) {
+    hideModal();
+    event.preventDefault();
+}
     return (
       <>
       <nav className="nav-extended">
@@ -38,13 +38,16 @@ function Navbar() {
           <GamesButton />
           <ProfileButton />
           <LogoutButton />
-        </ul>
+          </ul>
+{/*         
+          <Link to="/Spellbook">SpellBook</Link> */}
+          {/* <button type = "button"  onClick={showModal}  className="btn">Book of Smells</button> */}
         
-          {/* <Link to="/Spellbook">SpellBook</Link>
-          <button type = "button"  onClick={showModal}  className="btn">Book of Smells</button>
-         */}
       </div>
     </nav>
+    <div className="tabs tabs-transparent">
+            <BookButton />
+        </div>
     {/* <BookModal show = {show} handleBook = {handleBook} handleClose ={hideModal}/> */}
     </>
   );

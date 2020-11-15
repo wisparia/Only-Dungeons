@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BookModal from "../BookModal/BookModal"
+import "./BookButton.css";
+import dndlogo from "../assets/dndlogotiny.png";
 
 function BookButton() {
 
@@ -15,15 +17,20 @@ function BookButton() {
   
     function handleBook(event) {
       hideModal();
-      event.preventDefault();
+      // event.preventDefault();
   }
 
     return (
-        <div>
-            
-            <button type = "button"  onClick={showModal}  className="btn">Book of Smells</button>
-            <BookModal show = {show} handleBook = {handleBook} handleClose ={hideModal}/>
-        </div>
+      <>
+          <form>
+            <div>
+                <button className="BookTab" type = "button"  onClick={showModal}>
+                 <img src={dndlogo}/>
+                </button>
+                </div>
+                </form>
+        <BookModal show = {show} handleBook = {handleBook} handleClose ={hideModal}/>
+        </>
     );
 };
 
