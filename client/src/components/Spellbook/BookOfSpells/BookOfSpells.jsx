@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import API from "../../utils/API";
+import React, { useState, useEffect, useContext } from "react";
+import API from "../../../utils/API";
 
-export const BookOfSpells = () => {
+export default function BookOfSpells() {
+
   const [spells, setSpells] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true)
@@ -21,7 +22,7 @@ export const BookOfSpells = () => {
     
     
   }, []);
-
+  console.log(spells)
   return (
     <div> 
       {!loading ? spells.slice(10 * page, 10 * page + 10).map((element) => {
@@ -42,9 +43,6 @@ export const BookOfSpells = () => {
             <p>Range: {element.range}</p>
             <p>Description: {element.desc[0]}</p>
             
-
-
-
             </div>
           })
         : 

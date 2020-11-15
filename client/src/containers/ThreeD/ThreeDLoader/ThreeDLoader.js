@@ -93,10 +93,6 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
 
         mainLoadBox(locX, locY, locZ);
         logoLoadBox(locX, locY, locZ);
-        // const geometry1 = new THREE.BoxGeometry(10, 10, 10);
-        // const material1 = new THREE.MeshNormalMaterial({ wireframe: true });
-        // const mesh1 = new THREE.Mesh(geometry1, material1);
-        // scene.add(mesh1);
     
         const geometry2 = new THREE.SphereGeometry(60, 5, 5,);
         const material2 = new THREE.MeshNormalMaterial({ wireframe: true });
@@ -105,7 +101,6 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
         scene.add(sphere2);
 
         sphere2.position.set(locX, locY, locZ)
-
       
         let loadingID
 

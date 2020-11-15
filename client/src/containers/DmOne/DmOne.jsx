@@ -83,7 +83,7 @@ function DmOne() {
             <div className="row">
               <div className="col s12 l12 xl6">
                   <h5 className="vertical-spacer-md ">Category:</h5>
-                  <label className="col s12">
+                    <label className="col s12">
                       {dm.categoryType.campaigns ? (
                         <input checked="checked" type="checkbox" />
                       ) : (

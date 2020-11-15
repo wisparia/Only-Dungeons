@@ -5,11 +5,15 @@ import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
+<<<<<<< HEAD
 import SpellContext from "../../context/Spellcontext";
 import MonsterContext from "../../context/MonsterContext"
 import ClassTypeContext from "../../context/ClassTypeContext";
+=======
+>>>>>>> ff66c876c34b9d87d52548a5a1c3947d08c87aea
 
 function DmDirectory() {
+  
   
   const [allDms, setDms] = useState([]);
   const [searchBox, setSearchBox] = useState("");
@@ -21,12 +25,15 @@ function DmDirectory() {
     days: [],
   });
 
+<<<<<<< HEAD
   const spellItems = useContext(SpellContext)
   console.log(spellItems)
 
   // const ClassType = useContext(ClassTypeContext)
   // console.log(ClassType.ClassTypeState)
   
+=======
+>>>>>>> ff66c876c34b9d87d52548a5a1c3947d08c87aea
   useEffect(() => {
     loadDms();
   }, []);

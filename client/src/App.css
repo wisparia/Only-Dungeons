@@ -1,6 +1,6 @@
 p {
-  font-size: medium;
-  margin: 0px;
+  font-size: 1.2rem;
+    margin: 0px;
   color: rgb(206, 168, 87) !important;
   cursor: url("./components/assets/cursorHand.png"), auto !important;
 }

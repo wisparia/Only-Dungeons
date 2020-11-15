@@ -1,5 +1,4 @@
-import React from "react";
-// import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HomeButton from "../HomeButton/HomeButton";
 import GamesButton from "../GamesButton/GamesButton";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -7,9 +6,13 @@ import LogoutButton from "../LogoutButton/LogoutButton";
 import "materialize-css";
 import Logo from "./ODlogo2.png";
 import "./navbar.css";
-// import BookButton from "../BookButton/BookButton";
-// import BookModal from "../BookModal/BookModal"
+import { Link } from "react-router-dom";
+import BookButton from "../BookButton/BookButton";
+import BookModal from "../BookModal/BookModal"
+import { Button, Card, Row, Col } from 'react-materialize';
+import AuthContext from "../../context/AuthContext"
 function Navbar() {
+  
 
   // This is the info that pulls in the needed things for the book modal. 
   // Please do not delete as I will be coming back to this later.
