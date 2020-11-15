@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./SpotifyInfoModal.css";
+import Instructions from "../assets/4mf3dv.gif";
 
 class SpotifyInfoModal extends Component {
   render() {
@@ -21,7 +22,21 @@ class SpotifyInfoModal extends Component {
                 discord account below!
               </p>
               <div className="modal-content center">
-                <h1>VIDEO WILL GO HERE!</h1>
+                <img src={Instructions} alt="tutorial for "/>
+              </div>
+              <br />
+              <div>
+                <h4>
+                  <ul>
+                    <li>*** Go your favorite playlist ***</li>
+                    <br />
+                    <li>*** Copy the URI link ***</li>
+                    <br />
+                    <li>*** Input the link into the Spotify box ***</li>
+                    <br />
+                    <li>*** Click the update button! ***</li>
+                  </ul>
+                </h4>
               </div>
               <button
                 to="/"

@@ -15,11 +15,16 @@ class DiscordModal extends Component {
             </div>
             <div className="modal-body center">
               <p>
-                Check out the video below for instructions on how to link your discord account below!
+                Check out the video below for instructions on how to link your
+                discord account below!
               </p>
-                <div className="modal-content center">
-                    <h1>VIDEO WILL GO HERE!</h1>
-                </div>
+              <div className="modal-content center">
+                <iframe
+                  src="https://drive.google.com/file/d/1oavuzXjX3-WgoXlLYnQZ1Bu4J1fkLqFk/preview"
+                  width="480"
+                  height="480"
+                ></iframe>
+              </div>
               <button
                 to="/"
                 onClick={hideDiscordModal}
@@ -34,6 +39,5 @@ class DiscordModal extends Component {
     );
   }
 }
-
 
 export default DiscordModal;
