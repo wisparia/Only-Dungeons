@@ -77,23 +77,15 @@ const ThreeD = () => {
 
     // Forest 400, 400, -1000
     setTimeout(function () {
-      forestScene(scene, camera, renderer, -50, 0, 0);
-      forestScene(scene, camera, renderer, 50, 0, 0);
-      forestScene(scene, camera, renderer, -100, 0, -150);
+      forestScene(scene, camera, renderer, -50, 0, -500);
+      // forestScene(scene, camera, renderer, 400, 0, 0);
       forestScene(scene, camera, renderer, -150, 0, -250);
-      forestScene(scene, camera, renderer, -150, 0, -300);
-      forestScene(scene, camera, renderer, -200, 0, 150);
-      forestScene(scene, camera, renderer, -250, 0, 300);
-      forestScene(scene, camera, renderer, -300, 0, -400);
-      forestScene(scene, camera, renderer, -400, 0, -450);
-      forestScene(scene, camera, renderer, -350, 0, -450);
-      forestScene(scene, camera, renderer, -450, 0, -550);
-      forestScene(scene, camera, renderer, -450, 0, 500);
-      forestScene(scene, camera, renderer, -450, 0, -600);
-      forestScene(scene, camera, renderer, -450, 0, 600);
+      forestScene(scene, camera, renderer, 0, 0, -400);
+      forestScene(scene, camera, renderer, -450, 0, -800);
+      forestScene(scene, camera, renderer, -300, 0, 100);
     },
-    0);
-    // 35000);
+    // 0);
+    35000);
 
     // Village 1000, 400, -1000
     setTimeout(function () {
@@ -101,35 +93,36 @@ const ThreeD = () => {
       tavScene(scene, camera, renderer, 800, 1, -1000);
       dwellScene(scene, camera, renderer, 800, 1, -300);
     },
-    0);
-    // 38000);
+    // 0);
+    38000);
 
     // Graveyard scene -1400, 0, 500
     setTimeout(function () {
-      graveScene(scene, camera, renderer, -1400, 0, 150);
-      graveScene(scene, camera, renderer, -1450, 0, 300);
-      graveScene(scene, camera, renderer, -1450, 0, 480);
+      graveScene(scene, camera, renderer, -1400, 0, -800);
+      graveScene(scene, camera, renderer, -1450, 0, -1000);
+      graveScene(scene, camera, renderer, -1450, 0, -1080);
     }, 
-    0);
-    // 40000);
+    // 0);
+    40000);
 
    
     // start position cam
-    // camera.position.set(0, 2800, 140)
-    camera.position.set(0, 800, 500)
+    camera.position.set(0, 2800, 140)
+    
+    // camera.position.set(0, 800, 500)
 
     function animate() {
       requestAnimationFrame(animate);
   
-      // camera.position.y -= .8
-      // camera.position.z -= .19
-      // camera.rotation.x -= 0.0025
+      camera.position.y -= .8
+      camera.position.z -= .19
+      camera.rotation.x -= 0.0025
 
-      // if (camera.rotation.x <= -1) {
-      //   camera.rotation.x += .0025
-      // } else if (camera.rotation.x <= .9) {
-      //   camera.rotation.x -= .0025
-      // }
+      if (camera.rotation.x <= -1) {
+        camera.rotation.x += .0025
+      } else if (camera.rotation.x <= .9) {
+        camera.rotation.x -= .0025
+      }
 
       renderer.render(scene, camera);
     }

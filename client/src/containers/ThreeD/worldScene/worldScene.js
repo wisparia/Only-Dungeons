@@ -32,7 +32,7 @@ const worldScene = (scene, camera, renderer) => {
       materialArray[i].side = THREE.DoubleSide;
     }
 
-    let skyboxGeo = new THREE.BoxGeometry(4000, 2000, 4000);
+    let skyboxGeo = new THREE.BoxGeometry(3500, 2000, 3500);
     let skybox = new THREE.Mesh(skyboxGeo, materialArray);
     scene.add(skybox);
     skybox.position.set(0, 1000, 0);

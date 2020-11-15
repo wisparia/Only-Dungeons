@@ -31,7 +31,7 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
             createTree(locX+100, locY, locZ+60)
             
             createTree(locX-120, locY, locZ+200)
-            createTree(locX-120, locY, locZ+2500)
+            createTree(locX-120, locY, locZ+500)
             createTree(locX-100, locY, locZ-160)
             createTree(locX+60, locY, locZ-200)
             createTree(locX-150, locY, locZ)
