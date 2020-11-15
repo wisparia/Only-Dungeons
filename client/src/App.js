@@ -94,7 +94,8 @@ function App() {
                 path="/UpdateForm/:id"
                 component={UpdateForm}
               />
-              <Route exact path="/ThreeD/:id" component={ThreeD} />
+              {/* <Route exact path="/ThreeD/:id" component={ThreeD} /> */}
+              <Route exact path="/render" component={ThreeD} />
 
               <Route exact path="/Team" component={Team} />
 
