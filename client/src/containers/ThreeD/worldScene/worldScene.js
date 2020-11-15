@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import Landscape from "./bg.png"
 import Sky from "./sky.png"
 import SkyUp from "./SkyUp.png"

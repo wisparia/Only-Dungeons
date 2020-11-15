@@ -41,12 +41,12 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
             createTree(locX-200, locY, locZ-100)
     }
 
-    createTreeRow1(locX, locY, locZ)
-    createTreeRow1(locX, locY, (locZ+100))
-    createTreeRow1((locX-200), locY, (locZ+200))
-    createTreeRow1((locX+100), locY, (locZ+100))
-    createTreeRow1((locX-350), locY, (locZ+300))
-    createTreeRow1((locX-550), locY, (locZ+400))
+            createTreeRow1(locX, locY, locZ)
+            createTreeRow1(locX, locY, (locZ+100))
+            createTreeRow1((locX-200), locY, (locZ+200))
+            createTreeRow1((locX+100), locY, (locZ+100))
+            createTreeRow1((locX-350), locY, (locZ+300))
+            createTreeRow1((locX-550), locY, (locZ+400))
     
             
             
