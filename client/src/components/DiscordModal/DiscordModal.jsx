@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./discordmodal.css";
 
-class DiscordModal extends Component {
-  render() {
+function DiscordModal () {
     const { hideDiscordModal, showDiscord } = this.props;
     const showHideClassName = showDiscord ? "display-block" : "display-none";
     console.log(this.props);
@@ -33,6 +32,6 @@ class DiscordModal extends Component {
       </div>
     );
   }
-}
+
 
 export default DiscordModal;
