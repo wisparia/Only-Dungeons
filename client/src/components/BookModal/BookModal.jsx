@@ -1,7 +1,7 @@
 import React from "react";
 import "../BookModal/BookModal.css";
 
-function BookModal() {
+const BookModal = () => {
     const { handleClose, show, handleFormSubmit} = this.props;
     const showHideClassName = show ? "display-block" : "display-none";
     return (

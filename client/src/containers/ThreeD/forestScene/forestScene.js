@@ -2,14 +2,15 @@ import * as THREE from "three";
 import Tree1 from "./Tree1.png"
 import Tree2 from "./Tree2.png"
 import Tree3 from "./Tree3.png"
+import Tree4 from "./Tree4.png"
 
 const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
    
 
    const createTree = (locX, locY, locZ) => {
-        let treeTypes = [Tree1, Tree2, Tree3]
-        let treeOuter = treeTypes[(Math.floor(Math.random()*3))]
-        let shaY =  (Math.floor(Math.random()*100)+40)
+        let treeTypes = [Tree1, Tree2, Tree3, Tree4]
+        let treeOuter = treeTypes[(Math.floor(Math.random()*4))]
+        let shaY =  (Math.floor(Math.random()*100)+50)
 
         const geometry = new THREE.ConeGeometry( 30, shaY, 32 );
         let texture = new THREE.TextureLoader().load(treeOuter)
@@ -28,7 +29,9 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
             createTree(locX+90, locY, locZ+60)
             createTree(locX-90, locY, locZ+60)
             createTree(locX+100, locY, locZ+60)
+            
             createTree(locX-120, locY, locZ+200)
+            createTree(locX-120, locY, locZ+2500)
             createTree(locX-100, locY, locZ-160)
             createTree(locX+60, locY, locZ-200)
             createTree(locX-150, locY, locZ)
@@ -42,7 +45,12 @@ const forestScene = (scene, camera, renderer, locX, locY, locZ) => {
     createTreeRow1(locX, locY, (locZ+100))
     createTreeRow1(locX, locY, (locZ+200))
     createTreeRow1((locX-200), locY, (locZ+200))
+    createTreeRow1((locX+100), locY, (locZ+100))
     createTreeRow1((locX-300), locY, (locZ+300))
+    createTreeRow1((locX-350), locY, (locZ+300))
+    createTreeRow1((locX-450), locY, (locZ+300))
+    createTreeRow1((locX-550), locY, (locZ+400))
+    createTreeRow1((locX-550), locY, (locZ+400))
             
             
 }
