@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "../BookModal/BookModal.css";
 
-const BookModal = () => {
+class BookModal extends Component {
+  render() {
     const { handleClose, show, handleFormSubmit} = this.props;
     const showHideClassName = show ? "display-block" : "display-none";
     return (
@@ -20,7 +21,7 @@ const BookModal = () => {
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
-                Monsters
+                Monster
               </button>
               <button
                 to="/"
@@ -87,7 +88,8 @@ const BookModal = () => {
         </div>
       </div>
     );
-    }
+  }
+}
 
 export default BookModal;
 

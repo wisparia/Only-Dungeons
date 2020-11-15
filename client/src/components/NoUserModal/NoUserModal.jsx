@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "./nouser.css";
 
-function NoUserModal () {
+class NoUserModal extends Component {
+  render() {
     const { handleClose, show2 } = this.props;
     const showHideClassName = show2 ? "display-block" : "display-none";
     return (
@@ -28,6 +29,6 @@ function NoUserModal () {
       </div>
     );
   }
-
+}
 
 export default NoUserModal;

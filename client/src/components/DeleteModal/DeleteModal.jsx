@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from "react";
 import "../DeleteModal/DeleteModal.css"
 
-function DeleteModal () {
+class DeleteModal extends Component {
+  render() {
 		const { handleClose, show, handleDeleteAccount } = this.props
 		const showHideClassName = show ? 'display-block' : 'display-none';
       return (
@@ -27,7 +28,7 @@ function DeleteModal () {
                 </div>
 	  );
     }	
-
+  }
 
 
 export default DeleteModal;
