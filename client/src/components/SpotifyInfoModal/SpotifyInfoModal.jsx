@@ -26,7 +26,7 @@ class SpotifyInfoModal extends Component {
               </div>
               <br />
               <div>
-                <h4>
+                <h5>
                   <ul>
                     <li>*** Go your favorite playlist ***</li>
                     <br />
@@ -36,7 +36,7 @@ class SpotifyInfoModal extends Component {
                     <br />
                     <li>*** Click the update button! ***</li>
                   </ul>
-                </h4>
+                </h5>
               </div>
               <button
                 to="/"
