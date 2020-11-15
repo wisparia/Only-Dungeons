@@ -1,12 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "../BookModal/BookModal.css";
+import ClassTypeContext from "../../context/ClassTypeContext";
 
 class BookModal extends Component {
 
   
   render() {
+
+    const classTypes = ClassTypeContext;
     const { handleClose, show, handleFormSubmit} = this.props;
     const showHideClassName = show ? "display-block" : "display-none";
+    console.log(classTypes.ClassTypeState);
+
     return (
       <div className={showHideClassName}>
         
