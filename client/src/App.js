@@ -60,6 +60,7 @@ function App() {
                 render={() => <DmDirectory user={user} />}
               /> */}
               <Route exact path="/DmDirectory" component={DmDirectory} />
+
               <Route exact path="/DmOne/:id" component={DmOne} />
               <ProtectedRoute
                 exact
