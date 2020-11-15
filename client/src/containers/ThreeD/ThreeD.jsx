@@ -6,7 +6,7 @@ import dwellScene from "./dwellScene/dwellScene";
 import forestScene from "./forestScene/forestScene";
 import worldScene from "./worldScene/worldScene";
 import graveScene from "./graveScene/graveScene";
-import ThreeDLoader from "./ThreeDLoader/ThreeDLoader"
+import threeDLoader from "./ThreeDLoader/ThreeDLoader"
 
 import "./ThreeD.css";
 
@@ -53,6 +53,8 @@ const ThreeD = () => {
     torchLight();
     torchLight();
 
+ 
+
     // tracking mouse movement & click events
     // const raycaster = new THREE.Raycaster();
     // const mouse = new THREE.Vector2()
@@ -71,11 +73,6 @@ const ThreeD = () => {
     // }
 
     // camera.position.set(-900, 600, 300);
-    
-
-    setTimeout(function () {
-      worldScene(scene, camera, renderer);
-    }, 10000);
 
     // Forest 400, 400, -1000
     // setTimeout(function () {
@@ -109,14 +106,35 @@ const ThreeD = () => {
     //   graveScene(scene, camera, renderer, -1450, 0, 480);
     // }, 1200);
 
+    camera.position.set(0, 0, 60);
+
+
     function animate() {
       requestAnimationFrame(animate);
       // mesh.rotation.x += 0.05;
       // mesh.rotation.y += 0.05;
-
+      camera.position.z -= 0.15
+      if (camera.rotation.x >= 0.020)  {
+        camera.rotation.x -= 0.0025
+      } else if (camera.rotation.x <= -0.020) {
+        camera.rotation.x += 0.0025
+      }
       renderer.render(scene, camera);
     }
+
     animate();
+
+   setTimeout(function () {
+   threeDLoader(scene, camera, renderer);
+   
+  }, 1000);
+
+
+  console.log(this)
+
+  setTimeout(function () {
+  worldScene(scene, camera, renderer);
+  }, 8000);
 
     // window.addEventListener("click", onMouseMove)
   }
