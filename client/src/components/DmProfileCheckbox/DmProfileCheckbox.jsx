@@ -5,7 +5,7 @@ const DmProfileCheckbox = ({ name }) => {
     <label className="col s6">
       <input checked="checked" type="checkbox" />
       <span>
-        <p>{name}</p>
+        <p className="small-p">{name}</p>
       </span>
     </label>
   );

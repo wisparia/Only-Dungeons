@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import API from "../../utils/API";
 import AvatarImage from "../../components/AvatarImage/AvatarImage";
 import dmImage from "./dmImage.png";
-import DmProfileCheckbox from "../../components/DmProfileCheckbox/DmProfileCheckbox"
+import DmProfileCheckbox from "../../components/DmProfileCheckbox/DmProfileCheckbox";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -201,14 +201,12 @@ const ThreeD = () => {
 
   return (
     <>
-      <div className="center tagline">
-        <p>{dm.tagLine}</p>
-      </div>
-      <div>
         <div className="content-border row">
-          <div className="col s12 m12 l4 center vertical-spacer-sm">
+          <div className="col s12 m6 l4 center vertical-spacer-sm">
+            <div className="hide-on-large-only">
             <AvatarImage dmImage={dmImage} preferredRole={dm.preferredRole} />
-            <p className="vertical-spacer-sm">{dm.userName}</p>
+            </div>
+            <h5 className="vertical-spacer-sm">{dm.userName}</h5>
             <div className="row center">
               <a
                 className="col s12 btn vertical-spacer-sm"
@@ -216,10 +214,11 @@ const ThreeD = () => {
               >
                 Email
               </a>
-              <div className="btn col s12">Back</div>
+              <div className="btn col s12 vertical-spacer-sm">Back</div>
               {dm.getSpotify === "" || dm.getSpotify === undefined ? (
                 <iframe
                   src={defaultSpotifyURL}
+                  className="vertical-spacer-sm col s12"
                   width="300"
                   height="80"
                   frameborder="0"
@@ -229,6 +228,7 @@ const ThreeD = () => {
               ) : (
                 <iframe
                   src={spotifyURL}
+                  className="vertical-spacer-sm col s12"
                   width="300"
                   height="80"
                   frameborder="0"
@@ -238,134 +238,136 @@ const ThreeD = () => {
               )}
             </div>
           </div>
-          <div className="col s12 m8">
+
+          <div className="col s12 m6 l4 vertical-spacer-sm">
+            <p className="vertical-spacer-sm ">Category:</p>
+            {dm.categoryType.campaigns ? (
+              <DmProfileCheckbox name={"Campaigns"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.oneshots ? (
+              <DmProfileCheckbox name={"One Shots"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.homebrew ? (
+              <DmProfileCheckbox name={"Homebrews"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.byTheBook ? (
+              <DmProfileCheckbox name={"By The Book"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.rpersonly ? (
+              <DmProfileCheckbox name={"Role Play Only"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.norestriction ? (
+              <DmProfileCheckbox name={"No Restrictions"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.displaydice ? (
+              <DmProfileCheckbox name={"Display Dice"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.lvl1only ? (
+              <DmProfileCheckbox name={"Level Ones"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+
+            {dm.categoryType.voyuerallowed ? (
+              <DmProfileCheckbox name={"Watchers Allowed"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+          </div>
+
+          {/* <div className="col s12 m8">
             <div className="row">
               <div className="col s12 l12 xl6">
-                <p className="vertical-spacer-md ">Category:</p>
-                {dm.categoryType.campaigns ? (
-                <DmProfileCheckbox name={"Campaigns"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
+               
+              </div> */}
 
-                {dm.categoryType.oneshots ? (
-               <DmProfileCheckbox name={"One Shots"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
+          <div className="col s12 m6 l4 vertical-spacer-sm">
+            <p className="vertical-spacer-sm">Availability:</p>
+            {dm.availability.monday ? (
+              <DmProfileCheckbox name={"Monday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
 
-                {dm.categoryType.homebrew ? (
-               <DmProfileCheckbox name={"Homebrews"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
+            {dm.availability.tuesday ? (
+              <DmProfileCheckbox name={"Tuesday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
 
-                {dm.categoryType.byTheBook ? (
-               <DmProfileCheckbox name={"By The Book"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
+            {dm.availability.wednesday ? (
+              <DmProfileCheckbox name={"Wednesday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
+            {dm.availability.thursday ? (
+              <DmProfileCheckbox name={"Thursday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
 
-                {dm.categoryType.rpersonly ? (
-               <DmProfileCheckbox name={"Role Play Only"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
+            {dm.availability.friday ? (
+              <DmProfileCheckbox name={"Friday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
 
-                {dm.categoryType.norestriction ? (
-                <DmProfileCheckbox name={"No Restrictions"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
+            {dm.availability.saturday ? (
+              <DmProfileCheckbox name={"Saturday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
 
-                {dm.categoryType.displaydice ? (
-               <DmProfileCheckbox name={"Display Dice"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
-
-                {dm.categoryType.lvl1only ? (
-               <DmProfileCheckbox name={"Level Ones"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
-
-                {dm.categoryType.voyuerallowed ? (
-                <DmProfileCheckbox name={"Watchers Allowed"} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
-              </div>
-
-              <div className="row">
-                <div className="col s12 l12 xl6">
-                  <p className="vertical-spacer-md">Availability:</p>
-                  {dm.availability.monday ? (
-                <DmProfileCheckbox name={"Monday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-
-                  {dm.availability.tuesday ? (
-               <DmProfileCheckbox name={"Tuesday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-
-                  {dm.availability.wednesday ? (
-               <DmProfileCheckbox name={"Wednesday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-                  {dm.availability.thursday ? (
-               <DmProfileCheckbox name={"Thursday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-
-                  {dm.availability.friday ? (
-               <DmProfileCheckbox name={"Friday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-
-                  {dm.availability.saturday ? (
-               <DmProfileCheckbox name={"Saturday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-
-                  {dm.availability.sunday ? (
-               <DmProfileCheckbox name={"Sunday"} />
-                  ) : (
-                    <input type="checkbox" disabled />
-                  )}
-                </div>
-              </div>
-            </div>
+            {dm.availability.sunday ? (
+              <DmProfileCheckbox name={"Sunday"} />
+            ) : (
+              <input type="checkbox" disabled />
+            )}
           </div>
         </div>
-      </div>
+    
       <div id="myCanvas"></div>
-      <div id="info">
-        {dm.discordServer === "" || dm.discordServer === undefined ? (
-          <iframe
-            src={defaultServerURL}
-            height="200"
-            width="100%"
-            frameborder="0"
-            className="chatBorder"
-          ></iframe>
-        ) : (
-          <iframe
-            src={serverURL}
-            height="200"
-            width="100%"
-            frameborder="0"
-            className="chatBorder"
-          ></iframe>
-        )}
-      </div>
+
+      {dm.discordServer === "" || dm.discordServer === undefined ? (
+        <iframe
+          src={defaultServerURL}
+          height="200"
+          width="100%"
+          frameborder="0"
+          id="info"
+          className="chatBorder"
+        ></iframe>
+      ) : (
+        <iframe
+          src={serverURL}
+          height="200"
+          width="100%"
+          frameborder="0"
+          id="info"
+          className="chatBorder"
+        ></iframe>
+      )}
     </>
   );
 };
