@@ -23,7 +23,7 @@ import ArmorContext from "./context/ArmorContext";
 import RaceContext from "./context/RaceContext"
 import API from "./utils/API";
 import BookOfSpells from "./components/Spellbook/BookOfSpells/BookOfSpells"
-import Monsters from "./components/Spellbook/Monsters/Monsters";
+import MonsterBook from "./components/Spellbook/Monsters/Monsters";
 import RaceBook from "./components/Spellbook/Race/Race";
 import ClassesBook from "./components/Spellbook/ClassType/ClassType";
 import  WpnBook  from "./components/Spellbook/Weapon/Weapons";
@@ -132,7 +132,7 @@ function App() {
 
                       <Route exact path="/Team" component={Team} />
                       <Route exact path="/spelltest" component={BookOfSpells} />
-                      <Route exact path="/monstertest" component={Monsters} />
+                      <Route exact path="/monstertest" component={MonsterBook} />
                       <Route exact path="/racetest" component={RaceBook} />
                       <Route exact path="/classestest" component={ClassesBook} />
                       <Route exact path="/wpntest" component={WpnBook} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 
-export default function Monsters(){
+export default function MonsterBook(){
   const [monsters, setMonsters] = useState([]);
   const [page, setPage] = useState(0);
 
