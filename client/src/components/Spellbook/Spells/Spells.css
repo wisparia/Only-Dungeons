@@ -1,0 +1,41 @@
+.Book {
+  background: url("../../assets/oldpaperbg.png");
+  border: 5px outset rgb(206, 168, 87);
+  z-index: 2;
+}
+
+.Book p {
+  color: black !important;
+  font-size: 0.8rem;
+  border: 2px solid rgb(151, 118, 92);
+  margin-bottom: 0px;
+  padding: 20px !important;
+}
+
+h3 {
+  margin: 20px;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.booktabs {
+  padding: 10px;
+  border-left: 4px rgb(190, 141, 35) outset;
+  border-right: 4px rgb(190, 141, 35) outset;
+  border-top: 4px rgb(190, 141, 35) outset;
+  background-color: rgb(20, 14, 29);
+  color: rgb(190, 141, 35);
+  font-family: "Press Start 2P", cursive;
+  margin-left: 2px;
+}
+
+.pagetabs {
+  padding: 10px;
+  border-left: 4px rgb(190, 141, 35) outset;
+  border-right: 4px rgb(190, 141, 35) outset;
+  border-bottom: 4px rgb(190, 141, 35) outset;
+  background-color: rgb(20, 14, 29);
+  color: rgb(190, 141, 35);
+  font-family: "Press Start 2P", cursive;
+  margin-top: -15px;
+}

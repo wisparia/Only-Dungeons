@@ -22,12 +22,13 @@ import WpnContext from "./context/WpnContext";
 import ArmorContext from "./context/ArmorContext";
 import RaceContext from "./context/RaceContext";
 import API from "./utils/API";
-import BookOfSpells from "./components/Spellbook/BookOfSpells/BookOfSpells";
+import Spells from "./components/Spellbook/Spells/Spells";
 import MonsterBook from "./components/Spellbook/Monsters/Monsters";
 import RaceBook from "./components/Spellbook/Race/Race";
 import ClassesBook from "./components/Spellbook/ClassType/ClassType";
 import WpnBook from "./components/Spellbook/Weapon/Weapons";
 import ArmorBook from "./components/Spellbook/Armor/Armor";
+import MainBook from "./containers/BookPage/BookPage";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -131,11 +132,7 @@ function App() {
                           />
                           <Route exact path="/ThreeD/:id" component={ThreeD} />
                           <Route exact path="/Team" component={Team} />
-                          <Route
-                            exact
-                            path="/spelltest"
-                            component={BookOfSpells}
-                          />
+                          <Route exact path="/spelltest" component={Spells} />
                           <Route
                             exact
                             path="/monstertest"
@@ -153,6 +150,7 @@ function App() {
                             path="/armortest"
                             component={ArmorBook}
                           />
+                          <Route exact path="/Book" component={MainBook} />
                           <Route path="/" component={SigninPage} />
                         </Switch>
                       </RaceContext.Provider>

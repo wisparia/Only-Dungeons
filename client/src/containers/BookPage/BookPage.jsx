@@ -8,33 +8,26 @@ import AuthContext from "../../context/AuthContext"
 
 function BookPage() {
 
+    const history = useHistory()
+
   return (
     <>
     <div className="container">
       <div className="row vertical-spacer-md">
-      <button to="#" onClick="" className="booktabs"> Armor </button>
-      <button to="#" onClick="" className="booktabs"> Classes </button>
-      <button to="#" onClick="" className="booktabs"> Equipment </button>
-      <button to="#" onClick="" className="booktabs"> Races </button>
-      <button to="#" onClick="" className="booktabs"> Monsters </button>
-      <button to="#" onClick="" className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpmtest")} className="booktabs"> Weapons </button>
               
         <div className="col s12 Book">
-          <h3>Content Name</h3>
-          <p className="col s12 m4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos autem inventore, veniam quibusdam esse laborum amet, error id nam ipsa sapiente debitis, beatae reprehenderit commodi in eveniet fugit similique ut?</p>
-          <p className="col s12 m8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos autem inventore, veniam quibusdam esse laborum amet, error id nam ipsa sapiente debitis, beatae reprehenderit commodi in eveniet fugit similique ut?</p>
+          <h3>Welcome to the 5th Edition D&D Resource Book!</h3>
+          <p className="col s12">Click on the book tabs to reveal information on different subjects! 
+          You can then tab through the book to find the info on the item you are searching for.</p>
           </div>
-          <div className="col s12 Book">
-          <h3>Content Name</h3>
-          <p className="col s12 m4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos autem inventore, veniam quibusdam esse laborum amet, error id nam ipsa sapiente debitis, beatae reprehenderit commodi in eveniet fugit similique ut?</p>
-          <p className="col s12 m8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos autem inventore, veniam quibusdam esse laborum amet, error id nam ipsa sapiente debitis, beatae reprehenderit commodi in eveniet fugit similique ut?</p>
           </div>
-          <div className="col s12 center">
-          <button to="#" onClick="" className="pagetabs"> Page Down </button>
-      <button to="#" onClick="" className="pagetabs"> Page Up </button>
-        </div>
       </div>
-    </div>
     
     </>
   );
