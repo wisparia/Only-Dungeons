@@ -16,6 +16,7 @@ import Corona_dn from "./loadBox/corona_dn.png"
 
 const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
     
+
     const createLoadBox = (locX, locY, locZ) => {
      
         const mainLoadBox = (locX, locY, locZ) => {
@@ -46,12 +47,15 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
     }
 
     const logoLoadBox = (locX, locY, locZ) => {
+        
+        let teamArray = [Canales, Calle, Fleming, Sully, Walker ]
+
         let materialArray = []
    
         let texture_ft = new THREE.TextureLoader().load(Canales)
         let texture_bk = new THREE.TextureLoader().load(Calle)
-        let texture_up = new THREE.TextureLoader().load(Fleming)
-        let texture_dn = new THREE.TextureLoader().load(OnlyDungeonIcon)
+        let texture_up = new THREE.TextureLoader().load(OnlyDungeonIcon)
+        let texture_dn = new THREE.TextureLoader().load(Fleming)
         let texture_rt = new THREE.TextureLoader().load(Sully)
         let texture_lf = new THREE.TextureLoader().load(Walker)
 
@@ -66,16 +70,16 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
           materialArray[i].side = THREE.DoubleSide;
         }
     
-        let skyboxGeo = new THREE.BoxGeometry(20, 20, 20)
+        let skyboxGeo = new THREE.BoxGeometry(25, 25, 25)
         let skybox = new THREE.Mesh(skyboxGeo, materialArray)
         skybox.position.set(locX, locY, locZ)
         scene.add(skybox);
 
         const animate = () => {
             requestAnimationFrame(animate)
-            skybox.rotation.x += .015
-            skybox.rotation.y += .02
-            skybox.position.y -= .35
+            skybox.rotation.x += .01
+            skybox.rotation.y += .01
+            skybox.position.y -= .4
             renderer.render(scene, camera);
           }
           animate()
@@ -88,7 +92,7 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
         // const mesh1 = new THREE.Mesh(geometry1, material1);
         // scene.add(mesh1);
     
-        const geometry2 = new THREE.SphereGeometry(50, 8, 8,);
+        const geometry2 = new THREE.SphereGeometry(60, 5, 5,);
         const material2 = new THREE.MeshNormalMaterial({ wireframe: true });
         const sphere2 = new THREE.Mesh(geometry2, material2);
         sphere2.name = "sphere2"
@@ -98,9 +102,9 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
 
         const animate = () => {
             requestAnimationFrame(animate)
-            sphere2.rotation.x -= .002
-            sphere2.rotation.y -= .002
-            sphere2.position.y -= .35
+            sphere2.rotation.x -= .012
+            sphere2.rotation.y -= .0125
+            sphere2.position.y -= .4
             renderer.render(scene, camera);
           }
           animate()
