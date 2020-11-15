@@ -15,10 +15,12 @@ import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import SpellContext from "./context/Spellcontext"
-import MonsterContext from "./context/MonsterContext"
+import SpellContext from "./context/Spellcontext";
+import MonsterContext from "./context/MonsterContext";
+import ClassTypeContext from "./context/ClassTypeContext";
+import WpnContext from "./context/WpnContext";
 
-import API from "./utils/API"
+import API from "./utils/API";
 // import Spellbook from "./containers/SpellBook/Spellbook";
 // import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
 // import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
@@ -31,8 +33,10 @@ function App() {
   const [jwt, setJwt] = useState();
   const [userId, setUserId] = useState("");
 
-  const [spells, setSpells] = useState()
-  const [monsters, setMonsters] = useState()
+  const [spells, setSpells] = useState();
+  const [monsters, setMonsters] = useState();
+  const [ClassTypeState, setClassTypeState] = useState();
+  const [wpnState, setwpnState] = useState([]);
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -41,21 +45,30 @@ function App() {
     }
   }, []);
 
-  useEffect(()=>{
-
-    API.getSpells().then((res)=>{
-      console.log(res.data)
-      let spellArray = res.data
-      setSpells(spellArray)
-    })
-
-    API.getMonsters().then((res)=>{
-      console.log(res.data.data.results)
-      let monsterArray = res.data.data.results
-      setMonsters(monsterArray)
-    })
-
-  },[])
+  useEffect(() => {
+    // API call to get spells
+    API.getSpells().then((res) => {
+      // console.log(res.data)
+      let spellArray = res.data;
+      setSpells(spellArray);
+    });
+    // API call to get monsters
+    API.getMonsters().then((res) => {
+      // console.log(res.data.data.results)
+      let monsterArray = res.data.data.results;
+      setMonsters(monsterArray);
+    });
+    //API call to get Classes
+    API.getClass().then((res) => {
+      let classArray = res.data.data.results;
+      setClassTypeState(classArray);
+    });
+    // API call to get Weapons
+    API.getWpn().then((res) => {
+      let wpnArray = res.data.data.results;
+      setwpnState(wpnArray);
+    });
+  }, []);
 
   useEffect(() => {
     if (jwt) {
@@ -64,42 +77,48 @@ function App() {
     }
   }, [jwt]);
 
-  
-
   return (
     <div className="App">
       <UserContext.Provider value={{ userId, setUserId }}>
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
-            <SpellContext.Provider value = {{spells, setSpells}}>
-              <MonsterContext.Provider value = {{spells, setSpells}}>
-            <Navbar />
-            <Switch>
-              {/* <Route
+            <SpellContext.Provider value={{ spells, setSpells }}>
+              <MonsterContext.Provider value={{ monsters, setMonsters }}>
+                <ClassTypeContext.Provider
+                  value={{ ClassTypeState, setClassTypeState }}
+                >
+                  <WpnContext.Provider value={{ wpnState, setwpnState }}>
+                    <Navbar />
+                    <Switch>
+                      {/* <Route
                 exact
                 path="/"
                 render={() => <SigninPage user={user} setUser={setUser} />}
               /> */}
-              <Route exact path="/NewUser" component={NewUser1} />
-              {/*<Route
+                      <Route exact path="/NewUser" component={NewUser1} />
+                      {/*<Route
                 exact
                 path="/DmDirectory"
                 render={() => <DmDirectory user={user} />}
               /> */}
-              <Route exact path="/DmDirectory" component={DmDirectory} />
+                      <Route
+                        exact
+                        path="/DmDirectory"
+                        component={DmDirectory}
+                      />
 
-              <Route exact path="/DmOne/:id" component={DmOne} />
-              <ProtectedRoute
-                exact
-                path="/UpdateForm/:id"
-                component={UpdateForm}
-              />
-              <Route exact path="/ThreeD/:id" component={ThreeD} />
+                      <Route exact path="/DmOne/:id" component={DmOne} />
+                      <ProtectedRoute
+                        exact
+                        path="/UpdateForm/:id"
+                        component={UpdateForm}
+                      />
+                      <Route exact path="/ThreeD/:id" component={ThreeD} />
 
-              <Route exact path="/Team" component={Team} />
+                      <Route exact path="/Team" component={Team} />
 
-              {/* section for spellbook */}
-              {/* 
+                      {/* section for spellbook */}
+                      {/* 
               <Route exact path="/Spellbook/" component={Spellbook} />
               <Route exact path="/testpage" component={MonsterBook} />
               <Route exact path="/spelltest" component={BookOfSpells} />
@@ -107,12 +126,13 @@ function App() {
               <Route exact path="/classestest" component={ClassesBook} />
               <Route exact path="/wpntest" component={WpnBook} />
               <Route exact path="/armortest" component={ArmorBook} /> */}
-              <Route path="/" component={SigninPage} />
-            </Switch>
-            </MonsterContext.Provider>
+                      <Route path="/" component={SigninPage} />
+                    </Switch>
+                  </WpnContext.Provider>
+                </ClassTypeContext.Provider>
+              </MonsterContext.Provider>
             </SpellContext.Provider>
           </AuthContext.Provider>
-
           <Footer />
         </Router>
       </UserContext.Provider>
