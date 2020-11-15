@@ -12,42 +12,42 @@ class BookModal extends Component {
         
         <div id="BookModal" className="BookModal center">
         <button
-                to="/"
+                to="#"
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
                 Spells
               </button>
               <button
-                to="/"
+                to="#"
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
                 Monster
               </button>
               <button
-                to="/"
+                to="#"
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
                 Races
               </button>
               <button
-                to="/"
+                to="#"
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
                 Classes
               </button>
               <button
-                to="/"
+                to="#"
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
                 Equipment
               </button>
               <button
-                to="/"
+                to="#"
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
@@ -57,7 +57,7 @@ class BookModal extends Component {
             <div>
             </div>
             <button
-                to="/"
+                to="#"
                 onClick={handleClose}
                 className="CloseBook vertical-spacer-sm col s1"
               >
@@ -68,7 +68,7 @@ class BookModal extends Component {
               <div className="col s12 m6">
 <p className="booktext">Hello</p>
 <button
-                to="/"
+                to="#"
                 onClick=""
                 className="pageDown vertical-spacer-sm col s2"
               >
@@ -78,7 +78,7 @@ class BookModal extends Component {
               <div className="col s12 m6">
 <p className="booktext">Hello 2</p>
 <button
-                to="/"
+                to="#"
                 onClick=""
                 className="pagingUp vertical-spacer-sm col s2"
               >
