@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./SpotifyInfoModal.css";
 
-class SpotifyInfoModal extends Component {
-  render() {
+function SpotifyInfoModal () {
     const { hideModalSpotify, showModalSpotify } = this.props;
     const showHideClassName = showModalSpotify
       ? "display-block"
@@ -36,6 +35,6 @@ class SpotifyInfoModal extends Component {
       </div>
     );
   }
-}
+
 
 export default SpotifyInfoModal;
