@@ -111,27 +111,37 @@ const ThreeD = () => {
     })
 
     // start position cam
-    // camera.position.set(0, 2800, 140)
+    camera.position.set(0, 2800, 140)
     
-    camera.position.set(0, 800, 500)
+    // camera.position.set(0, 800, 500)
+
+    let cameraAnimate
 
     function animate() {
+
+    cameraAnimate =
       requestAnimationFrame(animate);
   
-      // camera.position.y -= .8
-      // camera.position.z -= .19
-      // camera.rotation.x -= 0.0025
+      camera.position.y -= .8
+      camera.position.z -= .19
+      camera.rotation.x -= 0.0025
 
-      // if (camera.rotation.x <= -1) {
-      //   camera.rotation.x += .0025
-      // } else if (camera.rotation.x <= .9) {
-      //   camera.rotation.x -= .0025
-      // }
+      if (camera.rotation.x <= -1) {
+        camera.rotation.x += .0025
+      } else if (camera.rotation.x <= .9) {
+        camera.rotation.x -= .0025
+      }
 
       renderer.render(scene, camera);
     }
 
   animate();
+
+  // setTimeout(function() {
+  //   cancelAnimationFrame( cameraAnimate )
+  //   camera.position.set(0, 800, 500) 
+  //  },  50000)
+
 
   threeDLoader(scene, camera, renderer, 0, 2502, 0);
 
@@ -140,17 +150,16 @@ const ThreeD = () => {
   worldScene(scene, camera, renderer);
   }, 0);
 
-    // window.addEventListener("click", onMouseMove)
   }
 
   return (
     <>
       <div id="myCanvas"> </div>
-      {setTimeout(function() {
-            <div id="info">
+      {/* {setTimeout(function() { */}
+            {/* <div id="info">
       <iframe   src="https://titanembeds.com/embed/776249613778026577?css=183&username=Explorer" height="200" width="100%" frameborder="0" className="chatBorder"></iframe>
-      </div>
-      })}
+      </div> */}
+      {/* })} */}
 
     </>
   );

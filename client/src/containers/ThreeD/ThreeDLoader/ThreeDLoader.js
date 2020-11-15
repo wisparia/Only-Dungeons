@@ -75,7 +75,9 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
         skybox.position.set(locX, locY, locZ)
         scene.add(skybox);
 
+        let loadingID
         const animate = () => {
+          loadingID =
             requestAnimationFrame(animate)
             skybox.rotation.x += .01
             skybox.rotation.y += .01
@@ -83,6 +85,10 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
             renderer.render(scene, camera);
           }
           animate()
+
+          setTimeout(function() {
+            cancelAnimationFrame( loadingID )
+          },  45000)
     };
 
         mainLoadBox(locX, locY, locZ);
@@ -100,14 +106,26 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
 
         sphere2.position.set(locX, locY, locZ)
 
+      
+        let loadingID
+
         const animate = () => {
+          
+          loadingID =
             requestAnimationFrame(animate)
             sphere2.rotation.x -= .012
             sphere2.rotation.y -= .0125
             sphere2.position.y -= .4
             renderer.render(scene, camera);
+          
           }
           animate()
+          
+        setTimeout(function() {
+          cancelAnimationFrame( loadingID )
+        },  45000)
+          
+
     }
 
     createLoadBox(locX, locY, locZ);
