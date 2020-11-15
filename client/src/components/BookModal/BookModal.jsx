@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "../BookModal/BookModal.css";
 
-function BookModal() {
+class BookModal extends Component {
+  render() {
     const { handleClose, show, handleFormSubmit} = this.props;
     const showHideClassName = show ? "display-block" : "display-none";
     return (
@@ -87,7 +88,8 @@ function BookModal() {
         </div>
       </div>
     );
-    }
+  }
+}
 
 export default BookModal;
 
