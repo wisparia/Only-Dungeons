@@ -3,13 +3,14 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState, useEffect } from "react";
 import dmImage from "./dmImage.png";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import AvatarImage from "../../components/AvatarImage/AvatarImage"
 
 import "./DmOne.css";
 
 function DmOne() {
+  const history = useHistory()
   const [dm, setDm] = useState({
     userName: "",
     email: "",
@@ -56,6 +57,10 @@ function DmOne() {
     setDm(response.data);
   }, []);
 
+  function handleGoBack(){
+    history.goBack()
+  }
+
   return (
     <>
       <div className="container center tagline">
@@ -70,7 +75,7 @@ function DmOne() {
               <a className="col s12 btn vertical-spacer-sm" href={`mailto:${dm.email}`}>
                 Email
               </a>
-              <div className="btn col s12">Back</div>
+              <div onClick={handleGoBack} className="btn col s12">Back</div>
               {dm.getSpotify === "" || dm.getSpotify === undefined ? <iframe src={defaultSpotifyURL} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> : <iframe src={spotifyURL} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
             </div>
           </div>
