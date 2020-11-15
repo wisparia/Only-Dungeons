@@ -18,7 +18,7 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
     
     const createLoadBox = (locX, locY, locZ) => {
      
-        const mainLoadBox = () => {
+        const mainLoadBox = (locX, locY, locZ) => {
         let materialArray = []
    
         let texture_ft = new THREE.TextureLoader().load(Corona_ft)
@@ -42,9 +42,10 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
         let skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000)
         let skybox = new THREE.Mesh(skyboxGeo, materialArray)
         scene.add(skybox);
+        skybox.position.set(locX, locY, locZ)
     }
 
-    const logoLoadBox = () => {
+    const logoLoadBox = (locX, locY, locZ) => {
         let materialArray = []
    
         let texture_ft = new THREE.TextureLoader().load(Canales)
@@ -65,81 +66,47 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
           materialArray[i].side = THREE.DoubleSide;
         }
     
-        let skyboxGeo = new THREE.BoxGeometry(10, 10, 10)
+        let skyboxGeo = new THREE.BoxGeometry(20, 20, 20)
         let skybox = new THREE.Mesh(skyboxGeo, materialArray)
+        skybox.position.set(locX, locY, locZ)
         scene.add(skybox);
 
         const animate = () => {
             requestAnimationFrame(animate)
             skybox.rotation.x += .015
             skybox.rotation.y += .02
-    
+            skybox.position.y -= .35
             renderer.render(scene, camera);
           }
           animate()
     };
 
-    setTimeout(function() {
-            mainLoadBox();
-    logoLoadBox()
-    }, 0)
-
-    
+    mainLoadBox(locX, locY, locZ);
+    logoLoadBox(locX, locY, locZ)
         // const geometry1 = new THREE.BoxGeometry(10, 10, 10);
         // const material1 = new THREE.MeshNormalMaterial({ wireframe: true });
         // const mesh1 = new THREE.Mesh(geometry1, material1);
         // scene.add(mesh1);
     
-        const geometry2 = new THREE.SphereGeometry(20, 20, 20,);
+        const geometry2 = new THREE.SphereGeometry(50, 8, 8,);
         const material2 = new THREE.MeshNormalMaterial({ wireframe: true });
         const sphere2 = new THREE.Mesh(geometry2, material2);
         sphere2.name = "sphere2"
         scene.add(sphere2);
 
-       
+        sphere2.position.set(locX, locY, locZ)
 
         const animate = () => {
             requestAnimationFrame(animate)
             sphere2.rotation.x -= .002
             sphere2.rotation.y -= .002
-            
+            sphere2.position.y -= .35
             renderer.render(scene, camera);
           }
           animate()
     }
 
-    // const createTeamBox = (locX, locY, locZ) => {
-    //     let materialArray = []
-
-    //     let texture_ft = new THREE.TextureLoader().load(OnlyDungeonIcon);
-    //     let texture_bk = new THREE.TextureLoader().load(Calle);
-    //     let texture_up = new THREE.TextureLoader().load(Fleming);
-    //     let texture_dn = new THREE.TextureLoader().load(Sully);
-    //     let texture_rt = new THREE.TextureLoader().load(Canales);
-    //     let texture_lf = new THREE.TextureLoader().load(Walker);
-    
-    //     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_ft }));
-    //     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_bk }));
-    //     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_up }));
-    //     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_dn }));
-    //     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_rt }));
-    //     materialArray.push(new THREE.MeshBasicMaterial({ map: texture_lf }));
-    
-    //     for (let i = 0; i < 6; i++) {
-    //       materialArray[i].side = THREE.DoubleSide;
-    //     }
-    
-    //     let skyboxGeo = new THREE.BoxGeometry(100, 60, 100);
-    //     let skybox = new THREE.Mesh(skyboxGeo, materialArray);
-    //     scene.add(skybox);
-    //     skybox.position.set(locX, (locY), locZ);
-    // }
-
-    // createTeamBox(locX, locY, locZ);
     createLoadBox(locX, locY, locZ);
-   
-    
-
 
 };
 

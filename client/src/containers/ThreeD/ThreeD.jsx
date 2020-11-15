@@ -9,6 +9,7 @@ import graveScene from "./graveScene/graveScene";
 import threeDLoader from "./ThreeDLoader/ThreeDLoader"
 
 import "./ThreeD.css";
+import { ColorKeyframeTrack } from "three";
 
 const ThreeD = () => {
   useEffect(() => {
@@ -106,35 +107,41 @@ const ThreeD = () => {
     //   graveScene(scene, camera, renderer, -1450, 0, 480);
     // }, 1200);
 
-    camera.position.set(0, 0, 60);
+   
 
+    camera.position.set(0,2700, 110)
 
     function animate() {
       requestAnimationFrame(animate);
       // mesh.rotation.x += 0.05;
       // mesh.rotation.y += 0.05;
-      camera.position.z -= 0.15
-      if (camera.rotation.x >= 0.020)  {
-        camera.rotation.x -= 0.0025
-      } else if (camera.rotation.x <= -0.020) {
-        camera.rotation.x += 0.0025
+      camera.position.y -= .8
+      camera.position.z -= .25
+      camera.rotation.x -= 0.0025
+
+      if (camera.rotation.x <= -1) {
+        camera.rotation.x += .0025
+      } else if (camera.rotation.x <= .9) {
+        camera.rotation.x -= .0025
       }
+      // if (camera.rotation.y >= 0.025)  {
+      //   camera.rotation.y -= 0.005
+      // } else if (camera.rotation.y <= -0.025) {
+      //   camera.rotation.y += 0.005
+      // }
       renderer.render(scene, camera);
     }
 
     animate();
 
-   setTimeout(function () {
-   threeDLoader(scene, camera, renderer);
-   
-  }, 1000);
+   threeDLoader(scene, camera, renderer, 0, 2502, 0);
 
 
   console.log(this)
 
   setTimeout(function () {
   worldScene(scene, camera, renderer);
-  }, 8000);
+  }, 0);
 
     // window.addEventListener("click", onMouseMove)
   }
