@@ -1,12 +1,15 @@
 // import { load } from "npm";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Dmaster from "../../components/Dmaster/Dmaster";
 import DmSearch from "../../components/DmSearch/DmSearch";
 import DmCategoryCheckbox from "../../components/DmCategoryCheckbox/DmCategoryCheckbox";
 import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAvailabilityCheckbox";
 import API from "../../utils/API";
+import SpellContext from "../../context/Spellcontext";
+import MonsterContext from "../../context/MonsterContext"
 
 function DmDirectory() {
+  
   const [allDms, setDms] = useState([]);
   const [searchBox, setSearchBox] = useState("");
   const [searchedDms, setSearchedDms] = useState([]);
@@ -16,6 +19,11 @@ function DmDirectory() {
   const [availabilityFilters, setAvailabilityFilters] = useState({
     days: [],
   });
+
+  const spellItems = useContext(SpellContext)
+  console.log(spellItems)
+
+  const monsterItems = useContext(MonsterContext)
 
   useEffect(() => {
     loadDms();
