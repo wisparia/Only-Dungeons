@@ -1,0 +1,15 @@
+.tutorialMark {
+    float: right;
+    min-height: 15px !important;
+    min-width: 15px !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid;
+    border-color: rgb(190, 141, 35);
+    padding: 3px !important;
+}
+
+.tutorialLink {
+    padding: 5px;
+}

@@ -6,7 +6,7 @@ import Armor from "../../components/Spellbook/Armor/Armor";
 import Equipment from "../../components/Spellbook/Equipment/Equipment";
 import Monsters from "../../components/Spellbook/Monsters/Monsters";
 import Race from "../../components/Spellbook/Race/Race";
-import RulesComp from "../../components/Spellbook/RulesComp/RulesComp";
+// import RulesComp from "../../components/Spellbook/RulesComp/RulesComp";
 import Spells from "../../components/Spellbook/Spells/Spells";
 import Weapons from "../../components/Spellbook/Weapon/Weapons";
 
@@ -227,13 +227,13 @@ function Spellbook() {
             ))}
           </ul>
           <br />
-          <RulesComp />
+          {/* <RulesComp /> */}
           <ul>
-            {rulesState.map((ruleslist, i) => (
+            {/* {rulesState.map((ruleslist, i) => (
               <li>
                 {i + 1} {ruleslist.name}
               </li>
-            ))}
+            ))} */}
           </ul>
           <br />
         </div>

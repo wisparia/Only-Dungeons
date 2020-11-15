@@ -14,15 +14,14 @@ import AuthContext from "./context/AuthContext";
 import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
-// import { Button, Card, Row, Col } from "react-materialize";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import Spellbook from "./containers/SpellBook/Spellbook";
-import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
-import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
-import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
-import { ClassesBook } from "./containers/SpellBookClasses/SpellBookClasses";
-import { WpnBook } from "./containers/SpellBookWpn/SpellBookWpn";
-import { ArmorBook } from "./containers/SpellbookArmor/SpellBookArmor";
+// import Spellbook from "./containers/SpellBook/Spellbook";
+// import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
+// import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
+// import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
+// import { ClassesBook } from "./containers/SpellBookClasses/SpellBookClasses";
+// import { WpnBook } from "./containers/SpellBookWpn/SpellBookWpn";
+// import { ArmorBook } from "./containers/SpellbookArmor/SpellBookArmor";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -61,6 +60,7 @@ function App() {
                 render={() => <DmDirectory user={user} />}
               /> */}
               <Route exact path="/DmDirectory" component={DmDirectory} />
+
               <Route exact path="/DmOne/:id" component={DmOne} />
               <ProtectedRoute
                 exact
@@ -68,16 +68,18 @@ function App() {
                 component={UpdateForm}
               />
               <Route exact path="/ThreeD/:id" component={ThreeD} />
-              <Route exact path="/Spellbook/" component={Spellbook} />
+
               <Route exact path="/Team" component={Team} />
 
               {/* section for spellbook */}
+              {/* 
+              <Route exact path="/Spellbook/" component={Spellbook} />
               <Route exact path="/testpage" component={MonsterBook} />
               <Route exact path="/spelltest" component={BookOfSpells} />
               <Route exact path="/racetest" component={RaceBook} />
               <Route exact path="/classestest" component={ClassesBook} />
               <Route exact path="/wpntest" component={WpnBook} />
-              <Route exact path="/armortest" component={ArmorBook} />
+              <Route exact path="/armortest" component={ArmorBook} /> */}
               <Route path="/" component={SigninPage} />
             </Switch>
           </AuthContext.Provider>

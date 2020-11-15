@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "./nocreatemodal.css";
 
-class NoCreateModal extends Component {
-  render() {
+function NoCreateModal () {
+
     const { handleClose, show2 } = this.props;
     const showHideClassName = show2 ? "display-block" : "display-none";
     console.log(this.props);
@@ -30,6 +30,6 @@ class NoCreateModal extends Component {
       </div>
     );
   }
-}
+
 
 export default NoCreateModal;

@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import API from "../../../utils/API";
 
-function Armor() {
+const ArmorBook = () => {
+  const [armorState, setArmorState] = useState([]);
+  // const [pageState, setPageState] = useState(0);
+
+  const armorSection = function () {
+    API.getArmor().then((res) => {
+      setArmorState(res.data.data.results);
+    });
+  };
+
+  useEffect(() => {
+    armorSection();
+  }, []);
+
   return (
     <div>
-      <h1>This is the Armor componenet</h1>
+      <h2>Armor</h2>
+      {armorState.map((armorSelections) => (
+        <div>
+          <h3>{armorSelections.name}</h3>
+          <p>Armor type: {armorSelections.armor_category}</p>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
-export default Armor
+export default ArmorBook;
