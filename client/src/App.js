@@ -124,6 +124,13 @@ function App() {
                             component={DmDirectory}
                           />
 
+                          <Route exact path="/DmOne/:id" component={DmOne} />
+                          <ProtectedRoute
+                            exact
+                            path="/UpdateForm/:id"
+                            component={UpdateForm}
+                          />
+                          <Route exact path="/ThreeD/:id" component={ThreeD} />
                           <Route exact path="/Team" component={Team} />
                           <Route exact path="/spelltest" component={Spells} />
                           <Route
