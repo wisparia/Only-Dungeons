@@ -60,10 +60,7 @@ const ThreeD = () => {
 
   useEffect(async () => {
     const response = await API.getUser(id);
-    console.log(response.data);
     const ServerID = dm.discordServer;
-    console.log(dm.discordServer);
-    console.log(serverURL);
     setDm(response.data);
     dimensions();
   }, []);
@@ -126,7 +123,6 @@ const ThreeD = () => {
     setTimeout(
       function () {
         forestScene(scene, camera, renderer, -50, 0, -500);
-        // forestScene(scene, camera, renderer, 400, 0, 0);
         forestScene(scene, camera, renderer, -150, 0, -250);
         forestScene(scene, camera, renderer, 0, 0, -400);
         forestScene(scene, camera, renderer, -450, 0, -800);
@@ -192,8 +188,9 @@ const ThreeD = () => {
     //   camera.position.set(0, 800, 500)
     //  },  50000)
 
+    // ThreeD Intro Scene
     threeDLoader(scene, camera, renderer, 0, 2502, 0);
-
+    // World Cube
     setTimeout(function () {
       worldScene(scene, camera, renderer);
     }, 0);
