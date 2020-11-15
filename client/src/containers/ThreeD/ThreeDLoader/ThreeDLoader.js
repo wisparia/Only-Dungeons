@@ -17,7 +17,7 @@ import Corona_dn from "./loadBox/corona_dn.png"
 const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
     
 
-    const createLoadBox = (locX, locY, locZ) => {
+        const createLoadBox = (locX, locY, locZ) => {
      
         const mainLoadBox = (locX, locY, locZ) => {
         let materialArray = []
@@ -46,7 +46,7 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
         skybox.position.set(locX, locY, locZ)
     }
 
-    const logoLoadBox = (locX, locY, locZ) => {
+        const logoLoadBox = (locX, locY, locZ) => {
         
         let teamArray = [Canales, Calle, Fleming, Sully, Walker ]
 
@@ -85,8 +85,8 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
           animate()
     };
 
-    mainLoadBox(locX, locY, locZ);
-    logoLoadBox(locX, locY, locZ)
+        mainLoadBox(locX, locY, locZ);
+        logoLoadBox(locX, locY, locZ);
         // const geometry1 = new THREE.BoxGeometry(10, 10, 10);
         // const material1 = new THREE.MeshNormalMaterial({ wireframe: true });
         // const mesh1 = new THREE.Mesh(geometry1, material1);
