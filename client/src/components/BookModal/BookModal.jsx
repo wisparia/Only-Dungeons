@@ -21,7 +21,7 @@ class BookModal extends Component {
                 onClick=""
                 className="booktabs vertical-spacer-sm col s1"
               >
-                Monsters
+                Monster
               </button>
               <button
                 to="/"
