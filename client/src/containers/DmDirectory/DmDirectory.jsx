@@ -7,6 +7,7 @@ import DmAvailabilityCheckbox from "../../components/DmAvailabilityCheckbox/DmAv
 import API from "../../utils/API";
 import SpellContext from "../../context/Spellcontext";
 import MonsterContext from "../../context/MonsterContext"
+import ClassTypeContext from "../../context/ClassTypeContext";
 
 function DmDirectory() {
   
@@ -23,8 +24,9 @@ function DmDirectory() {
   const spellItems = useContext(SpellContext)
   console.log(spellItems)
 
-  const monsterItems = useContext(MonsterContext)
-
+  // const ClassType = useContext(ClassTypeContext)
+  // console.log(ClassType.ClassTypeState)
+  
   useEffect(() => {
     loadDms();
   }, []);
