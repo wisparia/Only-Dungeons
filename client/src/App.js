@@ -22,7 +22,7 @@ import WpnContext from "./context/WpnContext";
 import ArmorContext from "./context/ArmorContext";
 import RaceContext from "./context/RaceContext";
 import API from "./utils/API";
-import BookOfSpells from "./components/Spellbook/BookOfSpells/BookOfSpells";
+import Spells from "./components/Spellbook/Spells/Spells";
 import MonsterBook from "./components/Spellbook/Monsters/Monsters";
 import RaceBook from "./components/Spellbook/Race/Race";
 import ClassesBook from "./components/Spellbook/ClassType/ClassType";
@@ -124,11 +124,7 @@ function App() {
                           />
 
                           <Route exact path="/Team" component={Team} />
-                          <Route
-                            exact
-                            path="/spelltest"
-                            component={BookOfSpells}
-                          />
+                          <Route exact path="/spelltest" component={Spells} />
                           <Route
                             exact
                             path="/monstertest"

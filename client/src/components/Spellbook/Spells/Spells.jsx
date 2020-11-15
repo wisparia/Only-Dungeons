@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
+import "./Spells.css";
+import { useHistory } from "react-router-dom";
 
 const BookOfSpells = () => {
   const [spells, setSpells] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
+  const history = useHistory()
 
   const spellBook = function () {
     API.getSpells().then((res) => {
@@ -21,17 +24,27 @@ const BookOfSpells = () => {
   }, []);
 
   return (
-    <div>
-      {!loading ? (
-        spells.slice(10 * page, 10 * page + 10).map((element) => {
+
+
+    <>
+    
+    <div className="container">
+      <div className="row vertical-spacer-md">
+      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpmtest")} className="booktabs"> Weapons </button>
+
+          {!loading ? (
+        spells.slice(6 * page, 6 * page + 6).map((element) => {
           return (
-            <div>
-              <h4>{element.name}</h4>
-              <p>
-                Level {element.level} {element.school.name}
-              </p>
-              <p>
-                Available to:
+            <div className="col s12 Book">
+              <h3>{element.name}</h3>
+              
+              <p className="col s12 m4">Level {element.level} {element.school.name}<br/><br/>
+              Available to:
                 <ul>
                   <>
                     {element.classes.map((element) => (
@@ -39,11 +52,10 @@ const BookOfSpells = () => {
                     ))}
                   </>
                 </ul>
-              </p>
-
-              <p>Duration: {element.duration}</p>
               <p>Range: {element.range}</p>
-              <p>Description: {element.desc[0]}</p>
+              </p>
+              <div className="col s12 m8"> <p>Duration: {element.duration}</p></div>
+              <p className="col s12 m8 description">Description: {element.desc[0]}</p>
             </div>
           );
         })
@@ -64,10 +76,18 @@ const BookOfSpells = () => {
         </>
       )}
       {!loading ? (
-        <button onClick={() => setPage(page + 1)}>Click To Increase</button>
+        <div className="col s12 center">
+        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+      </div>
       ) : null}
     </div>
-  );
-};
+
+         
+          
+      </div>
+    </> 
+    )}
+
 
 export default BookOfSpells;
