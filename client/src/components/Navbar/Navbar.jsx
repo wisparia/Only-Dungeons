@@ -7,8 +7,6 @@ import "materialize-css";
 import Logo from "./ODlogo2.png";
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import BookButton from "../BookButton/BookButton";
-import BookModal from "../BookModal/BookModal"
 import { Button, Card, Row, Col } from 'react-materialize';
 import AuthContext from "../../context/AuthContext"
 function Navbar() {
