@@ -33,6 +33,7 @@ function App() {
 
   const [spells, setSpells] = useState()
   const [monsters, setMonsters] = useState()
+  const [ClassTypeState, setClassTypeState] = useState()
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -42,18 +43,23 @@ function App() {
   }, []);
 
   useEffect(()=>{
-
+    // API call to get spells
     API.getSpells().then((res)=>{
-      console.log(res.data)
+      // console.log(res.data)
       let spellArray = res.data
       setSpells(spellArray)
     })
-
+    // API call to get monsters
     API.getMonsters().then((res)=>{
-      console.log(res.data.data.results)
+      // console.log(res.data.data.results)
       let monsterArray = res.data.data.results
       setMonsters(monsterArray)
     })
+    //API call to get Classes
+    API.getClass().then((res) => {
+      console.log(res.data.data.results)
+      // setClassesState(res.data.data.results);
+    });
 
   },[])
 
@@ -72,7 +78,8 @@ function App() {
         <Router>
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <SpellContext.Provider value = {{spells, setSpells}}>
-              <MonsterContext.Provider value = {{spells, setSpells}}>
+              <MonsterContext.Provider value = {{monsters, setMonsters}}>
+
             <Navbar />
             <Switch>
               {/* <Route
