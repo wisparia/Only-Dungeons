@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import API from "../../utils/API";
 import AvatarImage from "../../components/AvatarImage/AvatarImage";
 import dmImage from "./dmImage.png";
+import DmProfileCheckbox from "../../components/DmProfileCheckbox/DmProfileCheckbox"
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -201,13 +202,13 @@ const ThreeD = () => {
   return (
     <>
       <div className="center tagline">
-        <h5>{dm.tagLine}</h5>
+        <p>{dm.tagLine}</p>
       </div>
       <div>
         <div className="content-border row">
           <div className="col s12 m12 l4 center vertical-spacer-sm">
             <AvatarImage dmImage={dmImage} preferredRole={dm.preferredRole} />
-            <h5 className="vertical-spacer-sm">{dm.userName}</h5>
+            <p className="vertical-spacer-sm">{dm.userName}</p>
             <div className="row center">
               <a
                 className="col s12 btn vertical-spacer-sm"
@@ -240,103 +241,57 @@ const ThreeD = () => {
           <div className="col s12 m8">
             <div className="row">
               <div className="col s12 l12 xl6">
-                <h5 className="vertical-spacer-md ">Category:</h5>
-
+                <p className="vertical-spacer-md ">Category:</p>
                 {dm.categoryType.campaigns ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>Campaigns</p>
-                    </span>
-                  </label>
+                <DmProfileCheckbox name={"Campaigns"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.oneshots ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>One Shots</p>
-                    </span>
-                  </label>
+               <DmProfileCheckbox name={"One Shots"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.homebrew ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>HomeBrew</p>
-                    </span>
-                  </label>
+               <DmProfileCheckbox name={"Homebrews"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.byTheBook ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>By The Book</p>
-                    </span>
-                  </label>
+               <DmProfileCheckbox name={"By The Book"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.rpersonly ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>Role Play Only</p>
-                    </span>
-                  </label>
+               <DmProfileCheckbox name={"Role Play Only"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.norestriction ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>No Restriction</p>
-                    </span>
-                  </label>
+                <DmProfileCheckbox name={"No Restrictions"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.displaydice ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>Display Dice</p>
-                    </span>
-                  </label>
+               <DmProfileCheckbox name={"Display Dice"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.lvl1only ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>Lvl One Only</p>
-                    </span>
-                  </label>
+               <DmProfileCheckbox name={"Level Ones"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
 
                 {dm.categoryType.voyuerallowed ? (
-                  <label className="col s12">
-                    <input checked="checked" type="checkbox" />
-                    <span>
-                      <p>Watchers Allowed</p>
-                    </span>
-                  </label>
+                <DmProfileCheckbox name={"Watchers Allowed"} />
                 ) : (
                   <input type="checkbox" disabled />
                 )}
@@ -344,79 +299,44 @@ const ThreeD = () => {
 
               <div className="row">
                 <div className="col s12 l12 xl6">
-                  <h5 className="vertical-spacer-md">Availability:</h5>
+                  <p className="vertical-spacer-md">Availability:</p>
                   {dm.availability.monday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Monday</p>
-                      </span>
-                    </label>
+                <DmProfileCheckbox name={"Monday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}
 
                   {dm.availability.tuesday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Tuesday</p>
-                      </span>
-                    </label>
+               <DmProfileCheckbox name={"Tuesday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}
 
                   {dm.availability.wednesday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Wednesday</p>
-                      </span>
-                    </label>
+               <DmProfileCheckbox name={"Wednesday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}
                   {dm.availability.thursday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Thursday</p>
-                      </span>
-                    </label>
+               <DmProfileCheckbox name={"Thursday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}
 
                   {dm.availability.friday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Friday</p>
-                      </span>
-                    </label>
+               <DmProfileCheckbox name={"Friday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}
 
                   {dm.availability.saturday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Saturday</p>
-                      </span>
-                    </label>
+               <DmProfileCheckbox name={"Saturday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}
 
                   {dm.availability.sunday ? (
-                    <label className="col s12">
-                      <input checked="checked" type="checkbox" />
-                      <span>
-                        <p>Sunday</p>
-                      </span>
-                    </label>
+               <DmProfileCheckbox name={"Sunday"} />
                   ) : (
                     <input type="checkbox" disabled />
                   )}

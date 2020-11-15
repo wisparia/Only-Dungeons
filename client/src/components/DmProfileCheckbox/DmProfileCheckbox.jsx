@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const DmProfileCheckbox = () => {
-    return (
-        <>
-        <div>
-            
-        </div>
-        </>
-    );
+const DmProfileCheckbox = ({ name }) => {
+  return (
+    <label className="col s6">
+      <input checked="checked" type="checkbox" />
+      <span>
+        <p>{name}</p>
+      </span>
+    </label>
+  );
 };
 
 export default DmProfileCheckbox;
