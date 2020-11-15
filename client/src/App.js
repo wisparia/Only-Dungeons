@@ -22,14 +22,12 @@ import WpnContext from "./context/WpnContext";
 import ArmorContext from "./context/ArmorContext";
 import RaceContext from "./context/RaceContext"
 import API from "./utils/API";
-import BookOfSpells from "./components/BookOfSpells/BookOfSpells"
-// import Spellbook from "./containers/SpellBook/Spellbook";
-// import { MonsterBook } from "./containers/MonsterBook/MonsterBook";
-// import { BookOfSpells } from "./containers/BookOfSpells/BookOfSpells";
-// import { RaceBook } from "./containers/SpellBookRace/SpellBookRace";
-// import { ClassesBook } from "./containers/SpellBookClasses/SpellBookClasses";
-// import { WpnBook } from "./containers/SpellBookWpn/SpellBookWpn";
-// import { ArmorBook } from "./containers/SpellbookArmor/SpellBookArmor";
+import BookOfSpells from "./components/Spellbook/BookOfSpells/BookOfSpells"
+import Monsters from "./components/Spellbook/Monsters/Monsters";
+import RaceBook from "./components/Spellbook/Race/Race";
+import ClassesBook from "./components/Spellbook/ClassType/ClassType";
+import  WpnBook  from "./components/Spellbook/Weapon/Weapons";
+import  ArmorBook  from "./components/Spellbook/Armor/Armor";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -134,16 +132,11 @@ function App() {
 
                       <Route exact path="/Team" component={Team} />
                       <Route exact path="/spelltest" component={BookOfSpells} />
-
-                      {/* section for spellbook */}
-                      {/* 
-              <Route exact path="/Spellbook/" component={Spellbook} />
-              <Route exact path="/testpage" component={MonsterBook} />
-              <Route exact path="/spelltest" component={BookOfSpells} />
-              <Route exact path="/racetest" component={RaceBook} />
-              <Route exact path="/classestest" component={ClassesBook} />
-              <Route exact path="/wpntest" component={WpnBook} />
-              <Route exact path="/armortest" component={ArmorBook} /> */}
+                      <Route exact path="/monstertest" component={Monsters} />
+                      <Route exact path="/racetest" component={RaceBook} />
+                      <Route exact path="/classestest" component={ClassesBook} />
+                      <Route exact path="/wpntest" component={WpnBook} />
+                      <Route exact path="/armortest" component={ArmorBook} /> 
                       <Route path="/" component={SigninPage} />
                     </Switch>
                     </RaceContext.Provider>
