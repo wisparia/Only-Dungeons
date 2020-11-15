@@ -9,6 +9,7 @@
   font-size: 0.8rem;
   border: 2px solid rgb(151, 118, 92);
   margin-bottom: 0px;
+  padding: 20px !important;
 }
 
 h3 {
@@ -37,8 +38,4 @@ h3 {
   color: rgb(190, 141, 35);
   font-family: "Press Start 2P", cursive;
   margin-top: -15px;
-}
-
-.description {
-  padding: 20px !important;
 }

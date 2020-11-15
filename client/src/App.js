@@ -28,6 +28,7 @@ import RaceBook from "./components/Spellbook/Race/Race";
 import ClassesBook from "./components/Spellbook/ClassType/ClassType";
 import WpnBook from "./components/Spellbook/Weapon/Weapons";
 import ArmorBook from "./components/Spellbook/Armor/Armor";
+import MainBook from "./containers/BookPage/BookPage";
 
 function App() {
   const [jwt, setJwt] = useState();
@@ -142,6 +143,7 @@ function App() {
                             path="/armortest"
                             component={ArmorBook}
                           />
+                          <Route exact path="/Book" component={MainBook} />
                           <Route path="/" component={SigninPage} />
                         </Switch>
                       </RaceContext.Provider>
