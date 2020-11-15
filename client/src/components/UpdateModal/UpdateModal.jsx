@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "../UpdateModal/UpdateModal.css";
 
-function UpdateModal () {
+class UpdateModal extends Component {
+  render() {
     const { handleClose, show2, handleFormSubmit} = this.props;
     const showHideClassName = show2 ? "display-block" : "display-none";
     return (
@@ -35,6 +36,6 @@ function UpdateModal () {
       </div>
     );
   }
-
+}
 
 export default UpdateModal;
