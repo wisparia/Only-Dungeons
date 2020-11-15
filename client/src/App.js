@@ -19,6 +19,8 @@ import SpellContext from "./context/Spellcontext";
 import MonsterContext from "./context/MonsterContext";
 import ClassTypeContext from "./context/ClassTypeContext";
 import WpnContext from "./context/WpnContext";
+import ArmorContext from "./context/ArmorContext";
+import RaceContext from "./context/RaceContext"
 
 import API from "./utils/API";
 // import Spellbook from "./containers/SpellBook/Spellbook";
@@ -37,6 +39,8 @@ function App() {
   const [monsters, setMonsters] = useState();
   const [ClassTypeState, setClassTypeState] = useState();
   const [wpnState, setwpnState] = useState([]);
+  const [armorState, setArmorState] = useState();
+  const [races, setRaces] = useState()
 
   useEffect(() => {
     const localJwt = localStorage.getItem("jwt");
@@ -68,6 +72,17 @@ function App() {
       let wpnArray = res.data.data.results;
       setwpnState(wpnArray);
     });
+
+    API.getArmor().then((res)=>{
+      let armorArray = res.data.data.results;
+      setArmorState(armorArray)
+    });
+
+    API.getRace().then((res)=>{
+      let raceArray = res.data.data.results;
+      setRaces(raceArray)
+    })
+
   }, []);
 
   useEffect(() => {
@@ -88,6 +103,8 @@ function App() {
                   value={{ ClassTypeState, setClassTypeState }}
                 >
                   <WpnContext.Provider value={{ wpnState, setwpnState }}>
+                    <ArmorContext.Provider value={{armorState, setArmorState}}>
+                      <RaceContext.Provider value={{races, setRaces}}>
                     <Navbar />
                     <Switch>
                       {/* <Route
@@ -128,6 +145,8 @@ function App() {
               <Route exact path="/armortest" component={ArmorBook} /> */}
                       <Route path="/" component={SigninPage} />
                     </Switch>
+                    </RaceContext.Provider>
+                    </ArmorContext.Provider>
                   </WpnContext.Provider>
                 </ClassTypeContext.Provider>
               </MonsterContext.Provider>
