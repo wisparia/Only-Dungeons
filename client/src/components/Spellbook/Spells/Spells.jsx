@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 import "./Spells.css";
 import { useHistory } from "react-router-dom";
+import LoadSlime from "../../assets/Slime-Gif.gif";
 
 const BookOfSpells = () => {
   const [spells, setSpells] = useState([]);
@@ -35,7 +36,7 @@ const BookOfSpells = () => {
       <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
       <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
       <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpmtest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
 
           {!loading ? (
         spells.slice(6 * page, 6 * page + 6).map((element) => {
@@ -72,7 +73,7 @@ const BookOfSpells = () => {
               <div class="circle"></div>
             </div>
           </div>
-          <h2>Loading Spellbook</h2>
+          <h1 className="loading center">Loading Spells <img src={LoadSlime}/></h1>
         </>
       )}
       {!loading ? (
