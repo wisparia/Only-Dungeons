@@ -8,7 +8,7 @@ canvas {
 }
 
 #info {
-    position: absolute;
+    position: relative;
     color: white;
 	top: 100%;
 	width: 100%;
@@ -16,3 +16,19 @@ canvas {
 	z-index: 100;
 	display:block;
 }
+
+.small-p {
+    font-size: 1rem;
+}
+
+/* .btn {
+    padding: 10px !important;
+    height: auto;
+    width: auto;
+    background: url("./components/assets/tilebgdark.png") !important;
+    color: rgb(190, 141, 35) !important;
+    border-style: outset !important;
+    border: 8px solid;
+    border-color: rgb(190, 141, 35);
+    cursor: url("./components/assets/cursorHand.png"), auto !important;
+  } */
