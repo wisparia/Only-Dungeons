@@ -94,12 +94,6 @@ const ThreeD = () => {
     // start position cam
     camera.position.set(0, 2800, 140);
 
-    function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-    }
-    animate();
-
     // Base Scene Light
     const baseLight = () => {
     const light = new THREE.AmbientLight(0x404040, 1);
@@ -109,6 +103,16 @@ const ThreeD = () => {
     baseLight();
     baseLight();
     baseLight();
+
+    setTimeout(function() {
+      function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+      }
+
+      animate();
+    }, 5000)
+
 
     setTimeout(function(){    
       let fogColor = new THREE.Color(0xa9a9a9  );
@@ -170,6 +174,8 @@ const ThreeD = () => {
     threeDLoader(scene, camera, renderer, 0, 2502, 0);
   }
 
+  
+
   return (
     <>
         <div className="content-border row">
@@ -185,7 +191,7 @@ const ThreeD = () => {
               >
                 Email
               </a>
-              <div className="btn col s12 vertical-spacer-sm">Back</div>
+              {/* <div className="btn col s12 vertical-spacer-sm">Back</div> */}
               {dm.getSpotify === "" || dm.getSpotify === undefined ? (
                 <iframe
                   src={defaultSpotifyURL}
