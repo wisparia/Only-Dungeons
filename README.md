@@ -81,7 +81,8 @@ Instillation steps are as follows:
 
 <br/>
 
-### Deployed Application 
+### Deployed Application
+
 <hr/>
 Please click on the link below to be redirected to the live application:
 
@@ -92,11 +93,11 @@ Please click on the link below to be redirected to the live application:
 <!-- ## Usage
 
   <hr>
-  
+
   <br/>
-  
+
 To be filled
-     
+
 <br/> -->
 
 ## Contributions
@@ -111,47 +112,70 @@ We would like to express our gratitues to our GA Tech/Trilogy Instructor and TA'
   
   ## Features
   <hr>
-  Welcome to the site!
+<br/>
+
+ # Welcome to the Only Dungeons!
 
 <br/>
 
 ### With a host of features, we would love the user to come and play
 
-### A new user will be able to creat a new account or login with the application
+<br/>
+
+### | A new user will be able to creat a new account or login with the application
 
 ![itemLinks](client/src/components/assets/readMeImages/readme1.png)
 
 <br/>
 
-### A new user can chose to be either a Dungeon Master or a Player Character 
-#### ****Each role is unique****
+### | A new user can chose to be either a Dungeon Master or a Player Character
+
+#### \***\*Each role is unique\*\***
 
 ![itemLinks](client/src/components/assets/readMeImages/readme2.png)
 
-### Player Characters: 
+### | Player Characters:
 
 #### 1) Player Characters can add a tag line for their profile as well as select a role of their choice.
+
 #### 2) Player Characters can also choose which category that suites their play style as well as when they are avialable to play.
 
 ![itemLinks](client/src/components/assets/readMeImages/readme3.png)
 
-### Dungeon Masters : 
+### | Dungeon Masters :
 
 #### 1) Dungeon Masters can add the room name and tag line for their profile.
+
 #### 2) Dungeon Masters can also add their custom Spotify list as well as add their custom discord server.
+
 #### 3) Dungeon Masters can also choose which category that suites their play style as well as when they are avialable to play.
 
 ![itemLinks](client/src/components/assets/readMeImages/readme4.png)
 
-### When a user is looking for the Dungeon Master that fits and is similar to their desires, the user will be able to filter and search through a mariade of Dungeon Masters.
+### | When a user is looking for the Dungeon Master that fits and is similar to their desires, the user will be able to filter and search through a mariade of Dungeon Masters.
 
 ![itemLinks](client/src/components/assets/readMeImages/readme5.png)
 
-### Once the Dungeon Master's rooms are customized to the user's liking, they will be able to interact with their custom Spotify playlist as well as able to have their server set up through Discord for live active chat.  
+### | Once the Dungeon Master's rooms are customized to the user's liking, they will be able to interact with their custom Spotify playlist as well as able to have their server set up through Discord for live active chat.
 
 ![itemLinks](client/src/components/assets/readMeImages/readme6.png)
 
    <br/>
+
+### | Users will also have access to information of the game, including spells, monsters, races, weapons, armor and classes
+
+<br/>
+
+##### | Spells 
+![itemLinks](client/src/components/assets/readMeImages/readme7.png)
+
+   <br/>
+
+##### | Monsters
+![itemLinks](client/src/components/assets/readMeImages/readme8.png)
+
+   <br/>
+
 
 ## Built With:
 
