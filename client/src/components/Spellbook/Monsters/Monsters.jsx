@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
+import { useHistory } from "react-router-dom";
+import "./Monsters.css"
+import LoadSlime from "../../assets/Slime-Gif.gif";
 
-const MonsterBook = () => {
+export default function MonsterBook(){
   const [monsters, setMonsters] = useState([]);
   const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const history = useHistory()
+
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 80){
+      setPage(page + 1) 
+    } 
+  }
 
   const monstersbook = function () {
     API.getMonsters().then((res) => {
       setMonsters(res.data.data.results);
       console.log(res.data.data.results);
+      setLoading(false);
     });
   };
 
@@ -18,36 +36,72 @@ const MonsterBook = () => {
 
   return (
     <>
-      <div className="row">
-        {monsters.slice(4 * page, 4 * page + 4).map((monster) => (
-          <div className="container col m3 content-border vertical-spacer-md">
-            <h5>{monster.name}</h5>
-            <p>{monster.type}</p>
-            <p>{monster.size}</p>
-            <p>{monster.alignment}</p>
-            <p>{monster.armor_class}</p>
-            <p>{monster.armor_hit_points}</p>
+      <div className="container">
+      <div className="row vertical-spacer-md">
+      <button to="#" onClick={()=>history.push("/armorpage")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classespage")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racepage")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monsterpage")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spellpage")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpnpage")} className="booktabs"> Weapons </button>
+
+
+
+      {!loading ? (
+        monsters.slice(4 * page, 4 * page + 4).map((monster) => {
+          return (
+            <div className="col s12 Book">
+              <h3>{monster.name}</h3>
+
+              <p className="col s12 m6">Type: {monster.type}<br/><br/>
+              Size: {monster.size} <br/><br/>
+              Alignment: {monster.alignment} <br/><br/>
+              Armor: {monster.armor_class} <br/><br/>
+              Hit Points: {monster.hit_points} <br/><br/>
+               
+              </p>
+              <p className="col s12 m6">
+              STR: {monster.strength}<br/><br/>
+              DEX: {monster.dexterity} <br/><br/>
+              CON: {monster.constitution} <br/><br/>
+              INT: {monster.intelligence} <br/><br/>
+              WIS: {monster.wisdom} <br/><br/>
+              CHA: {monster.charisma} <br/><br/>
+               
+              </p>
+            </div>
+          );
+        })
+      ) : (
+        <div className="footerControl">
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-        ))}
-      </div>
-      <div className="row">
-        <div className="center container">
-          <button
-            className="btn col s12 m6 vertical-spacer-md"
-            onClick={() => setPage(page - 1)}
-          >
-            Click To Decrease
-          </button>
-          <button
-            className="btn col s12 m6 vertical-spacer-md"
-            onClick={() => setPage(page + 1)}
-          >
-            Click To Increase
-          </button>
+          <h1 className="loading center">Loading Monsters <img src={LoadSlime}/></h1>
         </div>
+      )}
+      {!loading ? (
+        <div className="col s12 center">
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
+      ) : null}
+    </div>
+
+         
+          
+      </div>
+
     </>
   );
 };
 
-export default MonsterBook;
+

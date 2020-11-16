@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HomeButton from "../HomeButton/HomeButton";
 import GamesButton from "../GamesButton/GamesButton";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -7,25 +7,30 @@ import "materialize-css";
 import Logo from "./ODlogo2.png";
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import BookButton from "../BookButton/BookButton";
-import BookModal from "../BookModal/BookModal"
 import { Button, Card, Row, Col } from 'react-materialize';
+import AuthContext from "../../context/AuthContext"
+import BookButton from "../BookButton/BookButton"
 function Navbar() {
+  
 
-  const [show, setShow] = useState(false)
+  // This is the info that pulls in the needed things for the book modal. 
+  // Please do not delete as I will be coming back to this later.
+  
+//   const [show, setShow] = useState(false)
 
-  const showModal = () => {
-    setShow(true);
-  };
+//   const showModal = () => {
+//     setShow(true);
+//   };
  
-  const hideModal = () => {
-    setShow(false);
-  };
+//   const hideModal = () => {
+//     setShow(false);
+//   };
 
-  function handleBook(event) {
-    hideModal();
-    event.preventDefault();
-}
+//   function handleBook(event) {
+//     hideModal();
+//     event.preventDefault();
+// }
+
     return (
       <>
       <nav className="nav-extended">
@@ -39,16 +44,12 @@ function Navbar() {
           <ProfileButton />
           <LogoutButton />
           </ul>
-{/*         
-          <Link to="/Spellbook">SpellBook</Link> */}
-          {/* <button type = "button"  onClick={showModal}  className="btn">Book of Smells</button> */}
-        
       </div>
     </nav>
-    <div className="tabs tabs-transparent">
+    {/* This is the book button for the old book modal that we are temporarily scrapping. Will come back later with custom hooks. */}
+    {/* <div className="tabs tabs-transparent">
             <BookButton />
-        </div>
-    {/* <BookModal show = {show} handleBook = {handleBook} handleClose ={hideModal}/> */}
+        </div> */}
     </>
   );
 }

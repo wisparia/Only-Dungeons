@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from "react";
-import BookModal from "../BookModal/BookModal"
+import React from "react";
+import { useHistory } from "react-router-dom";
 import "./BookButton.css";
 import dndlogo from "../assets/dndlogotiny.png";
 
 function BookButton() {
 
-    const [show, setShow] = useState(false)
+  const history = useHistory()
+  // const [show, setShow] = useState(false)
 
-    const showModal = () => {
-      setShow(true);
-    };
+  //   const showModal = () => {
+  //     setShow(true);
+  //   };
    
-    const hideModal = () => {
-      setShow(false);
-    };
+  //   const hideModal = () => {
+  //     setShow(false);
+  //   };
   
-    function handleBook(event) {
-      hideModal();
-      // event.preventDefault();
-  }
-
+  //   function handleBook(event) {
+  //     hideModal();
+  //     // event.preventDefault();
+  // }
+  
     return (
       <>
-          <form>
             <div>
-                <button className="BookTab" type = "button"  onClick={showModal}>
+                <button className="BookTab" type = "button"  onClick={()=>history.push("/Book")}>
                  <img src={dndlogo}/>
                 </button>
                 </div>
-                </form>
-        <BookModal show = {show} handleBook = {handleBook} handleClose ={hideModal}/>
         </>
     );
 };
