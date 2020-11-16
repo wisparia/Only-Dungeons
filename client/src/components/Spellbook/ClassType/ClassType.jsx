@@ -23,6 +23,10 @@ const ClassesBook = () => {
     classSection();
   }, []);
 
+  console.log(classesState)
+
+  let temp
+
   return (
 
 <>
@@ -43,11 +47,30 @@ const ClassesBook = () => {
             <div className="col s12 Book">
               <h3>{classesSelections.name}</h3>
               
-              <p className="col s12 m4">Hitdie: {classesSelections.hit_die}<br/><br/>
-              Proficiencies: {classesSelections.proficiency_choices.choose}
+              <p className="col s12 m4">Hitdie: {classesSelections.hit_die}
+              <br/>
+              <br/>
+              Subclasses
+                <ul>
+                  <>
+                    {classesSelections.subclasses.map((element)=>(
+                      <li>{element.name}</li>
+                    ))}
+                  </>
+                </ul>
               </p>
               
-              <p className="col s12 m8 description">Description: {classesSelections.size_description}</p>
+              <p className="col s12 m8 description">
+              Proficiencies:
+                <ul>
+                  <>
+                    {classesSelections.proficiencies.map((pros)=>(
+                      <li>{pros.name}</li>
+                    ))}
+                  </>
+                </ul>
+            
+              </p>
             </div>
           );
         })
