@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 import { useHistory } from "react-router-dom";
 import LoadSlime from "../../assets/Slime-Gif.gif";
+import "./race.css"
 
 const RaceBook = () => {
   const [raceState, setRaceState] = useState([]);
@@ -50,7 +51,7 @@ const RaceBook = () => {
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -63,7 +64,7 @@ const RaceBook = () => {
             </div>
           </div>
           <h1 className="loading center">Loading Races <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">

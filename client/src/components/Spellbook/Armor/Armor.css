@@ -38,3 +38,7 @@ h3 {
   font-family: "Press Start 2P", cursive;
   margin-top: -15px;
 }
+
+.footerControl {
+  min-height: calc(100vh - 80px);
+}
