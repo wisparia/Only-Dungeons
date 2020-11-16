@@ -4,11 +4,25 @@ import "./Spells.css";
 import { useHistory } from "react-router-dom";
 import LoadSlime from "../../assets/Slime-Gif.gif";
 
+
+
 const BookOfSpells = () => {
   const [spells, setSpells] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const history = useHistory()
+
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 53){
+      setPage(page + 1) 
+    } 
+  }
 
   const spellBook = function () {
     API.getSpells().then((res) => {
@@ -78,8 +92,8 @@ const BookOfSpells = () => {
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>
