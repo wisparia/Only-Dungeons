@@ -116,7 +116,9 @@ We would like to express our gratitues to our GA Tech/Trilogy Instructor and TA'
 
  # Welcome to the Only Dungeons!
 
-![](client/src/components/assets/readMeImages/React-App.mov)
+![itemLink](client/src/components/assets/readMeImages/3dgif2.gif)
+![itemLink](client/src/components/assets/readMeImages/3dgif1.gif)
+![itemLink](client/src/components/assets/readMeImages/3dgif3.gif)
 
 
 
@@ -179,9 +181,6 @@ We would like to express our gratitues to our GA Tech/Trilogy Instructor and TA'
 ![itemLinks](client/src/components/assets/readMeImages/readme8.png)
 
    <br/>
-
-
-![itemLink](https://drive.google.com/file/d/120OYxmVaiF8fVjrMA2cHt8-4lQ4jna4V/view)
 
 
 ## Built With:
