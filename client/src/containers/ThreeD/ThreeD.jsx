@@ -13,6 +13,7 @@ import forestScene from "./forestScene/forestScene";
 import worldScene from "./worldScene/worldScene";
 import graveScene from "./graveScene/graveScene";
 import mountScene from "./mountScene/mountScene";
+import dungeonScene from "./dungeonScene/dungeonScene"
 import threeDLoader from "./ThreeDLoader/ThreeDLoader";
 
 import "./ThreeD.css";
@@ -60,10 +61,7 @@ const ThreeD = () => {
 
   useEffect(async () => {
     const response = await API.getUser(id);
-    console.log(response.data);
     const ServerID = dm.discordServer;
-    console.log(dm.discordServer);
-    console.log(serverURL);
     setDm(response.data);
     dimensions();
   }, []);
@@ -91,112 +89,85 @@ const ThreeD = () => {
     });
 
     let controls = new OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 1;
     controls.maxDistance = 5000;
 
-    const torchLight = () => {
-      const light = new THREE.AmbientLight(0x404040);
-      scene.add(light);
+    // start position cam
+    camera.position.set(0, 2800, 140);
+
+    function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+    }
+    animate();
+
+    // Base Scene Light
+    const baseLight = () => {
+    const light = new THREE.AmbientLight(0x404040, 1);
+    scene.add(light);
     };
 
-    torchLight();
-    torchLight();
-    torchLight();
+    baseLight();
+    baseLight();
+    baseLight();
 
-    // tracking mouse movement & click events
-    // const raycaster = new THREE.Raycaster();
-    // const mouse = new THREE.Vector2()
+    setTimeout(function(){    
+      let fogColor = new THREE.Color(0xa9a9a9  );
+      scene.background = fogColor;
+      scene.fog = new THREE.Fog(fogColor, 0.005, 3500)}, 4500)
 
-    // function onMouseMove(event) {
-    //     event.preventDefault()
-    //     mouse.x = ( event.clientX / window.innerWidth) * 2 -1;
-    //     mouse.y = - ( event.clientY / window.innerHeight) * 2 -1;
+    // Dungeon Load-in
+    setTimeout(function () {
+      dungeonScene(scene, camera, renderer, -1400, 0, 1100)
+    }, 45000)
 
-    //     raycaster.setFromCamera(mouse, camera)
+    // Mountain scene
+    setTimeout(function () {
+    mountScene(scene, camera, renderer, 600, 0, 1000);
+    }, 44000);
 
-    //     var intersects = raycaster.intersectObjects(scene.children, true);
-    //     for ( var i = 0; i < intersects.length; i++ )   {
-    //         intersects[i].object.material.color.set(0xff0000)
-    //     }
-    // }
-
-    // camera.position.set(-900, 600, 300);
-
-    // Forest 400, 400, -1000
+    // Graveyard scene -1400, 0, 500
     setTimeout(
-      function () {
-        forestScene(scene, camera, renderer, -50, 0, -500);
-        // forestScene(scene, camera, renderer, 400, 0, 0);
-        forestScene(scene, camera, renderer, -150, 0, -250);
-        forestScene(scene, camera, renderer, 0, 0, -400);
-        forestScene(scene, camera, renderer, -450, 0, -800);
-        forestScene(scene, camera, renderer, -300, 0, 100);
-      },
-      // 0);
-      35000
+    function () {
+    graveScene(scene, camera, renderer, -1400, 0, -800);
+    graveScene(scene, camera, renderer, -1450, 0, -1000);
+    graveScene(scene, camera, renderer, -1400, 0, -1300);
+    },
+    // 0);
+    40000
     );
 
     // Village 1000, 400, -1000
     setTimeout(
-      function () {
-        tavScene(scene, camera, renderer, 1200, 1, 0);
-        tavScene(scene, camera, renderer, 800, 1, -1000);
-        dwellScene(scene, camera, renderer, 800, 1, -300);
-      },
+    function () {
+    tavScene(scene, camera, renderer, 1400, 1, -200);
+    tavScene(scene, camera, renderer, 1600, 1, -1200);
+    dwellScene(scene, camera, renderer, 1400, 1, -500);
+    },
       // 0);
       38000
     );
 
-    // Graveyard scene -1400, 0, 500
+    // Forest 400, 400, -1000
     setTimeout(
-      function () {
-        graveScene(scene, camera, renderer, -1400, 0, -800);
-        graveScene(scene, camera, renderer, -1450, 0, -1000);
-        graveScene(scene, camera, renderer, -1450, 0, -1080);
-      },
-      // 0);
-      40000
+    function () {
+    forestScene(scene, camera, renderer, -50, 0, -500);
+    forestScene(scene, camera, renderer, -150, 0, -1500);
+    forestScene(scene, camera, renderer, 0, 0, -400);
+    forestScene(scene, camera, renderer, 400, 0, -800);
+    forestScene(scene, camera, renderer, -300, 0, -1000);
+    forestScene(scene, camera, renderer, 100, 0, -900);
+    },
+    // 0);
+    35000
     );
 
-    // Mountain scene
+    // ThreeD Intro Scene and World Sphere
     setTimeout(function () {
-      mountScene(scene, camera, renderer, 600, 0, 1000);
-    });
-
-    // start position cam
-    camera.position.set(0, 2800, 140);
-    // camera.position.set(0, 800, 500)
-
-    let cameraAnimate;
-
-    function animate() {
-      cameraAnimate = requestAnimationFrame(animate);
-
-      camera.position.y -= 0.8;
-      camera.position.z -= 0.19;
-      camera.rotation.x -= 0.0025;
-
-      if (camera.rotation.x <= -1) {
-        camera.rotation.x += 0.0025;
-      } else if (camera.rotation.x <= 0.9) {
-        camera.rotation.x -= 0.0025;
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    animate();
-
-    // setTimeout(function() {
-    //   cancelAnimationFrame( cameraAnimate )
-    //   camera.position.set(0, 800, 500)
-    //  },  50000)
-
-    threeDLoader(scene, camera, renderer, 0, 2502, 0);
-
-    setTimeout(function () {
+      
       worldScene(scene, camera, renderer);
     }, 0);
+    
+    threeDLoader(scene, camera, renderer, 0, 2502, 0);
   }
 
   return (
@@ -349,25 +320,8 @@ const ThreeD = () => {
     
       <div id="myCanvas"></div>
 
-      {dm.discordServer === "" || dm.discordServer === undefined ? (
-        <iframe
-          src={defaultServerURL}
-          height="200"
-          width="100%"
-          frameborder="0"
-          id="info"
-          className="chatBorder"
-        ></iframe>
-      ) : (
-        <iframe
-          src={serverURL}
-          height="200"
-          width="100%"
-          frameborder="0"
-          id="info"
-          className="chatBorder"
-        ></iframe>
-      )}
+      {dm.discordServer === "" || dm.discordServer === undefined ? <iframe src={defaultServerURL} height="200" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="200" width="100%" frameborder="0" className="chatBorder"></iframe>}
+            
     </>
   );
 };
