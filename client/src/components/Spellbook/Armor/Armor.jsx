@@ -41,6 +41,8 @@ const ArmorBook = () => {
       <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
       <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
       <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
+      
+      
       {!loading ? (
       armorState.slice(5 * page, 5 * page + 5).map((armorSelections) => {
        return (
@@ -58,7 +60,7 @@ const ArmorBook = () => {
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -71,7 +73,7 @@ const ArmorBook = () => {
             </div>
           </div>
           <h1 className="loading center">Loading Armor <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">

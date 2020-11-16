@@ -60,7 +60,7 @@ export default function MonsterBook(){
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -73,7 +73,7 @@ export default function MonsterBook(){
             </div>
           </div>
           <h1 className="loading center">Loading Monsters <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">
