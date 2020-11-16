@@ -75,7 +75,7 @@ export default function MonsterBook(){
       ) : (
         <div className="footerControl">
           
-          <h1 className="loading center">Loading Monsters <img src={LoadSlime}/></h1>
+          <h1 className="loading center">Loading Monsters <img src={LoadSlime} alt = "load slime"/></h1>
         </div>
       )}
       {!loading ? (
