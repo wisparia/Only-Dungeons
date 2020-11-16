@@ -85,7 +85,7 @@ export default function MonsterBook(){
               <div class="circle"></div>
             </div>
           </div>
-          <h1 className="loading center">Loading Monsters <img src={LoadSlime}/></h1>
+          <h1 className="loading center">Loading Monsters <img src={LoadSlime} alt = "load slime"/></h1>
         </div>
       )}
       {!loading ? (
