@@ -132,22 +132,22 @@ function App() {
                           />
                           <Route exact path="/ThreeD/:id" component={ThreeD} />
                           <Route exact path="/Team" component={Team} />
-                          <Route exact path="/spelltest" component={Spells} />
+                          <Route exact path="/spellpage" component={Spells} />
                           <Route
                             exact
-                            path="/monstertest"
+                            path="/monsterpage"
                             component={MonsterBook}
                           />
-                          <Route exact path="/racetest" component={RaceBook} />
+                          <Route exact path="/racepage" component={RaceBook} />
                           <Route
                             exact
-                            path="/classestest"
+                            path="/classespage"
                             component={ClassesBook}
                           />
-                          <Route exact path="/wpntest" component={WpnBook} />
+                          <Route exact path="/wpnpage" component={WpnBook} />
                           <Route
                             exact
-                            path="/armortest"
+                            path="/armorpage"
                             component={ArmorBook}
                           />
                           <Route exact path="/Book" component={MainBook} />

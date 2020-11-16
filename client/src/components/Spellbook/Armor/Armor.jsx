@@ -10,6 +10,18 @@ const ArmorBook = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(true);
 
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 5){
+      setPage(page + 1) 
+    } 
+  }
+
   const armorSection = function () {
     API.getArmor().then((res) => {
       setArmorState(res.data.data.results);
@@ -35,24 +47,31 @@ const ArmorBook = () => {
 <>
     <div className="container">
       <div className="row vertical-spacer-md">
-      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
-      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
-      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
-      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
-      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/armorpage")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classespage")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racepage")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monsterpage")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spellpage")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpnpage")} className="booktabs"> Weapons </button>
+
       {!loading ? (
       armorState.slice(5 * page, 5 * page + 5).map((armorSelections) => {
        return (
        <div className="col s12 Book">
           <h3>{armorSelections.name}</h3>
           <p className="col s12 m4">Armor type: {armorSelections.armor_category}</p>
-          <p className="col s12 m8">armor things</p>
+          <p className="col s12 m8">
+          <ul className col s12 m8>
+            <li>Cost: {armorSelections.cost.quantity} {armorSelections.cost.unit}</li>
+            <li>AC: {armorSelections.armor_class.base}</li>
+            <li>Weight: {armorSelections.weight}</li>
+          </ul>
+          </p>
           </div>
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -65,12 +84,12 @@ const ArmorBook = () => {
             </div>
           </div>
           <h1 className="loading center">Loading Armor <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>

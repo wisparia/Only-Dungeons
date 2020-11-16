@@ -10,6 +10,18 @@ export default function MonsterBook(){
   const [loading, setLoading] = useState(true);
   const history = useHistory()
 
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 80){
+      setPage(page + 1) 
+    } 
+  }
+
   const monstersbook = function () {
     API.getMonsters().then((res) => {
       setMonsters(res.data.data.results);
@@ -26,12 +38,13 @@ export default function MonsterBook(){
     <>
       <div className="container">
       <div className="row vertical-spacer-md">
-      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
-      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
-      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
-      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
-      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/armorpage")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classespage")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racepage")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monsterpage")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spellpage")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpnpage")} className="booktabs"> Weapons </button>
+
 
 
       {!loading ? (
@@ -60,7 +73,7 @@ export default function MonsterBook(){
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -73,12 +86,12 @@ export default function MonsterBook(){
             </div>
           </div>
           <h1 className="loading center">Loading Monsters <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>
