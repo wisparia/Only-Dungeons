@@ -8,6 +8,18 @@ const ClassesBook = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   // const [pageState, setPageState] = useState(0);
+
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 1){
+      setPage(page + 1) 
+    } 
+  }
   const history = useHistory()
   const classSection = function () {
     // console.log("this ran")
@@ -92,8 +104,8 @@ const ClassesBook = () => {
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>
