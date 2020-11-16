@@ -12,7 +12,7 @@ class SpotifyInfoModal extends Component {
     return (
       <div className={showHideClassName}>
         <div id="showModalSpotify" className="showModalSpotify">
-          <div className="modal-content">
+          <div className="modal-content ">
             <div className="modal-header center">
               <h4>Link Your Spotify Account to Only Dungeons</h4>
             </div>
