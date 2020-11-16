@@ -10,6 +10,18 @@ const ArmorBook = () => {
   const history = useHistory()
   const [loading, setLoading] = useState(true);
 
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 5){
+      setPage(page + 1) 
+    } 
+  }
+
   const armorSection = function () {
     API.getArmor().then((res) => {
       setArmorState(res.data.data.results);
@@ -76,8 +88,8 @@ const ArmorBook = () => {
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>

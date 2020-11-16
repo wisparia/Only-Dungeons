@@ -11,6 +11,18 @@ const RaceBook = () => {
   const history = useHistory()
   // const [pageState, setPageState] = useState(0);
 
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 1){
+      setPage(page + 1) 
+    } 
+  }
+
   const raceSection = function () {
 
     API.getRace().then((res) => {
@@ -68,8 +80,8 @@ const RaceBook = () => {
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>
