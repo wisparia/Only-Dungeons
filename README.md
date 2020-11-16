@@ -12,7 +12,7 @@
 ![Express V](https://img.shields.io/github/package-json/dependency-version/SamiSully/OnlyDungeons2/express)
 ![Mongoose V](https://img.shields.io/github/package-json/dependency-version/SamiSully/OnlyDungeons2/mongoose)
 ![Morgan V](https://img.shields.io/github/package-json/dependency-version/SamiSully/OnlyDungeons2/bcrypt)
-![Last Commit](https://img.shields.io/github/last-commit/kqarlos/fitness-tracker)
+![Last Commit](https://img.shields.io/github/last-commit/SamiSully/OnlyDungeons2)
 
   <br/>
 
