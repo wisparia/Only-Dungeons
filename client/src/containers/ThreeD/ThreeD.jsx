@@ -110,11 +110,10 @@ const ThreeD = () => {
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
       }
-
       animate();
     }, 5000)
 
-
+    // watch it there cowboy
     setTimeout(function(){    
       let fogColor = new THREE.Color(0xa9a9a9  );
       scene.background = fogColor;
