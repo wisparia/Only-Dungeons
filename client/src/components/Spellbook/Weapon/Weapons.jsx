@@ -76,7 +76,7 @@ const WpnBook = () => {
               <div class="circle"></div>
             </div>
           </div>
-          <h1 className="loading">Loading Weapons <img src={LoadSlime}/></h1>
+          <h1 className="loading">Loading Weapons <img src={LoadSlime} alt = "load slime"/></h1>
         </div>
       )}
       {!loading ? (
