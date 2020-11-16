@@ -118,23 +118,23 @@ const ThreeD = () => {
     // Dungeon Load-in
     setTimeout(function () {
       dungeonScene(scene, camera, renderer, -1400, 0, 1100)
-    }, 0)
+    }, 45000)
 
     // Mountain scene
     setTimeout(function () {
     mountScene(scene, camera, renderer, 600, 0, 1000);
-    }, 0);
+    }, 44000);
 
     // Graveyard scene -1400, 0, 500
     setTimeout(
     function () {
     graveScene(scene, camera, renderer, -1400, 0, -800);
     graveScene(scene, camera, renderer, -1450, 0, -1000);
-    graveScene(scene, camera, renderer, -1400, 0, -1200);
+    graveScene(scene, camera, renderer, -1400, 0, -1300);
     },
-    0);
-    // 40000  );
-  
+    // 0);
+    40000
+    );
 
     // Village 1000, 400, -1000
     setTimeout(
@@ -143,9 +143,9 @@ const ThreeD = () => {
     tavScene(scene, camera, renderer, 1600, 1, -1200);
     dwellScene(scene, camera, renderer, 1400, 1, -500);
     },
-    0);
-      // 38000);
-    
+      // 0);
+      38000
+    );
 
     // Forest 400, 400, -1000
     setTimeout(
@@ -157,8 +157,9 @@ const ThreeD = () => {
     forestScene(scene, camera, renderer, -300, 0, -1000);
     forestScene(scene, camera, renderer, 100, 0, -900);
     },
-    0);
-    // 35000);
+    // 0);
+    35000
+    );
 
     // ThreeD Intro Scene and World Sphere
     setTimeout(function () {
