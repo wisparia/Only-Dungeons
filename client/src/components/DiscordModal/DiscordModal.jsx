@@ -9,11 +9,11 @@ class DiscordModal extends Component {
     return (
       <div className={showHideClassName}>
         <div id="DiscordModal" className="DiscordModal">
-          <div className="modal-content">
+          <div className="modal-content ">
             <div className="modal-header center">
               <h4>Link Your Discord Account to Only Dungeons</h4>
             </div>
-            <div className="modal-body center">
+            <div className="modal-body center ">
               <p>
                 Check out the video below for instructions on how to link your
                 discord account below!
