@@ -74,7 +74,7 @@ const ArmorBook = () => {
       ) : (
         <div className="footerControl">
           
-          <h1 className="loading center">Loading Armor <img src={LoadSlime}/></h1>
+          <h1 className="loading center">Loading Armor <img src={LoadSlime} alt = "load slime"/></h1>
         </div>
       )}
       {!loading ? (
