@@ -10,6 +10,18 @@ export default function MonsterBook(){
   const [loading, setLoading] = useState(true);
   const history = useHistory()
 
+  function handlePageUp () {
+    if (page !== 0){
+      setPage(page - 1) 
+    } 
+  }
+  
+  function handlePageDown () {
+    if (page < 80){
+      setPage(page + 1) 
+    } 
+  }
+
   const monstersbook = function () {
     API.getMonsters().then((res) => {
       setMonsters(res.data.data.results);
@@ -78,8 +90,8 @@ export default function MonsterBook(){
       )}
       {!loading ? (
         <div className="col s12 center">
-        <button to="#" onClick={() => setPage(page - 1)} className="pagetabs"> Page Down </button>
-    <button to="#" onClick={() => setPage(page + 1)} className="pagetabs"> Page Up </button>
+        <button to="#" onClick={handlePageDown} className="pagetabs"> Page Down </button>
+    <button to="#" onClick={handlePageUp} className="pagetabs"> Page Up </button>
       </div>
       ) : null}
     </div>
