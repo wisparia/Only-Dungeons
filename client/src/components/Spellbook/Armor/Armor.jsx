@@ -59,7 +59,7 @@ const ArmorBook = () => {
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -72,7 +72,7 @@ const ArmorBook = () => {
             </div>
           </div>
           <h1 className="loading center">Loading Armor <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">

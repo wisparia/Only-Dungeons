@@ -3,6 +3,7 @@ import API from "../../../utils/API";
 import "./Spells.css";
 import { useHistory } from "react-router-dom";
 import LoadSlime from "../../assets/Slime-Gif.gif";
+import "./Spells.css"
 
 const BookOfSpells = () => {
   const [spells, setSpells] = useState([]);
@@ -62,7 +63,7 @@ const BookOfSpells = () => {
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -75,7 +76,7 @@ const BookOfSpells = () => {
             </div>
           </div>
           <h1 className="loading center">Loading Spells <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">

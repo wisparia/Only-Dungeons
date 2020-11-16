@@ -29,6 +29,11 @@ h3 {
   margin-left: 2px;
 }
 
+.footerControl {
+  min-height: calc(100vh - 80px);
+}
+
+
 .pagetabs {
   padding: 10px;
   border-left: 4px rgb(190, 141, 35) outset;
