@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import AvatarImage from "../../components/AvatarImage/AvatarImage";
 import dmImage from "./dmImage.png";
@@ -19,6 +19,7 @@ import threeDLoader from "./ThreeDLoader/ThreeDLoader";
 import "./ThreeD.css";
 
 const ThreeD = () => {
+  const history = useHistory()
   const [dm, setDm] = useState({
     userName: "",
     email: "",
@@ -174,7 +175,9 @@ const ThreeD = () => {
     threeDLoader(scene, camera, renderer, 0, 2502, 0);
   }
 
-  
+  function handleGoBack(){
+    history.goBack()
+  }
 
   return (
     <>
@@ -191,6 +194,7 @@ const ThreeD = () => {
               >
                 Email
               </a>
+              <div onClick={handleGoBack} className="btn col s12">Back</div>
               {/* <div className="btn col s12 vertical-spacer-sm">Back</div> */}
               {dm.getSpotify === "" || dm.getSpotify === undefined ? (
                 <iframe
