@@ -47,7 +47,13 @@ const ArmorBook = () => {
        <div className="col s12 Book">
           <h3>{armorSelections.name}</h3>
           <p className="col s12 m4">Armor type: {armorSelections.armor_category}</p>
-          <p className="col s12 m8">armor things</p>
+          <p className="col s12 m8">
+          <ul className col s12 m8>
+            <li>Cost: {armorSelections.cost.quantity} {armorSelections.cost.unit}</li>
+            <li>AC: {armorSelections.armor_class.base}</li>
+            <li>Weight: {armorSelections.weight}</li>
+          </ul>
+          </p>
           </div>
           );
         })
