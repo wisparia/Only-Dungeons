@@ -52,7 +52,7 @@ const WpnBook = () => {
             wpnState.slice(6 * page, 6 * page + 6).map((wpnSelections) => {
 // testing
           return (
-            <div className="col s6 Book">
+            <div className="col s12 Book">
               <h3>{wpnSelections.name}</h3>
               
               <p className="col s12">Wpn-range: {wpnSelections.weapon_range}<br/><br/>
@@ -65,18 +65,8 @@ const WpnBook = () => {
         })
       ) : (
         <div className="footerControl">
-          <div class="spinner-layer spinner-yellow">
-            <div class="circle-clipper left">
-              <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-              <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-          </div>
-          <h1 className="loading">Loading Weapons <img src={LoadSlime} alt = "load slime"/></h1>
+          
+          <h1 className="loading">Loading Weapons <img src={LoadSlime}/></h1>
         </div>
       )}
       {!loading ? (

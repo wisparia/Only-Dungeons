@@ -7,14 +7,12 @@ import Stone5 from "./Stone5.png"
 
 const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
 
-
-
     const createGrave1 = (locX, locY, locZ) => {
         let stoneTypeArray = [Stone1, Stone2, Stone3, Stone4, Stone5, Stone3, Stone4, Stone5];
         let stoneType = stoneTypeArray[(Math.floor(Math.random()*8))]
         const geometry = new THREE.BoxGeometry( 8, 20, 5 );
         let texture = new THREE.TextureLoader().load(stoneType)
-        const material = new THREE.MeshBasicMaterial( {map: texture} );
+        const material = new THREE.MeshPhysicalMaterial( {map: texture} );
         const graveStone = new THREE.Mesh( geometry, material );
         scene.add(graveStone);
         // graveStone.rotateX(10)
@@ -34,7 +32,7 @@ const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
 
         const geometry1 = new THREE.BoxGeometry( 10, 20, 5 );
         let texture1 = new THREE.TextureLoader().load(stoneType)
-        const material1 = new THREE.MeshBasicMaterial( {map: texture} );      
+        const material1 = new THREE.MeshBasicMaterial( {map: texture1} );      
         const cone = new THREE.Mesh( geometry1, material1 );
 
         scene.add( cone );
@@ -42,8 +40,15 @@ const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
         cone.position.set((locX-5), (locY), (locZ-20))
     }
 
+    const torchLight = (x, y, z) => {
+        const light = new THREE.PointLight(0xFF0000, .45, 0, 0);
+        light.position.set(x, y, z)
+        scene.add(light)
+      }
+
     const  createRow1 = (locX, locY, locZ) => { 
     createGrave1(locX, locY, locZ)
+    torchLight(locX, locY, locZ)
     createGrave1((locX-20), locY, locZ)
     // createGrave1((locX+20), locY, locZ)
     createGrave1((locX-40), locY, locZ)
@@ -59,6 +64,7 @@ const graveScene = (scene, camera, renderer, locX, locY, locZ) => {
     }
     const  createRow2 = (locX, locY, locZ) => { 
     createGrave1(locX, locY, (locZ+40))
+    torchLight(locX+100, locY, locZ+40)
     createGrave1((locX-20), locY, (locZ+40))
     createGrave1((locX+20), locY, (locZ+40))
     createGrave1((locX-40), (locY-4), (locZ+40))

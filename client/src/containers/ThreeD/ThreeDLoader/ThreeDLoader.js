@@ -82,7 +82,18 @@ const threeDLoader = (scene, camera, renderer, locX, locY, locZ) => {
             skybox.rotation.x += .01
             skybox.rotation.y += .01
             skybox.position.y -= .4
-            renderer.render(scene, camera);
+            
+            
+            camera.position.y -= 0.8;
+            camera.position.z -= 0.19;
+            camera.rotation.x -= 0.0025;
+    
+          if (camera.rotation.x <= -1.15) {
+            camera.rotation.x += 0.0025;
+          } else if (camera.rotation.x <= 1.15) {
+            camera.rotation.x -= 0.0025;
+          }
+      
           }
           animate()
 

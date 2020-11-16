@@ -17,7 +17,7 @@ const ArmorBook = () => {
   }
   
   function handlePageDown () {
-    if (page < 5){
+    if (page < 5 ){
       setPage(page + 1) 
     } 
   }
@@ -59,12 +59,13 @@ const ArmorBook = () => {
        return (
        <div className="col s12 Book">
           <h3>{armorSelections.name}</h3>
-          <p className="col s12 m4">Armor type: {armorSelections.armor_category}</p>
+          <p className="col s12 m4">
+          {! armorSelections.armor_category ? <li>Armor type: Magical Armor</li> : <li>Armor type: {armorSelections.armor_category}</li>}</p>
           <p className="col s12 m8">
           <ul className col s12 m8>
-            <li>Cost: {armorSelections.cost.quantity} {armorSelections.cost.unit}</li>
-            <li>AC: {armorSelections.armor_class.base}</li>
-            <li>Weight: {armorSelections.weight}</li>
+            {! armorSelections.cost ? <li>Cost: DM's Choice</li> : <li>Cost: {armorSelections.cost.quantity} {armorSelections.cost.unit}</li>}
+            {! armorSelections.armor_class ? <li>AC: Depends on Characters Stats</li> : <li>AC: {armorSelections.armor_class.base}</li>}
+            {! armorSelections.weight ? <li>Weight: Weightless</li> : <li>Armor type: {armorSelections.weight}</li>}
           </ul>
           </p>
           </div>
@@ -72,18 +73,8 @@ const ArmorBook = () => {
         })
       ) : (
         <div className="footerControl">
-          <div class="spinner-layer spinner-yellow">
-            <div class="circle-clipper left">
-              <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-              <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-          </div>
-          <h1 className="loading center">Loading Armor <img src={LoadSlime} alt = "load slime"/></h1>
+          
+          <h1 className="loading center">Loading Armor <img src={LoadSlime}/></h1>
         </div>
       )}
       {!loading ? (
