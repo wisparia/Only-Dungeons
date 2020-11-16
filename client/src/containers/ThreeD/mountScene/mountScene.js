@@ -11,7 +11,7 @@ const mountScene = (scene, camera, renderer, locX, locY, locZ) => {
    const createMountain = (locX, locY, locZ) =>     { 
     let stoneTypes = [ Tree1, Tree3, Stone4, Stone5, Stone2 ]
     let stoneOuter = stoneTypes[(Math.floor(Math.random()*5))]
-    let shaH = (Math.floor(Math.random()*200)+100)
+    let shaH = (Math.floor(Math.random()*250)+100)
 
     const geometry = new THREE.SphereGeometry(shaH, 7, 4,);
     const texture = new THREE.TextureLoader().load(stoneOuter);
