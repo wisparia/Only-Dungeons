@@ -13,12 +13,12 @@ function BookPage() {
     <>
     <div className="container">
       <div className="row vertical-spacer-md">
-      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
-      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
-      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
-      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
-      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/armorpage")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classespage")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racepage")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monsterpage")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spellpage")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpnpage")} className="booktabs"> Weapons </button>
               
         <div className="col s12 Book">
           <h3>Welcome to the 5th Edition D&D Resource Book!</h3>
