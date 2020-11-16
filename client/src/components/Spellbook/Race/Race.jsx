@@ -64,17 +64,7 @@ const RaceBook = () => {
         })
       ) : (
         <div className="footerControl">
-          <div class="spinner-layer spinner-yellow">
-            <div class="circle-clipper left">
-              <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-              <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-          </div>
+         
           <h1 className="loading center">Loading Races <img src={LoadSlime}/></h1>
         </div>
       )}
