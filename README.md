@@ -206,4 +206,5 @@ This application is licensed under MIT
 - [Jonathan Canales](https://github.com/modern-sapien)
 - [Alex Fleming](https://github.com/ad-fleming)
 - [Sami Sully](https://github.com/SamiSully)
-- [Brandon Walker]()
+- [Brandon Walker](https://github.com/BrandonWalker88)
+- [Nathan Calle](https://github.com/Napica)
