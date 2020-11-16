@@ -320,25 +320,8 @@ const ThreeD = () => {
     
       <div id="myCanvas"></div>
 
-      {dm.discordServer === "" || dm.discordServer === undefined ? (
-        <iframe
-          src={defaultServerURL}
-          height="200"
-          width="100%"
-          frameborder="0"
-          id="info"
-          className="chatBorder"
-        ></iframe>
-      ) : (
-        <iframe
-          src={serverURL}
-          height="200"
-          width="100%"
-          frameborder="0"
-          id="info"
-          className="chatBorder"
-        ></iframe>
-      )}
+      {dm.discordServer === "" || dm.discordServer === undefined ? <iframe src={defaultServerURL} height="200" width="100%" frameborder="0" className="chatBorder"></iframe> : <iframe src={serverURL} height="200" width="100%" frameborder="0" className="chatBorder"></iframe>}
+            
     </>
   );
 };
