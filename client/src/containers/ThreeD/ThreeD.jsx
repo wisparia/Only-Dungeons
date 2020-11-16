@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import AvatarImage from "../../components/AvatarImage/AvatarImage";
 import dmImage from "./dmImage.png";
@@ -19,6 +19,7 @@ import threeDLoader from "./ThreeDLoader/ThreeDLoader";
 import "./ThreeD.css";
 
 const ThreeD = () => {
+  const history = useHistory()
   const [dm, setDm] = useState({
     userName: "",
     email: "",
@@ -94,12 +95,6 @@ const ThreeD = () => {
     // start position cam
     camera.position.set(0, 2800, 140);
 
-    function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-    }
-    animate();
-
     // Base Scene Light
     const baseLight = () => {
     const light = new THREE.AmbientLight(0x404040, 1);
@@ -110,6 +105,15 @@ const ThreeD = () => {
     baseLight();
     baseLight();
 
+    setTimeout(function() {
+      function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+      }
+      animate();
+    }, 5000)
+
+    // watch it there cowboy
     setTimeout(function(){    
       let fogColor = new THREE.Color(0xa9a9a9  );
       scene.background = fogColor;
@@ -170,6 +174,10 @@ const ThreeD = () => {
     threeDLoader(scene, camera, renderer, 0, 2502, 0);
   }
 
+  function handleGoBack(){
+    history.goBack()
+  }
+
   return (
     <>
         <div className="content-border row">
@@ -185,7 +193,8 @@ const ThreeD = () => {
               >
                 Email
               </a>
-              <div className="btn col s12 vertical-spacer-sm">Back</div>
+              <div onClick={handleGoBack} className="btn col s12">Back</div>
+              {/* <div className="btn col s12 vertical-spacer-sm">Back</div> */}
               {dm.getSpotify === "" || dm.getSpotify === undefined ? (
                 <iframe
                   src={defaultSpotifyURL}

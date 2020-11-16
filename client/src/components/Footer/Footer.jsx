@@ -8,18 +8,14 @@ const footer = () => {
         <>
           <footer className="page-footer">
           <div className="container">
-            <div className="row">
-            <div className="col s12 l1">
-                <BookButton />
-              </div>
-             
+            <div className="row">            
               <div className="col s12 l6">
                 <p>It's dangerous to go alone.</p>
               </div>
-              <div className="col s12 l3 offset-l2">
-
+              <div className="col s12 l6">
+                <Link className="btn" to="/Book">Nathan's Spellbook of Most Things</Link>
                 <Link className="btn" to="/Team">Meet the Team</Link>
-                <Link className="btn" to="/ThreeD/1">3-D Scene</Link>
+                
               </div>
             </div>
           </div>
