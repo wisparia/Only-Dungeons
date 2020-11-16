@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 import { useHistory } from "react-router-dom";
 import LoadSlime from "../../assets/Slime-Gif.gif";
+import "./race.css"
 
 const RaceBook = () => {
   const [raceState, setRaceState] = useState([]);
@@ -40,12 +41,12 @@ const RaceBook = () => {
     
     <div className="container">
       <div className="row vertical-spacer-md">
-      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
-      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
-      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
-      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
-      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpmtest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/armorpage")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classespage")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racepage")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monsterpage")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spellpage")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpnpage")} className="booktabs"> Weapons </button>
 
           {!loading ? (
         raceState.slice(6 * page, 6 * page + 6).map((raceSelections) => {
@@ -62,7 +63,7 @@ const RaceBook = () => {
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -75,7 +76,7 @@ const RaceBook = () => {
             </div>
           </div>
           <h1 className="loading center">Loading Races <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">

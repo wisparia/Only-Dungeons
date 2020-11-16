@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../../utils/API";
 import { useHistory } from "react-router-dom";
 import LoadSlime from "../../assets/Slime-Gif.gif";
+import "./weapons.css"
 
 const WpnBook = () => {
   const [wpnState, setwpnState] = useState([]);
@@ -27,12 +28,13 @@ const WpnBook = () => {
     
     <div className="container">
       <div className="row vertical-spacer-md">
-      <button to="#" onClick={()=>history.push("/armortest")} className="booktabs"> Armor </button>
-      <button to="#" onClick={()=>history.push("/classestest")} className="booktabs"> Classes </button>
-      <button to="#" onClick={()=>history.push("/racetest")} className="booktabs"> Races </button>
-      <button to="#" onClick={()=>history.push("/monstertest")} className="booktabs"> Monsters </button>
-      <button to="#" onClick={()=>history.push("/spelltest")} className="booktabs"> Spells </button>
-      <button to="#" onClick={()=>history.push("/wpntest")} className="booktabs"> Weapons </button>
+      <button to="#" onClick={()=>history.push("/armorpage")} className="booktabs"> Armor </button>
+      <button to="#" onClick={()=>history.push("/classespage")} className="booktabs"> Classes </button>
+      <button to="#" onClick={()=>history.push("/racepage")} className="booktabs"> Races </button>
+      <button to="#" onClick={()=>history.push("/monsterpage")} className="booktabs"> Monsters </button>
+      <button to="#" onClick={()=>history.push("/spellpage")} className="booktabs"> Spells </button>
+      <button to="#" onClick={()=>history.push("/wpnpage")} className="booktabs"> Weapons </button>
+
 
           {!loading ? (
             wpnState.slice(6 * page, 6 * page + 6).map((wpnSelections) => {
@@ -50,7 +52,7 @@ const WpnBook = () => {
           );
         })
       ) : (
-        <>
+        <div className="footerControl">
           <div class="spinner-layer spinner-yellow">
             <div class="circle-clipper left">
               <div class="circle"></div>
@@ -63,7 +65,7 @@ const WpnBook = () => {
             </div>
           </div>
           <h1 className="loading">Loading Weapons <img src={LoadSlime}/></h1>
-        </>
+        </div>
       )}
       {!loading ? (
         <div className="col s12 center">
