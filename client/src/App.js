@@ -6,7 +6,6 @@ import SigninPage from "./containers/SigninPage/SigninPage";
 import NewUser1 from "./containers/NewUser1/NewUser1";
 import Team from "./containers/Team/Team";
 import DmDirectory from "./containers/DmDirectory/DmDirectory";
-import DmOne from "./containers/DmOne/DmOne";
 import UpdateForm from "./containers/UpdateForm/UpdateForm";
 import ThreeD from "./containers/ThreeD/ThreeD";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -15,13 +14,6 @@ import "materialize-css";
 import { setAxiosDefaults } from "./utils/axiosDefaults";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import SpellContext from "./context/Spellcontext";
-import MonsterContext from "./context/MonsterContext";
-import ClassTypeContext from "./context/ClassTypeContext";
-import WpnContext from "./context/WpnContext";
-import ArmorContext from "./context/ArmorContext";
-import RaceContext from "./context/RaceContext";
-import API from "./utils/API";
 import Spells from "./components/Spellbook/Spells/Spells";
 import MonsterBook from "./components/Spellbook/Monsters/Monsters";
 import RaceBook from "./components/Spellbook/Race/Race";
@@ -55,19 +47,8 @@ function App() {
           <AuthContext.Provider value={{ jwt, setJwt }}>
             <Navbar />
             <Switch>
-              {/* <Route
-                exact
-                path="/"
-                render={() => <SigninPage user={user} setUser={setUser} />}
-              /> */}
               <Route exact path="/NewUser" component={NewUser1} />
-              {/*<Route
-                exact
-                path="/DmDirectory"
-                render={() => <DmDirectory user={user} />}
-              /> */}
               <Route exact path="/DmDirectory" component={DmDirectory} />
-
               <Route exact path="/DmOne/:id" component={ThreeD} />
               <ProtectedRoute
                 exact
@@ -94,5 +75,3 @@ function App() {
 }
 
 export default App;
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFjMjI2NTFjZDQyMjRmNTgxZWE4NDYiLCJlbWFpbCI6ImVzdGVydGVzdGVyMDAwQGdtYWlsLmNvbSIsImlhdCI6MTYwNTExNjY0MX0.OyX_qJTe5JTxjRtxf7lDPteNsYOo6RMwY0GPzPS-Y_g
